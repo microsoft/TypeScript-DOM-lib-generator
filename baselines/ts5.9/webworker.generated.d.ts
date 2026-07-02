@@ -538,6 +538,7 @@ interface GPUPipelineErrorInit {
 
 interface GPUPipelineLayoutDescriptor extends GPUObjectDescriptorBase {
     bindGroupLayouts: (GPUBindGroupLayout | null)[];
+    immediateSize?: GPUSize32;
 }
 
 interface GPUPrimitiveState {
@@ -7854,7 +7855,7 @@ interface NotificationEventMap {
  */
 interface Notification extends EventTarget {
     /**
-     * The **`actions`** read-only property of the Notification interface provides the actions available for users to choose from for interacting with the notification.
+     * The **`actions`** read-only property of the Notification interface provides the actions available for users to select when interacting with the notification.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/actions)
      */
@@ -7937,7 +7938,7 @@ declare var Notification: {
     prototype: Notification;
     new(title: string, options?: NotificationOptions): Notification;
     /**
-     * The **`maxActions`** read-only static property of the Notification interface returns the maximum number of actions supported by the device and the User Agent. Effectively, this is the maximum number of elements in Notification.actions array which will be respected by the User Agent.
+     * The **`maxActions`** read-only static property of the Notification interface returns the maximum number of actions that can be displayed in a notification.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/maxActions_static)
      */
@@ -9607,7 +9608,7 @@ interface Response extends Body {
      */
     readonly redirected: boolean;
     /**
-     * The **`status`** read-only property of the Response interface contains the HTTP status codes of the response.
+     * The **`status`** read-only property of the Response interface contains the HTTP status code of the response.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/status)
      */
@@ -9779,7 +9780,7 @@ declare var SecurityPolicyViolationEvent: {
  */
 interface Serial extends EventTarget {
     /**
-     * The **`getPorts()`** method of the Serial interface returns a Promise that resolves with an array of SerialPort objects representing serial ports connected to the host which the origin has permission to access.
+     * The **`getPorts()`** method of the Serial interface returns a Promise that resolves with an array of SerialPort objects representing serial ports connected to the host that the origin has permission to access.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Serial/getPorts)
      */
@@ -9826,13 +9827,13 @@ interface SerialPort extends EventTarget {
      */
     readonly writable: WritableStream | null;
     /**
-     * The **`SerialPort.close()`** method of the SerialPort interface returns a Promise that resolves when the port closes.
+     * The **`close()`** method of the SerialPort interface returns a Promise that resolves when the port closes.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SerialPort/close)
      */
     close(): Promise<void>;
     /**
-     * The **`SerialPort.forget()`** method of the SerialPort interface returns a Promise that resolves when access to the serial port is revoked.
+     * The **`forget()`** method of the SerialPort interface returns a Promise that resolves when access to the serial port is revoked.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SerialPort/forget)
      */
@@ -9844,7 +9845,7 @@ interface SerialPort extends EventTarget {
      */
     getInfo(): SerialPortInfo;
     /**
-     * The **`SerialPort.getSignals()`** method of the SerialPort interface returns a Promise that resolves with an object containing the current state of the port's control signals.
+     * The **`getSignals()`** method of the SerialPort interface returns a Promise that resolves with an object containing the current state of the port's control signals.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SerialPort/getSignals)
      */
@@ -14319,7 +14320,7 @@ interface WorkerNavigator extends NavigatorBadge, NavigatorConcurrentHardware, N
      */
     readonly permissions: Permissions;
     /**
-     * The **`serial`** read-only property of the WorkerNavigator interface returns a Serial object which represents the entry point into the Web Serial API.
+     * The **`serial`** read-only property of the WorkerNavigator interface returns a Serial object which represents the worker entry point into the Web Serial API.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerNavigator/serial)
      */
@@ -14695,25 +14696,25 @@ declare namespace WebAssembly {
     };
 
     /**
-     * The **`WebAssembly.Exception`** object represents a runtime exception thrown from WebAssembly to JavaScript, or thrown from JavaScript to a WebAssembly exception handler.
+     * The **`WebAssembly.Exception`** object represents a runtime exception thrown in a Wasm module.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception)
      */
     interface Exception {
         /**
-         * The read-only **`stack`** property of an object instance of type WebAssembly.Exception may contain a stack trace.
+         * The **`stack`** read-only property of the WebAssembly.Exception object may contain a stack trace.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception/stack)
          */
         readonly stack: string | undefined;
         /**
-         * The **`getArg()`** prototype method of the Exception object can be used to get the value of a specified item in the exception's data arguments.
+         * The **`getArg()`** method of the Exception object can be used to get the value of a specified item in the exception's data arguments.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception/getArg)
          */
         getArg(exceptionTag: Tag, index: number): any;
         /**
-         * The **`is()`** prototype method of the Exception object can be used to test if the Exception matches a given tag.
+         * The **`is()`** method of the Exception object can be used to test if the Exception matches a given tag.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception/is)
          */
@@ -14881,7 +14882,7 @@ declare namespace WebAssembly {
     };
 
     /**
-     * The **`WebAssembly.Tag`** object defines a type of a WebAssembly exception that can be thrown to/from WebAssembly code.
+     * The **`WebAssembly.Tag`** object represents a WebAssembly exception type that can be thrown in a Wasm module.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Tag)
      */
@@ -15447,7 +15448,7 @@ type GPUCompilationMessageType = "error" | "info" | "warning";
 type GPUCullMode = "back" | "front" | "none";
 type GPUDeviceLostReason = "destroyed" | "unknown";
 type GPUErrorFilter = "internal" | "out-of-memory" | "validation";
-type GPUFeatureName = "bgra8unorm-storage" | "clip-distances" | "core-features-and-limits" | "depth-clip-control" | "depth32float-stencil8" | "dual-source-blending" | "float32-blendable" | "float32-filterable" | "indirect-first-instance" | "primitive-index" | "rg11b10ufloat-renderable" | "shader-f16" | "subgroups" | "texture-compression-astc" | "texture-compression-astc-sliced-3d" | "texture-compression-bc" | "texture-compression-bc-sliced-3d" | "texture-compression-etc2" | "texture-formats-tier1" | "timestamp-query";
+type GPUFeatureName = "bgra8unorm-storage" | "clip-distances" | "core-features-and-limits" | "depth-clip-control" | "depth32float-stencil8" | "dual-source-blending" | "float32-blendable" | "float32-filterable" | "indirect-first-instance" | "primitive-index" | "rg11b10ufloat-renderable" | "shader-f16" | "subgroup-size-control" | "subgroups" | "texture-compression-astc" | "texture-compression-astc-sliced-3d" | "texture-compression-bc" | "texture-compression-bc-sliced-3d" | "texture-compression-etc2" | "texture-formats-tier1" | "timestamp-query";
 type GPUFilterMode = "linear" | "nearest";
 type GPUFrontFace = "ccw" | "cw";
 type GPUIndexFormat = "uint16" | "uint32";

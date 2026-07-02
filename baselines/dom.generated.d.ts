@@ -203,6 +203,7 @@ interface AuthenticationExtensionsClientInputs {
     hmacCreateSecret?: boolean;
     largeBlob?: AuthenticationExtensionsLargeBlobInputs;
     minPinLength?: boolean;
+    pinComplexityPolicy?: boolean;
     prf?: AuthenticationExtensionsPRFInputs;
 }
 
@@ -215,10 +216,13 @@ interface AuthenticationExtensionsClientInputsJSON {
 
 interface AuthenticationExtensionsClientOutputs {
     appid?: boolean;
+    credBlob?: boolean;
     credProps?: CredentialPropertiesOutput;
+    getCredBlob?: ArrayBuffer;
     hmacCreateSecret?: boolean;
     largeBlob?: AuthenticationExtensionsLargeBlobOutputs;
     prf?: AuthenticationExtensionsPRFOutputs;
+    remoteClientDataJSON?: boolean;
 }
 
 interface AuthenticationExtensionsClientOutputsJSON {
@@ -226,6 +230,7 @@ interface AuthenticationExtensionsClientOutputsJSON {
     credProps?: CredentialPropertiesOutput;
     largeBlob?: AuthenticationExtensionsLargeBlobOutputsJSON;
     prf?: AuthenticationExtensionsPRFOutputsJSON;
+    remoteClientDataJSON?: boolean;
 }
 
 interface AuthenticationExtensionsLargeBlobInputs {
@@ -818,6 +823,7 @@ interface FormDataEventInit extends EventInit {
 }
 
 interface FullscreenOptions {
+    keyboardLock?: FullscreenKeyboardLock;
     navigationUI?: FullscreenNavigationUI;
 }
 
@@ -1000,6 +1006,7 @@ interface GPUPipelineErrorInit {
 
 interface GPUPipelineLayoutDescriptor extends GPUObjectDescriptorBase {
     bindGroupLayouts: (GPUBindGroupLayout | null)[];
+    immediateSize?: GPUSize32;
 }
 
 interface GPUPrimitiveState {
@@ -1831,6 +1838,10 @@ interface PannerOptions extends AudioNodeOptions {
     positionZ?: number;
     refDistance?: number;
     rolloffFactor?: number;
+}
+
+interface ParseHTMLUnsafeOptions {
+    sanitizer?: Sanitizer | SanitizerConfig | SanitizerPresets;
 }
 
 interface PayerErrors {
@@ -2760,6 +2771,11 @@ interface SetHTMLOptions {
     sanitizer?: Sanitizer | SanitizerConfig | SanitizerPresets;
 }
 
+interface SetHTMLUnsafeOptions {
+    runScripts?: boolean;
+    sanitizer?: Sanitizer | SanitizerConfig | SanitizerPresets;
+}
+
 interface ShadowRootInit {
     clonable?: boolean;
     customElementRegistry?: CustomElementRegistry | null;
@@ -3256,6 +3272,7 @@ interface WheelEventInit extends MouseEventInit {
     deltaX?: number;
     deltaY?: number;
     deltaZ?: number;
+    momentum?: boolean;
 }
 
 interface WindowPostMessageOptions extends StructuredSerializeOptions {
@@ -5348,13 +5365,13 @@ declare var CSSConditionRule: {
  */
 interface CSSContainerRule extends CSSConditionRule {
     /**
-     * The read-only **`containerName`** property of the CSSContainerRule interface represents the container name of the associated CSS @container at-rule.
+     * The read-only **`containerName`** property of the CSSContainerRule interface represents the name of the container condition for a container rule that only defines one container condition. If there are multiple container conditions, the value is set to the empty string.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSContainerRule/containerName)
      */
     readonly containerName: string;
     /**
-     * The read-only **`containerQuery`** property of the CSSContainerRule interface returns a string representing the container conditions that are evaluated when the container changes size in order to determine if the styles in the associated @container are applied.
+     * The read-only **`containerQuery`** property of the CSSContainerRule interface represents the query part of the container condition for a container rule that only defines one container condition. If there are multiple container conditions, the value is set to the empty string.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSContainerRule/containerQuery)
      */
@@ -7473,7 +7490,7 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     columnFill: string;
     /**
-     * The column-gap CSS property sets the size of the gap (gutter) between an element's columns.
+     * The column-gap CSS property sets the size of the gap (gutter) between an element's columns in multi-column, flexible box, and grid layouts.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/column-gap)
      */
@@ -7563,13 +7580,13 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     container: string;
     /**
-     * The container-name CSS property specifies a list of query container names used by the @container at-rule in a container query. A container query will apply styles to elements based on the size or scroll-state of the nearest ancestor with a containment context. When a containment context is given a name, it can be specifically targeted using the @container at-rule instead of the nearest ancestor with containment.
+     * The container-name CSS property specifies a list of query container names used by the @container at-rule in a container query.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/container-name)
      */
     containerName: string;
     /**
-     * An element can be established as a query container using the container-type CSS property. container-type is used to define the type of container context used in a container query. The available container contexts are:
+     * The container-type CSS property specifies the type of container context used in a container query.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/container-type)
      */
@@ -7907,7 +7924,7 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     forcedColorAdjust: string;
     /**
-     * The **`gap`** CSS shorthand property sets the gaps (also called gutters) between rows and columns. This property applies to multi-column, flex, and grid containers.
+     * The **`gap`** CSS shorthand property sets the gaps (also called gutters) between rows and columns on multi-column, flex, and grid containers.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/gap)
      */
@@ -8027,7 +8044,7 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     hyphenateLimitChars: string;
     /**
-     * The **`hyphens`** CSS property specifies how words should be hyphenated when text wraps across multiple lines. It can prevent hyphenation entirely, hyphenate at manually-specified points within the text, or let the browser automatically insert hyphens where appropriate.
+     * The **`hyphens`** CSS property specifies how words should be hyphenated when text wraps across multiple lines.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/hyphens)
      */
@@ -8387,7 +8404,7 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     minWidth: string;
     /**
-     * The mix-blend-mode CSS property sets how an element's content should blend with the content of the element's parent and the element's background.
+     * The mix-blend-mode CSS property sets how an element's content should blend with its backdrop — the content rendered behind the element within the same stacking context.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/mix-blend-mode)
      */
@@ -8708,7 +8725,7 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     position: string;
     /**
-     * The position-anchor CSS property specifies the anchor name of the anchor element (i.e., an element that has an anchor name set on it via the anchor-name property) a positioned element is associated with.
+     * The position-anchor CSS property specifies the default anchor element for a positioned element. This default is used by position-area and position-try, and by anchor functions (anchor() and anchor-size()) when no <anchor-name> argument is provided to those functions.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/position-anchor)
      */
@@ -9272,13 +9289,13 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     textWrap: string;
     /**
-     * The text-wrap-mode CSS property controls whether the text inside an element is wrapped. The different values provide alternate ways of wrapping the content of a block element. It can also be set, and reset, using the text-wrap shorthand or the white-space shorthand.
+     * The text-wrap-mode CSS property controls whether the text inside an element is wrapped.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-wrap-mode)
      */
     textWrapMode: string;
     /**
-     * The text-wrap-style CSS property controls how text inside an element is wrapped. The different values provide alternate ways of wrapping the content of a block element. It can also be set, and reset, using the text-wrap shorthand.
+     * The text-wrap-style CSS property controls how text inside an element is wrapped, providing alternate ways of determining where to create line breaks in order to fit the content within a block element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-wrap-style)
      */
@@ -9416,7 +9433,7 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     viewTimelineName: string;
     /**
-     * The view-transition-class CSS property provides the selected elements with an identifying class (a <custom-ident>), providing an additional method of styling the view transitions for those elements.
+     * The view-transition-class CSS property provides the selected elements with one or more identifying classes (<custom-ident>s), providing an additional method of styling the view transitions for those elements.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/view-transition-class)
      */
@@ -12729,7 +12746,7 @@ declare var DeviceOrientationEvent: {
 /** Available only in secure contexts. */
 interface DigitalCredential extends Credential {
     readonly data: any;
-    readonly protocol: string;
+    readonly protocol: DigitalCredentialProtocol;
     toJSON(): any;
 }
 
@@ -13379,7 +13396,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      */
     requestStorageAccess(): Promise<void>;
     /**
-     * The **`startViewTransition()`** method of the Document interface starts a new same-document (SPA) view transition and returns a ViewTransition object to represent it.
+     * The **`startViewTransition()`** method of the Document interface starts a new same-document (SPA), document-scoped view transition and returns a ViewTransition object to represent it.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/startViewTransition)
      */
@@ -13414,7 +13431,7 @@ declare var Document: {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/parseHTMLUnsafe_static)
      */
-    parseHTMLUnsafe(html: string): Document;
+    parseHTMLUnsafe(html: string, options?: ParseHTMLUnsafeOptions): Document;
 };
 
 /**
@@ -13592,7 +13609,7 @@ declare var DragEvent: {
 };
 
 /**
- * The **`DynamicsCompressorNode`** interface provides a compression effect, which lowers the volume of the loudest parts of the signal in order to help prevent clipping and distortion that can occur when multiple sounds are played and multiplexed together at once. This is often used in musical production and game audio. DynamicsCompressorNode is an AudioNode that has exactly one input and one output.
+ * The **`DynamicsCompressorNode`** interface provides a compression effect, which lowers the volume of the loudest parts of a signal. Compression can help prevent clipping and distortion when multiple sounds are combined, and it is also used in music production and game audio for dynamic control, tone shaping, and creative effects. DynamicsCompressorNode is an AudioNode that has exactly one input and one output.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DynamicsCompressorNode)
  */
@@ -13913,13 +13930,13 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      */
     readonly tagName: string;
     /**
-     * The **`Element.attachShadow()`** method attaches a shadow DOM tree to the specified element and returns a reference to its ShadowRoot.
+     * The **`attachShadow()`** method of the Element interface attaches a shadow DOM tree to the specified element and returns a reference to its ShadowRoot.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/attachShadow)
      */
     attachShadow(init: ShadowRootInit): ShadowRoot;
     /**
-     * The **`checkVisibility()`** method of the Element interface checks whether the element is visible.
+     * The **`checkVisibility()`** method of the Element interface checks whether the element is potentially visible.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/checkVisibility)
      */
@@ -14089,7 +14106,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      */
     removeAttributeNode(attr: Attr): Attr;
     /**
-     * The **`Element.requestFullscreen()`** method issues an asynchronous request to make the element be displayed in fullscreen mode.
+     * The **`requestFullscreen()`** method of the Element interface issues an asynchronous request to display the element in fullscreen mode.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/requestFullscreen)
      */
@@ -14101,7 +14118,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      */
     requestPointerLock(options?: PointerLockOptions): Promise<void>;
     /**
-     * The **`scroll()`** method of the Element interface scrolls the element to a particular set of coordinates inside a given element.
+     * The **`scroll()`** method of the Element interface scrolls to a particular set of coordinates inside a given element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scroll)
      */
@@ -14115,7 +14132,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
     scrollBy(options?: ScrollToOptions): void;
     scrollBy(x: number, y: number): void;
     /**
-     * The Element interface's **`scrollIntoView()`** method scrolls the element's ancestor containers such that the element on which scrollIntoView() is called is visible to the user.
+     * The **`scrollIntoView()`** method of the Element interface scrolls the element's ancestor containers such that the element on which scrollIntoView() is called is visible to the user.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scrollIntoView)
      */
@@ -14162,7 +14179,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/setHTMLUnsafe)
      */
-    setHTMLUnsafe(html: string): void;
+    setHTMLUnsafe(html: string, options?: SetHTMLUnsafeOptions): void;
     /**
      * The **`setPointerCapture()`** method of the Element interface is used to designate a specific element as the capture target of future pointer events. Subsequent events for the pointer will be targeted at the capture element until capture is released (via Element.releasePointerCapture() or the pointerup event is fired).
      *
@@ -17316,12 +17333,6 @@ interface HTMLAnchorElement extends HTMLElement, HTMLHyperlinkElementUtils, Hype
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/download)
      */
     download: string;
-    /**
-     * The **`hreflang`** property of the HTMLAnchorElement interface is a string that is the language of the linked resource.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/hreflang)
-     */
-    hreflang: string;
     /** @deprecated */
     name: string;
     /**
@@ -17354,23 +17365,11 @@ interface HTMLAnchorElement extends HTMLElement, HTMLHyperlinkElementUtils, Hype
     /** @deprecated */
     shape: string;
     /**
-     * The **`target`** property of the HTMLAnchorElement interface is a string that indicates where to display the linked resource.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/target)
-     */
-    target: string;
-    /**
      * The **`text`** property of the HTMLAnchorElement represents the text inside the element. This property represents the same information as Node.textContent.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/text)
      */
     text: string;
-    /**
-     * The **`type`** property of the HTMLAnchorElement interface is a string that indicates the MIME type of the linked resource.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/type)
-     */
-    type: string;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLAnchorElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLAnchorElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -17439,12 +17438,6 @@ interface HTMLAreaElement extends HTMLElement, HTMLHyperlinkElementUtils, Hyperl
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement/shape)
      */
     shape: string;
-    /**
-     * The **`target`** property of the HTMLAreaElement interface is a string that indicates where to display the linked resource.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement/target)
-     */
-    target: string;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLAreaElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLAreaElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -18648,6 +18641,8 @@ interface HTMLHyperlinkElementUtils {
      */
     href: string;
     toString(): string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/target) */
+    target: string;
 }
 
 /**
@@ -19146,7 +19141,7 @@ interface HTMLInputElement extends HTMLElement, PopoverTargetAttributes {
      */
     selectionEnd: number | null;
     /**
-     * The **`selectionStart`** property of the HTMLInputElement interface is a number that represents the beginning index of the selected text. When nothing is selected, then returns the position of the text input cursor (caret) inside of the <input> element.
+     * The **`selectionStart`** property of the HTMLInputElement interface is a number that represents the beginning index of the selected text. When nothing is selected, it returns the position of the text input cursor (caret) inside of the <input> element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/selectionStart)
      */
@@ -22216,6 +22211,8 @@ interface HyperlinkElementUtils {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/hostname)
      */
     hostname: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/hreflang) */
+    hreflang: string;
     /**
      * Returns the hyperlink's URL's origin.
      *
@@ -22262,6 +22259,8 @@ interface HyperlinkElementUtils {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/search)
      */
     search: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/type) */
+    type: string;
     /**
      * Returns the hyperlink's URL's username.
      *
@@ -22969,7 +22968,7 @@ interface IdleDeadline {
      */
     readonly didTimeout: boolean;
     /**
-     * The **`timeRemaining()`** method on the IdleDeadline interface returns the estimated number of milliseconds remaining in the current idle period. The callback can call this method at any time to determine how much time it can continue to work before it must return. For example, if the callback finishes a task and has another one to begin, it can call timeRemaining() to see if there's enough time to complete the next task. If there isn't, the callback can just return immediately, or look for other work to do with the remaining time.
+     * The **`timeRemaining()`** method of the IdleDeadline interface returns the estimated number of milliseconds the user agent will remain idle for. The callback can call this method at any time to determine how much time it can continue to work before it must return. For example, if the callback finishes a task and has another one to begin, it can call timeRemaining() to see if there's enough time to complete the next task. If there isn't, the callback can just return immediately, or look for other work to do with the remaining time.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IdleDeadline/timeRemaining)
      */
@@ -26051,7 +26050,11 @@ declare var NavigationPreloadManager: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationTransition)
  */
 interface NavigationTransition {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationTransition/committed) */
+    /**
+     * The **`committed`** read-only property of the NavigationTransition interface returns a Promise that fulfills when Navigation.currentEntry is updated and the new URL is displayed in the browser, marking the navigation as committed. This happens after all precommit handlers for the navigation are fulfilled.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationTransition/committed)
+     */
     readonly committed: Promise<void>;
     /**
      * The **`finished`** read-only property of the NavigationTransition interface returns a Promise that fulfills at the same time the navigatesuccess event fires, or rejects at the same time the navigateerror event fires.
@@ -26145,7 +26148,7 @@ interface Navigator extends NavigatorAutomationInformation, NavigatorBadge, Navi
      */
     readonly permissions: Permissions;
     /**
-     * The **`serial`** read-only property of the Navigator interface returns a Serial object which represents the entry point into the Web Serial API.
+     * The **`serial`** read-only property of the Navigator interface returns a Serial object, which represents the entry point into the Web Serial API.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/serial)
      */
@@ -26721,7 +26724,7 @@ interface NotificationEventMap {
  */
 interface Notification extends EventTarget {
     /**
-     * The **`actions`** read-only property of the Notification interface provides the actions available for users to choose from for interacting with the notification.
+     * The **`actions`** read-only property of the Notification interface provides the actions available for users to select when interacting with the notification.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/actions)
      */
@@ -26804,7 +26807,7 @@ declare var Notification: {
     prototype: Notification;
     new(title: string, options?: NotificationOptions): Notification;
     /**
-     * The **`maxActions`** read-only static property of the Notification interface returns the maximum number of actions supported by the device and the User Agent. Effectively, this is the maximum number of elements in Notification.actions array which will be respected by the User Agent.
+     * The **`maxActions`** read-only static property of the Notification interface returns the maximum number of actions that can be displayed in a notification.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/maxActions_static)
      */
@@ -28929,7 +28932,7 @@ interface ProcessingInstruction extends CharacterData, LinkStyle {
 
 declare var ProcessingInstruction: {
     prototype: ProcessingInstruction;
-    new(): ProcessingInstruction;
+    new(target: string, data?: string): ProcessingInstruction;
 };
 
 /**
@@ -29532,37 +29535,37 @@ declare var RTCEncodedVideoFrame: {
 };
 
 /**
- * The **`RTCError`** interface describes an error which has occurred while handling WebRTC operations. It's based upon the standard DOMException interface that describes general DOM errors.
+ * The **`RTCError`** interface of the WebRTC API describes an error which has occurred while handling RTC operations. It's based upon the standard DOMException interface that describes general DOM errors.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCError)
  */
 interface RTCError extends DOMException {
     /**
-     * The RTCError interface's read-only **`errorDetail`** property is a string indicating the WebRTC-specific error code that occurred.
+     * The **`errorDetail`** read-only property of the RTCError interface is a string indicating the WebRTC-specific error code that occurred.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCError/errorDetail)
      */
     readonly errorDetail: RTCErrorDetailType;
     /**
-     * The RTCError read-only property **`receivedAlert`** specifies the fatal DTLS error which resulted in an alert being received from the remote peer.
+     * The **`receivedAlert`** read-only property of the RTCError interface specifies the fatal DTLS error which resulted in an alert being received from the remote peer.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCError/receivedAlert)
      */
     readonly receivedAlert: number | null;
     /**
-     * The read-only **`sctpCauseCode`** property in an RTCError object provides the SCTP cause code explaining why the SCTP negotiation failed, if the RTCError represents an SCTP error.
+     * The **`sctpCauseCode`** read-only property of the RTCError interface provides the SCTP cause code explaining why the SCTP negotiation failed, if the RTCError represents an SCTP error.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCError/sctpCauseCode)
      */
     readonly sctpCauseCode: number | null;
     /**
-     * The RTCError interface's read-only property **`sdpLineNumber`** specifies the line number within the SDP at which a syntax error occurred while parsing it.
+     * The **`sdpLineNumber`** read-only property of the RTCError interface specifies the SDP message line number where a syntax error occurred.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCError/sdpLineNumber)
      */
     readonly sdpLineNumber: number | null;
     /**
-     * The read-only **`sentAlert`** property in an RTCError object specifies the DTLS alert number occurred while sending data to the remote peer, if the error represents an outbound DTLS error.
+     * The **`sentAlert`** read-only property of the RTCError interface specifies the DTLS alert number sent to the remote peer, if the error represents an outbound DTLS error.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCError/sentAlert)
      */
@@ -29575,13 +29578,13 @@ declare var RTCError: {
 };
 
 /**
- * The WebRTC API's **`RTCErrorEvent`** interface represents an error sent to a WebRTC object. It's based on the standard Event interface, but adds RTC-specific information describing the error, as shown below.
+ * The **`RTCErrorEvent`** interface of the WebRTC API represents an error event sent to a WebRTC object. It inherits from the standard Event interface, adding RTC-specific information describing the error.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCErrorEvent)
  */
 interface RTCErrorEvent extends Event {
     /**
-     * The read-only RTCErrorEvent property **`error`** contains an RTCError object describing the details of the error which the event is announcing.
+     * The **`error`** read-only property of the RTCErrorEvent interface contains an RTCError object that describes the WebRTC-specific details of the error.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCErrorEvent/error)
      */
@@ -29995,24 +29998,40 @@ declare var RTCPeerConnection: {
 };
 
 /**
- * The **`RTCPeerConnectionIceErrorEvent`** interface—based upon the Event interface—provides details pertaining to an ICE error announced by sending an icecandidateerror event to the RTCPeerConnection object.
+ * The **`RTCPeerConnectionIceErrorEvent`** interface of the WebRTC API describes an error that occurred while handling ICE negotiation through a STUN or TURN server.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnectionIceErrorEvent)
  */
 interface RTCPeerConnectionIceErrorEvent extends Event {
     /**
-     * The RTCPeerConnectionIceErrorEvent property **`address`** is a string which indicates the local IP address being used to communicate with the STUN or TURN server during negotiations. The error which occurred involved this address.
+     * The **`address`** property of the RTCPeerConnectionIceErrorEvent interface is a string that indicates the local IP address used to communicate with the STUN or TURN server when the error occurred.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnectionIceErrorEvent/address)
      */
     readonly address: string | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnectionIceErrorEvent/errorCode) */
+    /**
+     * The **`errorCode`** property of the RTCPeerConnectionIceErrorEvent interface represents the STUN error code returned by the STUN or TURN server if there was an error during ICE negotiation.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnectionIceErrorEvent/errorCode)
+     */
     readonly errorCode: number;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnectionIceErrorEvent/errorText) */
+    /**
+     * The **`errorText`** property of the RTCPeerConnectionIceErrorEvent interface represents the STUN error reason text returned by the STUN or TURN server if there was an error during ICE negotiation.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnectionIceErrorEvent/errorText)
+     */
     readonly errorText: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnectionIceErrorEvent/port) */
+    /**
+     * The **`port`** property of the RTCPeerConnectionIceErrorEvent interface represents the port number over which communication with the STUN or TURN server is taking place.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnectionIceErrorEvent/port)
+     */
     readonly port: number | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnectionIceErrorEvent/url) */
+    /**
+     * The **`url`** property of the RTCPeerConnectionIceErrorEvent interface is a string indicating the URL of the STUN or TURN server with which the error occurred.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnectionIceErrorEvent/url)
+     */
     readonly url: string;
 }
 
@@ -31089,7 +31108,7 @@ interface Response extends Body {
      */
     readonly redirected: boolean;
     /**
-     * The **`status`** read-only property of the Response interface contains the HTTP status codes of the response.
+     * The **`status`** read-only property of the Response interface contains the HTTP status code of the response.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/status)
      */
@@ -31371,13 +31390,13 @@ declare var SVGAnimatedBoolean: {
  */
 interface SVGAnimatedEnumeration {
     /**
-     * The **`animVal`** property of the SVGAnimatedEnumeration interface contains the current value of an SVG enumeration. If there is no animation, it is the same value as the baseVal.
+     * The **`animVal`** read-only property of the SVGAnimatedEnumeration interface interface represents the value of an SVG enumeration.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedEnumeration/animVal)
      */
     readonly animVal: number;
     /**
-     * The **`baseVal`** property of the SVGAnimatedEnumeration interface contains the initial value of an SVG enumeration.
+     * The **`baseVal`** property of the SVGAnimatedEnumeration interface represents the value of an SVG enumeration.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedEnumeration/baseVal)
      */
@@ -31557,13 +31576,13 @@ interface SVGAnimatedRect {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedRect/animVal)
      */
-    readonly animVal: DOMRectReadOnly;
+    readonly animVal: SVGRect;
     /**
      * The **`baseVal`** read-only property of the SVGAnimatedRect interface represents the current non-animated value of the viewBox attribute of an SVG element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedRect/baseVal)
      */
-    readonly baseVal: DOMRect;
+    readonly baseVal: SVGRect;
 }
 
 declare var SVGAnimatedRect: {
@@ -33083,7 +33102,7 @@ interface SVGGeometryElement extends SVGGraphicsElement {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGGeometryElement/getPointAtLength)
      */
-    getPointAtLength(distance: number): DOMPoint;
+    getPointAtLength(distance: number): SVGPoint;
     /**
      * The **`SVGGeometryElement.getTotalLength()`** method returns the user agent's computed value for the total length of the path in user units.
      *
@@ -33173,19 +33192,19 @@ interface SVGGraphicsElement extends SVGElement, SVGTests {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGGraphicsElement/getBBox)
      */
-    getBBox(options?: SVGBoundingBoxOptions): DOMRect;
+    getBBox(options?: SVGBoundingBoxOptions): SVGRect;
     /**
      * The **`getCTM()`** method of the SVGGraphicsElement interface represents the matrix that transforms the current element's coordinate system to its SVG viewport's coordinate system.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGGraphicsElement/getCTM)
      */
-    getCTM(): DOMMatrix | null;
+    getCTM(): SVGMatrix | null;
     /**
      * The **`getScreenCTM()`** method of the SVGGraphicsElement interface represents the matrix that transforms the current element's coordinate system to the coordinate system of the SVG viewport for the SVG document fragment.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGGraphicsElement/getScreenCTM)
      */
-    getScreenCTM(): DOMMatrix | null;
+    getScreenCTM(): SVGMatrix | null;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGGraphicsElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGGraphicsElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -33847,7 +33866,7 @@ interface SVGPointList {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPointList/appendItem)
      */
-    appendItem(newItem: DOMPoint): DOMPoint;
+    appendItem(newItem: SVGPoint): SVGPoint;
     /**
      * The **`clear()`** method of the SVGPointList interface removes all items from the list.
      *
@@ -33859,32 +33878,32 @@ interface SVGPointList {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPointList/getItem)
      */
-    getItem(index: number): DOMPoint;
+    getItem(index: number): SVGPoint;
     /**
      * The **`initialize()`** method of the SVGPointList interface clears the list then adds a single new DOMPoint object to the list.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPointList/initialize)
      */
-    initialize(newItem: DOMPoint): DOMPoint;
+    initialize(newItem: SVGPoint): SVGPoint;
     /**
      * The **`insertItemBefore()`** method of the SVGPointList interface inserts a DOMPoint before another item in the list.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPointList/insertItemBefore)
      */
-    insertItemBefore(newItem: DOMPoint, index: number): DOMPoint;
+    insertItemBefore(newItem: SVGPoint, index: number): SVGPoint;
     /**
      * The **`removeItem()`** method of the SVGPointList interface removes a DOMPoint from the list.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPointList/removeItem)
      */
-    removeItem(index: number): DOMPoint;
+    removeItem(index: number): SVGPoint;
     /**
      * The **`replaceItem()`** method of the SVGPointList interface replaces a DOMPoint in the list.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPointList/replaceItem)
      */
-    replaceItem(newItem: DOMPoint, index: number): DOMPoint;
-    [index: number]: DOMPoint;
+    replaceItem(newItem: SVGPoint, index: number): SVGPoint;
+    [index: number]: SVGPoint;
 }
 
 declare var SVGPointList: {
@@ -34105,7 +34124,7 @@ interface SVGSVGElement extends SVGGraphicsElement, SVGFitToViewBox, WindowEvent
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSVGElement/currentTranslate)
      */
-    readonly currentTranslate: DOMPointReadOnly;
+    readonly currentTranslate: SVGPoint;
     /**
      * The **`height`** read-only property of the SVGSVGElement interface describes the vertical size of element as an SVGAnimatedLength. It reflects the <svg> element's height attribute, which may not be the SVG's rendered height.
      *
@@ -34141,13 +34160,13 @@ interface SVGSVGElement extends SVGGraphicsElement, SVGFitToViewBox, WindowEvent
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSVGElement/checkEnclosure)
      */
-    checkEnclosure(element: SVGElement, rect: DOMRectReadOnly): boolean;
+    checkEnclosure(element: SVGElement, rect: SVGRect): boolean;
     /**
      * The **`checkIntersection()`** method of the SVGSVGElement interface checks if the rendered content of the given element intersects the supplied rectangle.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSVGElement/checkIntersection)
      */
-    checkIntersection(element: SVGElement, rect: DOMRectReadOnly): boolean;
+    checkIntersection(element: SVGElement, rect: SVGRect): boolean;
     /**
      * The **`createSVGAngle()`** method of the SVGSVGElement interface creates an SVGAngle object outside of any document trees.
      *
@@ -34165,7 +34184,7 @@ interface SVGSVGElement extends SVGGraphicsElement, SVGFitToViewBox, WindowEvent
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSVGElement/createSVGMatrix)
      */
-    createSVGMatrix(): DOMMatrix;
+    createSVGMatrix(): SVGMatrix;
     /**
      * The **`createSVGNumber()`** method of the SVGSVGElement interface creates an SVGNumber object outside of any document trees.
      *
@@ -34177,13 +34196,13 @@ interface SVGSVGElement extends SVGGraphicsElement, SVGFitToViewBox, WindowEvent
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSVGElement/createSVGPoint)
      */
-    createSVGPoint(): DOMPoint;
+    createSVGPoint(): SVGPoint;
     /**
      * The **`createSVGRect()`** method of the SVGSVGElement interface creates a DOMRect object outside of any document trees.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSVGElement/createSVGRect)
      */
-    createSVGRect(): DOMRect;
+    createSVGRect(): SVGRect;
     /**
      * The **`createSVGTransform()`** method of the SVGSVGElement interface creates an SVGTransform object outside of any document trees.
      *
@@ -34216,8 +34235,8 @@ interface SVGSVGElement extends SVGGraphicsElement, SVGFitToViewBox, WindowEvent
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSVGElement/getElementById)
      */
     getElementById(elementId: string): Element | null;
-    getEnclosureList(rect: DOMRectReadOnly, referenceElement: SVGElement | null): NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>;
-    getIntersectionList(rect: DOMRectReadOnly, referenceElement: SVGElement | null): NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>;
+    getEnclosureList(rect: SVGRect, referenceElement: SVGElement | null): NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>;
+    getIntersectionList(rect: SVGRect, referenceElement: SVGElement | null): NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>;
     /**
      * The **`pauseAnimations()`** method of the SVGSVGElement interface suspends (i.e., pauses) all currently running animations that are defined within the SVG document fragment corresponding to this <svg> element, causing the animation clock corresponding to this document fragment to stand still until it is unpaused.
      *
@@ -34519,13 +34538,13 @@ interface SVGTextContentElement extends SVGGraphicsElement {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextContentElement/getEndPositionOfChar)
      */
-    getEndPositionOfChar(charnum: number): DOMPoint;
+    getEndPositionOfChar(charnum: number): SVGPoint;
     /**
      * The **`getExtentOfChar()`** method of the SVGTextContentElement interface the represents computed tight bounding box of the glyph cell that corresponds to a given typographic character.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextContentElement/getExtentOfChar)
      */
-    getExtentOfChar(charnum: number): DOMRect;
+    getExtentOfChar(charnum: number): SVGRect;
     /**
      * The **`getNumberOfChars()`** method of the SVGTextContentElement interface represents the total number of addressable characters available for rendering within the current element, regardless of whether they will be rendered.
      *
@@ -34543,7 +34562,7 @@ interface SVGTextContentElement extends SVGGraphicsElement {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextContentElement/getStartPositionOfChar)
      */
-    getStartPositionOfChar(charnum: number): DOMPoint;
+    getStartPositionOfChar(charnum: number): SVGPoint;
     /**
      * The **`getSubStringLength()`** method of the SVGTextContentElement interface represents the computed length of the formatted text advance distance for a substring of text within the element.
      *
@@ -34593,13 +34612,13 @@ declare var SVGTextElement: {
  */
 interface SVGTextPathElement extends SVGTextContentElement, SVGURIReference {
     /**
-     * The **`method`** read-only property of the SVGTextPathElement interface reflects the method attribute of the given <textPath> element. It takes one of the TEXTPATH_METHODTYPE_* constants defined on this interface.
+     * The **`method`** read-only property of the SVGTextPathElement interface represents the method by which text should be rendered along the path.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextPathElement/method)
      */
     readonly method: SVGAnimatedEnumeration;
     /**
-     * The **`spacing`** read-only property of the SVGTextPathElement interface reflects the spacing attribute of the given <textPath> element. It takes one of the TEXTPATH_SPACINGTYPE_* constants defined on this interface.
+     * The **`spacing`** read-only property of the SVGTextPathElement interface represents the spacing between typographic characters that are to be rendered along a path.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextPathElement/spacing)
      */
@@ -34714,7 +34733,7 @@ interface SVGTransform {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTransform/matrix)
      */
-    readonly matrix: DOMMatrix;
+    readonly matrix: SVGMatrix;
     /**
      * The **`type`** read-only property of the SVGTransform interface represents the type of transformation applied, specified by one of the SVG_TRANSFORM_* constants defined on this interface.
      *
@@ -35446,13 +35465,13 @@ declare var Selection: {
  */
 interface Serial extends EventTarget {
     /**
-     * The **`getPorts()`** method of the Serial interface returns a Promise that resolves with an array of SerialPort objects representing serial ports connected to the host which the origin has permission to access.
+     * The **`getPorts()`** method of the Serial interface returns a Promise that resolves with an array of SerialPort objects representing serial ports connected to the host that the origin has permission to access.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Serial/getPorts)
      */
     getPorts(): Promise<SerialPort[]>;
     /**
-     * The **`Serial.requestPort()`** method of the Serial interface presents the user with a dialog asking them to select a serial device to connect to. It returns a Promise that resolves with an instance of SerialPort representing the device chosen by the user.
+     * The **`requestPort()`** method of the Serial interface presents the user with a dialog asking them to select a serial device to connect to. It returns a Promise that resolves with an instance of SerialPort representing the device chosen by the user.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Serial/requestPort)
      */
@@ -35499,13 +35518,13 @@ interface SerialPort extends EventTarget {
      */
     readonly writable: WritableStream | null;
     /**
-     * The **`SerialPort.close()`** method of the SerialPort interface returns a Promise that resolves when the port closes.
+     * The **`close()`** method of the SerialPort interface returns a Promise that resolves when the port closes.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SerialPort/close)
      */
     close(): Promise<void>;
     /**
-     * The **`SerialPort.forget()`** method of the SerialPort interface returns a Promise that resolves when access to the serial port is revoked.
+     * The **`forget()`** method of the SerialPort interface returns a Promise that resolves when access to the serial port is revoked.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SerialPort/forget)
      */
@@ -35517,7 +35536,7 @@ interface SerialPort extends EventTarget {
      */
     getInfo(): SerialPortInfo;
     /**
-     * The **`SerialPort.getSignals()`** method of the SerialPort interface returns a Promise that resolves with an object containing the current state of the port's control signals.
+     * The **`getSignals()`** method of the SerialPort interface returns a Promise that resolves with an object containing the current state of the port's control signals.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SerialPort/getSignals)
      */
@@ -35792,7 +35811,7 @@ interface ShadowRoot extends DocumentFragment, DocumentOrShadowRoot {
      */
     readonly serializable: boolean;
     /**
-     * The read-only **`slotAssignment`** property of the ShadowRoot interface returns the slot assignment mode for the shadow DOM tree. Nodes are either automatically assigned (named) or manually assigned (manual). The value of this property defined using the slotAssignment option when calling Element.attachShadow().
+     * The read-only **`slotAssignment`** property of the ShadowRoot interface returns the slot assignment mode for the shadow DOM tree. Nodes are either automatically assigned based on name matching (named) or manually assigned (manual).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/slotAssignment)
      */
@@ -35808,7 +35827,7 @@ interface ShadowRoot extends DocumentFragment, DocumentOrShadowRoot {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/setHTMLUnsafe)
      */
-    setHTMLUnsafe(html: string): void;
+    setHTMLUnsafe(html: string, options?: SetHTMLUnsafeOptions): void;
     addEventListener<K extends keyof ShadowRootEventMap>(type: K, listener: (this: ShadowRoot, ev: ShadowRootEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof ShadowRootEventMap>(type: K, listener: (this: ShadowRoot, ev: ShadowRootEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -38165,13 +38184,21 @@ declare var VTTCue: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VTTRegion)
  */
 interface VTTRegion {
+    /** The **`id`** property of the VTTRegion interface is a string that identifies the region. */
     id: string;
+    /** The **`lines`** property of the VTTRegion interface represents the height of the region, in number of lines. */
     lines: number;
+    /** The **`regionAnchorX`** property of the VTTRegion interface represents the x-coordinate of the region anchor, as a percentage of the region's width. */
     regionAnchorX: number;
+    /** The **`regionAnchorY`** property of the VTTRegion interface represents the y-coordinate of the region anchor, as a percentage of the region's height. */
     regionAnchorY: number;
+    /** The **`scroll`** property of the VTTRegion interface is an enumerated value indicating how existing cues in the region move when a new cue is added. */
     scroll: ScrollSetting;
+    /** The **`viewportAnchorX`** property of the VTTRegion interface represents the x-coordinate of the viewport anchor, as a percentage of the video's width. */
     viewportAnchorX: number;
+    /** The **`viewportAnchorY`** property of the VTTRegion interface represents the y-coordinate of the viewport anchor, as a percentage of the video's height. */
     viewportAnchorY: number;
+    /** The **`width`** property of the VTTRegion interface represents the width of the region, as a percentage of the video's width. */
     width: number;
 }
 
@@ -38677,7 +38704,7 @@ interface VisualViewportEventMap {
 }
 
 /**
- * The **`VisualViewport`** interface of the CSSOM view API represents the visual viewport for a given window. For a page containing iframes, each iframe, as well as the containing page, will have a unique window object. Each window on a page will have a unique VisualViewport representing the properties associated with that window.
+ * The **`VisualViewport`** interface of the CSSOM view API represents the visual viewport for a given window. For a page containing frames, each <iframe> , as well as the containing page, will have a unique window object. Each window on a page will have a unique VisualViewport representing the properties associated with that window.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VisualViewport)
  */
@@ -42144,21 +42171,21 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
      */
     resizeTo(width: number, height: number): void;
     /**
-     * The **`Window.scroll()`** method scrolls the window to a particular place in the document.
+     * The **`scroll()`** method of the Window interface scrolls the window to a particular place in the document.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scroll)
      */
     scroll(options?: ScrollToOptions): void;
     scroll(x: number, y: number): void;
     /**
-     * The **`Window.scrollBy()`** method scrolls the document in the window by the given amount.
+     * The **`scrollBy()`** method of the Window interface scrolls the document in the window by the given amount.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollBy)
      */
     scrollBy(options?: ScrollToOptions): void;
     scrollBy(x: number, y: number): void;
     /**
-     * **`Window.scrollTo()`** scrolls to a particular set of coordinates in the document.
+     * The **`scrollTo()`** method of the Window interface scrolls to a particular set of coordinates in the document.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollTo)
      */
@@ -43110,25 +43137,25 @@ declare namespace WebAssembly {
     };
 
     /**
-     * The **`WebAssembly.Exception`** object represents a runtime exception thrown from WebAssembly to JavaScript, or thrown from JavaScript to a WebAssembly exception handler.
+     * The **`WebAssembly.Exception`** object represents a runtime exception thrown in a Wasm module.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception)
      */
     interface Exception {
         /**
-         * The read-only **`stack`** property of an object instance of type WebAssembly.Exception may contain a stack trace.
+         * The **`stack`** read-only property of the WebAssembly.Exception object may contain a stack trace.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception/stack)
          */
         readonly stack: string | undefined;
         /**
-         * The **`getArg()`** prototype method of the Exception object can be used to get the value of a specified item in the exception's data arguments.
+         * The **`getArg()`** method of the Exception object can be used to get the value of a specified item in the exception's data arguments.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception/getArg)
          */
         getArg(exceptionTag: Tag, index: number): any;
         /**
-         * The **`is()`** prototype method of the Exception object can be used to test if the Exception matches a given tag.
+         * The **`is()`** method of the Exception object can be used to test if the Exception matches a given tag.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception/is)
          */
@@ -43296,7 +43323,7 @@ declare namespace WebAssembly {
     };
 
     /**
-     * The **`WebAssembly.Tag`** object defines a type of a WebAssembly exception that can be thrown to/from WebAssembly code.
+     * The **`WebAssembly.Tag`** object represents a WebAssembly exception type that can be thrown in a Wasm module.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Tag)
      */
@@ -44391,21 +44418,21 @@ declare function resizeBy(x: number, y: number): void;
  */
 declare function resizeTo(width: number, height: number): void;
 /**
- * The **`Window.scroll()`** method scrolls the window to a particular place in the document.
+ * The **`scroll()`** method of the Window interface scrolls the window to a particular place in the document.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scroll)
  */
 declare function scroll(options?: ScrollToOptions): void;
 declare function scroll(x: number, y: number): void;
 /**
- * The **`Window.scrollBy()`** method scrolls the document in the window by the given amount.
+ * The **`scrollBy()`** method of the Window interface scrolls the document in the window by the given amount.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollBy)
  */
 declare function scrollBy(options?: ScrollToOptions): void;
 declare function scrollBy(x: number, y: number): void;
 /**
- * **`Window.scrollTo()`** scrolls to a particular set of coordinates in the document.
+ * The **`scrollTo()`** method of the Window interface scrolls to a particular set of coordinates in the document.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollTo)
  */
@@ -44775,6 +44802,7 @@ type ConstrainDouble = number | ConstrainDoubleRange;
 type ConstrainULong = number | ConstrainULongRange;
 type CookieList = CookieListItem[];
 type DOMHighResTimeStamp = number;
+type DigitalCredentialProtocol = DigitalCredentialPresentationProtocol | DigitalCredentialIssuanceProtocol;
 type EpochTimeStamp = number;
 type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
 type FileSystemWriteChunkType = BufferSource | Blob | string | WriteParams;
@@ -44908,6 +44936,8 @@ type CompressionFormat = "brotli" | "deflate" | "deflate-raw" | "gzip";
 type CookieSameSite = "lax" | "none" | "strict";
 type CredentialMediationRequirement = "conditional" | "optional" | "required" | "silent";
 type DOMParserSupportedType = "application/xhtml+xml" | "application/xml" | "image/svg+xml" | "text/html" | "text/xml";
+type DigitalCredentialIssuanceProtocol = "openid4vci-v1";
+type DigitalCredentialPresentationProtocol = "openid4vp-v1-multisigned" | "openid4vp-v1-signed" | "openid4vp-v1-unsigned" | "org-iso-mdoc";
 type DirectionSetting = "" | "lr" | "rl";
 type DisplayCaptureSurfaceType = "browser" | "monitor" | "window";
 type DistanceModelType = "exponential" | "inverse" | "linear";
@@ -44924,6 +44954,7 @@ type FlowControlType = "hardware" | "none";
 type FontDisplay = "auto" | "block" | "fallback" | "optional" | "swap";
 type FontFaceLoadStatus = "error" | "loaded" | "loading" | "unloaded";
 type FontFaceSetLoadStatus = "loaded" | "loading";
+type FullscreenKeyboardLock = "browser" | "none";
 type FullscreenNavigationUI = "auto" | "hide" | "show";
 type GPUAddressMode = "clamp-to-edge" | "mirror-repeat" | "repeat";
 type GPUAutoLayoutMode = "auto";
@@ -44938,7 +44969,7 @@ type GPUCompilationMessageType = "error" | "info" | "warning";
 type GPUCullMode = "back" | "front" | "none";
 type GPUDeviceLostReason = "destroyed" | "unknown";
 type GPUErrorFilter = "internal" | "out-of-memory" | "validation";
-type GPUFeatureName = "bgra8unorm-storage" | "clip-distances" | "core-features-and-limits" | "depth-clip-control" | "depth32float-stencil8" | "dual-source-blending" | "float32-blendable" | "float32-filterable" | "indirect-first-instance" | "primitive-index" | "rg11b10ufloat-renderable" | "shader-f16" | "subgroups" | "texture-compression-astc" | "texture-compression-astc-sliced-3d" | "texture-compression-bc" | "texture-compression-bc-sliced-3d" | "texture-compression-etc2" | "texture-formats-tier1" | "timestamp-query";
+type GPUFeatureName = "bgra8unorm-storage" | "clip-distances" | "core-features-and-limits" | "depth-clip-control" | "depth32float-stencil8" | "dual-source-blending" | "float32-blendable" | "float32-filterable" | "indirect-first-instance" | "primitive-index" | "rg11b10ufloat-renderable" | "shader-f16" | "subgroup-size-control" | "subgroups" | "texture-compression-astc" | "texture-compression-astc-sliced-3d" | "texture-compression-bc" | "texture-compression-bc-sliced-3d" | "texture-compression-etc2" | "texture-formats-tier1" | "timestamp-query";
 type GPUFilterMode = "linear" | "nearest";
 type GPUFrontFace = "ccw" | "cw";
 type GPUIndexFormat = "uint16" | "uint32";
@@ -45480,7 +45511,7 @@ interface SVGNumberList {
 }
 
 interface SVGPointList {
-    [Symbol.iterator](): ArrayIterator<DOMPoint>;
+    [Symbol.iterator](): ArrayIterator<SVGPoint>;
 }
 
 interface SVGStringList {
