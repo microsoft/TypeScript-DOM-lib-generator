@@ -42,9 +42,9 @@ const paths: Record<string, string[]> = {
  * the same set of documentation as an MDN interface.
  */
 const interfaceAliasMap: Record<string, string[]> = {
-  "HTMLAnchorElement": ["HyperlinkElementUtils", "HTMLHyperlinkElementUtils"],
-  "Document": ["DocumentOrShadowRoot"],
-  "HTMLButtonElement": ["PopoverTargetAttributes"],
+  HTMLAnchorElement: ["HyperlinkElementUtils", "HTMLHyperlinkElementUtils"],
+  Document: ["DocumentOrShadowRoot"],
+  HTMLButtonElement: ["PopoverTargetAttributes"],
 };
 
 function extractSlug(mdnUrl: string): string[] {
@@ -139,8 +139,8 @@ export async function generateDescriptions(): Promise<{
     }
   }
   // The mixin output will contain interfaces (from mixinInterfaces) that are being aliased as mixins
-  return { 
+  return {
     interfaces: { interface: results },
-    mixins: { mixin: mixinResults }
+    mixins: { mixin: mixinResults },
   };
 }
