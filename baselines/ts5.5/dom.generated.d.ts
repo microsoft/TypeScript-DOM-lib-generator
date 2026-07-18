@@ -815,6 +815,7 @@ interface FormDataEventInit extends EventInit {
 }
 
 interface FullscreenOptions {
+    keyboardLock?: FullscreenKeyboardLock;
     navigationUI?: FullscreenNavigationUI;
 }
 
@@ -997,6 +998,7 @@ interface GPUPipelineErrorInit {
 
 interface GPUPipelineLayoutDescriptor extends GPUObjectDescriptorBase {
     bindGroupLayouts: (GPUBindGroupLayout | null)[];
+    immediateSize?: GPUSize32;
 }
 
 interface GPUPrimitiveState {
@@ -44857,6 +44859,7 @@ type FlowControlType = "hardware" | "none";
 type FontDisplay = "auto" | "block" | "fallback" | "optional" | "swap";
 type FontFaceLoadStatus = "error" | "loaded" | "loading" | "unloaded";
 type FontFaceSetLoadStatus = "loaded" | "loading";
+type FullscreenKeyboardLock = "browser" | "none";
 type FullscreenNavigationUI = "auto" | "hide" | "show";
 type GPUAddressMode = "clamp-to-edge" | "mirror-repeat" | "repeat";
 type GPUAutoLayoutMode = "auto";
