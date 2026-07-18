@@ -45,6 +45,7 @@ const interfaceAliasMap: Record<string, string[]> = {
   HTMLAnchorElement: ["HyperlinkElementUtils", "HTMLHyperlinkElementUtils"],
   Document: ["DocumentOrShadowRoot"],
   HTMLButtonElement: ["PopoverTargetAttributes"],
+  Element: ["ARIAMixin"],
 };
 
 function extractSlug(mdnUrl: string): string[] {
