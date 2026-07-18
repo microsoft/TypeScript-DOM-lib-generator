@@ -3729,7 +3729,7 @@ interface DOMMatrixReadOnly {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/toJSON)
      */
-    toJSON(): any;
+    toJSON(): object;
     /**
      * The **`transformPoint`** method of the DOMMatrixReadOnly interface creates a new DOMPoint object, transforming a specified point by the matrix. Neither the matrix nor the original point are altered.
      *
@@ -3851,7 +3851,7 @@ interface DOMPointReadOnly {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMPointReadOnly/toJSON)
      */
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var DOMPointReadOnly: {
@@ -3906,7 +3906,7 @@ interface DOMQuad {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad/toJSON)
      */
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var DOMQuad: {
@@ -4028,7 +4028,7 @@ interface DOMRectReadOnly {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRectReadOnly/toJSON)
      */
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var DOMRectReadOnly: {
@@ -8357,7 +8357,7 @@ interface Performance extends EventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/toJSON)
      */
-    toJSON(): any;
+    toJSON(): object;
     addEventListener<K extends keyof PerformanceEventMap>(type: K, listener: (this: Performance, ev: PerformanceEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof PerformanceEventMap>(type: K, listener: (this: Performance, ev: PerformanceEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -8404,7 +8404,7 @@ interface PerformanceEntry {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceEntry/toJSON)
      */
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var PerformanceEntry: {
@@ -8667,7 +8667,7 @@ interface PerformanceResourceTiming extends PerformanceEntry {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceResourceTiming/toJSON)
      */
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var PerformanceResourceTiming: {
@@ -8704,7 +8704,7 @@ interface PerformanceServerTiming {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceServerTiming/toJSON)
      */
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var PerformanceServerTiming: {
@@ -13143,7 +13143,7 @@ interface WebGLRenderingContextBase {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/getError) */
     getError(): GLenum;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/getExtension) */
-    getExtension(name: string): any;
+    getExtension(name: string): object | null;
     getExtension(extensionName: "ANGLE_instanced_arrays"): ANGLE_instanced_arrays | null;
     getExtension(extensionName: "EXT_blend_minmax"): EXT_blend_minmax | null;
     getExtension(extensionName: "EXT_color_buffer_float"): EXT_color_buffer_float | null;
@@ -15051,7 +15051,7 @@ interface Console {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/dir_static)
      */
-    dir(item?: any, options?: any): void;
+    dir(item?: any, options?: object | null): void;
     /**
      * The **`console.dirxml()`** static method displays an interactive tree of the descendant elements of the specified XML/HTML element. If it is not possible to display as an element the JavaScript Object view is shown instead. The output is presented as a hierarchical listing of expandable nodes that let you see the contents of child nodes.
      *
