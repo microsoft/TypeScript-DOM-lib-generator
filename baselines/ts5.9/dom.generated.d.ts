@@ -26941,7 +26941,7 @@ interface NonDocumentTypeChildNode {
 
 interface NonElementParentNode {
     /**
-     * Returns the first element within node's descendants whose ID is elementId.
+     * The **`getElementById()`** method of the Document interface returns an Element object representing the element whose id property matches the specified string. Since element IDs are required to be unique if specified, they're a useful way to get access to a specific element quickly.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/getElementById)
      */

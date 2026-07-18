@@ -1,5 +1,4 @@
 {
-    "nonelementparentnode-getelementbyid": "Returns the first element within node's descendants whose ID is elementId.",
     "parentnode-children": "Returns the child elements.",
     "parentnode-firstelementchild": "Returns the first child that is an element, and null otherwise.",
     "parentnode-lastelementchild": "Returns the last child that is an element, and null otherwise.",

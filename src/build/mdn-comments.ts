@@ -43,7 +43,7 @@ const paths: Record<string, string[]> = {
  */
 const interfaceAliasMap: Record<string, string[]> = {
   HTMLAnchorElement: ["HyperlinkElementUtils", "HTMLHyperlinkElementUtils"],
-  Document: ["DocumentOrShadowRoot"],
+  Document: ["DocumentOrShadowRoot", "NonElementParentNode"],
   HTMLButtonElement: ["PopoverTargetAttributes"],
   Element: ["ARIAMixin"],
   Request: ["Body"],
