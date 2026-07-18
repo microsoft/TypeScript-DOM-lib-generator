@@ -13429,34 +13429,56 @@ declare var DocumentFragment: {
 
 interface DocumentOrShadowRoot {
     /**
-     * Returns the deepest element in the document through which or to which key events are being routed. This is, roughly speaking, the focused element in the document.
-     *
-     * For the purposes of this API, when a child browsing context is focused, its container is focused in the parent browsing context. For example, if the user moves the focus to a text control in an iframe, the iframe is the element returned by the activeElement API in the iframe's node document.
-     *
-     * Similarly, when the focused element is in a different node tree than documentOrShadowRoot, the element returned will be the host that's located in the same node tree as documentOrShadowRoot if documentOrShadowRoot is a shadow-including inclusive ancestor of the focused element, and null if not.
+     * The **`activeElement`** read-only property of the Document interface returns the Element within the DOM that is receiving keyboard events such as keydown and keyup. This is usually analogous to the focused element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/activeElement)
      */
     readonly activeElement: Element | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/adoptedStyleSheets) */
+    /**
+     * The **`adoptedStyleSheets`** property of the Document interface is used for setting an array of constructed stylesheets to be used by the document.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/adoptedStyleSheets)
+     */
     adoptedStyleSheets: CSSStyleSheet[];
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/customElementRegistry) */
+    /**
+     * The **`customElementRegistry`** read-only property of the Document interface returns the CustomElementRegistry object associated with this document, or null if one has not been set.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/customElementRegistry)
+     */
     readonly customElementRegistry: CustomElementRegistry | null;
     /**
-     * Returns document's fullscreen element.
+     * The **`Document.fullscreenElement`** read-only property returns the Element that is currently being presented in fullscreen mode in this document, or null if fullscreen mode is not currently in use.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/fullscreenElement)
      */
     readonly fullscreenElement: Element | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/pictureInPictureElement) */
+    /**
+     * The read-only **`pictureInPictureElement`** property of the Document interface returns the Element that is currently being presented in picture-in-picture mode in this document, or null if picture-in-picture mode is not currently in use.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/pictureInPictureElement)
+     */
     readonly pictureInPictureElement: Element | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/pointerLockElement) */
+    /**
+     * The **`pointerLockElement`** read-only property of the Document interface provides the element set as the target for mouse events while the pointer is locked. It is null if lock is pending, pointer is unlocked, or the target is in another document.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/pointerLockElement)
+     */
     readonly pointerLockElement: Element | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/styleSheets) */
+    /**
+     * The **`styleSheets`** read-only property of the Document interface returns a StyleSheetList of CSSStyleSheet objects, for stylesheets explicitly linked into or embedded in a document.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/styleSheets)
+     */
     readonly styleSheets: StyleSheetList;
+    /** The **`elementFromPoint()`** method, available on the Document object, returns the topmost Element at the specified coordinates (relative to the viewport). */
     elementFromPoint(x: number, y: number): Element | null;
+    /** The **`elementsFromPoint()`** method of the Document interface returns an array of all elements at the specified coordinates (relative to the viewport). The elements are ordered from the topmost to the bottommost box of the viewport. */
     elementsFromPoint(x: number, y: number): Element[];
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/getAnimations) */
+    /**
+     * The **`getAnimations()`** method of the Document interface returns an array of all Animation objects currently in effect whose target elements are descendants of the document. This array includes CSS Animations, CSS Transitions, and Web Animations.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/getAnimations)
+     */
     getAnimations(): Animation[];
 }
 
@@ -18625,9 +18647,7 @@ declare var HTMLHtmlElement: {
 
 interface HTMLHyperlinkElementUtils {
     /**
-     * Returns the hyperlink's URL.
-     *
-     * Can be set, to change the URL.
+     * The **`href`** property of the HTMLAnchorElement interface is a stringifier that returns the absolute URL corresponding to the element's href attribute (or an empty string if href is unset). Setting this property updates the element's href attribute to the provided value.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/href)
      */
@@ -22171,79 +22191,61 @@ declare var History: {
 
 interface HyperlinkElementUtils {
     /**
-     * Returns the hyperlink's URL's fragment (includes leading "#" if non-empty).
-     *
-     * Can be set, to change the URL's fragment (ignores leading "#").
+     * The **`hash`** property of the HTMLAnchorElement interface is a string containing a "#" followed by the fragment identifier of the <a> element's href. If the URL does not have a fragment identifier, this property contains an empty string, "".
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/hash)
      */
     hash: string;
     /**
-     * Returns the hyperlink's URL's host and port (if different from the default port for the scheme).
-     *
-     * Can be set, to change the URL's host and port.
+     * The **`host`** property of the HTMLAnchorElement interface is a string containing the host, which is the hostname, and then, if the port of the URL is nonempty, a ":", followed by the port of the URL. If the URL does not have a hostname, this property contains an empty string, "".
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/host)
      */
     host: string;
     /**
-     * Returns the hyperlink's URL's host.
-     *
-     * Can be set, to change the URL's host.
+     * The **`hostname`** property of the HTMLAnchorElement interface is a string containing either the domain name or IP address of the <a> element's href. If the URL does not have a hostname, this property contains an empty string, "". IPv4 and IPv6 addresses are normalized, such as stripping leading zeros, and domain names are converted to IDN.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/hostname)
      */
     hostname: string;
     /**
-     * Returns the hyperlink's URL's origin.
+     * The **`origin`** read-only property of the HTMLAnchorElement interface returns a string containing the Unicode serialization of the origin of the <a> element's href.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/origin)
      */
     readonly origin: string;
     /**
-     * Returns the hyperlink's URL's password.
-     *
-     * Can be set, to change the URL's password.
+     * The **`password`** property of the HTMLAnchorElement interface is a string containing the password component of the <a> element's href. If the URL does not have a password, this property contains an empty string, "".
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/password)
      */
     password: string;
     /**
-     * Returns the hyperlink's URL's path.
-     *
-     * Can be set, to change the URL's path.
+     * The **`HTMLAnchorElement.pathname`** property is a string containing an initial '/' followed by the path of the URL not including the query string or fragment (or the empty string if there is no path).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/pathname)
      */
     pathname: string;
     /**
-     * Returns the hyperlink's URL's port.
-     *
-     * Can be set, to change the URL's port.
+     * The **`port`** property of the HTMLAnchorElement interface is a string containing the port number of the <a> element's href. If the port is the default for the protocol (80 for ws: and http:, 443 for wss: and https:, and 21 for ftp:), this property contains an empty string, "".
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/port)
      */
     port: string;
     /**
-     * Returns the hyperlink's URL's scheme.
-     *
-     * Can be set, to change the URL's scheme.
+     * The **`protocol`** property of the HTMLAnchorElement interface is a string containing the protocol or scheme of the <area> element's href, including the final ":".
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/protocol)
      */
     protocol: string;
     /**
-     * Returns the hyperlink's URL's query (includes leading "?" if non-empty).
-     *
-     * Can be set, to change the URL's query (ignores leading "?").
+     * The **`search`** property of the HTMLAnchorElement interface is a search string, also called a query string, that is a string containing a "?" followed by the parameters of the <a> element's href. If the URL does not have a search query, this property contains an empty string, "".
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/search)
      */
     search: string;
     /**
-     * Returns the hyperlink's URL's username.
-     *
-     * Can be set, to change the URL's username.
+     * The **`username`** property of the HTMLAnchorElement interface is a string containing the username component of the <a> element's href. If the URL does not have a username, this property contains an empty string, "".
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/username)
      */
@@ -28885,9 +28887,17 @@ declare var PopStateEvent: {
 };
 
 interface PopoverTargetAttributes {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/popoverTargetAction) */
+    /**
+     * The **`popoverTargetAction`** property of the HTMLButtonElement interface gets and sets the action to be performed ("hide", "show", or "toggle") on a popover element being controlled by a button.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/popoverTargetAction)
+     */
     popoverTargetAction: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/popoverTargetElement) */
+    /**
+     * The **`popoverTargetElement`** property of the HTMLButtonElement interface gets and sets the popover element to control via a button.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/popoverTargetElement)
+     */
     popoverTargetElement: Element | null;
 }
 

@@ -26,6 +26,27 @@ const paths: Record<string, string[]> = {
   "webassembly-static-method": ["methods", "method"],
 };
 
+/**
+ * Maps MDN interface names to internal mixing interface names that should
+ * share the same documentation comments.
+ *
+ * This mapping is primarily used to ensure that documentation from MDN for mixin-related
+ * interfaces is propagated to all corresponding internal mixin utilities. For example, many DOM
+ * mixin interfaces in the spec do not exist directly in the MDN docs, but their comments can
+ * be derived from the main interface.
+ *
+ * Key:    MDN interface name as it appears in the MDN JSON data.
+ * Value:  Array of internal mixin interface names that should receive the same MDN documentation.
+ *
+ * Add to this map whenever a mixin in the internal API structure is meant to expose
+ * the same set of documentation as an MDN interface.
+ */
+const interfaceAliasMap: Record<string, string[]> = {
+  "HTMLAnchorElement": ["HyperlinkElementUtils", "HTMLHyperlinkElementUtils"],
+  "Document": ["DocumentOrShadowRoot"],
+  "HTMLButtonElement": ["PopoverTargetAttributes"],
+};
+
 function extractSlug(mdnUrl: string): string[] {
   for (const subdirectory of subdirectories) {
     if (!mdnUrl.startsWith(subdirectory)) {
@@ -78,10 +99,13 @@ function generateComment(summary: string, name: string): string | undefined {
 
 export async function generateDescriptions(): Promise<{
   interfaces: { interface: Record<string, any> };
+  mixins: { mixin: Record<string, any> };
 }> {
   const content = await readFile(new URL(inputFile), "utf8");
   const mdn = JSON.parse(content);
   const results: Record<string, any> = {};
+  const mixinResults: Record<string, any> = {};
+
   // metadata is an array of objects, each with at least: slug, page-type, summary
   for (const entry of mdn) {
     const mdnUrl = entry.mdn_url.split("/en-US/docs/")[1];
@@ -100,7 +124,23 @@ export async function generateDescriptions(): Promise<{
     if (!comment) {
       continue;
     }
+    // Insert under the original name
     insertComment(results, slugArr, comment, path, name);
+
+    // If this is an interface or member of a known-alias interface, insert a duplicate under the alias name(s)
+    // Only need to do this if the interface being referenced is in our alias map.
+    // Only alias when the slugArr's 0th element matches an aliased interface.
+    if (slugArr.length > 0 && interfaceAliasMap[slugArr[0]]) {
+      for (const alias of interfaceAliasMap[slugArr[0]]) {
+        // Copy slugArr, but replace the base interface name with the alias
+        const aliasedSlugArr = [alias, ...slugArr.slice(1)];
+        insertComment(mixinResults, aliasedSlugArr, comment, path, name);
+      }
+    }
   }
-  return { interfaces: { interface: results } };
+  // The mixin output will contain interfaces (from mixinInterfaces) that are being aliased as mixins
+  return { 
+    interfaces: { interface: results },
+    mixins: { mixin: mixinResults }
+  };
 }
