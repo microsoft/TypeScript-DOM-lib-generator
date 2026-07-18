@@ -365,7 +365,7 @@ interface RTCRtpTransceiver {
     setCodecPreferences(codecs: Iterable<RTCRtpCodec>): void;
 }
 
-interface RTCStatsReport extends ReadonlyMap<string, any> {
+interface RTCStatsReport extends ReadonlyMap<string, object> {
 }
 
 interface SVGLengthList {

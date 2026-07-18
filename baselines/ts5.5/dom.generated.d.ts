@@ -189,7 +189,7 @@ interface AudioWorkletNodeOptions extends AudioNodeOptions {
     numberOfOutputs?: number;
     outputChannelCount?: number[];
     parameterData?: Record<string, number>;
-    processorOptions?: any;
+    processorOptions?: object;
 }
 
 interface AuthenticationExtensionsClientInputs {
@@ -1856,14 +1856,14 @@ interface PaymentDetailsInit extends PaymentDetailsBase {
 
 interface PaymentDetailsModifier {
     additionalDisplayItems?: PaymentItem[];
-    data?: any;
+    data?: object;
     supportedMethods: string;
     total?: PaymentItem;
 }
 
 interface PaymentDetailsUpdate extends PaymentDetailsBase {
     error?: string;
-    paymentMethodErrors?: any;
+    paymentMethodErrors?: object;
     shippingAddressErrors?: AddressErrors;
     total?: PaymentItem;
 }
@@ -1875,12 +1875,12 @@ interface PaymentItem {
 }
 
 interface PaymentMethodChangeEventInit extends PaymentRequestUpdateEventInit {
-    methodDetails?: any;
+    methodDetails?: object | null;
     methodName?: string;
 }
 
 interface PaymentMethodData {
-    data?: any;
+    data?: object;
     supportedMethods: string;
 }
 
@@ -12161,7 +12161,7 @@ interface DOMMatrixReadOnly {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/toJSON)
      */
-    toJSON(): any;
+    toJSON(): object;
     /**
      * The **`transformPoint`** method of the DOMMatrixReadOnly interface creates a new DOMPoint object, transforming a specified point by the matrix. Neither the matrix nor the original point are altered.
      *
@@ -12306,7 +12306,7 @@ interface DOMPointReadOnly {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMPointReadOnly/toJSON)
      */
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var DOMPointReadOnly: {
@@ -12361,7 +12361,7 @@ interface DOMQuad {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad/toJSON)
      */
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var DOMQuad: {
@@ -12512,7 +12512,7 @@ interface DOMRectReadOnly {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRectReadOnly/toJSON)
      */
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var DOMRectReadOnly: {
@@ -12959,9 +12959,9 @@ declare var DeviceOrientationEvent: {
 
 /** Available only in secure contexts. */
 interface DigitalCredential extends Credential {
-    readonly data: any;
+    readonly data: object;
     readonly protocol: string;
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var DigitalCredential: {
@@ -17105,7 +17105,7 @@ interface GeolocationCoordinates {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GeolocationCoordinates/toJSON)
      */
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var GeolocationCoordinates: {
@@ -17137,7 +17137,7 @@ interface GeolocationPosition {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GeolocationPosition/toJSON)
      */
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var GeolocationPosition: {
@@ -23871,7 +23871,7 @@ interface LargestContentfulPaint extends PerformanceEntry, PaintTimingMixin {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/LargestContentfulPaint/toJSON)
      */
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var LargestContentfulPaint: {
@@ -24348,7 +24348,7 @@ interface MediaDeviceInfo {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaDeviceInfo/toJSON)
      */
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var MediaDeviceInfo: {
@@ -27762,7 +27762,7 @@ interface PaymentAddress {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ContactAddress/toJSON)
      */
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var PaymentAddress: {
@@ -27782,7 +27782,7 @@ interface PaymentMethodChangeEvent extends PaymentRequestUpdateEvent {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentMethodChangeEvent/methodDetails)
      */
-    readonly methodDetails: any;
+    readonly methodDetails: object | null;
     /**
      * The read-only **`methodName`** property of the PaymentMethodChangeEvent interface is a string which uniquely identifies the payment handler currently selected by the user. The payment handler may be a payment technology, such as Apple Pay or Android Pay, and each payment handler may support multiple payment methods; changes to the payment method within the payment handler are described by the PaymentMethodChangeEvent.
      *
@@ -27915,7 +27915,7 @@ interface PaymentResponse extends EventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/details)
      */
-    readonly details: any;
+    readonly details: object;
     /**
      * The **`methodName`** read-only property of the PaymentResponse interface returns a string uniquely identifying the payment handler selected by the user.
      *
@@ -27977,7 +27977,7 @@ interface PaymentResponse extends EventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/toJSON)
      */
-    toJSON(): any;
+    toJSON(): object;
     addEventListener<K extends keyof PaymentResponseEventMap>(type: K, listener: (this: PaymentResponse, ev: PaymentResponseEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof PaymentResponseEventMap>(type: K, listener: (this: PaymentResponse, ev: PaymentResponseEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -28098,7 +28098,7 @@ interface Performance extends EventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/toJSON)
      */
-    toJSON(): any;
+    toJSON(): object;
     addEventListener<K extends keyof PerformanceEventMap>(type: K, listener: (this: Performance, ev: PerformanceEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof PerformanceEventMap>(type: K, listener: (this: Performance, ev: PerformanceEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -28145,7 +28145,7 @@ interface PerformanceEntry {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceEntry/toJSON)
      */
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var PerformanceEntry: {
@@ -28194,7 +28194,7 @@ interface PerformanceEventTiming extends PerformanceEntry {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceEventTiming/toJSON)
      */
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var PerformanceEventTiming: {
@@ -28267,7 +28267,7 @@ interface PerformanceNavigation {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceNavigation/toJSON)
      */
-    toJSON(): any;
+    toJSON(): object;
     readonly TYPE_NAVIGATE: 0;
     readonly TYPE_RELOAD: 1;
     readonly TYPE_BACK_FORWARD: 2;
@@ -28355,7 +28355,7 @@ interface PerformanceNavigationTiming extends PerformanceResourceTiming {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceNavigationTiming/toJSON)
      */
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var PerformanceNavigationTiming: {
@@ -28442,7 +28442,7 @@ interface PerformancePaintTiming extends PerformanceEntry, PaintTimingMixin {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformancePaintTiming/toJSON)
      */
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var PerformancePaintTiming: {
@@ -28599,7 +28599,7 @@ interface PerformanceResourceTiming extends PerformanceEntry {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceResourceTiming/toJSON)
      */
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var PerformanceResourceTiming: {
@@ -28636,7 +28636,7 @@ interface PerformanceServerTiming {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceServerTiming/toJSON)
      */
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var PerformanceServerTiming: {
@@ -28804,7 +28804,7 @@ interface PerformanceTiming {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceTiming/toJSON)
      */
-    toJSON(): any;
+    toJSON(): object;
 }
 
 /** @deprecated */
@@ -30349,7 +30349,7 @@ interface RTCRtpScriptTransform {
 
 declare var RTCRtpScriptTransform: {
     prototype: RTCRtpScriptTransform;
-    new(workerOrWorkerAndParameters: Worker, options?: any, transfer?: any[]): RTCRtpScriptTransform;
+    new(workerOrWorkerAndParameters: Worker, options?: any, transfer?: object[]): RTCRtpScriptTransform;
 };
 
 /**
@@ -30564,7 +30564,7 @@ declare var RTCSessionDescription: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCStatsReport)
  */
 interface RTCStatsReport {
-    forEach(callbackfn: (value: any, key: string, parent: RTCStatsReport) => void, thisArg?: any): void;
+    forEach(callbackfn: (value: object, key: string, parent: RTCStatsReport) => void, thisArg?: any): void;
 }
 
 declare var RTCStatsReport: {
@@ -40947,7 +40947,7 @@ interface WebGLRenderingContextBase {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/getError) */
     getError(): GLenum;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/getExtension) */
-    getExtension(name: string): any;
+    getExtension(name: string): object | null;
     getExtension(extensionName: "ANGLE_instanced_arrays"): ANGLE_instanced_arrays | null;
     getExtension(extensionName: "EXT_blend_minmax"): EXT_blend_minmax | null;
     getExtension(extensionName: "EXT_color_buffer_float"): EXT_color_buffer_float | null;
@@ -43662,7 +43662,7 @@ interface Console {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/dir_static)
      */
-    dir(item?: any, options?: any): void;
+    dir(item?: any, options?: object | null): void;
     /**
      * The **`console.dirxml()`** static method displays an interactive tree of the descendant elements of the specified XML/HTML element. If it is not possible to display as an element the JavaScript Object view is shown instead. The output is presented as a hierarchical listing of expandable nodes that let you see the contents of child nodes.
      *

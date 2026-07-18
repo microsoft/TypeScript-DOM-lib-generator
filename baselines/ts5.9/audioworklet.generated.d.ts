@@ -1884,7 +1884,7 @@ interface Console {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/dir_static)
      */
-    dir(item?: any, options?: any): void;
+    dir(item?: any, options?: object | null): void;
     /**
      * The **`console.dirxml()`** static method displays an interactive tree of the descendant elements of the specified XML/HTML element. If it is not possible to display as an element the JavaScript Object view is shown instead. The output is presented as a hierarchical listing of expandable nodes that let you see the contents of child nodes.
      *
