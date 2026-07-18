@@ -945,7 +945,8 @@
                                 "getContext(contextId: \"2d\", options?: CanvasRenderingContext2DSettings): CanvasRenderingContext2D | null",
                                 "getContext(contextId: \"bitmaprenderer\", options?: ImageBitmapRenderingContextSettings): ImageBitmapRenderingContext | null",
                                 "getContext(contextId: \"webgl\", options?: WebGLContextAttributes): WebGLRenderingContext | null",
-                                "getContext(contextId: \"webgl2\", options?: WebGLContextAttributes): WebGL2RenderingContext | null"
+                                "getContext(contextId: \"webgl2\", options?: WebGLContextAttributes): WebGL2RenderingContext | null",
+                                "getContext(contextId: \"webgpu\"): GPUCanvasContext | null"
                             ]
                         },
                         "toBlob": {
@@ -985,7 +986,8 @@
                                 "getContext(contextId: \"2d\", options?: any): OffscreenCanvasRenderingContext2D | null",
                                 "getContext(contextId: \"bitmaprenderer\", options?: any): ImageBitmapRenderingContext | null",
                                 "getContext(contextId: \"webgl\", options?: any): WebGLRenderingContext | null",
-                                "getContext(contextId: \"webgl2\", options?: any): WebGL2RenderingContext | null"
+                                "getContext(contextId: \"webgl2\", options?: any): WebGL2RenderingContext | null",
+                                "getContext(contextId: \"webgpu\"): GPUCanvasContext | null"
                             ]
                         }
                     }
