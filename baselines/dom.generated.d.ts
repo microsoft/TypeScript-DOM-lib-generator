@@ -27622,46 +27622,50 @@ declare var PannerNode: {
 };
 
 interface ParentNode extends Node {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/childElementCount) */
+    /**
+     * The **`Document.childElementCount`** read-only property returns the number of child elements of the document.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/childElementCount)
+     */
     readonly childElementCount: number;
     /**
-     * Returns the child elements.
+     * The read-only **`children`** property returns a live HTMLCollection which contains all of the child elements of the document upon which it was called.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/children)
      */
     readonly children: HTMLCollection;
     /**
-     * Returns the first child that is an element, and null otherwise.
+     * The **`Document.firstElementChild`** read-only property returns the document's first child Element, or null if there are no child elements.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/firstElementChild)
      */
     readonly firstElementChild: Element | null;
     /**
-     * Returns the last child that is an element, and null otherwise.
+     * The **`Document.lastElementChild`** read-only property returns the document's last child Element, or null if there are no child elements.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/lastElementChild)
      */
     readonly lastElementChild: Element | null;
     /**
-     * Inserts nodes after the last child of node, while replacing strings in nodes with equivalent Text nodes.
-     *
-     * Throws a "HierarchyRequestError" DOMException if the constraints of the node tree are violated.
+     * The **`Document.append()`** method inserts a set of Node objects or strings after the last child of the document. Strings are inserted as equivalent Text nodes.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/append)
      */
     append(...nodes: (Node | string)[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/moveBefore) */
+    /**
+     * The **`moveBefore()`** method of the Document interface moves a given Node inside the Document DOM node as a direct child, before a given reference node.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/moveBefore)
+     */
     moveBefore(node: Node, child: Node | null): void;
     /**
-     * Inserts nodes before the first child of node, while replacing strings in nodes with equivalent Text nodes.
-     *
-     * Throws a "HierarchyRequestError" DOMException if the constraints of the node tree are violated.
+     * The **`Document.prepend()`** method inserts a set of Node objects or strings before the first child of the document. Strings are inserted as equivalent Text nodes.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/prepend)
      */
     prepend(...nodes: (Node | string)[]): void;
     /**
-     * Returns the first element that is a descendant of node that matches selectors.
+     * The Document method **`querySelector()`** returns the first Element within the document that matches the specified CSS selector, or group of CSS selectors. If no matches are found, null is returned.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/querySelector)
      */
@@ -27672,7 +27676,7 @@ interface ParentNode extends Node {
     querySelector<K extends keyof HTMLElementDeprecatedTagNameMap>(selectors: K): HTMLElementDeprecatedTagNameMap[K] | null;
     querySelector<E extends Element = Element>(selectors: string): E | null;
     /**
-     * Returns all element descendants of node that match selectors.
+     * The Document method **`querySelectorAll()`** returns a static (not live) NodeList representing a list of the document's elements that match the specified group of selectors.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/querySelectorAll)
      */
@@ -27683,9 +27687,7 @@ interface ParentNode extends Node {
     querySelectorAll<K extends keyof HTMLElementDeprecatedTagNameMap>(selectors: K): NodeListOf<HTMLElementDeprecatedTagNameMap[K]>;
     querySelectorAll<E extends Element = Element>(selectors: string): NodeListOf<E>;
     /**
-     * Replace all children of node with nodes, while replacing strings in nodes with equivalent Text nodes.
-     *
-     * Throws a "HierarchyRequestError" DOMException if the constraints of the node tree are violated.
+     * The **`Document.replaceChildren()`** method replaces the existing children of a Document with a specified new set of children.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/replaceChildren)
      */
