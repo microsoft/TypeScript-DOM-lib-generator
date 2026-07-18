@@ -46,6 +46,7 @@ const interfaceAliasMap: Record<string, string[]> = {
   Document: ["DocumentOrShadowRoot"],
   HTMLButtonElement: ["PopoverTargetAttributes"],
   Element: ["ARIAMixin"],
+  Request: ["Body"],
 };
 
 function extractSlug(mdnUrl: string): string[] {

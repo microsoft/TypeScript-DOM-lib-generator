@@ -1387,21 +1387,53 @@ declare var Blob: {
 };
 
 interface Body {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/body) */
+    /**
+     * The **`body`** read-only property of the Request interface contains a ReadableStream with the body contents that have been added to the request. Note that a request using the GET or HEAD method cannot have a body and null is returned in these cases.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/body)
+     */
     readonly body: ReadableStream<Uint8Array<ArrayBuffer>> | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/bodyUsed) */
+    /**
+     * The **`bodyUsed`** read-only property of the Request interface is a boolean value that indicates whether the request body has been read yet.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/bodyUsed)
+     */
     readonly bodyUsed: boolean;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/arrayBuffer) */
+    /**
+     * The **`arrayBuffer()`** method of the Request interface reads the request body and returns it as a promise that resolves with an ArrayBuffer.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/arrayBuffer)
+     */
     arrayBuffer(): Promise<ArrayBuffer>;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/blob) */
+    /**
+     * The **`blob()`** method of the Request interface reads the request body and returns it as a promise that resolves with a Blob.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/blob)
+     */
     blob(): Promise<Blob>;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/bytes) */
+    /**
+     * The **`bytes()`** method of the Request interface reads the request body and returns it as a promise that resolves with a Uint8Array.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/bytes)
+     */
     bytes(): Promise<Uint8Array<ArrayBuffer>>;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/formData) */
+    /**
+     * The **`formData()`** method of the Request interface reads the request body and returns it as a promise that resolves with a FormData object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/formData)
+     */
     formData(): Promise<FormData>;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/json) */
+    /**
+     * The **`json()`** method of the Request interface reads the request body and returns it as a promise that resolves with the result of parsing the body text as JSON.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/json)
+     */
     json(): Promise<any>;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/text) */
+    /**
+     * The **`text()`** method of the Request interface reads the request body and returns it as a promise that resolves with a String. The response is always decoded using UTF-8.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/text)
+     */
     text(): Promise<string>;
 }
 
