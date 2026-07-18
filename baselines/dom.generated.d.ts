@@ -12971,7 +12971,7 @@ declare var DeviceOrientationEvent: {
 /** Available only in secure contexts. */
 interface DigitalCredential extends Credential {
     readonly data: any;
-    readonly protocol: string;
+    readonly protocol: DigitalCredentialPresentationProtocol;
     toJSON(): any;
 }
 
@@ -17580,12 +17580,6 @@ interface HTMLAnchorElement extends HTMLElement, HTMLHyperlinkElementUtils, Hype
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/download)
      */
     download: string;
-    /**
-     * The **`hreflang`** property of the HTMLAnchorElement interface is a string that is the language of the linked resource.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/hreflang)
-     */
-    hreflang: string;
     /** @deprecated */
     name: string;
     /**
@@ -17618,23 +17612,11 @@ interface HTMLAnchorElement extends HTMLElement, HTMLHyperlinkElementUtils, Hype
     /** @deprecated */
     shape: string;
     /**
-     * The **`target`** property of the HTMLAnchorElement interface is a string that indicates where to display the linked resource.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/target)
-     */
-    target: string;
-    /**
      * The **`text`** property of the HTMLAnchorElement represents the text inside the element. This property represents the same information as Node.textContent.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/text)
      */
     text: string;
-    /**
-     * The **`type`** property of the HTMLAnchorElement interface is a string that indicates the MIME type of the linked resource.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/type)
-     */
-    type: string;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLAnchorElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLAnchorElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -17703,12 +17685,6 @@ interface HTMLAreaElement extends HTMLElement, HTMLHyperlinkElementUtils, Hyperl
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement/shape)
      */
     shape: string;
-    /**
-     * The **`target`** property of the HTMLAreaElement interface is a string that indicates where to display the linked resource.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement/target)
-     */
-    target: string;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLAreaElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLAreaElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -18911,6 +18887,12 @@ interface HTMLHyperlinkElementUtils {
      */
     href: string;
     toString(): string;
+    /**
+     * The **`target`** property of the HTMLAnchorElement interface is a string that indicates where to display the linked resource.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/target)
+     */
+    target: string;
 }
 
 /**
@@ -22474,6 +22456,12 @@ interface HyperlinkElementUtils {
      */
     hostname: string;
     /**
+     * The **`hreflang`** property of the HTMLAnchorElement interface is a string that is the language of the linked resource.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/hreflang)
+     */
+    hreflang: string;
+    /**
      * The **`origin`** read-only property of the HTMLAnchorElement interface returns a string containing the Unicode serialization of the origin of the <a> element's href.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/origin)
@@ -22509,6 +22497,12 @@ interface HyperlinkElementUtils {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/search)
      */
     search: string;
+    /**
+     * The **`type`** property of the HTMLAnchorElement interface is a string that indicates the MIME type of the linked resource.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/type)
+     */
+    type: string;
     /**
      * The **`username`** property of the HTMLAnchorElement interface is a string containing the username component of the <a> element's href. If the URL does not have a username, this property contains an empty string, "".
      *
@@ -45164,6 +45158,7 @@ type CompressionFormat = "brotli" | "deflate" | "deflate-raw" | "gzip";
 type CookieSameSite = "lax" | "none" | "strict";
 type CredentialMediationRequirement = "conditional" | "optional" | "required" | "silent";
 type DOMParserSupportedType = "application/xhtml+xml" | "application/xml" | "image/svg+xml" | "text/html" | "text/xml";
+type DigitalCredentialPresentationProtocol = "org-iso-mdoc";
 type DirectionSetting = "" | "lr" | "rl";
 type DisplayCaptureSurfaceType = "browser" | "monitor" | "window";
 type DistanceModelType = "exponential" | "inverse" | "linear";
