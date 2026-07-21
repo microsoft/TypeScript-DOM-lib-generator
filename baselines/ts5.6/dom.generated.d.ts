@@ -31254,13 +31254,13 @@ interface ResizeObserverEntry {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ResizeObserverEntry/borderBoxSize)
      */
-    readonly borderBoxSize: ReadonlyArray<ResizeObserverSize>;
+    readonly borderBoxSize: readonly [ResizeObserverSize, ...ResizeObserverSize[]];
     /**
      * The **`contentBoxSize`** read-only property of the ResizeObserverEntry interface returns an array containing the new content box size of the observed element when the callback is run.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ResizeObserverEntry/contentBoxSize)
      */
-    readonly contentBoxSize: ReadonlyArray<ResizeObserverSize>;
+    readonly contentBoxSize: readonly [ResizeObserverSize, ...ResizeObserverSize[]];
     /**
      * The **`contentRect`** read-only property of the ResizeObserverEntry interface returns a DOMRectReadOnly object containing the new size of the observed element when the callback is run. Note that this is better supported than ResizeObserverEntry.borderBoxSize or ResizeObserverEntry.contentBoxSize, but it is left over from an earlier implementation of the Resize Observer API, is still included in the spec for web compat reasons, and may be deprecated in future versions.
      *
@@ -31272,7 +31272,7 @@ interface ResizeObserverEntry {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ResizeObserverEntry/devicePixelContentBoxSize)
      */
-    readonly devicePixelContentBoxSize: ReadonlyArray<ResizeObserverSize>;
+    readonly devicePixelContentBoxSize: readonly [ResizeObserverSize, ...ResizeObserverSize[]];
     /**
      * The **`target`** read-only property of the ResizeObserverEntry interface returns a reference to the Element or SVGElement that is being observed.
      *
@@ -43833,7 +43833,7 @@ interface MediaSessionActionHandler {
 }
 
 interface MutationCallback {
-    (mutations: MutationRecord[], observer: MutationObserver): void;
+    (mutations: [MutationRecord, ...MutationRecord[]], observer: MutationObserver): void;
 }
 
 interface NavigationInterceptHandler {
@@ -43889,7 +43889,7 @@ interface ReportingObserverCallback {
 }
 
 interface ResizeObserverCallback {
-    (entries: ResizeObserverEntry[], observer: ResizeObserver): void;
+    (entries: [ResizeObserverEntry, ...ResizeObserverEntry[]], observer: ResizeObserver): void;
 }
 
 interface SchedulerPostTaskCallback {
