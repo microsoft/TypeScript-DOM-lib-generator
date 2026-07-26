@@ -2759,6 +2759,10 @@ interface SetHTMLOptions {
     sanitizer?: Sanitizer | SanitizerConfig | SanitizerPresets;
 }
 
+interface SetHTMLUnsafeOptions {
+    sanitizer?: Sanitizer | SanitizerConfig | SanitizerPresets;
+}
+
 interface ShadowRootInit {
     clonable?: boolean;
     customElementRegistry?: CustomElementRegistry | null;
@@ -13645,7 +13649,7 @@ declare var Document: {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/parseHTMLUnsafe_static)
      */
-    parseHTMLUnsafe(html: string): Document;
+    parseHTMLUnsafe(html: string, options?: SetHTMLUnsafeOptions): Document;
 };
 
 /**
@@ -14413,7 +14417,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/setHTMLUnsafe)
      */
-    setHTMLUnsafe(html: string): void;
+    setHTMLUnsafe(html: string, options?: SetHTMLUnsafeOptions): void;
     /**
      * The **`setPointerCapture()`** method of the Element interface is used to designate a specific element as the capture target of future pointer events. Subsequent events for the pointer will be targeted at the capture element until capture is released (via Element.releasePointerCapture() or the pointerup event is fired).
      *
@@ -36033,7 +36037,7 @@ interface ShadowRoot extends DocumentFragment, DocumentOrShadowRoot {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/setHTMLUnsafe)
      */
-    setHTMLUnsafe(html: string): void;
+    setHTMLUnsafe(html: string, options?: SetHTMLUnsafeOptions): void;
     addEventListener<K extends keyof ShadowRootEventMap>(type: K, listener: (this: ShadowRoot, ev: ShadowRootEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof ShadowRootEventMap>(type: K, listener: (this: ShadowRoot, ev: ShadowRootEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
