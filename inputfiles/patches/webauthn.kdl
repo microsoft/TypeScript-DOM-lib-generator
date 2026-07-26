@@ -19,6 +19,7 @@ removals {
     member getCredBlob // Blink only as of 2026-05
     member hmacGetSecret // No implementation as of 2026-05
     member payment // Blink test only as of 2026-05
+    member pinComplexityPolicy // No implementation as of 2026-07
     member remoteClientDataJSON // No implementation as of 2026-05
   }
 
@@ -30,6 +31,8 @@ removals {
   dictionary AuthenticationExtensionsClientOutputs {
     // (same as *Inputs)
     member appidExclude // No implementation as of 2026-05
+    member credBlob // Blink only as of 2026-07
+    member getCredBlob // Blink only as of 2026-07
     member hmacGetSecret // No implementation as of 2026-05
     member payment // Blink only as of 2026-05
     member remoteClientDataJSON // No implementation as of 2026-07

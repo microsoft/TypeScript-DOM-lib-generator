@@ -1835,6 +1835,10 @@ interface PannerOptions extends AudioNodeOptions {
     rolloffFactor?: number;
 }
 
+interface ParseHTMLUnsafeOptions {
+    sanitizer?: Sanitizer | SanitizerConfig | SanitizerPresets;
+}
+
 interface PayerErrors {
     email?: string;
     name?: string;
@@ -13660,7 +13664,7 @@ declare var Document: {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/parseHTMLUnsafe_static)
      */
-    parseHTMLUnsafe(html: string, options?: SetHTMLUnsafeOptions): Document;
+    parseHTMLUnsafe(html: string, options?: ParseHTMLUnsafeOptions): Document;
 };
 
 /**

@@ -210,4 +210,8 @@ removals {
   dictionary CanvasRenderingContext2DSettings {
     member colorType // Blink-only as of 2025-12, being tested in WebKit
   }
+
+  dictionary SetHTMLUnsafeOptions {
+    member runScripts // Blink-only as of 2026-07
+  }
 }
