@@ -279,9 +279,7 @@ async function emitDom() {
     // ts5.5 (and earlier)
     {
       outputFolder: new URL("./ts5.5/", outputFolder),
-      compilerBehavior: {
-        treatAsyncSequence: false,
-      }, // ts5.5 does not support `IteratorObject` or unrelated setter types
+      compilerBehavior: {}, // ts5.5 does not support `IteratorObject` or unrelated setter types
     },
   ];
 
