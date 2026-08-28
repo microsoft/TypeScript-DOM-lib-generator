@@ -409,24 +409,13 @@ export function emitWebIdl(
     function convertBaseType() {
       // Support async_sequence (see https://github.com/whatwg/streams/pull/1372)
       if (obj.type === "async_sequence") {
-        // If we're in a build that includes async iterables (TS 4.4+ or forced), emit as AsyncIterable<T>.
-        // For TS <4.4, the generator separates out [Symbol.asyncIterator] into *.asynciterable.d.ts, so
-        // these references must not leak into the main file, so we can treat them as `any` as a fallback.
-        if (compilerBehavior.treatAsyncSequence) {
-          const subtype = arrayify(obj.subtype)
-            .map((t) => convertDomTypeToTsTypeBase(t, forReturn))
-            .join(", ");
-          // The assignment to `subtype` is only needed to validate/trigger side-effects,
-          // but its value is not used because we always return "AsyncIterable"
-          // unless subtype is empty, in which case we substitute "any"
-          if (!subtype) {
-            return "AsyncIterable";
-          }
-          return "AsyncIterable";
-        } else {
-          // Legacy TypeScript versions: no async iterable interface available.
-          return "any";
-        }
+        // AsyncIterable<T> requires separate asynciterable.d.ts until TS 6.0.
+        // To make it correct, we need to defer any functions using async_sequence to the asynciterable variant.
+        // For now, skip generation and warn.
+        console.warn(
+          "Skipping generation for a function or property with async_sequence type: " + JSON.stringify(obj)
+        );
+        return "never"; // Use 'never' to signal omission in type generation
       }
       if (obj.type === "sequence" && !forReturn && iterator !== "") {
         return "Iterable";
