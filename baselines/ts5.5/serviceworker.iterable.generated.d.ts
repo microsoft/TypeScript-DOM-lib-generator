@@ -171,15 +171,6 @@ interface IDBObjectStore {
     createIndex(name: string, keyPath: string | Iterable<string>, options?: IDBIndexParameters): IDBIndex;
 }
 
-interface InstallEvent {
-    /**
-     * The **`addRoutes()`** method of the InstallEvent interface specifies one or more static routes, which define rules for fetching specified resources that will be used even before service worker startup. This allows you to, for example, bypass a service worker in cases where you always want to fetch a resource from the network or a browser Cache, and avoids the performance overhead of unnecessary service worker cycles.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/InstallEvent/addRoutes)
-     */
-    addRoutes(rules: RouterRule | Iterable<RouterRule>): Promise<void>;
-}
-
 interface MessageEvent<T = any> {
     /** @deprecated */
     initMessageEvent(type: string, bubbles?: boolean, cancelable?: boolean, data?: any, origin?: string, lastEventId?: string, source?: MessageEventSource | null, ports?: Iterable<MessagePort>): void;

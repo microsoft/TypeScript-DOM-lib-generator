@@ -336,11 +336,6 @@ interface BlobPropertyBag {
     type?: string;
 }
 
-interface CSSContainerCondition {
-    name: string;
-    query: string;
-}
-
 interface CSSMatrixComponentOptions {
     is2D?: boolean;
 }
@@ -1267,12 +1262,6 @@ interface HmacKeyGenParams extends Algorithm {
 interface IDBDatabaseInfo {
     name?: string;
     version?: number;
-}
-
-interface IDBGetAllOptions {
-    count?: number;
-    direction?: IDBCursorDirection;
-    query?: any;
 }
 
 interface IDBIndexParameters {
@@ -3260,7 +3249,6 @@ interface WebTransportReceiveStreamStats {
 }
 
 interface WebTransportSendOptions {
-    sendGroup?: WebTransportSendGroup | null;
     sendOrder?: number;
 }
 
@@ -4066,8 +4054,6 @@ declare var AnimationEffect: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationEvent)
  */
 interface AnimationEvent extends Event {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationEvent/animation) */
-    readonly animation: CSSAnimation | null;
     /**
      * The **`AnimationEvent.animationName`** read-only property is a string containing the value of the animation-name CSS property associated with the transition.
      *
@@ -5611,8 +5597,6 @@ declare var CSSConditionRule: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSContainerRule)
  */
 interface CSSContainerRule extends CSSConditionRule {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSContainerRule/conditions) */
-    readonly conditions: ReadonlyArray<CSSContainerCondition>;
     /**
      * The read-only **`containerName`** property of the CSSContainerRule interface represents the container name of the associated CSS @container at-rule.
      *
@@ -5723,14 +5707,12 @@ interface CSSFontFaceDescriptors extends CSSStyleDeclarationBase {
     "font-stretch": string;
     "font-style": string;
     "font-weight": string;
-    "font-width": string;
     fontDisplay: string;
     fontFamily: string;
     fontFeatureSettings: string;
     fontStretch: string;
     fontStyle: string;
     fontWeight: string;
-    fontWidth: string;
     "size-adjust": string;
     sizeAdjust: string;
     src: string;
@@ -8169,12 +8151,6 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     fontWeight: string;
     /**
-     * The font-width CSS property selects a normal, condensed, or expanded face from a font.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-width)
-     */
-    fontWidth: string;
-    /**
      * The forced-color-adjust CSS property allows authors to opt certain elements out of forced colors mode. This then restores the control of those values to CSS.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/forced-color-adjust)
@@ -9065,12 +9041,6 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/ruby-align)
      */
     rubyAlign: string;
-    /**
-     * The ruby-overhang CSS property specifies whether or not a <ruby> annotation overhangs any surrounding text.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/ruby-overhang)
-     */
-    rubyOverhang: string;
     /**
      * The ruby-position CSS property defines the position of a ruby element relative to its base element. It can be positioned over the element (over), under it (under), or between the characters on their right side (inter-character).
      *
@@ -12912,12 +12882,6 @@ interface DeviceMotionEvent extends Event {
 declare var DeviceMotionEvent: {
     prototype: DeviceMotionEvent;
     new(type: string, eventInitDict?: DeviceMotionEventInit): DeviceMotionEvent;
-    /**
-     * The **`requestPermission()`** static method of the DeviceMotionEvent interface requests the user's permission to access device motion data from the accelerometer and gyroscope sensors. This method requires transient activation, meaning that it must be triggered by a UI event such as a button click.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DeviceMotionEvent/requestPermission_static)
-     */
-    requestPermission(): Promise<PermissionState>;
 };
 
 /**
@@ -13010,12 +12974,6 @@ interface DeviceOrientationEvent extends Event {
 declare var DeviceOrientationEvent: {
     prototype: DeviceOrientationEvent;
     new(type: string, eventInitDict?: DeviceOrientationEventInit): DeviceOrientationEvent;
-    /**
-     * The **`requestPermission()`** static method of the DeviceOrientationEvent interface requests the user's permission to access device orientation data from the accelerometer and gyroscope sensors. It can also request permission to access magnetometer data when absolute orientation is needed. This method requires transient activation, meaning that it must be triggered by a UI event such as a button click.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DeviceOrientationEvent/requestPermission_static)
-     */
-    requestPermission(absolute?: boolean): Promise<PermissionState>;
 };
 
 /** Available only in secure contexts. */
@@ -13701,12 +13659,6 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
 declare var Document: {
     prototype: Document;
     new(): Document;
-    /**
-     * The **`parseHTML()`** static method of the Document object provides an XSS-safe method to parse and sanitize a string of HTML in order to create a new Document instance.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/parseHTML_static)
-     */
-    parseHTML(html: string, options?: SetHTMLOptions): Document;
     /**
      * The **`parseHTMLUnsafe()`** static method of the Document object is used to parse HTML input, optionally filtering unwanted HTML elements and attributes, in order to create a new Document instance.
      *
@@ -17818,7 +17770,6 @@ declare var HTMLBaseElement: {
 };
 
 interface HTMLBodyElementEventMap extends HTMLElementEventMap, WindowEventHandlersEventMap {
-    "orientationchange": Event;
 }
 
 /**
@@ -17835,8 +17786,6 @@ interface HTMLBodyElement extends HTMLElement, WindowEventHandlers {
     bgColor: string;
     /** @deprecated */
     link: string;
-    /** @deprecated */
-    onorientationchange: ((this: HTMLBodyElement, ev: Event) => any) | null;
     /** @deprecated */
     text: string;
     /** @deprecated */
@@ -21157,23 +21106,6 @@ declare var HTMLSelectElement: {
 };
 
 /**
- * The **`HTMLSelectedContentElement`** interface represents a <selectedcontent> element in the DOM.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectedContentElement)
- */
-interface HTMLSelectedContentElement extends HTMLElement {
-    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLSelectedContentElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLSelectedContentElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-}
-
-declare var HTMLSelectedContentElement: {
-    prototype: HTMLSelectedContentElement;
-    new(): HTMLSelectedContentElement;
-};
-
-/**
  * The **`HTMLSlotElement`** interface of the Shadow DOM API enables access to the name and assigned nodes of an HTML <slot> element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSlotElement)
@@ -21878,8 +21810,6 @@ interface HTMLTemplateElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTemplateElement/shadowRootSerializable)
      */
     shadowRootSerializable: boolean;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTemplateElement/shadowRootSlotAssignment) */
-    shadowRootSlotAssignment: string;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTemplateElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTemplateElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -22852,12 +22782,6 @@ interface IDBIndex {
      */
     getAllKeys(queryOrOptions?: IDBValidKey | IDBKeyRange | null, count?: number): IDBRequest<IDBValidKey[]>;
     /**
-     * The **`getAllRecords()`** method of the IDBIndex interface retrieves all records (including index keys, primary keys, and values) from the index.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBIndex/getAllRecords)
-     */
-    getAllRecords(options?: IDBGetAllOptions): IDBRequest;
-    /**
      * The **`getKey()`** method of the IDBIndex interface returns an IDBRequest object, and, in a separate thread, finds either the primary key that corresponds to the given key in this index or the first corresponding primary key, if key is set to an IDBKeyRange.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBIndex/getKey)
@@ -23040,12 +22964,6 @@ interface IDBObjectStore {
      */
     getAllKeys(queryOrOptions?: IDBValidKey | IDBKeyRange | null, count?: number): IDBRequest<IDBValidKey[]>;
     /**
-     * The **`getAllRecords()`** method of the IDBObjectStore interface retrieves all records (including primary keys and values) from the object store.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBObjectStore/getAllRecords)
-     */
-    getAllRecords(options?: IDBGetAllOptions): IDBRequest;
-    /**
      * The **`getKey()`** method of the IDBObjectStore interface returns an IDBRequest object, and, in a separate thread, returns the key selected by the specified query. This is for retrieving specific records from an object store.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBObjectStore/getKey)
@@ -23106,18 +23024,6 @@ interface IDBOpenDBRequest extends IDBRequest<IDBDatabase> {
 declare var IDBOpenDBRequest: {
     prototype: IDBOpenDBRequest;
     new(): IDBOpenDBRequest;
-};
-
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBRecord) */
-interface IDBRecord {
-    readonly key: any;
-    readonly primaryKey: any;
-    readonly value: any;
-}
-
-declare var IDBRecord: {
-    prototype: IDBRecord;
-    new(): IDBRecord;
 };
 
 interface IDBRequestEventMap {
@@ -28708,8 +28614,6 @@ interface PerformanceResourceTiming extends PerformanceEntry {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceResourceTiming/transferSize)
      */
     readonly transferSize: number;
-    readonly workerCacheLookupStart: DOMHighResTimeStamp;
-    readonly workerRouterEvaluationStart: DOMHighResTimeStamp;
     /**
      * The **`workerStart`** read-only property of the PerformanceResourceTiming interface returns a DOMHighResTimeStamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running. If the resource is not intercepted by a Service Worker the property will always return 0.
      *
@@ -29805,7 +29709,6 @@ interface RTCDtlsTransport extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDtlsTransport/state)
      */
     readonly state: RTCDtlsTransportState;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDtlsTransport/getRemoteCertificates) */
     getRemoteCertificates(): ArrayBuffer[];
     addEventListener<K extends keyof RTCDtlsTransportEventMap>(type: K, listener: (this: RTCDtlsTransport, ev: RTCDtlsTransportEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -30051,12 +29954,12 @@ declare var RTCIceCandidate: {
     new(candidateInitDict?: RTCLocalIceCandidateInit): RTCIceCandidate;
 };
 
-/**
- * The **`RTCIceCandidatePair`** dictionary describes a pair of ICE candidates which together comprise a description of a viable connection between two WebRTC endpoints. It is used as the return value from RTCIceTransport.getSelectedCandidatePair() to identify the currently-selected candidate pair identified by the ICE agent.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCIceCandidatePair)
- */
+/** The **`RTCIceCandidatePair`** dictionary describes a pair of ICE candidates which together comprise a description of a viable connection between two WebRTC endpoints. It is used as the return value from RTCIceTransport.getSelectedCandidatePair() to identify the currently-selected candidate pair identified by the ICE agent. */
 interface RTCIceCandidatePair {
+    /** The **`local`** property of the RTCIceCandidatePair dictionary specifies the RTCIceCandidate which describes the configuration of the local end of a viable WebRTC connection. */
+    local: RTCIceCandidate;
+    /** The **`remote`** property of the RTCIceCandidatePair dictionary specifies the RTCIceCandidate describing the configuration of the remote end of a viable WebRTC connection. */
+    remote: RTCIceCandidate;
 }
 
 interface RTCIceTransportEventMap {
@@ -31012,12 +30915,6 @@ declare var ReadableStream: {
     new(underlyingSource: UnderlyingByteSource, strategy?: { highWaterMark?: number }): ReadableStream<Uint8Array<ArrayBuffer>>;
     new<R = any>(underlyingSource: UnderlyingDefaultSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
     new<R = any>(underlyingSource?: UnderlyingSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
-    /**
-     * The **`ReadableStream.from()`** static method returns a ReadableStream from a provided iterable or async iterable object.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream/from_static)
-     */
-    from(asyncIterable: any): ReadableStream;
 };
 
 /**
@@ -36165,12 +36062,6 @@ interface ShadowRoot extends DocumentFragment, DocumentOrShadowRoot {
      */
     getHTML(options?: GetHTMLOptions): string;
     /**
-     * The **`setHTML()`** method of the ShadowRoot interface provides an XSS-safe method to parse and sanitize a string of HTML, which then replaces the existing tree in the Shadow DOM.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/setHTML)
-     */
-    setHTML(html: string, options?: SetHTMLOptions): void;
-    /**
      * The **`setHTMLUnsafe()`** method of the ShadowRoot interface can be used to parse HTML input into a DocumentFragment, optionally filtering out unwanted elements and attributes, and then use it to replace the existing tree in the Shadow DOM.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/setHTMLUnsafe)
@@ -38013,8 +37904,6 @@ declare var TransformStreamDefaultController: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransitionEvent)
  */
 interface TransitionEvent extends Event {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransitionEvent/animation) */
-    readonly animation: CSSTransition | null;
     /**
      * The **`TransitionEvent.elapsedTime`** read-only property is a float giving the amount of time the animation has been running, in seconds, when this event fired. This value is not affected by the transition-delay property.
      *
@@ -38534,21 +38423,13 @@ declare var VTTCue: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VTTRegion)
  */
 interface VTTRegion {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VTTRegion/id) */
     id: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VTTRegion/lines) */
     lines: number;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VTTRegion/regionAnchorX) */
     regionAnchorX: number;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VTTRegion/regionAnchorY) */
     regionAnchorY: number;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VTTRegion/scroll) */
     scroll: ScrollSetting;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VTTRegion/viewportAnchorX) */
     viewportAnchorX: number;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VTTRegion/viewportAnchorY) */
     viewportAnchorY: number;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VTTRegion/width) */
     width: number;
 }
 
@@ -41829,7 +41710,6 @@ interface WebTransport {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/datagrams)
      */
     readonly datagrams: WebTransportDatagramDuplexStream;
-    readonly draining: Promise<void>;
     /**
      * The **`incomingBidirectionalStreams`** read-only property of the WebTransport interface represents one or more bidirectional streams opened by the server. Returns a ReadableStream of WebTransportBidirectionalStream objects. Each one can be used to reliably read data from the server and write data back to it.
      *
@@ -41867,8 +41747,6 @@ interface WebTransport {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/createBidirectionalStream)
      */
     createBidirectionalStream(options?: WebTransportSendStreamOptions): Promise<WebTransportBidirectionalStream>;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/createSendGroup) */
-    createSendGroup(): WebTransportSendGroup;
     /**
      * The **`createUnidirectionalStream()`** method of the WebTransport interface asynchronously opens a unidirectional stream.
      *
@@ -41963,30 +41841,11 @@ interface WebTransportDatagramDuplexStream {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/writable)
      */
     readonly writable: WritableStream;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/createWritable) */
-    createWritable(options?: WebTransportSendOptions): WebTransportDatagramsWritable;
 }
 
 declare var WebTransportDatagramDuplexStream: {
     prototype: WebTransportDatagramDuplexStream;
     new(): WebTransportDatagramDuplexStream;
-};
-
-/**
- * Available only in secure contexts.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramsWritable)
- */
-interface WebTransportDatagramsWritable extends WritableStream {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramsWritable/sendGroup) */
-    sendGroup: WebTransportSendGroup | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramsWritable/sendOrder) */
-    sendOrder: number;
-}
-
-declare var WebTransportDatagramsWritable: {
-    prototype: WebTransportDatagramsWritable;
-    new(): WebTransportDatagramsWritable;
 };
 
 /**
@@ -42036,28 +41895,12 @@ declare var WebTransportReceiveStream: {
 };
 
 /**
- * Available only in secure contexts.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportSendGroup)
- */
-interface WebTransportSendGroup {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportSendGroup/getStats) */
-    getStats(): Promise<WebTransportSendStreamStats>;
-}
-
-declare var WebTransportSendGroup: {
-    prototype: WebTransportSendGroup;
-    new(): WebTransportSendGroup;
-};
-
-/**
  * The **`WebTransportSendStream`** interface of the WebTransport API is a specialized WritableStream that is used to send outbound data in both unidirectional or bidirectional WebTransport streams.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportSendStream)
  */
 interface WebTransportSendStream extends WritableStream {
-    sendGroup: WebTransportSendGroup | null;
     /**
      * The **`sendOrder`** property of the WebTransportSendStream interface indicates the send priority of this stream relative to other streams for which the value has been set.
      *
@@ -43260,70 +43103,60 @@ declare var XPathResult: {
 
 /**
  * An **`XSLTProcessor`** applies an XSLT stylesheet transformation to an XML document to produce a new XML document as output. It has methods to load the XSLT stylesheet, to manipulate <xsl:param> parameter values, and to apply the transformation to documents.
- * @deprecated
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XSLTProcessor)
  */
 interface XSLTProcessor {
     /**
      * The **`clearParameters()`** method of the XSLTProcessor interface removes all parameters (<xsl:param>) and their values from the stylesheet imported in the processor. The XSLTProcessor will then use the default values specified in the XSLT stylesheet.
-     * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XSLTProcessor/clearParameters)
      */
     clearParameters(): void;
     /**
      * The **`getParameter()`** method of the XSLTProcessor interface returns the value of a parameter (<xsl:param>) from the stylesheet imported in the processor.
-     * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XSLTProcessor/getParameter)
      */
     getParameter(namespaceURI: string | null, localName: string): any;
     /**
      * The **`importStylesheet()`** method of the XSLTProcessor interface imports an XSLT stylesheet for the processor.
-     * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XSLTProcessor/importStylesheet)
      */
     importStylesheet(style: Node): void;
     /**
      * The **`removeParameter()`** method of the XSLTProcessor interface removes the parameter (<xsl:param>) and its value from the stylesheet imported in the processor.
-     * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XSLTProcessor/removeParameter)
      */
     removeParameter(namespaceURI: string | null, localName: string): void;
     /**
      * The **`reset()`** method of the XSLTProcessor interface removes all parameters (<xsl:param>) and the XSLT stylesheet from the processor. The XSLTProcessor will then be in its original state when it was created.
-     * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XSLTProcessor/reset)
      */
     reset(): void;
     /**
      * The **`setParameter()`** method of the XSLTProcessor interface sets the value of a parameter (<xsl:param>) in the stylesheet imported in the processor.
-     * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XSLTProcessor/setParameter)
      */
     setParameter(namespaceURI: string | null, localName: string, value: any): void;
     /**
      * The **`transformToDocument()`** method of the XSLTProcessor interface transforms the provided Node source to a Document using the XSLT stylesheet associated with XSLTProcessor.
-     * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XSLTProcessor/transformToDocument)
      */
     transformToDocument(source: Node): Document;
     /**
      * The **`transformToFragment()`** method of the XSLTProcessor interface transforms a provided Node source to a DocumentFragment using the XSLT stylesheet associated with the XSLTProcessor.
-     * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XSLTProcessor/transformToFragment)
      */
     transformToFragment(source: Node, output: Document): DocumentFragment;
 }
 
-/** @deprecated */
 declare var XSLTProcessor: {
     prototype: XSLTProcessor;
     new(): XSLTProcessor;
@@ -44221,7 +44054,6 @@ interface HTMLElementTagNameMap {
     "search": HTMLElement;
     "section": HTMLElement;
     "select": HTMLSelectElement;
-    "selectedcontent": HTMLSelectedContentElement;
     "slot": HTMLSlotElement;
     "small": HTMLElement;
     "source": HTMLSourceElement;
@@ -45279,7 +45111,7 @@ type SanitizerPI = string | SanitizerProcessingInstruction;
 type SelectionDirection = "forward" | "backward" | "none";
 type TexImageSource = ImageBitmap | ImageData | HTMLImageElement | HTMLCanvasElement | HTMLVideoElement | OffscreenCanvas | VideoFrame;
 type TimerHandler = string | Function;
-type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | MediaSourceHandle | ReadableStream | WritableStream | TransformStream | AudioData | VideoFrame | RTCDataChannel | WebTransportDatagramsWritable | ArrayBuffer;
+type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | MediaSourceHandle | ReadableStream | WritableStream | TransformStream | AudioData | VideoFrame | RTCDataChannel | ArrayBuffer;
 type URLPatternInput = string | URLPatternInit;
 type Uint32List = Uint32Array<ArrayBufferLike> | GLuint[];
 type VibratePattern = number | number[];
