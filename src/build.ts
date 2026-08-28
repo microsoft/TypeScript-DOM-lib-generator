@@ -273,7 +273,6 @@ async function emitDom() {
       compilerBehavior: {
         useIteratorObject: true,
         allowUnrelatedSetterType: true,
-        treatAsyncSequence: false,
       },
     },
     // ts5.5 (and earlier)
