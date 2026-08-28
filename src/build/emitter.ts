@@ -413,7 +413,8 @@ export function emitWebIdl(
         // To make it correct, we need to defer any functions using async_sequence to the asynciterable variant.
         // For now, skip generation and warn.
         console.warn(
-          "Skipping generation for a function or property with async_sequence type: " + JSON.stringify(obj)
+          "Skipping generation for a function or property with async_sequence type: " +
+            JSON.stringify(obj),
         );
         return "never"; // Use 'never' to signal omission in type generation
       }
