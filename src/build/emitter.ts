@@ -412,18 +412,24 @@ export function emitWebIdl(
         // If we're in a build that includes async iterables (TS 2.3+ or forced), emit as AsyncIterable<T>.
         // For TS <2.3, the generator separates out [Symbol.asyncIterator] into *.asynciterable.d.ts, so
         // these references must not leak into the main file, so we can treat them as `any` as a fallback.
-          if (compilerBehavior.treatAsyncSequence) {
-            // Forwards-compatible definition:
-            // NOTE: In IDL→TS (whatwg/streams#1372 etc) async_sequence<T> -> AsyncIterable<T>
-            // If stricter interop wanted, could use AsyncIterable<T> | Iterable<T>
-            let subtype = arrayify(obj.subtype).map(t => convertDomTypeToTsTypeBase(t, forReturn)).join(", ");
-            if (!subtype) subtype = "any";
-            return `AsyncIterable`;
-          } else {
-            // Legacy main & fallback builds: no async iterable interface available.
-            
-            return "any";
+        if (compilerBehavior.treatAsyncSequence) {
+          // Forwards-compatible definition:
+          // NOTE: In IDL→TS (whatwg/streams#1372 etc) async_sequence<T> -> AsyncIterable<T>
+          // If stricter interop wanted, could use AsyncIterable<T> | Iterable<T>
+          const subtype = arrayify(obj.subtype)
+            .map((t) => convertDomTypeToTsTypeBase(t, forReturn))
+            .join(", ");
+          // The assignment to `subtype` is only needed to validate/trigger side-effects,
+          // but its value is not used because we always return "AsyncIterable"
+          // unless subtype is empty, in which case we substitute "any"
+          if (!subtype) {
+            return "AsyncIterable";
           }
+          return "AsyncIterable";
+        } else {
+          // Legacy main & fallback builds: no async iterable interface available.
+          return "any";
+        }
       }
       if (obj.type === "sequence" && !forReturn && iterator !== "") {
         return "Iterable";
@@ -462,7 +468,9 @@ export function emitWebIdl(
     }
 
     const type = convertBaseType();
-    if(type === "any") return type;
+    if (type === "any") {
+      return type;
+    }
     let subtypeString = arrayify(obj.subtype)
       .map((t) => convertDomTypeToTsTypeBase(t, forReturn))
       .join(", ");
