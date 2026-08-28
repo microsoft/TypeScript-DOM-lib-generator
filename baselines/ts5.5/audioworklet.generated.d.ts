@@ -959,6 +959,12 @@ declare var ReadableStream: {
     new(underlyingSource: UnderlyingByteSource, strategy?: { highWaterMark?: number }): ReadableStream<Uint8Array>;
     new<R = any>(underlyingSource: UnderlyingDefaultSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
     new<R = any>(underlyingSource?: UnderlyingSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
+    /**
+     * The **`ReadableStream.from()`** static method returns a ReadableStream from a provided iterable or async iterable object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream/from_static)
+     */
+    from(asyncIterable: any): ReadableStream;
 };
 
 /**

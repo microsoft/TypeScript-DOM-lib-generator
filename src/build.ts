@@ -252,6 +252,7 @@ async function emitDom() {
         allowUnrelatedSetterType: true,
         useGenericTypedArrays: true,
         includeIterable: true,
+        treatAsyncSequence: true,
       },
     },
     // ts5.7 (and later)
@@ -262,6 +263,7 @@ async function emitDom() {
         useIteratorObject: true,
         allowUnrelatedSetterType: true,
         useGenericTypedArrays: true,
+        treatAsyncSequence: true,
       },
     },
     // ts5.6
@@ -271,12 +273,15 @@ async function emitDom() {
       compilerBehavior: {
         useIteratorObject: true,
         allowUnrelatedSetterType: true,
+        treatAsyncSequence: false,
       },
     },
     // ts5.5 (and earlier)
     {
       outputFolder: new URL("./ts5.5/", outputFolder),
-      compilerBehavior: {}, // ts5.5 does not support `IteratorObject` or unrelated setter types
+      compilerBehavior: {
+        treatAsyncSequence: false,
+      }, // ts5.5 does not support `IteratorObject` or unrelated setter types
     },
   ];
 

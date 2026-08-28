@@ -132,6 +132,8 @@ export interface CompilerBehavior {
   allowUnrelatedSetterType?: boolean;
   useGenericTypedArrays?: boolean;
   includeIterable?: boolean;
+  /** If true, treat async_sequence as AsyncIterable<T>, otherwise as any (legacy < TS 2.3 emit). */
+  treatAsyncSequence?: boolean;
 }
 
 export function emitWebIdl(
@@ -405,6 +407,24 @@ export function emitWebIdl(
     forReturn: boolean,
   ): string {
     function convertBaseType() {
+      // Support async_sequence (see https://github.com/whatwg/streams/pull/1372)
+      if (obj.type === "async_sequence") {
+        // If we're in a build that includes async iterables (TS 2.3+ or forced), emit as AsyncIterable<T>.
+        // For TS <2.3, the generator separates out [Symbol.asyncIterator] into *.asynciterable.d.ts, so
+        // these references must not leak into the main file, so we can treat them as `any` as a fallback.
+          if (compilerBehavior.treatAsyncSequence) {
+            // Forwards-compatible definition:
+            // NOTE: In IDL→TS (whatwg/streams#1372 etc) async_sequence<T> -> AsyncIterable<T>
+            // If stricter interop wanted, could use AsyncIterable<T> | Iterable<T>
+            let subtype = arrayify(obj.subtype).map(t => convertDomTypeToTsTypeBase(t, forReturn)).join(", ");
+            if (!subtype) subtype = "any";
+            return `AsyncIterable`;
+          } else {
+            // Legacy main & fallback builds: no async iterable interface available.
+            
+            return "any";
+          }
+      }
       if (obj.type === "sequence" && !forReturn && iterator !== "") {
         return "Iterable";
       }
@@ -442,6 +462,7 @@ export function emitWebIdl(
     }
 
     const type = convertBaseType();
+    if(type === "any") return type;
     let subtypeString = arrayify(obj.subtype)
       .map((t) => convertDomTypeToTsTypeBase(t, forReturn))
       .join(", ");
