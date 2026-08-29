@@ -455,9 +455,7 @@ export function emitWebIdl(
     }
 
     const type = convertBaseType();
-    if (type === "any") {
-      return type;
-    }
+
     let subtypeString = arrayify(obj.subtype)
       .map((t) => convertDomTypeToTsTypeBase(t, forReturn))
       .join(", ");
