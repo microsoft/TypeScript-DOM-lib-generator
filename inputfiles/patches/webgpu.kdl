@@ -9,6 +9,7 @@ removals {
   enum GPUFeatureName {
     texture-component-swizzle // Blink only as of 2026-02
     texture-formats-tier2 // Blink only as of 2026-02
+    subgroup-size-control // Blink only as of 2026-08
   }
 
   dictionary GPURequestAdapterOptions {

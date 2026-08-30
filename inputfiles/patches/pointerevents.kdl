@@ -1,0 +1,5 @@
+removals {
+    dictionary WheelEventInit {
+        member momentum // Blink only as of 2025-08
+    }
+}

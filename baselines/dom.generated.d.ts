@@ -29187,7 +29187,7 @@ interface ProcessingInstruction extends CharacterData, LinkStyle {
 
 declare var ProcessingInstruction: {
     prototype: ProcessingInstruction;
-    new(): ProcessingInstruction;
+    new(target: string, data?: string): ProcessingInstruction;
 };
 
 /**
@@ -31815,13 +31815,13 @@ interface SVGAnimatedRect {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedRect/animVal)
      */
-    readonly animVal: DOMRectReadOnly;
+    readonly animVal: SVGRect;
     /**
      * The **`baseVal`** read-only property of the SVGAnimatedRect interface represents the current non-animated value of the viewBox attribute of an SVG element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedRect/baseVal)
      */
-    readonly baseVal: DOMRect;
+    readonly baseVal: SVGRect;
 }
 
 declare var SVGAnimatedRect: {
@@ -33198,7 +33198,7 @@ declare var SVGFETurbulenceElement: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFilterElement)
  */
-interface SVGFilterElement extends SVGElement, SVGURIReference {
+interface SVGFilterElement extends SVGElement {
     /**
      * The **`filterUnits`** read-only property of the SVGFilterElement interface reflects the filterUnits attribute of the given <filter> element. It takes one of the SVG_UNIT_TYPE_* constants defined in SVGUnitTypes.
      *
@@ -33341,7 +33341,7 @@ interface SVGGeometryElement extends SVGGraphicsElement {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGGeometryElement/getPointAtLength)
      */
-    getPointAtLength(distance: number): DOMPoint;
+    getPointAtLength(distance: number): SVGPoint;
     /**
      * The **`SVGGeometryElement.getTotalLength()`** method returns the user agent's computed value for the total length of the path in user units.
      *
@@ -33431,19 +33431,19 @@ interface SVGGraphicsElement extends SVGElement, SVGTests {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGGraphicsElement/getBBox)
      */
-    getBBox(options?: SVGBoundingBoxOptions): DOMRect;
+    getBBox(options?: SVGBoundingBoxOptions): SVGRect;
     /**
      * The **`getCTM()`** method of the SVGGraphicsElement interface represents the matrix that transforms the current element's coordinate system to its SVG viewport's coordinate system.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGGraphicsElement/getCTM)
      */
-    getCTM(): DOMMatrix | null;
+    getCTM(): SVGMatrix | null;
     /**
      * The **`getScreenCTM()`** method of the SVGGraphicsElement interface represents the matrix that transforms the current element's coordinate system to the coordinate system of the SVG viewport for the SVG document fragment.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGGraphicsElement/getScreenCTM)
      */
-    getScreenCTM(): DOMMatrix | null;
+    getScreenCTM(): SVGMatrix | null;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGGraphicsElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGGraphicsElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -34105,7 +34105,7 @@ interface SVGPointList {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPointList/appendItem)
      */
-    appendItem(newItem: DOMPoint): DOMPoint;
+    appendItem(newItem: SVGPoint): SVGPoint;
     /**
      * The **`clear()`** method of the SVGPointList interface removes all items from the list.
      *
@@ -34117,32 +34117,32 @@ interface SVGPointList {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPointList/getItem)
      */
-    getItem(index: number): DOMPoint;
+    getItem(index: number): SVGPoint;
     /**
      * The **`initialize()`** method of the SVGPointList interface clears the list then adds a single new DOMPoint object to the list.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPointList/initialize)
      */
-    initialize(newItem: DOMPoint): DOMPoint;
+    initialize(newItem: SVGPoint): SVGPoint;
     /**
      * The **`insertItemBefore()`** method of the SVGPointList interface inserts a DOMPoint before another item in the list.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPointList/insertItemBefore)
      */
-    insertItemBefore(newItem: DOMPoint, index: number): DOMPoint;
+    insertItemBefore(newItem: SVGPoint, index: number): SVGPoint;
     /**
      * The **`removeItem()`** method of the SVGPointList interface removes a DOMPoint from the list.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPointList/removeItem)
      */
-    removeItem(index: number): DOMPoint;
+    removeItem(index: number): SVGPoint;
     /**
      * The **`replaceItem()`** method of the SVGPointList interface replaces a DOMPoint in the list.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPointList/replaceItem)
      */
-    replaceItem(newItem: DOMPoint, index: number): DOMPoint;
-    [index: number]: DOMPoint;
+    replaceItem(newItem: SVGPoint, index: number): SVGPoint;
+    [index: number]: SVGPoint;
 }
 
 declare var SVGPointList: {
@@ -34363,7 +34363,7 @@ interface SVGSVGElement extends SVGGraphicsElement, SVGFitToViewBox, WindowEvent
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSVGElement/currentTranslate)
      */
-    readonly currentTranslate: DOMPointReadOnly;
+    readonly currentTranslate: SVGPoint;
     /**
      * The **`height`** read-only property of the SVGSVGElement interface describes the vertical size of element as an SVGAnimatedLength. It reflects the <svg> element's height attribute, which may not be the SVG's rendered height.
      *
@@ -34399,13 +34399,13 @@ interface SVGSVGElement extends SVGGraphicsElement, SVGFitToViewBox, WindowEvent
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSVGElement/checkEnclosure)
      */
-    checkEnclosure(element: SVGElement, rect: DOMRectReadOnly): boolean;
+    checkEnclosure(element: SVGElement, rect: SVGRect): boolean;
     /**
      * The **`checkIntersection()`** method of the SVGSVGElement interface checks if the rendered content of the given element intersects the supplied rectangle.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSVGElement/checkIntersection)
      */
-    checkIntersection(element: SVGElement, rect: DOMRectReadOnly): boolean;
+    checkIntersection(element: SVGElement, rect: SVGRect): boolean;
     /**
      * The **`createSVGAngle()`** method of the SVGSVGElement interface creates an SVGAngle object outside of any document trees.
      *
@@ -34423,7 +34423,7 @@ interface SVGSVGElement extends SVGGraphicsElement, SVGFitToViewBox, WindowEvent
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSVGElement/createSVGMatrix)
      */
-    createSVGMatrix(): DOMMatrix;
+    createSVGMatrix(): SVGMatrix;
     /**
      * The **`createSVGNumber()`** method of the SVGSVGElement interface creates an SVGNumber object outside of any document trees.
      *
@@ -34435,13 +34435,13 @@ interface SVGSVGElement extends SVGGraphicsElement, SVGFitToViewBox, WindowEvent
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSVGElement/createSVGPoint)
      */
-    createSVGPoint(): DOMPoint;
+    createSVGPoint(): SVGPoint;
     /**
      * The **`createSVGRect()`** method of the SVGSVGElement interface creates a DOMRect object outside of any document trees.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSVGElement/createSVGRect)
      */
-    createSVGRect(): DOMRect;
+    createSVGRect(): SVGRect;
     /**
      * The **`createSVGTransform()`** method of the SVGSVGElement interface creates an SVGTransform object outside of any document trees.
      *
@@ -34474,8 +34474,8 @@ interface SVGSVGElement extends SVGGraphicsElement, SVGFitToViewBox, WindowEvent
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSVGElement/getElementById)
      */
     getElementById(elementId: string): Element | null;
-    getEnclosureList(rect: DOMRectReadOnly, referenceElement: SVGElement | null): NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>;
-    getIntersectionList(rect: DOMRectReadOnly, referenceElement: SVGElement | null): NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>;
+    getEnclosureList(rect: SVGRect, referenceElement: SVGElement | null): NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>;
+    getIntersectionList(rect: SVGRect, referenceElement: SVGElement | null): NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>;
     /**
      * The **`pauseAnimations()`** method of the SVGSVGElement interface suspends (i.e., pauses) all currently running animations that are defined within the SVG document fragment corresponding to this <svg> element, causing the animation clock corresponding to this document fragment to stand still until it is unpaused.
      *
@@ -34777,13 +34777,13 @@ interface SVGTextContentElement extends SVGGraphicsElement {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextContentElement/getEndPositionOfChar)
      */
-    getEndPositionOfChar(charnum: number): DOMPoint;
+    getEndPositionOfChar(charnum: number): SVGPoint;
     /**
      * The **`getExtentOfChar()`** method of the SVGTextContentElement interface the represents computed tight bounding box of the glyph cell that corresponds to a given typographic character.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextContentElement/getExtentOfChar)
      */
-    getExtentOfChar(charnum: number): DOMRect;
+    getExtentOfChar(charnum: number): SVGRect;
     /**
      * The **`getNumberOfChars()`** method of the SVGTextContentElement interface represents the total number of addressable characters available for rendering within the current element, regardless of whether they will be rendered.
      *
@@ -34801,7 +34801,7 @@ interface SVGTextContentElement extends SVGGraphicsElement {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextContentElement/getStartPositionOfChar)
      */
-    getStartPositionOfChar(charnum: number): DOMPoint;
+    getStartPositionOfChar(charnum: number): SVGPoint;
     /**
      * The **`getSubStringLength()`** method of the SVGTextContentElement interface represents the computed length of the formatted text advance distance for a substring of text within the element.
      *
@@ -34972,7 +34972,7 @@ interface SVGTransform {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTransform/matrix)
      */
-    readonly matrix: DOMMatrix;
+    readonly matrix: SVGMatrix;
     /**
      * The **`type`** read-only property of the SVGTransform interface represents the type of transformation applied, specified by one of the SVG_TRANSFORM_* constants defined on this interface.
      *
@@ -45740,7 +45740,7 @@ interface SVGNumberList {
 }
 
 interface SVGPointList {
-    [Symbol.iterator](): ArrayIterator<DOMPoint>;
+    [Symbol.iterator](): ArrayIterator<SVGPoint>;
 }
 
 interface SVGStringList {
