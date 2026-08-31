@@ -386,10 +386,19 @@ function handleMethodAndConstructor(
         typeNodes.push(c);
         break;
 
-      case "param":
-        params.push(handleParam(c));
+      case "param": {
+        const param = handleParam(c);
+        if (
+          Object.keys(param).length === 2 &&
+          param.name &&
+          param.additionalTypes === undefined
+        ) {
+          params.push(param.name);
+        } else {
+          params.push(param);
+        }
         break;
-
+      }
       default:
         throw new Error(`Unexpected child "${c.name}" in method "${name}"`);
     }

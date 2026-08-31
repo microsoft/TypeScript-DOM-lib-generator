@@ -7,11 +7,13 @@ export interface Typed {
   allowShared?: boolean;
 }
 
-export interface Param extends Typed {
-  name: string;
-  optional?: boolean;
-  variadic?: boolean;
-}
+export type Param =
+  | (Typed & {
+      name: string;
+      optional?: boolean;
+      variadic?: boolean;
+    })
+  | string;
 
 export interface Signature extends Typed {
   param?: Param[];

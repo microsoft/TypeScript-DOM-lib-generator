@@ -29163,7 +29163,7 @@ interface ProcessingInstruction extends CharacterData, LinkStyle {
 
 declare var ProcessingInstruction: {
     prototype: ProcessingInstruction;
-    new(target: string, data?: string): ProcessingInstruction;
+    new(): ProcessingInstruction;
 };
 
 /**
