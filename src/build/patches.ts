@@ -530,6 +530,20 @@ async function readPatchDocument(fileUrl: URL): Promise<Document> {
   return output!;
 }
 /**
+ * Helper function to determine if an object has only a single 'name' property of type string.
+ */
+function isObjectWithOnlyName(item: unknown) {
+  return (
+    item &&
+    typeof item === "object" &&
+    !Array.isArray(item) &&
+    Object.keys(item).length === 1 &&
+    Object.prototype.hasOwnProperty.call(item, "name") &&
+    typeof (item as Record<string, unknown>).name === "string"
+  );
+}
+
+/**
  * Recursively remove all 'name' fields from the object and its children, and
  * replace any empty objects ({} or []) with null.
  * If an array of objects only have the 'name' field, collapse them to array of strings.
@@ -537,18 +551,7 @@ async function readPatchDocument(fileUrl: URL): Promise<Document> {
 function convertForRemovals(obj: unknown): unknown {
   if (Array.isArray(obj)) {
     // Check if all entries are objects of the shape { name: string }
-    if (
-      obj.length &&
-      obj.every(
-        (item) =>
-          item &&
-          typeof item === "object" &&
-          !Array.isArray(item) &&
-          Object.keys(item).length === 1 &&
-          Object.prototype.hasOwnProperty.call(item, "name") &&
-          typeof (item as Record<string, unknown>).name === "string",
-      )
-    ) {
+    if (obj.length && obj.every(isObjectWithOnlyName)) {
       // Collapse to array of names (strings)
       return obj.map((item) => (item as { name: string }).name);
     }
