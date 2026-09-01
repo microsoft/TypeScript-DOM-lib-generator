@@ -26,9 +26,13 @@ type DeepPartial<T> = T extends any[]
   : T extends object
     ? { [K in keyof T]?: DeepPartial<T[K]> }
     : T;
-
+interface OverridableSignature extends Omit<Signature, "param"> {
+  param?: (DeepPartial<Param> | string)[];
+}
 interface OverridableMethod extends Omit<Method, "signature"> {
-  signature: DeepPartial<Signature>[] | Record<number, DeepPartial<Signature>>;
+  signature:
+    | DeepPartial<OverridableSignature>[]
+    | Record<number, DeepPartial<OverridableSignature>>;
 }
 
 function optionalMember<const T>(prop: string, type: T, value?: Value) {
@@ -378,7 +382,7 @@ function handleMethodAndConstructor(
 
   // Collect all type nodes into an array
   const typeNodes: Node[] = [];
-  const params: DeepPartial<Param>[] = [];
+  const params: DeepPartial<Param | string>[] = [];
 
   for (const c of child.children) {
     switch (c.name) {
@@ -410,7 +414,7 @@ function handleMethodAndConstructor(
   let signature: OverridableMethod["signature"] = [];
   if (type || params.length > 0) {
     // Determine the actual signature object
-    const signatureObj: DeepPartial<Signature> = {
+    const signatureObj: DeepPartial<OverridableSignature> = {
       param: params,
       ...type,
     };
