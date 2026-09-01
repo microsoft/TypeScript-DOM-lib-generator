@@ -26,13 +26,8 @@ type DeepPartial<T> = T extends any[]
   : T extends object
     ? { [K in keyof T]?: DeepPartial<T[K]> }
     : T;
-interface OverridableSignature extends Omit<Signature, "param"> {
-  param?: (DeepPartial<Param> | string)[];
-}
 interface OverridableMethod extends Omit<Method, "signature"> {
-  signature:
-    | DeepPartial<OverridableSignature>[]
-    | Record<number, DeepPartial<OverridableSignature>>;
+  signature: DeepPartial<Signature>[] | Record<number, DeepPartial<Signature>>;
 }
 
 function optionalMember<const T>(prop: string, type: T, value?: Value) {
@@ -365,7 +360,7 @@ function handleParam(node: Node) {
     name,
     ...handleTyped(typeNodes, node.properties?.type),
     ...optionalMember("overrideType", "string", node.properties?.overrideType),
-    additionalTypes,
+    ...(additionalTypes ? { additionalTypes } : {}),
   };
 }
 
@@ -382,7 +377,7 @@ function handleMethodAndConstructor(
 
   // Collect all type nodes into an array
   const typeNodes: Node[] = [];
-  const params: DeepPartial<Param | string>[] = [];
+  const params: DeepPartial<Param>[] = [];
 
   for (const c of child.children) {
     switch (c.name) {
@@ -392,15 +387,7 @@ function handleMethodAndConstructor(
 
       case "param": {
         const param = handleParam(c);
-        if (
-          Object.keys(param).length === 2 &&
-          param.name &&
-          param.additionalTypes === undefined
-        ) {
-          params.push(param.name);
-        } else {
-          params.push(param);
-        }
+        params.push(param);
         break;
       }
       default:
@@ -414,7 +401,7 @@ function handleMethodAndConstructor(
   let signature: OverridableMethod["signature"] = [];
   if (type || params.length > 0) {
     // Determine the actual signature object
-    const signatureObj: DeepPartial<OverridableSignature> = {
+    const signatureObj: DeepPartial<Signature> = {
       param: params,
       ...type,
     };
@@ -545,9 +532,27 @@ async function readPatchDocument(fileUrl: URL): Promise<Document> {
 /**
  * Recursively remove all 'name' fields from the object and its children, and
  * replace any empty objects ({} or []) with null.
+ * If an array of objects only have the 'name' field, collapse them to array of strings.
  */
 function convertForRemovals(obj: unknown): unknown {
   if (Array.isArray(obj)) {
+    // Check if all entries are objects of the shape { name: string }
+    if (
+      obj.length &&
+      obj.every(
+        (item) =>
+          item &&
+          typeof item === "object" &&
+          !Array.isArray(item) &&
+          Object.keys(item).length === 1 &&
+          Object.prototype.hasOwnProperty.call(item, "name") &&
+          typeof (item as Record<string, unknown>).name === "string",
+      )
+    ) {
+      // Collapse to array of names (strings)
+      return obj.map((item) => (item as { name: string }).name);
+    }
+    // Otherwise, recurse on each item
     return obj.map(convertForRemovals).filter((v) => v !== undefined);
   }
   if (obj && typeof obj === "object") {
