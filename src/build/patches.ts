@@ -26,6 +26,7 @@ type DeepPartial<T> = T extends any[]
   : T extends object
     ? { [K in keyof T]?: DeepPartial<T[K]> }
     : T;
+
 interface OverridableMethod extends Omit<Method, "signature"> {
   signature: DeepPartial<Signature>[] | Record<number, DeepPartial<Signature>>;
 }
@@ -385,11 +386,9 @@ function handleMethodAndConstructor(
         typeNodes.push(c);
         break;
 
-      case "param": {
-        const param = handleParam(c);
-        params.push(param);
+      case "param":
+        params.push(handleParam(c));
         break;
-      }
       default:
         throw new Error(`Unexpected child "${c.name}" in method "${name}"`);
     }
