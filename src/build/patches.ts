@@ -389,6 +389,7 @@ function handleMethodAndConstructor(
       case "param":
         params.push(handleParam(c));
         break;
+
       default:
         throw new Error(`Unexpected child "${c.name}" in method "${name}"`);
     }
