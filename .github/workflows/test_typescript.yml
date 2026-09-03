@@ -39,7 +39,7 @@ jobs:
 
           # Run TypeScript's tests with the new DOM libs, but don't fail
           npm test || true
-          gulp baseline-accept
+          npx hereby baseline-accept
 
           # The git diff now is the difference between tests
           git diff > baseline-changes.diff
