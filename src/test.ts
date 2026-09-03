@@ -5,6 +5,10 @@ import { fileURLToPath } from "url";
 
 const baselineFolder = new URL("../baselines/", import.meta.url);
 const outputFolder = new URL("../generated/", import.meta.url);
+const tscPath = new URL(
+  "../node_modules/@typescript/native/bin/tsc",
+  import.meta.url,
+);
 
 function normalizeLineEndings(text: string): string {
   return text.replace(/\r\n?/g, "\n");
@@ -84,7 +88,9 @@ function compareToBaselines(baselineFolder: URL, outputFolder: URL) {
 function compileGeneratedFiles(lib: string, ...files: string[]) {
   try {
     child_process.execSync(
-      `npx --no-install tsc --strict --lib ${lib} --types --noEmit --ignoreConfig ${files
+      `node ${fileURLToPath(
+        tscPath,
+      )} --strict --lib ${lib} --types --noEmit --ignoreConfig ${files
         .map((file) => fileURLToPath(new URL(file, outputFolder)))
         .join(" ")}`,
     );
