@@ -1,0 +1,3 @@
+dictionary PropertyDefinition { 
+    member inherits required=#true
+}

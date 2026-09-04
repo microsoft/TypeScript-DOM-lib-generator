@@ -1,0 +1,51 @@
+removals {
+    dictionary MediaTrackCapabilities {
+        // Blink only as of 2026-09
+        member backgroundSegmentationMask
+        member eyeGazeCorrection
+        member faceFraming
+        member gestureReactions
+        member voiceIsolation
+        member humanFaceDetectionMode // No support as of 2026-09
+        member powerEfficient // Webkit only as of 2026-09
+        member powerEfficientPixelFormat // No support as of 2026-09
+    }
+
+    dictionary MediaTrackConstraintSet {
+        // Blink only as of 2026-09
+        member backgroundSegmentationMask
+        member eyeGazeCorrection
+        member faceFraming
+        member voiceIsolation
+        member humanFaceDetectionMode // No support as of 2026-09
+        member gestureReactions // No support as of 2026-09
+    }
+    
+    dictionary MediaTrackSettings {
+        // Blink only as of 2026-09
+        member backgroundSegmentationMask
+        member eyeGazeCorrection
+        member faceFraming
+        member voiceIsolation
+        member humanFaceDetectionMode // No support as of 2026-09
+        member gestureReactions // No support as of 2026-09
+        member powerEfficient // Webkit only as of 2026-09
+        member powerEfficientPixelFormat // No support as of 2026-09
+    }
+
+    dictionary MediaTrackSupportedConstraints {
+        // Blink only as of 2026-09
+        member backgroundSegmentationMask
+        member eyeGazeCorrection
+        member faceFraming
+        member voiceIsolation
+        member humanFaceDetectionMode // No support as of 2026-09
+        member gestureReactions // No support as of 2026-09
+        member powerEfficient // Webkit only as of 2026-09
+        member powerEfficientPixelFormat // No support as of 2026-09
+    }
+
+    dictionary MediaStreamConstraints {
+        member semantics // No support as of 2026-09
+    }
+}
