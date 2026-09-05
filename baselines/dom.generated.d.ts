@@ -336,6 +336,11 @@ interface BlobPropertyBag {
     type?: string;
 }
 
+interface CSSContainerCondition {
+    name: string;
+    query: string;
+}
+
 interface CSSMatrixComponentOptions {
     is2D?: boolean;
 }
@@ -5597,6 +5602,8 @@ declare var CSSConditionRule: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSContainerRule)
  */
 interface CSSContainerRule extends CSSConditionRule {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSContainerRule/conditions) */
+    readonly conditions: ReadonlyArray<CSSContainerCondition>;
     /**
      * The read-only **`containerName`** property of the CSSContainerRule interface represents the container name of the associated CSS @container at-rule.
      *
