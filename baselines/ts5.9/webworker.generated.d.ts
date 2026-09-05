@@ -748,12 +748,6 @@ interface IDBDatabaseInfo {
     version?: number;
 }
 
-interface IDBGetAllOptions {
-    count?: number;
-    direction?: IDBCursorDirection;
-    query?: any;
-}
-
 interface IDBIndexParameters {
     multiEntry?: boolean;
     unique?: boolean;
@@ -1151,25 +1145,6 @@ interface ResponseInit {
     statusText?: string;
 }
 
-interface RouterCondition {
-    not?: RouterCondition;
-    or?: RouterCondition[];
-    requestDestination?: RequestDestination;
-    requestMethod?: string;
-    requestMode?: RequestMode;
-    runningStatus?: RunningStatus;
-    urlPattern?: URLPatternCompatible;
-}
-
-interface RouterRule {
-    condition: RouterCondition;
-    source: RouterSource;
-}
-
-interface RouterSourceDict {
-    cacheName?: string;
-}
-
 interface RsaHashedImportParams extends Algorithm {
     hash: HashAlgorithmIdentifier;
 }
@@ -1551,7 +1526,6 @@ interface WebTransportReceiveStreamStats {
 }
 
 interface WebTransportSendOptions {
-    sendGroup?: WebTransportSendGroup | null;
     sendOrder?: number;
 }
 
@@ -6920,12 +6894,6 @@ interface IDBIndex {
      */
     getAllKeys(queryOrOptions?: IDBValidKey | IDBKeyRange | null, count?: number): IDBRequest<IDBValidKey[]>;
     /**
-     * The **`getAllRecords()`** method of the IDBIndex interface retrieves all records (including index keys, primary keys, and values) from the index.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBIndex/getAllRecords)
-     */
-    getAllRecords(options?: IDBGetAllOptions): IDBRequest;
-    /**
      * The **`getKey()`** method of the IDBIndex interface returns an IDBRequest object, and, in a separate thread, finds either the primary key that corresponds to the given key in this index or the first corresponding primary key, if key is set to an IDBKeyRange.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBIndex/getKey)
@@ -7108,12 +7076,6 @@ interface IDBObjectStore {
      */
     getAllKeys(queryOrOptions?: IDBValidKey | IDBKeyRange | null, count?: number): IDBRequest<IDBValidKey[]>;
     /**
-     * The **`getAllRecords()`** method of the IDBObjectStore interface retrieves all records (including primary keys and values) from the object store.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBObjectStore/getAllRecords)
-     */
-    getAllRecords(options?: IDBGetAllOptions): IDBRequest;
-    /**
      * The **`getKey()`** method of the IDBObjectStore interface returns an IDBRequest object, and, in a separate thread, returns the key selected by the specified query. This is for retrieving specific records from an object store.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBObjectStore/getKey)
@@ -7174,18 +7136,6 @@ interface IDBOpenDBRequest extends IDBRequest<IDBDatabase> {
 declare var IDBOpenDBRequest: {
     prototype: IDBOpenDBRequest;
     new(): IDBOpenDBRequest;
-};
-
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBRecord) */
-interface IDBRecord {
-    readonly key: any;
-    readonly primaryKey: any;
-    readonly value: any;
-}
-
-declare var IDBRecord: {
-    prototype: IDBRecord;
-    new(): IDBRecord;
 };
 
 interface IDBRequestEventMap {
@@ -7577,25 +7527,6 @@ interface ImportMeta {
     url: string;
     resolve(specifier: string): string;
 }
-
-/**
- * The parameter passed into an install event handler function, the **`InstallEvent`** interface represents an install action that is dispatched on the ServiceWorkerGlobalScope of a ServiceWorker. As a child of ExtendableEvent, it ensures that functional events such as FetchEvent are not dispatched during installation.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/InstallEvent)
- */
-interface InstallEvent extends ExtendableEvent {
-    /**
-     * The **`addRoutes()`** method of the InstallEvent interface specifies one or more static routes, which define rules for fetching specified resources that will be used even before service worker startup. This allows you to, for example, bypass a service worker in cases where you always want to fetch a resource from the network or a browser Cache, and avoids the performance overhead of unnecessary service worker cycles.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/InstallEvent/addRoutes)
-     */
-    addRoutes(rules: RouterRule | RouterRule[]): Promise<void>;
-}
-
-declare var InstallEvent: {
-    prototype: InstallEvent;
-    new(type: string, eventInitDict?: ExtendableEventInit): InstallEvent;
-};
 
 /**
  * The **`KHR_parallel_shader_compile`** extension is part of the WebGL API and enables a non-blocking poll operation, so that compile/link status availability (COMPLETION_STATUS_KHR) can be queried without potentially incurring stalls. In other words you can check the status of your shaders compiling without blocking the runtime.
@@ -8725,8 +8656,6 @@ interface PerformanceResourceTiming extends PerformanceEntry {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceResourceTiming/transferSize)
      */
     readonly transferSize: number;
-    readonly workerCacheLookupStart: DOMHighResTimeStamp;
-    readonly workerRouterEvaluationStart: DOMHighResTimeStamp;
     /**
      * The **`workerStart`** read-only property of the PerformanceResourceTiming interface returns a DOMHighResTimeStamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running. If the resource is not intercepted by a Service Worker the property will always return 0.
      *
@@ -9432,12 +9361,6 @@ declare var ReadableStream: {
     new(underlyingSource: UnderlyingByteSource, strategy?: { highWaterMark?: number }): ReadableStream<Uint8Array<ArrayBuffer>>;
     new<R = any>(underlyingSource: UnderlyingDefaultSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
     new<R = any>(underlyingSource?: UnderlyingSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
-    /**
-     * The **`ReadableStream.from()`** static method returns a ReadableStream from a provided iterable or async iterable object.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream/from_static)
-     */
-    from(asyncIterable: never): ReadableStream;
 };
 
 /**
@@ -13955,7 +13878,6 @@ interface WebTransport {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/datagrams)
      */
     readonly datagrams: WebTransportDatagramDuplexStream;
-    readonly draining: Promise<void>;
     /**
      * The **`incomingBidirectionalStreams`** read-only property of the WebTransport interface represents one or more bidirectional streams opened by the server. Returns a ReadableStream of WebTransportBidirectionalStream objects. Each one can be used to reliably read data from the server and write data back to it.
      *
@@ -13968,7 +13890,6 @@ interface WebTransport {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/incomingUnidirectionalStreams)
      */
     readonly incomingUnidirectionalStreams: ReadableStream;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/protocol) */
     readonly protocol: string;
     /**
      * The **`ready`** read-only property of the WebTransport interface returns a promise that resolves when the transport is ready to use.
@@ -13994,8 +13915,6 @@ interface WebTransport {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/createBidirectionalStream)
      */
     createBidirectionalStream(options?: WebTransportSendStreamOptions): Promise<WebTransportBidirectionalStream>;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/createSendGroup) */
-    createSendGroup(): WebTransportSendGroup;
     /**
      * The **`createUnidirectionalStream()`** method of the WebTransport interface asynchronously opens a unidirectional stream.
      *
@@ -14090,30 +14009,11 @@ interface WebTransportDatagramDuplexStream {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/writable)
      */
     readonly writable: WritableStream;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/createWritable) */
-    createWritable(options?: WebTransportSendOptions): WebTransportDatagramsWritable;
 }
 
 declare var WebTransportDatagramDuplexStream: {
     prototype: WebTransportDatagramDuplexStream;
     new(): WebTransportDatagramDuplexStream;
-};
-
-/**
- * Available only in secure contexts.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramsWritable)
- */
-interface WebTransportDatagramsWritable extends WritableStream {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramsWritable/sendGroup) */
-    sendGroup: WebTransportSendGroup | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramsWritable/sendOrder) */
-    sendOrder: number;
-}
-
-declare var WebTransportDatagramsWritable: {
-    prototype: WebTransportDatagramsWritable;
-    new(): WebTransportDatagramsWritable;
 };
 
 /**
@@ -14163,29 +14063,12 @@ declare var WebTransportReceiveStream: {
 };
 
 /**
- * Available only in secure contexts.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportSendGroup)
- */
-interface WebTransportSendGroup {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportSendGroup/getStats) */
-    getStats(): Promise<WebTransportSendStreamStats>;
-}
-
-declare var WebTransportSendGroup: {
-    prototype: WebTransportSendGroup;
-    new(): WebTransportSendGroup;
-};
-
-/**
  * The **`WebTransportSendStream`** interface of the WebTransport API is a specialized WritableStream that is used to send outbound data in both unidirectional or bidirectional WebTransport streams.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportSendStream)
  */
 interface WebTransportSendStream extends WritableStream {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportSendStream/sendGroup) */
-    sendGroup: WebTransportSendGroup | null;
     /**
      * The **`sendOrder`** property of the WebTransportSendStream interface indicates the send priority of this stream relative to other streams for which the value has been set.
      *
@@ -15545,11 +15428,9 @@ type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableSt
 type ReadableStreamReader<T> = ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader;
 type ReportList = Report[];
 type RequestInfo = Request | string;
-type RouterSource = RouterSourceDict | RouterSourceEnum;
 type TexImageSource = ImageBitmap | ImageData | OffscreenCanvas | VideoFrame;
 type TimerHandler = string | Function;
-type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | MediaSourceHandle | ReadableStream | WritableStream | TransformStream | AudioData | VideoFrame | RTCDataChannel | WebTransportDatagramsWritable | ArrayBuffer;
-type URLPatternCompatible = string | URLPatternInit | URLPattern;
+type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | MediaSourceHandle | ReadableStream | WritableStream | TransformStream | AudioData | VideoFrame | RTCDataChannel | ArrayBuffer;
 type URLPatternInput = string | URLPatternInit;
 type Uint32List = Uint32Array<ArrayBufferLike> | GLuint[];
 type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
@@ -15661,8 +15542,6 @@ type RequestPriority = "auto" | "high" | "low";
 type RequestRedirect = "error" | "follow" | "manual";
 type ResizeQuality = "high" | "low" | "medium" | "pixelated";
 type ResponseType = "basic" | "cors" | "default" | "error" | "opaque" | "opaqueredirect";
-type RouterSourceEnum = "cache" | "fetch-event" | "network" | "race-network-and-fetch-handler";
-type RunningStatus = "not-running" | "running";
 type SecurityPolicyViolationEventDisposition = "enforce" | "report";
 type ServiceWorkerState = "activated" | "activating" | "installed" | "installing" | "parsed" | "redundant";
 type ServiceWorkerUpdateViaCache = "all" | "imports" | "none";
