@@ -5,3 +5,15 @@ interface URLSearchParams {
         }
     }
 }
+
+interface URL {
+    constructor signatureIndex=0 {
+        param base overrideType="string | URL | Location"
+    }
+    method canParse signatureIndex=0 {
+        param base overrideType="string | URL | Location"
+    }
+    method parse signatureIndex=0 {
+        param base overrideType="string | URL | Location"
+    }
+}
