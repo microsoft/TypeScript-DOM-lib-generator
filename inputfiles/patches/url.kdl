@@ -12,9 +12,11 @@ interface URL {
         param base overrideType="string | URL | Location"
     }
     method canParse signatureIndex=0 {
+        param url overrideType="string | URL | Location"
         param base overrideType="string | URL | Location"
     }
     method parse signatureIndex=0 {
+        param url overrideType="string | URL | Location"
         param base overrideType="string | URL | Location"
     }
 }

@@ -38149,7 +38149,7 @@ declare var URL: {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/canParse_static)
      */
-    canParse(url: string | URL, base?: string | URL | Location): boolean;
+    canParse(url: string | URL | Location, base?: string | URL | Location): boolean;
     /**
      * The **`createObjectURL()`** static method of the URL interface creates a string containing a blob URL pointing to the object given in the parameter.
      *
@@ -38161,7 +38161,7 @@ declare var URL: {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/parse_static)
      */
-    parse(url: string | URL, base?: string | URL | Location): URL | null;
+    parse(url: string | URL | Location, base?: string | URL | Location): URL | null;
     /**
      * The **`revokeObjectURL()`** static method of the URL interface releases an existing object URL which was previously created by calling URL.createObjectURL().
      *
