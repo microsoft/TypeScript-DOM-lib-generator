@@ -1348,19 +1348,19 @@ interface URL {
 
 declare var URL: {
     prototype: URL;
-    new(url: string | URL | Location, base?: string | URL | Location): URL;
+    new(url: string | URL, base?: string | URL): URL;
     /**
      * The **`URL.canParse()`** static method of the URL interface returns a boolean indicating whether or not an absolute URL, or a relative URL combined with a base URL, are parsable and valid.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/canParse_static)
      */
-    canParse(url: string | URL | Location, base?: string | URL | Location): boolean;
+    canParse(url: string | URL, base?: string | URL): boolean;
     /**
      * The **`URL.parse()`** static method of the URL interface returns a newly created URL object representing the URL defined by the parameters.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/parse_static)
      */
-    parse(url: string | URL | Location, base?: string | URL | Location): URL | null;
+    parse(url: string | URL, base?: string | URL): URL | null;
 };
 
 /**

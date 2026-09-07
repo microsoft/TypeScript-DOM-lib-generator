@@ -1,8 +1,12 @@
 interface XMLHttpRequest {
     method open signatureIndex=0 {
-        param url overrideType="string | URL | Location"
+        param url {
+            additionalTypes URL Location
+        }
     }
     method open signatureIndex=1 {
-        param url overrideType="string | URL | Location"
+        param url {
+            additionalTypes URL Location
+        }
     }
 }

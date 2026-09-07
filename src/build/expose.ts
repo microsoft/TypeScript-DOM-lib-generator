@@ -177,6 +177,9 @@ function deepFilterUnexposedTypes(
   unexposedTypes: Set<string>,
 ) {
   return deepClone(webidl, (o) => {
+    if (o.additionalTypes) {
+      return filterUnexposedType(o, unexposedTypes);
+    }
     if (Array.isArray(o.type)) {
       return {
         ...o,
@@ -237,11 +240,33 @@ function filterUnexposedType<T extends Browser.Typed>(
       unexposedTypes,
     );
     if (filteredUnion.length) {
-      return { ...type, type: flattenType(filteredUnion) };
+      return {
+        ...type,
+        type: flattenType(filteredUnion),
+        additionalTypes: filterAdditionalTypes(
+          type.additionalTypes,
+          unexposedTypes,
+        ),
+      };
     }
-  } else if (type.overrideType || !unexposedTypes.has(type.type)) {
-    return type;
+  } else if (!type.overrideType && unexposedTypes.has(type.type)) {
+    return;
+  } else {
+    const additionalTypes = filterAdditionalTypes(
+      type.additionalTypes,
+      unexposedTypes,
+    );
+    return additionalTypes ? { ...type, additionalTypes } : type;
   }
+}
+
+function filterAdditionalTypes(
+  additionalTypes: string[] | undefined,
+  unexposedTypes: Set<string>,
+) {
+  return additionalTypes?.filter(
+    (additionalType) => !unexposedTypes.has(additionalType),
+  );
 }
 
 function filterUnexposedTypeFromUnion(
