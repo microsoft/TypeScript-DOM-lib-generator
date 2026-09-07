@@ -12500,8 +12500,8 @@ interface XMLHttpRequest extends XMLHttpRequestEventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/open)
      */
-    open(method: string, url: string | URL): void;
-    open(method: string, url: string | URL, async: boolean, username?: string | null, password?: string | null): void;
+    open(method: string, url: string | URL | Location): void;
+    open(method: string, url: string | URL | Location, async: boolean, username?: string | null, password?: string | null): void;
     /**
      * The XMLHttpRequest method **`overrideMimeType()`** specifies a MIME type other than the one provided by the server to be used instead when interpreting the data being transferred in a request.
      *
