@@ -254,6 +254,38 @@
                         "overrideType": "T"
                     }
                 }
+            },
+            "ResizeObserverCallback": {
+              "signature": {
+                "0": {
+                  "param": [
+                    {
+                      "name": "entries",
+                      "overrideType": "[ResizeObserverEntry, ...ResizeObserverEntry[]]"
+                    },
+                    {
+                      "name": "observer",
+                      "overrideType": "ResizeObserver"
+                    }
+                  ]
+                }
+              }
+            },
+            "MutationCallback": {
+              "signature": {
+                "0": {
+                  "param": [
+                    {
+                      "name": "mutations",
+                      "overrideType": "[MutationRecord, ...MutationRecord[]]"
+                    },
+                    {
+                      "name": "observer",
+                      "overrideType": "MutationObserver"
+                    }
+                  ]
+                }
+              }
             }
         }
     },
@@ -2861,6 +2893,21 @@
             "TrustedTypePolicyFactory": {
                 "exposed": ""
             },
+            "ResizeObserverEntry": {
+                "properties": {
+                    "property": {
+                        "contentBoxSize": {
+                            "overrideType": "readonly [ResizeObserverSize, ...ResizeObserverSize[]]"
+                        },
+                        "borderBoxSize": {
+                            "overrideType": "readonly [ResizeObserverSize, ...ResizeObserverSize[]]"
+                        },
+                        "devicePixelContentBoxSize": {
+                            "overrideType": "readonly [ResizeObserverSize, ...ResizeObserverSize[]]"
+                        }
+                    }
+                }
+            }
         }
     },
     "dictionaries": {
