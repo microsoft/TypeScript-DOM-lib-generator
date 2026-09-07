@@ -9514,7 +9514,7 @@ interface URL {
 
 declare var URL: {
     prototype: URL;
-    new(url: string | URL, base?: string | URL | Location): URL;
+    new(url: string | URL | Location, base?: string | URL | Location): URL;
     /**
      * The **`URL.canParse()`** static method of the URL interface returns a boolean indicating whether or not an absolute URL, or a relative URL combined with a base URL, are parsable and valid.
      *
