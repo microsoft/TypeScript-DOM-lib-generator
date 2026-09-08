@@ -2,25 +2,70 @@ name: Codeowners merging
 on:
   pull_request_target: { types: [opened] }
   issue_comment: { types: [created] }
-  pull_request_review: { types: [submitted] }
-
-permissions:
-  contents: write
-  issues: write
-  pull-requests: write
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  announce:
+    if: >-
+      github.repository == 'microsoft/TypeScript-DOM-lib-generator' &&
+      github.event_name == 'pull_request_target'
+    runs-on: ubuntu-slim
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
 
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
       - name: Run Codeowners merge check
         uses: OSS-Docs-Tools/code-owner-self-merge@35e0f55671d1cebd7c0a53e199cb3a3a03678c2b # 1.6.8
-        if: github.repository == 'microsoft/TypeScript-DOM-lib-generator'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          merge_method: 'squash'
-          if_no_maintainers_add_label: 'maintainers'
-          if_no_maintainers_assign: '@sandersn @jakebailey'
+          merge_method: "squash"
+          if_no_maintainers_add_label: "maintainers"
+          if_no_maintainers_assign: "@sandersn @jakebailey"
+
+  merge:
+    if: >-
+      github.repository == 'microsoft/TypeScript-DOM-lib-generator' &&
+      github.event_name == 'issue_comment' &&
+      github.event.issue.pull_request &&
+      contains(github.event.comment.body, 'lgtm')
+    runs-on: ubuntu-slim
+    environment:
+      name: azure
+      deployment: false
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: azure/login@532459ea530d8321f2fb9bb10d1e0bcf23869a43 # v3.0.0
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+      - name: Create GitHub App token
+        id: app-token
+        uses: microsoft/create-github-app-token-via-key-vault@5ba0d436e9c3cac52feff4d1f2f66f9698ce4a2d # v1
+        with:
+          client-id: ${{ vars.TYPESCRIPT_AUTOMATION_GITHUB_APP_CLIENT_ID }}
+          key-id: ${{ vars.TYPESCRIPT_AUTOMATION_GITHUB_APP_KEY_ID }}
+          owner: microsoft
+          repositories: TypeScript-DOM-lib-generator
+          permission-contents: write
+          permission-issues: write
+          permission-pull-requests: write
+          permission-workflows: write
+      - name: Run Codeowners merge check
+        uses: OSS-Docs-Tools/code-owner-self-merge@35e0f55671d1cebd7c0a53e199cb3a3a03678c2b # 1.6.8
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+        with:
+          merge_method: "squash"
+          if_no_maintainers_add_label: "maintainers"
+          if_no_maintainers_assign: "@sandersn @jakebailey"
