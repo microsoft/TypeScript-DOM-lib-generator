@@ -426,19 +426,6 @@
                 "overrideType": "Function | Global | Memory | Table"
             },
             {
-                "name": "Exports",
-                "legacyNamespace": "WebAssembly",
-                "type": "record",
-                "subtype": [
-                    {
-                        "type": "DOMString"
-                    },
-                    {
-                        "type": "ExportValue"
-                    }
-                ]
-            },
-            {
                 "name": "ModuleImports",
                 "legacyNamespace": "WebAssembly",
                 "type": "record",
