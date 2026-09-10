@@ -7,7 +7,7 @@ removals {
 interface Request {
   constructor signatureIndex=0 {
     param input {
-      additionalTypes input Location
+      additionalTypes Location
     }
   }
 }
