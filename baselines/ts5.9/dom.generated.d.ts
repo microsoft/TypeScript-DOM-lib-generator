@@ -31224,7 +31224,7 @@ interface Request extends Body {
 
 declare var Request: {
     prototype: Request;
-    new(input: RequestInfo | URL, init?: RequestInit): Request;
+    new(input: RequestInfo | Location | URL, init?: RequestInit): Request;
 };
 
 /**
