@@ -5,3 +5,30 @@ interface URLSearchParams {
         }
     }
 }
+
+interface URL {
+    constructor signatureIndex=0 {
+        param url {
+            additionalTypes URL Location WorkerLocation
+        }
+        param base {
+            additionalTypes URL Location WorkerLocation
+        }
+    }
+    method canParse signatureIndex=0 {
+        param url {
+            additionalTypes URL Location WorkerLocation
+        }
+        param base {
+            additionalTypes URL Location WorkerLocation
+        }
+    }
+    method parse signatureIndex=0 {
+        param url {
+            additionalTypes URL Location WorkerLocation
+        }
+        param base {
+            additionalTypes URL Location WorkerLocation
+        }
+    }
+}

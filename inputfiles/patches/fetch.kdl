@@ -3,3 +3,11 @@ removals {
     text // No implementation as of 2026-04
   }
 }
+
+interface Request {
+  constructor signatureIndex=0 {
+    param input {
+      additionalTypes Location WorkerLocation
+    }
+  }
+}
