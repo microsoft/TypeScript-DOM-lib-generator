@@ -209,7 +209,7 @@ interface SVGElement {
 interface-mixin WindowOrWorkerGlobalScope {
   method fetch signatureIndex=0 {
     param input {
-      additionalTypes Location
+      additionalTypes Location WorkerLocation
     }
   }
 }

@@ -1,12 +1,12 @@
 interface XMLHttpRequest {
     method open signatureIndex=0 {
         param url {
-            additionalTypes URL Location
+            additionalTypes URL Location WorkerLocation
         }
     }
     method open signatureIndex=1 {
         param url {
-            additionalTypes URL Location
+            additionalTypes URL Location WorkerLocation
         }
     }
 }
