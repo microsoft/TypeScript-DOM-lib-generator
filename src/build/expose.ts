@@ -177,9 +177,6 @@ function deepFilterUnexposedTypes(
   unexposedTypes: Set<string>,
 ) {
   return deepClone(webidl, (o) => {
-    if (o.additionalTypes) {
-      return filterUnexposedType(o, unexposedTypes);
-    }
     if (Array.isArray(o.type)) {
       return {
         ...o,
@@ -207,7 +204,17 @@ function deepFilterUnexposedTypes(
       const types = Array.isArray(p.type) ? p.type : [p];
       const filtered = filterUnexposedTypeFromUnion(types, unexposedTypes);
       if (filtered.length >= 1) {
-        param.push({ ...p, type: flattenType(filtered) });
+        const additionalTypes = filterAdditionalTypes(
+          p.additionalTypes,
+          unexposedTypes,
+        );
+        param.push({
+          ...p,
+          type: flattenType(filtered),
+          additionalTypes: additionalTypes?.length
+            ? additionalTypes
+            : undefined,
+        });
       } else if (!p.optional) {
         throw new Error(`A non-optional parameter has unknown type: ${p.type}`);
       } else {
