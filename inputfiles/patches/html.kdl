@@ -77,6 +77,7 @@ interface-mixin WindowEventHandlers {
 interface HTMLImageElement {
   property decoding overrideType=#""async" | "sync" | "auto""#
   property loading overrideType=#""eager" | "lazy""#
+  property crossOrigin overrideType=#""anonymous" | "use-credentials""#
 }
 
 interface HTMLInputElement {
