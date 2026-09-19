@@ -9,7 +9,7 @@ interface URLSearchParams {
 interface URL {
     constructor signatureIndex=0 {
         param url {
-            additionalTypes URL Location WorkerLocation
+            additionalTypes Location WorkerLocation
         }
         param base {
             additionalTypes URL Location WorkerLocation
@@ -17,7 +17,7 @@ interface URL {
     }
     method canParse signatureIndex=0 {
         param url {
-            additionalTypes URL Location WorkerLocation
+            additionalTypes Location WorkerLocation
         }
         param base {
             additionalTypes URL Location WorkerLocation
@@ -25,7 +25,7 @@ interface URL {
     }
     method parse signatureIndex=0 {
         param url {
-            additionalTypes URL Location WorkerLocation
+            additionalTypes Location WorkerLocation
         }
         param base {
             additionalTypes URL Location WorkerLocation

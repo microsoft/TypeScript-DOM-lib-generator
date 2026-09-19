@@ -9045,13 +9045,13 @@ interface URL {
 
 declare var URL: {
     prototype: URL;
-    new(url: string | URL | WorkerLocation, base?: string | URL | WorkerLocation): URL;
+    new(url: string | WorkerLocation | URL, base?: string | URL | WorkerLocation): URL;
     /**
      * The **`URL.canParse()`** static method of the URL interface returns a boolean indicating whether or not an absolute URL, or a relative URL combined with a base URL, are parsable and valid.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/canParse_static)
      */
-    canParse(url: string | URL | WorkerLocation, base?: string | URL | WorkerLocation): boolean;
+    canParse(url: string | WorkerLocation | URL, base?: string | URL | WorkerLocation): boolean;
     /**
      * The **`createObjectURL()`** static method of the URL interface creates a string containing a blob URL pointing to the object given in the parameter.
      *
@@ -9063,7 +9063,7 @@ declare var URL: {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/parse_static)
      */
-    parse(url: string | URL | WorkerLocation, base?: string | URL | WorkerLocation): URL | null;
+    parse(url: string | WorkerLocation | URL, base?: string | URL | WorkerLocation): URL | null;
     /**
      * The **`revokeObjectURL()`** static method of the URL interface releases an existing object URL which was previously created by calling URL.createObjectURL().
      *
@@ -12500,8 +12500,8 @@ interface XMLHttpRequest extends XMLHttpRequestEventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/open)
      */
-    open(method: string, url: string | URL | WorkerLocation): void;
-    open(method: string, url: string | URL | WorkerLocation, async: boolean, username?: string | null, password?: string | null): void;
+    open(method: string, url: string | WorkerLocation | URL): void;
+    open(method: string, url: string | WorkerLocation | URL, async: boolean, username?: string | null, password?: string | null): void;
     /**
      * The XMLHttpRequest method **`overrideMimeType()`** specifies a MIME type other than the one provided by the server to be used instead when interpreting the data being transferred in a request.
      *

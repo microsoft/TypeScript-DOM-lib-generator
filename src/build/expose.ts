@@ -211,9 +211,7 @@ function deepFilterUnexposedTypes(
         param.push({
           ...p,
           type: flattenType(filtered),
-          additionalTypes: additionalTypes?.length
-            ? additionalTypes
-            : undefined,
+          additionalTypes,
         });
       } else if (!p.optional) {
         throw new Error(`A non-optional parameter has unknown type: ${p.type}`);
@@ -263,7 +261,7 @@ function filterUnexposedType<T extends Browser.Typed>(
       type.additionalTypes,
       unexposedTypes,
     );
-    return additionalTypes ? { ...type, additionalTypes } : type;
+    return type.additionalTypes ? { ...type, additionalTypes } : type;
   }
 }
 
@@ -271,9 +269,10 @@ function filterAdditionalTypes(
   additionalTypes: string[] | undefined,
   unexposedTypes: Set<string>,
 ) {
-  return additionalTypes?.filter(
+  const filtered = additionalTypes?.filter(
     (additionalType) => !unexposedTypes.has(additionalType),
   );
+  return filtered?.length ? filtered : undefined;
 }
 
 function filterUnexposedTypeFromUnion(

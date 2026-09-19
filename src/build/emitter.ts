@@ -429,11 +429,7 @@ export function emitWebIdl(
           typeof obj.type === "string"
             ? [{ ...obj, additionalTypes: undefined }]
             : obj.type;
-        types.push(
-          ...(obj.additionalTypes ?? [])
-            .filter((t) => isKnownType(t))
-            .map((t) => ({ type: t })),
-        );
+        types.push(...(obj.additionalTypes ?? []).map((t) => ({ type: t })));
 
         // propagate `any`
         const converted = types.map((t) =>
@@ -522,18 +518,6 @@ export function emitWebIdl(
     }
 
     throw new Error("Unknown DOM type: " + objDomType);
-  }
-
-  function isKnownType(type: string) {
-    return (
-      baseTypeConversionMap.has(type) ||
-      allInterfacesMap[type] ||
-      allLegacyWindowAliases.includes(type) ||
-      allCallbackFunctionsMap[type] ||
-      allDictionariesMap[type] ||
-      allEnumsMap[type] ||
-      allTypedefsMap[type]
-    );
   }
 
   function makeNullable(originalType: string) {
@@ -811,9 +795,7 @@ export function emitWebIdl(
       p = resolvePromise(p);
       if (acceptsUrl(p)) {
         p = { ...p, additionalTypes: [...(p.additionalTypes ?? [])] };
-        if (!p.additionalTypes!.includes("URL")) {
-          p.additionalTypes!.push("URL");
-        }
+        p.additionalTypes!.push("URL");
       }
       const pType = convertDomTypeToTsType(p);
 
