@@ -466,6 +466,9 @@ export function emitWebIdl(
     ) {
       subtypeString = obj.allowShared ? "ArrayBufferLike" : "ArrayBuffer";
     }
+    if (type === "never") {
+      return type;
+    }
 
     return type === "Array" && subtypeString
       ? makeArrayType(subtypeString, obj)
