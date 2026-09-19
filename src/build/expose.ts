@@ -204,7 +204,15 @@ function deepFilterUnexposedTypes(
       const types = Array.isArray(p.type) ? p.type : [p];
       const filtered = filterUnexposedTypeFromUnion(types, unexposedTypes);
       if (filtered.length >= 1) {
-        param.push({ ...p, type: flattenType(filtered) });
+        const additionalTypes = filterAdditionalTypes(
+          p.additionalTypes,
+          unexposedTypes,
+        );
+        param.push({
+          ...p,
+          type: flattenType(filtered),
+          additionalTypes,
+        });
       } else if (!p.optional) {
         throw new Error(`A non-optional parameter has unknown type: ${p.type}`);
       } else {
@@ -237,11 +245,34 @@ function filterUnexposedType<T extends Browser.Typed>(
       unexposedTypes,
     );
     if (filteredUnion.length) {
-      return { ...type, type: flattenType(filteredUnion) };
+      return {
+        ...type,
+        type: flattenType(filteredUnion),
+        additionalTypes: filterAdditionalTypes(
+          type.additionalTypes,
+          unexposedTypes,
+        ),
+      };
     }
-  } else if (type.overrideType || !unexposedTypes.has(type.type)) {
-    return type;
+  } else if (!type.overrideType && unexposedTypes.has(type.type)) {
+    return;
+  } else {
+    const additionalTypes = filterAdditionalTypes(
+      type.additionalTypes,
+      unexposedTypes,
+    );
+    return type.additionalTypes ? { ...type, additionalTypes } : type;
   }
+}
+
+function filterAdditionalTypes(
+  additionalTypes: string[] | undefined,
+  unexposedTypes: Set<string>,
+) {
+  const filtered = additionalTypes?.filter(
+    (additionalType) => !unexposedTypes.has(additionalType),
+  );
+  return filtered?.length ? filtered : undefined;
 }
 
 function filterUnexposedTypeFromUnion(
