@@ -10,9 +10,20 @@ if (!res.ok) {
 }
 
 const data = await res.json();
+const entries = Object.values(data);
+
+const latestEntry = entries.reduce((latest, entry) =>
+  !latest || entry.modified > latest.modified ? entry : latest,
+);
+const commit = latestEntry?.source?.last_commit_url.match(
+  /\/commit\/([0-9a-f]{40})$/,
+)?.[1];
+if (!commit) {
+  throw new Error("Could not determine the mdn/content commit");
+}
 
 // Filter and map the data
-const filtered = Object.values(data)
+const filtered = entries
   .filter((entry) => {
     const path = entry.mdn_url;
     return (
@@ -34,6 +45,10 @@ const filtered = Object.values(data)
 await fs.writeFile(
   new URL("../inputfiles/mdn.json", import.meta.url),
   JSON.stringify(filtered, null, 2),
+);
+await fs.writeFile(
+  new URL("../inputfiles/mdn.commit", import.meta.url),
+  `${commit}\n`,
 );
 
 console.log("mdn.json updated!");
