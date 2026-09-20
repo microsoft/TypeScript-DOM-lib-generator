@@ -410,9 +410,9 @@ export function emitWebIdl(
       // Support async_sequence (see https://github.com/whatwg/streams/pull/1372)
       if (obj.type === "async_sequence") {
         if (compilerBehavior.treatAsyncSequence) {
-          return "AsyncIterable"
+          return "AsyncIterable";
         }
-        return "Iterable"
+        return "Iterable";
       }
       if (obj.type === "sequence" && !forReturn && iterator !== "") {
         return "Iterable";
