@@ -1269,6 +1269,12 @@ interface IDBDatabaseInfo {
     version?: number;
 }
 
+interface IDBGetAllOptions {
+    count?: number;
+    direction?: IDBCursorDirection;
+    query?: any;
+}
+
 interface IDBIndexParameters {
     multiEntry?: boolean;
     unique?: boolean;
@@ -4059,6 +4065,8 @@ declare var AnimationEffect: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationEvent)
  */
 interface AnimationEvent extends Event {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationEvent/animation) */
+    readonly animation: CSSAnimation | null;
     /**
      * The **`AnimationEvent.animationName`** read-only property is a string containing the value of the animation-name CSS property associated with the transition.
      *
@@ -21113,6 +21121,23 @@ declare var HTMLSelectElement: {
 };
 
 /**
+ * The **`HTMLSelectedContentElement`** interface represents a <selectedcontent> element in the DOM.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectedContentElement)
+ */
+interface HTMLSelectedContentElement extends HTMLElement {
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLSelectedContentElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLSelectedContentElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var HTMLSelectedContentElement: {
+    prototype: HTMLSelectedContentElement;
+    new(): HTMLSelectedContentElement;
+};
+
+/**
  * The **`HTMLSlotElement`** interface of the Shadow DOM API enables access to the name and assigned nodes of an HTML <slot> element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSlotElement)
@@ -21817,6 +21842,8 @@ interface HTMLTemplateElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTemplateElement/shadowRootSerializable)
      */
     shadowRootSerializable: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTemplateElement/shadowRootSlotAssignment) */
+    shadowRootSlotAssignment: string;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTemplateElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTemplateElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -22789,6 +22816,12 @@ interface IDBIndex {
      */
     getAllKeys(queryOrOptions?: IDBValidKey | IDBKeyRange | null, count?: number): IDBRequest<IDBValidKey[]>;
     /**
+     * The **`getAllRecords()`** method of the IDBIndex interface retrieves all records (including index keys, primary keys, and values) from the index.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBIndex/getAllRecords)
+     */
+    getAllRecords(options?: IDBGetAllOptions): IDBRequest;
+    /**
      * The **`getKey()`** method of the IDBIndex interface returns an IDBRequest object, and, in a separate thread, finds either the primary key that corresponds to the given key in this index or the first corresponding primary key, if key is set to an IDBKeyRange.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBIndex/getKey)
@@ -22971,6 +23004,12 @@ interface IDBObjectStore {
      */
     getAllKeys(queryOrOptions?: IDBValidKey | IDBKeyRange | null, count?: number): IDBRequest<IDBValidKey[]>;
     /**
+     * The **`getAllRecords()`** method of the IDBObjectStore interface retrieves all records (including primary keys and values) from the object store.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBObjectStore/getAllRecords)
+     */
+    getAllRecords(options?: IDBGetAllOptions): IDBRequest;
+    /**
      * The **`getKey()`** method of the IDBObjectStore interface returns an IDBRequest object, and, in a separate thread, returns the key selected by the specified query. This is for retrieving specific records from an object store.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBObjectStore/getKey)
@@ -23031,6 +23070,17 @@ interface IDBOpenDBRequest extends IDBRequest<IDBDatabase> {
 declare var IDBOpenDBRequest: {
     prototype: IDBOpenDBRequest;
     new(): IDBOpenDBRequest;
+};
+
+interface IDBRecord {
+    readonly key: any;
+    readonly primaryKey: any;
+    readonly value: any;
+}
+
+declare var IDBRecord: {
+    prototype: IDBRecord;
+    new(): IDBRecord;
 };
 
 interface IDBRequestEventMap {
@@ -28621,6 +28671,8 @@ interface PerformanceResourceTiming extends PerformanceEntry {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceResourceTiming/transferSize)
      */
     readonly transferSize: number;
+    readonly workerCacheLookupStart: DOMHighResTimeStamp;
+    readonly workerRouterEvaluationStart: DOMHighResTimeStamp;
     /**
      * The **`workerStart`** read-only property of the PerformanceResourceTiming interface returns a DOMHighResTimeStamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running. If the resource is not intercepted by a Service Worker the property will always return 0.
      *
@@ -30922,6 +30974,12 @@ declare var ReadableStream: {
     new(underlyingSource: UnderlyingByteSource, strategy?: { highWaterMark?: number }): ReadableStream<Uint8Array<ArrayBuffer>>;
     new<R = any>(underlyingSource: UnderlyingDefaultSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
     new<R = any>(underlyingSource?: UnderlyingSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
+    /**
+     * The **`ReadableStream.from()`** static method returns a ReadableStream from a provided iterable or async iterable object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream/from_static)
+     */
+    from(asyncIterable: AsyncIterable<any>): ReadableStream;
 };
 
 /**
@@ -37911,6 +37969,8 @@ declare var TransformStreamDefaultController: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransitionEvent)
  */
 interface TransitionEvent extends Event {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransitionEvent/animation) */
+    readonly animation: CSSTransition | null;
     /**
      * The **`TransitionEvent.elapsedTime`** read-only property is a float giving the amount of time the animation has been running, in seconds, when this event fired. This value is not affected by the transition-delay property.
      *
@@ -44069,6 +44129,7 @@ interface HTMLElementTagNameMap {
     "search": HTMLElement;
     "section": HTMLElement;
     "select": HTMLSelectElement;
+    "selectedcontent": HTMLSelectedContentElement;
     "slot": HTMLSlotElement;
     "small": HTMLElement;
     "source": HTMLSourceElement;
