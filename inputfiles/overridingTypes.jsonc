@@ -3018,6 +3018,9 @@
                     "member": {
                         "window": {
                             "overrideType": "null"
+                        },
+                        "method": {
+                            "overrideType": "HTTPMethod"
                         }
                     }
                 }
