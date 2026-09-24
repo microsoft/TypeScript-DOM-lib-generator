@@ -286,7 +286,7 @@
                             "param": [
                                 {
                                     "name": "init",
-                                    "overrideType": "string | number[] | Float32Array | Float64Array"
+                                    "additionalTypes": ["Float32Array", "Float64Array"]
                                 }
                             ]
                         }
@@ -300,7 +300,7 @@
                             "param": [
                                 {
                                     "name": "init",
-                                    "overrideType": "string | number[] | Float32Array | Float64Array"
+                                    "additionalTypes": ["Float32Array", "Float64Array"]
                                 }
                             ]
                         }
