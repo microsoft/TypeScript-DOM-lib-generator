@@ -275,6 +275,38 @@
                     }
                 }
             },
+            "DOMMatrix": {
+                // Browsers still accept typed arrays in the constructor, and MDN documents
+                // `Float32Array` / `Float64Array` variants. The current spec IDL only lists
+                // `sequence<unrestricted double>`, so the support must be added via override.
+                // https://github.com/microsoft/TypeScript/issues/60862
+                "constructor": {
+                    "signature": {
+                        "0": {
+                            "param": [
+                                {
+                                    "name": "init",
+                                    "overrideType": "string | number[] | Float32Array | Float64Array"
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "DOMMatrixReadOnly": {
+                "constructor": {
+                    "signature": {
+                        "0": {
+                            "param": [
+                                {
+                                    "name": "init",
+                                    "overrideType": "string | number[] | Float32Array | Float64Array"
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
             "HTMLElement": {
                 "properties": {
                     "property": {

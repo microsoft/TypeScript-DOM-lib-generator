@@ -12013,7 +12013,7 @@ interface DOMMatrix extends DOMMatrixReadOnly {
 
 declare var DOMMatrix: {
     prototype: DOMMatrix;
-    new(init?: string | number[]): DOMMatrix;
+    new(init?: string | number[] | Float32Array | Float64Array): DOMMatrix;
     /**
      * The **`fromFloat32Array()`** static method of the DOMMatrix interface creates a new DOMMatrix object given an array of single-precision (32-bit) floating-point values.
      *
@@ -12205,7 +12205,7 @@ interface DOMMatrixReadOnly {
 
 declare var DOMMatrixReadOnly: {
     prototype: DOMMatrixReadOnly;
-    new(init?: string | number[]): DOMMatrixReadOnly;
+    new(init?: string | number[] | Float32Array | Float64Array): DOMMatrixReadOnly;
     /**
      * The **`fromFloat32Array()`** static method of the DOMMatrixReadOnly interface creates a new DOMMatrixReadOnly object given an array of single-precision (32-bit) floating-point values.
      *
