@@ -17243,7 +17243,7 @@ interface GlobalEventHandlersEventMap {
     "durationchange": Event;
     "emptied": Event;
     "ended": Event;
-    "error": ErrorEvent;
+    "error": Event;
     "focus": FocusEvent;
     "focusin": FocusEvent;
     "focusout": FocusEvent;
@@ -17384,7 +17384,7 @@ interface GlobalEventHandlers {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/ended_event) */
     onended: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/error_event) */
-    onerror: OnErrorEventHandler;
+    onerror: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/focus_event) */
     onfocus: ((this: GlobalEventHandlers, ev: FocusEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/formdata_event) */
@@ -41983,6 +41983,7 @@ interface WindowEventMap extends GlobalEventHandlersEventMap, WindowEventHandler
     "devicemotion": DeviceMotionEvent;
     "deviceorientation": DeviceOrientationEvent;
     "deviceorientationabsolute": DeviceOrientationEvent;
+    "error": ErrorEvent;
     "gamepadconnected": GamepadEvent;
     "gamepaddisconnected": GamepadEvent;
     "orientationchange": Event;
@@ -42142,6 +42143,8 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/deviceorientationabsolute_event)
      */
     ondeviceorientationabsolute: ((this: Window, ev: DeviceOrientationEvent) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/error_event) */
+    onerror: OnErrorEventHandler;
     /**
      * @deprecated
      *
@@ -44389,6 +44392,8 @@ declare var ondeviceorientation: ((this: Window, ev: DeviceOrientationEvent) => 
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/deviceorientationabsolute_event)
  */
 declare var ondeviceorientationabsolute: ((this: Window, ev: DeviceOrientationEvent) => any) | null;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/error_event) */
+declare var onerror: OnErrorEventHandler;
 /**
  * @deprecated
  *
@@ -44769,8 +44774,6 @@ declare var ondurationchange: ((this: Window, ev: Event) => any) | null;
 declare var onemptied: ((this: Window, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/ended_event) */
 declare var onended: ((this: Window, ev: Event) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/error_event) */
-declare var onerror: OnErrorEventHandler;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/focus_event) */
 declare var onfocus: ((this: Window, ev: FocusEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/formdata_event) */
