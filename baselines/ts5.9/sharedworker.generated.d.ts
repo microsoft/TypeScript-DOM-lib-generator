@@ -901,8 +901,8 @@ interface RequestInit {
     integrity?: string;
     /** A boolean to set request's keepalive. */
     keepalive?: boolean;
-    /** A string to set request's method. */
-    method?: string;
+    /** A string to set request's method. Defaults to "GET". */
+    method?: HTTPMethod;
     /** A string to indicate whether the request will use CORS, or will be restricted to same-origin URLs. Sets request's mode. */
     mode?: RequestMode;
     priority?: RequestPriority;
@@ -13285,6 +13285,7 @@ type GPUSize64 = number;
 type GPUSize64Out = number;
 type GPUStencilValue = number;
 type GPUTextureUsageFlags = number;
+type HTTPMethod = (UppercaseHTTPMethod | Lowercase<UppercaseHTTPMethod>) & {};
 type HashAlgorithmIdentifier = AlgorithmIdentifier;
 type HeadersInit = [string, string][] | Record<string, string> | Headers;
 type IDBValidKey = number | string | Date | BufferSource | IDBValidKey[];
@@ -13306,6 +13307,7 @@ type TimerHandler = string | Function;
 type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | ReadableStream | WritableStream | TransformStream | ArrayBuffer;
 type URLPatternInput = string | URLPatternInit;
 type Uint32List = Uint32Array<ArrayBufferLike> | GLuint[];
+type UppercaseHTTPMethod = "GET" | "HEAD" | "POST" | "PUT" | "DELETE" | "CONNECT" | "OPTIONS" | "TRACE" | "PATCH" | "QUERY";
 type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
 type BinaryType = "arraybuffer" | "blob";
 type CSSMathOperator = "clamp" | "invert" | "max" | "min" | "negate" | "product" | "sum";
