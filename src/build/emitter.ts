@@ -409,14 +409,10 @@ export function emitWebIdl(
     function convertBaseType() {
       // Support async_sequence (see https://github.com/whatwg/streams/pull/1372)
       if (obj.type === "async_sequence") {
-        // AsyncIterable<T> requires separate asynciterable.d.ts until TS 6.0.
-        // To make it correct, we need to defer any functions using async_sequence to the asynciterable variant.
-        // For now, skip generation and warn.
-        console.warn(
-          "Skipping generation for a function or property with async_sequence type: " +
-            JSON.stringify(obj),
-        );
-        return "never"; // Use 'never' to signal omission in type generation
+        if (compilerBehavior.treatAsyncSequence) {
+          return "AsyncIterable";
+        }
+        return "Iterable";
       }
       if (obj.type === "sequence" && !forReturn && iterator !== "") {
         return "Iterable";
