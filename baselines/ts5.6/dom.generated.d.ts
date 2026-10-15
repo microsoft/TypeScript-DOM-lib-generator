@@ -28092,12 +28092,18 @@ interface Performance extends EventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/getEntriesByName)
      */
+    getEntriesByName(name: string, type: "mark"): PerformanceMark[];
+    getEntriesByName(name: string, type: "measure"): PerformanceMeasure[];
+    getEntriesByName(name: string, type: "resource"): PerformanceResourceTiming[];
     getEntriesByName(name: string, type?: string): PerformanceEntryList;
     /**
      * The **`getEntriesByType()`** method returns an array of PerformanceEntry objects currently present in the performance timeline for a given type.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/getEntriesByType)
      */
+    getEntriesByType(type: "mark"): PerformanceMark[];
+    getEntriesByType(type: "measure"): PerformanceMeasure[];
+    getEntriesByType(type: "resource"): PerformanceResourceTiming[];
     getEntriesByType(type: string): PerformanceEntryList;
     /**
      * The **`mark()`** method creates a named PerformanceMark object representing a high resolution timestamp marker in the browser's performance timeline.
@@ -28447,12 +28453,18 @@ interface PerformanceObserverEntryList {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceObserverEntryList/getEntriesByName)
      */
+    getEntriesByName(name: string, type: "mark"): PerformanceMark[];
+    getEntriesByName(name: string, type: "measure"): PerformanceMeasure[];
+    getEntriesByName(name: string, type: "resource"): PerformanceResourceTiming[];
     getEntriesByName(name: string, type?: string): PerformanceEntryList;
     /**
      * The **`getEntriesByType()`** method of the PerformanceObserverEntryList returns a list of explicitly observed performance entry objects for a given performance entry type. The list's members are determined by the set of entry types specified in the call to the observe() method. The list is available in the observer's callback function (as the first parameter in the callback).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceObserverEntryList/getEntriesByType)
      */
+    getEntriesByType(type: "mark"): PerformanceMark[];
+    getEntriesByType(type: "measure"): PerformanceMeasure[];
+    getEntriesByType(type: "resource"): PerformanceResourceTiming[];
     getEntriesByType(type: string): PerformanceEntryList;
 }
 
