@@ -456,9 +456,12 @@ export function emitWebIdl(
     }
 
     const type = convertBaseType();
-    let subtypeString = arrayify(obj.subtype)
-      .map((t) => convertDomTypeToTsTypeBase(t, forReturn))
-      .join(", ");
+    let subtypeString =
+      obj.type === "async_sequence" && compilerBehavior.treatAsyncSequence
+        ? ""
+        : arrayify(obj.subtype)
+            .map((t) => convertDomTypeToTsTypeBase(t, forReturn))
+            .join(", ");
 
     if (
       !subtypeString &&
