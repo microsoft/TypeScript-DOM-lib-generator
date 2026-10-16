@@ -7822,7 +7822,7 @@ interface ReadableStream<R = any> {
     tee(): [ReadableStream<R>, ReadableStream<R>];
 }
 
-declare var ReadableStream: {
+interface ReadableStreamConstructor {
     prototype: ReadableStream;
     new(underlyingSource: UnderlyingByteSource, strategy?: { highWaterMark?: number }): ReadableStream<Uint8Array<ArrayBuffer>>;
     new<R = any>(underlyingSource: UnderlyingDefaultSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
@@ -7832,8 +7832,9 @@ declare var ReadableStream: {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream/from_static)
      */
-    from(asyncIterable: AsyncIterable<any>): ReadableStream;
-};
+    from(asyncIterable: AsyncIterable | Iterable<any>): ReadableStream;
+}
+declare var ReadableStream: ReadableStreamConstructor;
 
 /**
  * The **`ReadableStreamBYOBReader`** interface of the Streams API defines a reader for a ReadableStream that supports zero-copy reading from an underlying byte source. It is used for efficient copying from underlying sources where the data is delivered as an "anonymous" sequence of bytes, such as files.
@@ -13848,4 +13849,13 @@ interface ReadableStreamAsyncIterator<T> extends AsyncIteratorObject<T, BuiltinI
 interface ReadableStream<R = any> {
     [Symbol.asyncIterator](options?: ReadableStreamIteratorOptions): ReadableStreamAsyncIterator<R>;
     values(options?: ReadableStreamIteratorOptions): ReadableStreamAsyncIterator<R>;
+}
+
+interface ReadableStreamConstructor {
+    /**
+     * The **`ReadableStream.from()`** static method returns a ReadableStream from a provided iterable or async iterable object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream/from_static)
+     */
+    from(asyncIterable: AsyncIterable<any>): ReadableStream;
 }
