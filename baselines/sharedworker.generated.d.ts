@@ -7832,7 +7832,7 @@ interface ReadableStreamConstructor {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream/from_static)
      */
-    from(asyncIterable: AsyncIterable | Iterable<any>): ReadableStream;
+    from(asyncIterable: AsyncIterable<any> | Iterable<any>): ReadableStream;
 }
 declare var ReadableStream: ReadableStreamConstructor;
 
