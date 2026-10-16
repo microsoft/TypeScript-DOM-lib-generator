@@ -410,7 +410,12 @@ export function emitWebIdl(
       // Support async_sequence (see https://github.com/whatwg/streams/pull/1372)
       if (obj.type === "async_sequence") {
         if (compilerBehavior.treatAsyncSequence) {
-          return "AsyncIterable";
+          if (iterator === "async") {
+            return "AsyncIterable";
+          }
+          if (iterator === "" && compilerBehavior.includeIterable) {
+            return "AsyncIterable | Iterable";
+          }
         }
         return "Iterable";
       }
@@ -1272,11 +1277,32 @@ export function emitWebIdl(
     }
   }
 
+  function hasAsyncSequenceArgument(signature: Browser.Signature) {
+    function includesAsyncSequence(type: string | Browser.Typed[]): boolean {
+      if (Array.isArray(type)) {
+        return type.some((t) => includesAsyncSequence(t.type));
+      }
+      return type === "async_sequence";
+    }
+    return signature.param?.some(
+      (p) => !p.overrideType && includesAsyncSequence(p.type),
+    );
+  }
+
   function emitConstructor(i: Browser.Interface, prefix = "") {
     if (i.deprecated) {
       printer.printLine(`/** @deprecated */`);
     }
-    printer.printLine(`${prefix}var ${i.name}: {`);
+    const hasAsyncSequenceStaticMethod =
+      compilerBehavior.treatAsyncSequence &&
+      mapToArray(i.methods?.method).some(
+        (m) => m.static && m.signature?.some(hasAsyncSequenceArgument),
+      );
+    printer.printLine(
+      hasAsyncSequenceStaticMethod
+        ? `interface ${i.name}Constructor {`
+        : `${prefix}var ${i.name}: {`,
+    );
     printer.increaseIndent();
 
     // TODO: To be more accurate, this should be `readonly prototype`
@@ -1293,7 +1319,10 @@ export function emitWebIdl(
     emitMembers(/*prefix*/ "", "StaticOnly", i);
 
     printer.decreaseIndent();
-    printer.printLine("};");
+    printer.printLine(hasAsyncSequenceStaticMethod ? "}" : "};");
+    if (hasAsyncSequenceStaticMethod) {
+      printer.printLine(`${prefix}var ${i.name}: ${i.name}Constructor;`);
+    }
     printer.printLine("");
 
     if (global === "Window" && i.legacyWindowAlias) {
@@ -1955,7 +1984,20 @@ export function emitWebIdl(
     }
 
     const subtypes = getAsyncIteratorSubtypes();
-    if (!subtypes) {
+    const methodsWithAsyncSequence: Browser.Method[] =
+      compilerBehavior.treatAsyncSequence
+        ? mapToArray(i.methods ? i.methods.method : {})
+            .filter((m) => m.signature && !m.overrideSignatures)
+            .map((m) => ({
+              ...m,
+              signature: m.signature!.filter(hasAsyncSequenceArgument),
+            }))
+            .filter((m) => m.signature!.length)
+            .sort(compareName)
+        : [];
+    const instanceMethods = methodsWithAsyncSequence.filter((m) => !m.static);
+    const staticMethods = methodsWithAsyncSequence.filter((m) => m.static);
+    if (!subtypes && !methodsWithAsyncSequence.length) {
       return;
     }
 
@@ -1965,16 +2007,30 @@ export function emitWebIdl(
       name,
     );
 
-    emitSelfIterator(i);
+    if (subtypes) {
+      emitSelfIterator(i);
+    }
 
-    printer.printLine("");
-    printer.printLine(`interface ${nameWithTypeParameters} {`);
-    printer.increaseIndent();
+    if (subtypes || instanceMethods.length) {
+      printer.printLine("");
+      printer.printLine(`interface ${nameWithTypeParameters} {`);
+      printer.increaseIndent();
+      instanceMethods.forEach((m) => emitMethod("", m, new Set()));
+      if (subtypes) {
+        emitIterableMethods(i, name, subtypes);
+      }
+      printer.decreaseIndent();
+      printer.printLine("}");
+    }
 
-    emitIterableMethods(i, name, subtypes);
-
-    printer.decreaseIndent();
-    printer.printLine("}");
+    if (staticMethods.length) {
+      printer.printLine("");
+      printer.printLine(`interface ${name}Constructor {`);
+      printer.increaseIndent();
+      staticMethods.forEach((m) => emitMethod("", m, new Set()));
+      printer.decreaseIndent();
+      printer.printLine("}");
+    }
   }
 
   function emitES6DomIterators() {
