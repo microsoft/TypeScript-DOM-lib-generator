@@ -411,10 +411,10 @@ export function emitWebIdl(
       if (obj.type === "async_sequence") {
         if (compilerBehavior.treatAsyncSequence) {
           if (iterator === "async") {
-            return "AsyncIterable";
+            return "AsyncIterable<any>";
           }
           if (iterator === "" && compilerBehavior.includeIterable) {
-            return "AsyncIterable | Iterable";
+            return "AsyncIterable<any> | Iterable<any>";
           }
         }
         return "Iterable";
