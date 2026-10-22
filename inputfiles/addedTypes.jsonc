@@ -502,6 +502,14 @@
                 // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
                 "name": "AutoFill",
                 "overrideType": "AutoFillBase | `${OptionalPrefixToken<AutoFillSection>}${OptionalPrefixToken<AutoFillAddressKind>}${AutoFillField}${OptionalPostfixToken<AutoFillCredentialField>}`"
+            },
+            {
+                "name": "UppercaseHTTPMethod",
+                "overrideType": "\"GET\" | \"HEAD\" | \"POST\" | \"PUT\" | \"DELETE\" | \"CONNECT\" | \"OPTIONS\" | \"TRACE\" | \"PATCH\" | \"QUERY\""
+            },
+            {
+                "name": "HTTPMethod",
+                "overrideType": "(UppercaseHTTPMethod | Lowercase<UppercaseHTTPMethod>) & {}"
             }
         ]
     }
