@@ -192,7 +192,7 @@ interface Document {
 
 interface SharedWorker {
   constructor signatureIndex=0 {
-    param options {
+    param options overrideName=optionsOrName {
       type index=1 WorkerOptions
     }
   }
@@ -202,6 +202,9 @@ interface SharedWorker {
 interface-mixin HTMLOrSVGElement extends=HTMLOrSVGOrMathMLElement
 interface HTMLElement {
     includes HTMLOrSVGElement
+    method togglePopover signatureIndex=0 {
+        param options overrideName=optionsOrForce
+    }
 }
 interface SVGElement {
     includes HTMLOrSVGElement

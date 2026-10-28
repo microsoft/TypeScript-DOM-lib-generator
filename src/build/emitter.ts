@@ -647,7 +647,8 @@ export function emitWebIdl(
         "string",
       )
     ) {
-      const paramName = m.signature[0].param![0].name;
+      const param = m.signature[0].param![0];
+      const paramName = adjustParamName(param.overrideName ?? param.name);
       for (const mapName of tagNameMapNames) {
         printer.printLine(
           `getElementsByTagName<K extends keyof ${mapName}>(${paramName}: K): HTMLCollectionOf<${mapName}[K]>;`,
@@ -666,7 +667,8 @@ export function emitWebIdl(
   /// Emit overloads for the matches method
   function emitMatchesOverloads(m: Browser.Method) {
     if (matchParamMethodSignature(m, "matches", "boolean", "string")) {
-      const paramName = m.signature[0].param![0].name;
+      const param = m.signature[0].param![0];
+      const paramName = adjustParamName(param.overrideName ?? param.name);
       for (const mapName of tagNameMapNames) {
         printer.printLine(
           `matches<K extends keyof ${mapName}>(${paramName}: K): this is ${mapName}[K];`,
@@ -681,7 +683,8 @@ export function emitWebIdl(
     if (
       matchParamMethodSignature(m, "querySelector", "Element | null", "string")
     ) {
-      const paramName = m.signature[0].param![0].name;
+      const param = m.signature[0].param![0];
+      const paramName = adjustParamName(param.overrideName ?? param.name);
       for (const mapName of tagNameMapNames) {
         printer.printLine(
           `querySelector<K extends keyof ${mapName}>(${paramName}: K): ${mapName}[K] | null;`,
@@ -702,7 +705,8 @@ export function emitWebIdl(
     if (
       matchParamMethodSignature(m, "querySelectorAll", "NodeList", "string")
     ) {
-      const paramName = m.signature[0].param![0].name;
+      const param = m.signature[0].param![0];
+      const paramName = adjustParamName(param.overrideName ?? param.name);
       for (const mapName of tagNameMapNames) {
         printer.printLine(
           `querySelectorAll<K extends keyof ${mapName}>(${paramName}: K): NodeListOf<${mapName}[K]>;`,
@@ -803,7 +807,7 @@ export function emitWebIdl(
       const variadicParams = p.variadic && pType.indexOf("|") !== -1;
       return (
         (p.variadic ? "..." : "") +
-        adjustParamName(p.name) +
+        adjustParamName(p.overrideName ?? p.name) +
         (isOptional ? "?: " : ": ") +
         (variadicParams ? "(" : "") +
         pType +
@@ -1208,17 +1212,30 @@ export function emitWebIdl(
         addOrRemove === "add"
           ? "AddEventListenerOptions"
           : "EventListenerOptions";
-      if (tryEmitTypedEventHandlerForInterface(addOrRemove, optionsType)) {
+      const eventTargetParam =
+        allInterfacesMap["EventTarget"]?.methods?.method[
+          `${addOrRemove}EventListener`
+        ]?.signature[0]?.param?.[2];
+      const optionsParamName = adjustParamName(
+        eventTargetParam?.overrideName ?? eventTargetParam?.name ?? "options",
+      );
+      if (
+        tryEmitTypedEventHandlerForInterface(
+          addOrRemove,
+          optionsParamName,
+          optionsType,
+        )
+      ) {
         // only emit the string event handler if we just emitted a typed handler
 
         if (i.name === "EventSource") {
           printer.printLine(
-            `${fPrefix}${addOrRemove}EventListener(type: string, listener: (this: EventSource, event: MessageEvent) => any, options?: boolean | ${optionsType}): void;`,
+            `${fPrefix}${addOrRemove}EventListener(type: string, listener: (this: EventSource, event: MessageEvent) => any, ${optionsParamName}?: boolean | ${optionsType}): void;`,
           );
         }
 
         printer.printLine(
-          `${fPrefix}${addOrRemove}EventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | ${optionsType}): void;`,
+          `${fPrefix}${addOrRemove}EventListener(type: string, listener: EventListenerOrEventListenerObject, ${optionsParamName}?: boolean | ${optionsType}): void;`,
         );
       }
     }
@@ -1229,6 +1246,7 @@ export function emitWebIdl(
       prefix: string,
       addOrRemove: string,
       iParent: Browser.Interface,
+      optionsParamName: string,
       optionsType: string,
     ) {
       printer.printLine(
@@ -1238,12 +1256,13 @@ export function emitWebIdl(
           i,
         )}, ev: ${
           iParent.name
-        }EventMap[K]) => any, options?: boolean | ${optionsType}): void;`,
+        }EventMap[K]) => any, ${optionsParamName}?: boolean | ${optionsType}): void;`,
       );
     }
 
     function tryEmitTypedEventHandlerForInterface(
       addOrRemove: string,
+      optionsParamName: string,
       optionsType: string,
     ) {
       const hasEventListener = iNameToEhList[i.name]?.length;
@@ -1258,7 +1277,13 @@ export function emitWebIdl(
         return false;
       }
 
-      emitTypedEventHandler(fPrefix, addOrRemove, target, optionsType);
+      emitTypedEventHandler(
+        fPrefix,
+        addOrRemove,
+        target,
+        optionsParamName,
+        optionsType,
+      );
       return true;
     }
   }

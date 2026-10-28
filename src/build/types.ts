@@ -9,6 +9,7 @@ export interface Typed {
 
 export interface Param extends Typed {
   name: string;
+  overrideName?: string;
   optional?: boolean;
   variadic?: boolean;
 }
