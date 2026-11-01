@@ -25731,7 +25731,7 @@ interface MutationObserver {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MutationObserver/observe)
      */
-    observe(target: Node, options?: MutationObserverInit): void;
+    observe(target: Node, options: MutationObserverInit): void;
     /**
      * The MutationObserver method **`takeRecords()`** returns a list of all matching DOM changes that have been detected but not yet processed by the observer's callback function, leaving the mutation queue empty.
      *
