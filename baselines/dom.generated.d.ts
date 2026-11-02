@@ -84,6 +84,10 @@ interface AnimationPlaybackEventInit extends EventInit {
     timelineTime?: CSSNumberish | null;
 }
 
+interface AriaNotificationOptions {
+    priority?: AriaNotifyPriority;
+}
+
 interface AssignedNodesOptions {
     flatten?: boolean;
 }
@@ -3657,6 +3661,11 @@ interface ARIAMixin {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/role)
      */
     role: string | null;
+}
+
+interface ARIANotifyMixin {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/ariaNotify) */
+    ariaNotify(announcement: string, options?: AriaNotificationOptions): void;
 }
 
 /**
@@ -13011,7 +13020,7 @@ interface DocumentEventMap extends GlobalEventHandlersEventMap {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document)
  */
-interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEventHandlers, NonElementParentNode, ParentNode, XPathEvaluatorBase {
+interface Document extends Node, ARIANotifyMixin, DocumentOrShadowRoot, FontFaceSource, GlobalEventHandlers, NonElementParentNode, ParentNode, XPathEvaluatorBase {
     /**
      * The **`URL`** read-only property of the Document interface returns the document location as a string.
      *
@@ -14045,7 +14054,7 @@ interface ElementEventMap {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element)
  */
-interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTypeChildNode, ParentNode, Slottable {
+interface Element extends Node, ARIAMixin, ARIANotifyMixin, Animatable, ChildNode, NonDocumentTypeChildNode, ParentNode, Slottable {
     /**
      * The **`Element.attributes`** property returns a live collection of all attribute nodes registered to the specified node. It is a NamedNodeMap, not an Array, so it has no Array methods and the Attr nodes' indexes may differ among browsers. To be more specific, attributes is a key/value pair of strings that represents any information regarding that attribute.
      *
@@ -45138,6 +45147,7 @@ type AlphaOption = "discard" | "keep";
 type AnimationPlayState = "finished" | "idle" | "paused" | "running";
 type AnimationReplaceState = "active" | "persisted" | "removed";
 type AppendMode = "segments" | "sequence";
+type AriaNotifyPriority = "high" | "normal";
 type AttestationConveyancePreference = "direct" | "enterprise" | "indirect" | "none";
 type AudioContextLatencyCategory = "balanced" | "interactive" | "playback";
 type AudioContextState = "closed" | "interrupted" | "running" | "suspended";
