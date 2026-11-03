@@ -26,6 +26,15 @@ interface Document {
   }
 }
 
+// observe() always throws a TypeError when none of childList, attributes or characterData ends up true,
+// so calling it without options can never work. Web IDL can't express that dependency, hence the default {}.
+// See https://dom.spec.whatwg.org/#dom-mutationobserver-observe
+interface MutationObserver {
+  method observe signatureIndex=0 {
+    param options optional=#false
+  }
+}
+
 interface MutationRecord {
   property type type=MutationRecordType
 }
