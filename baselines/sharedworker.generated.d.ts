@@ -3106,7 +3106,7 @@ interface DOMPointReadOnly {
      */
     readonly x: number;
     /**
-     * The DOMPointReadOnl**`y`** interface's y property holds the vertical coordinate, y, for a read-only point in space.
+     * The DOMPointReadOnly interface's **`y`** property holds the vertical coordinate, y, for a read-only point in space.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMPointReadOnly/y)
      */

@@ -12307,7 +12307,7 @@ interface DOMPointReadOnly {
      */
     readonly x: number;
     /**
-     * The DOMPointReadOnl**`y`** interface's y property holds the vertical coordinate, y, for a read-only point in space.
+     * The DOMPointReadOnly interface's **`y`** property holds the vertical coordinate, y, for a read-only point in space.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMPointReadOnly/y)
      */
@@ -19174,7 +19174,7 @@ interface HTMLImageElement extends HTMLElement {
      */
     readonly x: number;
     /**
-     * The read-onl**`y`** y property of the HTMLImageElement interface indicates the y-coordinate of the <img> element's top border edge relative to the root element's origin.
+     * The read-only **`y`** property of the HTMLImageElement interface indicates the y-coordinate of the <img> element's top border edge relative to the root element's origin.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/y)
      */
@@ -33872,7 +33872,7 @@ interface SVGMaskElement extends SVGElement {
      */
     readonly x: SVGAnimatedLength;
     /**
-     * The read-onl**`y`** y property of the SVGMaskElement interface returns an SVGAnimatedLength object containing the value of the y attribute of the <mask>. It represents the y-axis coordinate of the top-left corner of the masking area.
+     * The read-only **`y`** property of the SVGMaskElement interface returns an SVGAnimatedLength object containing the value of the y attribute of the <mask>. It represents the y-axis coordinate of the top-left corner of the masking area.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGMaskElement/y)
      */
@@ -37287,7 +37287,7 @@ interface TextEvent extends UIEvent {
      */
     readonly data: string;
     /**
-     * The **`initTextEvent`**Event() method of the TextEvent interface initializes the value of a TextEvent after it has been created.
+     * The initTextEventEvent() method of the TextEvent interface initializes the value of a TextEvent after it has been created.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEvent/initTextEvent)
@@ -42272,7 +42272,7 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
      */
     readonly toolbar: BarProp;
     /**
-     * Returns a reference to the **`top`**most window in the window hierarchy.
+     * Returns a reference to the topmost window in the window hierarchy.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/top)
      */
@@ -44519,7 +44519,7 @@ declare var statusbar: BarProp;
  */
 declare var toolbar: BarProp;
 /**
- * Returns a reference to the **`top`**most window in the window hierarchy.
+ * Returns a reference to the topmost window in the window hierarchy.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/top)
  */

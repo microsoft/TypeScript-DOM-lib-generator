@@ -92,8 +92,9 @@ function generateComment(summary: string, name: string): string | undefined {
   return summary
     .replace(/\n/g, " ") // remove newlines
     .replace(
-      // Match optional preceding identifier + dot OR just the name itself
-      new RegExp(`(?:\\b\\w+\\.)?${name}(\\(\\))?`),
+      // Match optional preceding identifier + dot OR just the name itself,
+      // as a whole word so that e.g. `y` does not match the end of `read-only`
+      new RegExp(`(?:\\b\\w+\\.)?\\b${name}\\b(\\(\\))?`),
       (match) => `**\`${match}\`**`,
     )
     .trim();
