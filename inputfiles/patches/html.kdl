@@ -123,6 +123,7 @@ interface HTMLTextAreaElement {
 }
 
 typedef SelectionDirection overrideType=#""forward" | "backward" | "none""#
+typedef TimerHandler overrideType="string | ((this: void, ...arguments: any[]) => void)"
 
 dictionary StructuredSerializeOptions {
   member transfer {

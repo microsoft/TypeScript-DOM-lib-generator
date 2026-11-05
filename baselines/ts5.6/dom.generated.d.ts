@@ -45122,7 +45122,7 @@ type SanitizerElementWithAttributes = string | SanitizerElementNamespaceWithAttr
 type SanitizerPI = string | SanitizerProcessingInstruction;
 type SelectionDirection = "forward" | "backward" | "none";
 type TexImageSource = ImageBitmap | ImageData | HTMLImageElement | HTMLCanvasElement | HTMLVideoElement | OffscreenCanvas | VideoFrame;
-type TimerHandler = string | Function;
+type TimerHandler = string | ((this: void, ...arguments: any[]) => void);
 type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | MediaSourceHandle | ReadableStream | WritableStream | TransformStream | AudioData | VideoFrame | RTCDataChannel | ArrayBuffer;
 type URLPatternInput = string | URLPatternInit;
 type Uint32List = Uint32Array | GLuint[];

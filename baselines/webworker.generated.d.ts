@@ -15432,7 +15432,7 @@ type ReadableStreamReader<T> = ReadableStreamDefaultReader<T> | ReadableStreamBY
 type ReportList = Report[];
 type RequestInfo = Request | string;
 type TexImageSource = ImageBitmap | ImageData | OffscreenCanvas | VideoFrame;
-type TimerHandler = string | Function;
+type TimerHandler = string | ((this: void, ...arguments: any[]) => void);
 type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | MediaSourceHandle | ReadableStream | WritableStream | TransformStream | AudioData | VideoFrame | RTCDataChannel | ArrayBuffer;
 type URLPatternInput = string | URLPatternInit;
 type Uint32List = Uint32Array<ArrayBufferLike> | GLuint[];
