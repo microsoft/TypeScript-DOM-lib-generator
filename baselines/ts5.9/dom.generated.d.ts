@@ -13392,6 +13392,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/createElementNS)
      */
+    createElementNS<K extends keyof HTMLElementTagNameMap>(namespaceURI: "http://www.w3.org/1999/xhtml", qualifiedName: K): HTMLElementTagNameMap[K];
     createElementNS(namespaceURI: "http://www.w3.org/1999/xhtml", qualifiedName: string): HTMLElement;
     createElementNS<K extends keyof SVGElementTagNameMap>(namespaceURI: "http://www.w3.org/2000/svg", qualifiedName: K): SVGElementTagNameMap[K];
     createElementNS(namespaceURI: "http://www.w3.org/2000/svg", qualifiedName: string): SVGElement;
