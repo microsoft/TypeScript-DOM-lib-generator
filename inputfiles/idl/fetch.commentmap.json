@@ -1,5 +1,5 @@
 {
-    "requestinit-method": "A string to set request's method.",
+    "requestinit-method": "A string to set request's method. Defaults to \"GET\".",
     "requestinit-headers": "A Headers object, an object literal, or an array of two-item arrays to set request's headers.",
     "requestinit-body": "A BodyInit object or null to set request's body.",
     "requestinit-referrer": "A string whose value is a same-origin URL, \"about:client\", or the empty string, to set request's referrer.",
