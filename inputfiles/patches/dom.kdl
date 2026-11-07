@@ -14,15 +14,20 @@ interface EventListenerObject noInterfaceObject=#true {
 interface EventTarget {
   method addEventListener signatureIndex=0 {
     param callback type=EventListenerOrEventListenerObject
+    param options overrideName=optionsOrUseCapture
   }
   method removeEventListener signatureIndex=0 {
     param callback type=EventListenerOrEventListenerObject
+    param options overrideName=optionsOrUseCapture
   }
 }
 
 interface Document {
   property documentElement {
     type HTMLElement nullable=#false
+  }
+  method importNode signatureIndex=0 {
+    param options overrideName=optionsOrDeep
   }
 }
 

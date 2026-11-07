@@ -23,7 +23,9 @@ interface Element {
   method scrollBy returns=void signatureIndex=1
   method scrollTo returns=void signatureIndex=0
   method scrollTo returns=void signatureIndex=1
-  method scrollIntoView returns=void signatureIndex=0
+  method scrollIntoView returns=void signatureIndex=0 {
+    param arg overrideName=argOrAlignToTop
+  }
 }
 
 interface Window {
