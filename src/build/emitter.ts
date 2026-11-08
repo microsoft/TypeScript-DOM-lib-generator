@@ -132,8 +132,6 @@ export interface CompilerBehavior {
   allowUnrelatedSetterType?: boolean;
   useGenericTypedArrays?: boolean;
   includeIterable?: boolean;
-  /** If true, treat async_sequence as AsyncIterable<T>, otherwise as any (legacy < TS 4.4 emit). */
-  treatAsyncSequence?: boolean;
 }
 
 export function emitWebIdl(
@@ -406,25 +404,19 @@ export function emitWebIdl(
     obj: Browser.Typed,
     forReturn: boolean,
   ): string {
-    function convertBaseType() {
-      // Support async_sequence (see https://github.com/whatwg/streams/pull/1372)
+    function convertBaseType(): string[] {
       if (obj.type === "async_sequence") {
-        if (compilerBehavior.treatAsyncSequence) {
-          if (iterator === "async") {
-            return "AsyncIterable<any>";
-          }
-          if (iterator === "" && compilerBehavior.includeIterable) {
-            return "AsyncIterable<any> | Iterable<any>";
-          }
+        if (compilerBehavior.includeIterable) {
+          return ["AsyncIterable", "Iterable"];
         }
-        return "Iterable";
+        return ["Iterable"];
       }
       if (obj.type === "sequence" && !forReturn && iterator !== "") {
-        return "Iterable";
+        return ["Iterable"];
       }
 
       if (!obj.additionalTypes && typeof obj.type === "string") {
-        return convertDomTypeToTsTypeSimple(obj.type);
+        return [convertDomTypeToTsTypeSimple(obj.type)];
       } else {
         const types =
           typeof obj.type === "string"
@@ -437,7 +429,7 @@ export function emitWebIdl(
           convertDomTypeToTsTypeWorker(t, forReturn),
         );
         if (converted.includes("any")) {
-          return "any";
+          return ["any"];
         }
 
         // convert `ArrayBuffer | SharedArrayBuffer` into `ArrayBufferLike` to be pre-ES2017 friendly.
@@ -451,29 +443,30 @@ export function emitWebIdl(
             converted.splice(maxIndex, 1); // drop whichever comes last
           }
         }
-        return converted.join(" | ");
+        return converted;
       }
     }
 
-    const type = convertBaseType();
-    let subtypeString =
-      obj.type === "async_sequence" && compilerBehavior.treatAsyncSequence
-        ? ""
-        : arrayify(obj.subtype)
-            .map((t) => convertDomTypeToTsTypeBase(t, forReturn))
-            .join(", ");
+    function addSubtype(type: string) {
+      if (
+        !subtypeString &&
+        compilerBehavior.useGenericTypedArrays &&
+        arrayBufferViewTypes.has(type)
+      ) {
+        subtypeString = obj.allowShared ? "ArrayBufferLike" : "ArrayBuffer";
+      }
 
-    if (
-      !subtypeString &&
-      compilerBehavior.useGenericTypedArrays &&
-      arrayBufferViewTypes.has(type)
-    ) {
-      subtypeString = obj.allowShared ? "ArrayBufferLike" : "ArrayBuffer";
+      return type === "Array" && subtypeString
+        ? makeArrayType(subtypeString, obj)
+        : `${type}${subtypeString ? `<${subtypeString}>` : ""}`;
     }
 
-    return type === "Array" && subtypeString
-      ? makeArrayType(subtypeString, obj)
-      : `${type}${subtypeString ? `<${subtypeString}>` : ""}`;
+    const types = convertBaseType();
+    let subtypeString = arrayify(obj.subtype)
+      .map((t) => convertDomTypeToTsTypeBase(t, forReturn))
+      .join(", ");
+
+    return types.map(addSubtype).join(" | ")
   }
 
   function makeArrayType(elementType: string, obj: Browser.Typed): string {
@@ -1296,16 +1289,7 @@ export function emitWebIdl(
     if (i.deprecated) {
       printer.printLine(`/** @deprecated */`);
     }
-    const hasAsyncSequenceStaticMethod =
-      compilerBehavior.treatAsyncSequence &&
-      mapToArray(i.methods?.method).some(
-        (m) => m.static && m.signature?.some(hasAsyncSequenceArgument),
-      );
-    printer.printLine(
-      hasAsyncSequenceStaticMethod
-        ? `interface ${i.name}Constructor {`
-        : `${prefix}var ${i.name}: {`,
-    );
+    printer.printLine(`${prefix}var ${i.name}: {`);
     printer.increaseIndent();
 
     // TODO: To be more accurate, this should be `readonly prototype`
@@ -1322,10 +1306,7 @@ export function emitWebIdl(
     emitMembers(/*prefix*/ "", "StaticOnly", i);
 
     printer.decreaseIndent();
-    printer.printLine(hasAsyncSequenceStaticMethod ? "}" : "};");
-    if (hasAsyncSequenceStaticMethod) {
-      printer.printLine(`${prefix}var ${i.name}: ${i.name}Constructor;`);
-    }
+    printer.printLine("};");
     printer.printLine("");
 
     if (global === "Window" && i.legacyWindowAlias) {
@@ -1825,6 +1806,20 @@ export function emitWebIdl(
     }
   }
 
+  function filterMethodsBySignature(
+    i: Browser.Interface,
+    predicate: (signature: Browser.Signature) => boolean | undefined,
+  ): Browser.Method[] {
+    return mapToArray(i.methods ? i.methods.method : {})
+      .filter((m) => m.signature && !m.overrideSignatures && !m.static)
+      .map((m) => ({
+        ...m,
+        signature: m.signature.filter(predicate),
+      }))
+      .filter((m) => m.signature.length)
+      .sort(compareName);
+  }
+
   function emitIterator(i: Browser.Interface) {
     // https://webidl.spec.whatwg.org/#dfn-indexed-property-getter
     const isIndexedPropertyGetter = (m: Browser.AnonymousMethod) =>
@@ -1932,18 +1927,13 @@ export function emitWebIdl(
     );
 
     const subtypes = getIteratorSubtypes();
-    const methodsWithSequence: Browser.Method[] = mapToArray(
-      i.methods ? i.methods.method : {},
-    )
-      .filter((m) => m.signature && !m.overrideSignatures && !m.static)
-      .map((m) => ({
-        ...m,
-        signature: replaceTypedefsInSignatures(
-          m.signature.filter(hasSequenceArgument),
-        ),
-      }))
-      .filter((m) => m.signature.length)
-      .sort(compareName);
+    const methodsWithSequence: Browser.Method[] = filterMethodsBySignature(
+      i,
+      hasSequenceArgument,
+    ).map((m) => ({
+      ...m,
+      signature: replaceTypedefsInSignatures(m.signature),
+    }));
 
     if (!subtypes && !methodsWithSequence.length) {
       return;
@@ -1987,19 +1977,12 @@ export function emitWebIdl(
     }
 
     const subtypes = getAsyncIteratorSubtypes();
+    // Emit AsyncIterable separately for asynciterable.d.ts.
+    // But not when includeIterable=true as signatures should include AsyncIterable already.
     const methodsWithAsyncSequence: Browser.Method[] =
-      compilerBehavior.treatAsyncSequence
-        ? mapToArray(i.methods ? i.methods.method : {})
-            .filter((m) => m.signature && !m.overrideSignatures)
-            .map((m) => ({
-              ...m,
-              signature: m.signature!.filter(hasAsyncSequenceArgument),
-            }))
-            .filter((m) => m.signature!.length)
-            .sort(compareName)
+      !compilerBehavior.includeIterable
+        ? filterMethodsBySignature(i, hasAsyncSequenceArgument)
         : [];
-    const instanceMethods = methodsWithAsyncSequence.filter((m) => !m.static);
-    const staticMethods = methodsWithAsyncSequence.filter((m) => m.static);
     if (!subtypes && !methodsWithAsyncSequence.length) {
       return;
     }
@@ -2014,26 +1997,18 @@ export function emitWebIdl(
       emitSelfIterator(i);
     }
 
-    if (subtypes || instanceMethods.length) {
-      printer.printLine("");
-      printer.printLine(`interface ${nameWithTypeParameters} {`);
-      printer.increaseIndent();
-      instanceMethods.forEach((m) => emitMethod("", m, new Set()));
-      if (subtypes) {
-        emitIterableMethods(i, name, subtypes);
-      }
-      printer.decreaseIndent();
-      printer.printLine("}");
+    printer.printLine("");
+    printer.printLine(`interface ${nameWithTypeParameters} {`);
+    printer.increaseIndent();
+
+    methodsWithAsyncSequence.forEach((m) => emitMethod("", m, new Set()));
+
+    if (subtypes) {
+      emitIterableMethods(i, name, subtypes);
     }
 
-    if (staticMethods.length) {
-      printer.printLine("");
-      printer.printLine(`interface ${name}Constructor {`);
-      printer.increaseIndent();
-      staticMethods.forEach((m) => emitMethod("", m, new Set()));
-      printer.decreaseIndent();
-      printer.printLine("}");
-    }
+    printer.decreaseIndent();
+    printer.printLine("}");
   }
 
   function emitES6DomIterators() {
