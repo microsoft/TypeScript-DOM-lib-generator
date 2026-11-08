@@ -35259,7 +35259,7 @@ interface Scheduler {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Scheduler/postTask)
      */
-    postTask(callback: SchedulerPostTaskCallback, options?: SchedulerPostTaskOptions): Promise<any>;
+    postTask<T = any>(callback: SchedulerPostTaskCallback<T>, options?: SchedulerPostTaskOptions): Promise<T>;
     /**
      * The **`yield()`** method of the Scheduler interface is used for yielding to the main thread during a task and continuing execution later, with the continuation scheduled as a prioritized task (see the Prioritized Task Scheduling API for more information). This allows long-running work to be broken up so the browser stays responsive.
      *
@@ -43893,8 +43893,8 @@ interface ResizeObserverCallback {
     (entries: ResizeObserverEntry[], observer: ResizeObserver): void;
 }
 
-interface SchedulerPostTaskCallback {
-    (): any;
+interface SchedulerPostTaskCallback<T = any> {
+    (): T | PromiseLike<T>;
 }
 
 interface TransformerFlushCallback<O> {

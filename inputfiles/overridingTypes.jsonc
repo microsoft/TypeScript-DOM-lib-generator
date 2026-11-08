@@ -124,6 +124,19 @@
                     }
                 }
             },
+            "SchedulerPostTaskCallback": {
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "default": "any"
+                    }
+                ],
+                "signature": {
+                    "0": {
+                        "overrideType": "T | PromiseLike<T>"
+                    }
+                }
+            },
             "UnderlyingSourceStartCallback": {
                 "typeParameters": [
                     {
@@ -1889,6 +1902,31 @@
                             "type": "AudioProcessingEvent"
                         }
                     ]
+                }
+            },
+            "Scheduler": {
+                "methods": {
+                    "method": {
+                        "postTask": {
+                            "signature": {
+                                "0": {
+                                    "typeParameters": [
+                                        {
+                                            "name": "T",
+                                            "default": "any"
+                                        }
+                                    ],
+                                    "param": [
+                                        {
+                                            "name": "callback",
+                                            "overrideType": "SchedulerPostTaskCallback<T>"
+                                        }
+                                    ],
+                                    "overrideType": "Promise<T>"
+                                }
+                            }
+                        }
+                    }
                 }
             },
             "MessagePort": {
