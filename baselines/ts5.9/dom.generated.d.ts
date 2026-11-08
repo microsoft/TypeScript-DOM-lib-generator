@@ -9076,6 +9076,12 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     rubyAlign: string;
     /**
+     * The ruby-overhang CSS property specifies whether or not a <ruby> annotation overhangs any surrounding text.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/ruby-overhang)
+     */
+    rubyOverhang: string;
+    /**
      * The ruby-position CSS property defines the position of a ruby element relative to its base element. It can be positioned over the element (over), under it (under), or between the characters on their right side (inter-character).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/ruby-position)
@@ -23104,6 +23110,7 @@ declare var IDBOpenDBRequest: {
     new(): IDBOpenDBRequest;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBRecord) */
 interface IDBRecord {
     readonly key: any;
     readonly primaryKey: any;

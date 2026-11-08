@@ -6458,6 +6458,7 @@ declare var IDBOpenDBRequest: {
     new(): IDBOpenDBRequest;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBRecord) */
 interface IDBRecord {
     readonly key: any;
     readonly primaryKey: any;
