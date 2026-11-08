@@ -1,5 +1,6 @@
 removals {
   enum GPUFeatureName {
+    atomic-vec2u-min-max // Blink only as of 2026-11
     subgroup-size-control // Blink only as of 2026-11
     texture-compression-unaligned // Blink only as of 2026-11
   }
