@@ -132,8 +132,6 @@ export interface CompilerBehavior {
   allowUnrelatedSetterType?: boolean;
   useGenericTypedArrays?: boolean;
   includeIterable?: boolean;
-  /** If true, treat async_sequence as AsyncIterable<T>, otherwise as any (legacy < TS 4.4 emit). */
-  treatAsyncSequence?: boolean;
 }
 
 export function emitWebIdl(
@@ -406,24 +404,19 @@ export function emitWebIdl(
     obj: Browser.Typed,
     forReturn: boolean,
   ): string {
-    function convertBaseType() {
-      // Support async_sequence (see https://github.com/whatwg/streams/pull/1372)
+    function convertBaseType(): string[] {
       if (obj.type === "async_sequence") {
-        // AsyncIterable<T> requires separate asynciterable.d.ts until TS 6.0.
-        // To make it correct, we need to defer any functions using async_sequence to the asynciterable variant.
-        // For now, skip generation and warn.
-        console.warn(
-          "Skipping generation for a function or property with async_sequence type: " +
-            JSON.stringify(obj),
-        );
-        return "never"; // Use 'never' to signal omission in type generation
+        if (compilerBehavior.includeIterable) {
+          return ["AsyncIterable", "Iterable"];
+        }
+        return ["Iterable"];
       }
       if (obj.type === "sequence" && !forReturn && iterator !== "") {
-        return "Iterable";
+        return ["Iterable"];
       }
 
       if (!obj.additionalTypes && typeof obj.type === "string") {
-        return convertDomTypeToTsTypeSimple(obj.type);
+        return [convertDomTypeToTsTypeSimple(obj.type)];
       } else {
         const types =
           typeof obj.type === "string"
@@ -436,7 +429,7 @@ export function emitWebIdl(
           convertDomTypeToTsTypeWorker(t, forReturn),
         );
         if (converted.includes("any")) {
-          return "any";
+          return ["any"];
         }
 
         // convert `ArrayBuffer | SharedArrayBuffer` into `ArrayBufferLike` to be pre-ES2017 friendly.
@@ -450,26 +443,30 @@ export function emitWebIdl(
             converted.splice(maxIndex, 1); // drop whichever comes last
           }
         }
-        return converted.join(" | ");
+        return converted;
       }
     }
 
-    const type = convertBaseType();
+    function addSubtype(type: string) {
+      if (
+        !subtypeString &&
+        compilerBehavior.useGenericTypedArrays &&
+        arrayBufferViewTypes.has(type)
+      ) {
+        subtypeString = obj.allowShared ? "ArrayBufferLike" : "ArrayBuffer";
+      }
+
+      return type === "Array" && subtypeString
+        ? makeArrayType(subtypeString, obj)
+        : `${type}${subtypeString ? `<${subtypeString}>` : ""}`;
+    }
+
+    const types = convertBaseType();
     let subtypeString = arrayify(obj.subtype)
       .map((t) => convertDomTypeToTsTypeBase(t, forReturn))
       .join(", ");
 
-    if (
-      !subtypeString &&
-      compilerBehavior.useGenericTypedArrays &&
-      arrayBufferViewTypes.has(type)
-    ) {
-      subtypeString = obj.allowShared ? "ArrayBufferLike" : "ArrayBuffer";
-    }
-
-    return type === "Array" && subtypeString
-      ? makeArrayType(subtypeString, obj)
-      : `${type}${subtypeString ? `<${subtypeString}>` : ""}`;
+    return types.map(addSubtype).join(" | ");
   }
 
   function makeArrayType(elementType: string, obj: Browser.Typed): string {
@@ -1797,6 +1794,20 @@ export function emitWebIdl(
     }
   }
 
+  function filterMethodsBySignature(
+    i: Browser.Interface,
+    predicate: (signature: Browser.Signature) => boolean | undefined,
+  ): Browser.Method[] {
+    return mapToArray(i.methods ? i.methods.method : {})
+      .filter((m) => m.signature && !m.overrideSignatures && !m.static)
+      .map((m) => ({
+        ...m,
+        signature: m.signature.filter(predicate),
+      }))
+      .filter((m) => m.signature.length)
+      .sort(compareName);
+  }
+
   function emitIterator(i: Browser.Interface) {
     // https://webidl.spec.whatwg.org/#dfn-indexed-property-getter
     const isIndexedPropertyGetter = (m: Browser.AnonymousMethod) =>
@@ -1904,18 +1915,13 @@ export function emitWebIdl(
     );
 
     const subtypes = getIteratorSubtypes();
-    const methodsWithSequence: Browser.Method[] = mapToArray(
-      i.methods ? i.methods.method : {},
-    )
-      .filter((m) => m.signature && !m.overrideSignatures && !m.static)
-      .map((m) => ({
-        ...m,
-        signature: replaceTypedefsInSignatures(
-          m.signature.filter(hasSequenceArgument),
-        ),
-      }))
-      .filter((m) => m.signature.length)
-      .sort(compareName);
+    const methodsWithSequence: Browser.Method[] = filterMethodsBySignature(
+      i,
+      hasSequenceArgument,
+    ).map((m) => ({
+      ...m,
+      signature: replaceTypedefsInSignatures(m.signature),
+    }));
 
     if (!subtypes && !methodsWithSequence.length) {
       return;
@@ -1958,8 +1964,26 @@ export function emitWebIdl(
       }
     }
 
+    function hasAsyncSequenceArgument(signature: Browser.Signature) {
+      function includesAsyncSequence(type: string | Browser.Typed[]): boolean {
+        if (Array.isArray(type)) {
+          return type.some((t) => includesAsyncSequence(t.type));
+        }
+        return type === "async_sequence";
+      }
+      return signature.param?.some(
+        (p) => !p.overrideType && includesAsyncSequence(p.type),
+      );
+    }
+
     const subtypes = getAsyncIteratorSubtypes();
-    if (!subtypes) {
+    // Emit AsyncIterable separately for asynciterable.d.ts.
+    // But not when includeIterable=true as signatures should include AsyncIterable already.
+    const methodsWithAsyncSequence: Browser.Method[] =
+      !compilerBehavior.includeIterable
+        ? filterMethodsBySignature(i, hasAsyncSequenceArgument)
+        : [];
+    if (!subtypes && !methodsWithAsyncSequence.length) {
       return;
     }
 
@@ -1969,13 +1993,19 @@ export function emitWebIdl(
       name,
     );
 
-    emitSelfIterator(i);
+    if (subtypes) {
+      emitSelfIterator(i);
+    }
 
     printer.printLine("");
     printer.printLine(`interface ${nameWithTypeParameters} {`);
     printer.increaseIndent();
 
-    emitIterableMethods(i, name, subtypes);
+    methodsWithAsyncSequence.forEach((m) => emitMethod("", m, new Set()));
+
+    if (subtypes) {
+      emitIterableMethods(i, name, subtypes);
+    }
 
     printer.decreaseIndent();
     printer.printLine("}");
