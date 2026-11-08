@@ -1273,18 +1273,6 @@ export function emitWebIdl(
     }
   }
 
-  function hasAsyncSequenceArgument(signature: Browser.Signature) {
-    function includesAsyncSequence(type: string | Browser.Typed[]): boolean {
-      if (Array.isArray(type)) {
-        return type.some((t) => includesAsyncSequence(t.type));
-      }
-      return type === "async_sequence";
-    }
-    return signature.param?.some(
-      (p) => !p.overrideType && includesAsyncSequence(p.type),
-    );
-  }
-
   function emitConstructor(i: Browser.Interface, prefix = "") {
     if (i.deprecated) {
       printer.printLine(`/** @deprecated */`);
@@ -1974,6 +1962,18 @@ export function emitWebIdl(
         }
         return i.iterator.type.map(convertDomTypeToTsType);
       }
+    }
+
+    function hasAsyncSequenceArgument(signature: Browser.Signature) {
+      function includesAsyncSequence(type: string | Browser.Typed[]): boolean {
+        if (Array.isArray(type)) {
+          return type.some((t) => includesAsyncSequence(t.type));
+        }
+        return type === "async_sequence";
+      }
+      return signature.param?.some(
+        (p) => !p.overrideType && includesAsyncSequence(p.type),
+      );
     }
 
     const subtypes = getAsyncIteratorSubtypes();
