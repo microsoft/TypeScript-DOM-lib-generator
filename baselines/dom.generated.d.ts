@@ -2139,7 +2139,12 @@ interface PublicKeyCredentialUserEntityJSON {
 interface PushSubscriptionJSON {
     endpoint?: string;
     expirationTime?: EpochTimeStamp | null;
-    keys?: Record<string, string>;
+    keys?: PushSubscriptionKeys;
+}
+
+interface PushSubscriptionKeys {
+    auth?: string;
+    p256dh?: string;
 }
 
 interface PushSubscriptionOptionsInit {
@@ -2371,7 +2376,6 @@ interface RTCOutboundRtpStreamStats extends RTCSentRtpStreamStats {
     scalabilityMode?: string;
     targetBitrate?: number;
     totalEncodeTime?: number;
-    totalEncodedBytesTarget?: number;
     totalPacketSendDelay?: number;
 }
 
