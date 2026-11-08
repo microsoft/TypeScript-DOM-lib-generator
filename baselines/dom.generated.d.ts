@@ -3202,7 +3202,7 @@ interface VideoFrameInit {
 interface ViewTimelineOptions {
     axis?: ScrollAxis;
     inset?: string | (CSSNumericValue | CSSKeywordValue)[];
-    subject?: Element;
+    subject: Element;
 }
 
 interface WaveShaperOptions extends AudioNodeOptions {
@@ -38962,7 +38962,7 @@ interface ViewTimeline extends ScrollTimeline {
 
 declare var ViewTimeline: {
     prototype: ViewTimeline;
-    new(options?: ViewTimelineOptions): ViewTimeline;
+    new(options: ViewTimelineOptions): ViewTimeline;
 };
 
 /**
@@ -45112,7 +45112,7 @@ type BigInteger = Uint8Array<ArrayBuffer>;
 type BlobPart = BufferSource | Blob | string;
 type BluetoothServiceUUID = string | number;
 type BodyInit = ReadableStream | XMLHttpRequestBodyInit;
-type BufferSource = ArrayBufferView<ArrayBuffer> | ArrayBuffer;
+type BufferSource = ArrayBuffer | ArrayBufferView<ArrayBuffer>;
 type COSEAlgorithmIdentifier = number;
 type CSSKeywordish = string | CSSKeywordValue;
 type CSSNumberish = number | CSSNumericValue;

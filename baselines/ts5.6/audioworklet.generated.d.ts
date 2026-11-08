@@ -2048,7 +2048,7 @@ declare var sampleRate: number;
  */
 declare function registerProcessor(name: string, processorCtor: AudioWorkletProcessorConstructor): void;
 type AllowSharedBufferSource = ArrayBufferLike | ArrayBufferView;
-type BufferSource = ArrayBufferView | ArrayBuffer;
+type BufferSource = ArrayBuffer | ArrayBufferView;
 type DOMHighResTimeStamp = number;
 type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
 type MessageEventSource = MessagePort;
