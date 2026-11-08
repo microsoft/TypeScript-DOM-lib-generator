@@ -20899,6 +20899,12 @@ interface HTMLScriptElement extends HTMLElement {
     /** @deprecated */
     htmlFor: string;
     /**
+     * The **`innerText`** property of the HTMLScriptElement interface represents the text content of the <script> element. It behaves in the same way as the textContent and text properties.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLScriptElement/innerText)
+     */
+    innerText: string;
+    /**
      * The **`integrity`** property of the HTMLScriptElement interface is a string that contains inline metadata that a browser can use to verify that a fetched resource has been delivered without unexpected manipulation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLScriptElement/integrity)
@@ -20928,6 +20934,12 @@ interface HTMLScriptElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLScriptElement/text)
      */
     text: string;
+    /**
+     * The **`textContent`** property of the HTMLScriptElement interface represents the inline text content of the <script> element. It behaves in the same way as the text and innerText properties.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLScriptElement/textContent)
+     */
+    textContent: string;
     /**
      * The **`type`** property of the HTMLScriptElement interface is a string that reflects the type of the script.
      *
@@ -34937,6 +34949,9 @@ interface SVGTextPathElement extends SVGTextContentElement, SVGURIReference {
     readonly TEXTPATH_SPACINGTYPE_UNKNOWN: 0;
     readonly TEXTPATH_SPACINGTYPE_AUTO: 1;
     readonly TEXTPATH_SPACINGTYPE_EXACT: 2;
+    readonly TEXTPATH_SIDETYPE_UNKNOWN: 0;
+    readonly TEXTPATH_SIDETYPE_LEFT: 1;
+    readonly TEXTPATH_SIDETYPE_RIGHT: 2;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGTextPathElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGTextPathElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -34952,6 +34967,9 @@ declare var SVGTextPathElement: {
     readonly TEXTPATH_SPACINGTYPE_UNKNOWN: 0;
     readonly TEXTPATH_SPACINGTYPE_AUTO: 1;
     readonly TEXTPATH_SPACINGTYPE_EXACT: 2;
+    readonly TEXTPATH_SIDETYPE_UNKNOWN: 0;
+    readonly TEXTPATH_SIDETYPE_LEFT: 1;
+    readonly TEXTPATH_SIDETYPE_RIGHT: 2;
 };
 
 /**

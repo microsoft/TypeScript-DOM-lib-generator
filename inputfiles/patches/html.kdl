@@ -220,3 +220,12 @@ removals {
     member javascriptURLs // Gecko-only as of 2026-11
   }
 }
+
+interface HTMLScriptElement {
+  property textContent {
+    // Spec says nullable, but that is incompatible with HTMLElement definition.
+    // Decide what to do with this when we actually add Trusted Types.
+    // See also: https://github.com/whatwg/html/pull/12195
+    type nullable=#false
+  }
+}

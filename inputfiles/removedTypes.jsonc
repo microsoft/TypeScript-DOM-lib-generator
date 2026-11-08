@@ -148,8 +148,7 @@
                         "image": null,
                         "navigate": null, // WebKit only as of 2025-08
                         "renotify": null,
-                        "timestamp": null,
-                        "vibrate": null
+                        "timestamp": null
                     }
                 }
             },
