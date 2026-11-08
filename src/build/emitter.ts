@@ -466,7 +466,7 @@ export function emitWebIdl(
       .map((t) => convertDomTypeToTsTypeBase(t, forReturn))
       .join(", ");
 
-    return types.map(addSubtype).join(" | ")
+    return types.map(addSubtype).join(" | ");
   }
 
   function makeArrayType(elementType: string, obj: Browser.Typed): string {
