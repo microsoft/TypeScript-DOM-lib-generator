@@ -213,6 +213,10 @@ removals {
   }
 
   dictionary SetHTMLUnsafeOptions {
-    member runScripts // Blink-only as of 2026-07
+    member runScripts // Blink-only as of 2026-11
+  }
+
+  dictionary SanitizerConfig {
+    member javascriptURLs // Gecko-only as of 2026-11
   }
 }

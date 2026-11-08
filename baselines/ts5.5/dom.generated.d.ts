@@ -31478,19 +31478,13 @@ declare var Response: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAElement)
  */
-interface SVGAElement extends SVGGraphicsElement, SVGURIReference {
+interface SVGAElement extends SVGGraphicsElement, HyperlinkElementUtils, SVGURIReference {
     /**
      * The **`download`** property of the SVGAElement interface returns a string indicating that the browser should treat the linked URL as a download.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAElement/download)
      */
     download: string;
-    /**
-     * The **`hreflang`** property of the SVGAElement interface returns a string indicating the language of the linked resource.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAElement/hreflang)
-     */
-    hreflang: string;
     /**
      * The **`ping`** property of the SVGAElement interface returns a string that reflects the ping attribute, containing a space-separated list of URLs to which, when the hyperlink is followed, POST requests with the body PING will be sent by the browser (in the background). Typically used for tracking.
      *
@@ -31516,12 +31510,6 @@ interface SVGAElement extends SVGGraphicsElement, SVGURIReference {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAElement/target)
      */
     readonly target: SVGAnimatedString;
-    /**
-     * The **`type`** property of the SVGAElement interface returns a string indicating the MIME type of the linked resource.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAElement/type)
-     */
-    type: string;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -36405,7 +36393,7 @@ interface SpeechRecognitionResult {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionResult/item)
      */
-    item(index: number): SpeechRecognitionAlternative;
+    item(index: number): SpeechRecognitionAlternative | null;
     [index: number]: SpeechRecognitionAlternative;
 }
 
@@ -36432,7 +36420,7 @@ interface SpeechRecognitionResultList {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionResultList/item)
      */
-    item(index: number): SpeechRecognitionResult;
+    item(index: number): SpeechRecognitionResult | null;
     [index: number]: SpeechRecognitionResult;
 }
 
