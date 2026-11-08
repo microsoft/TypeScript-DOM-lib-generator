@@ -81,6 +81,10 @@ interface AnimationPlaybackEventInit extends EventInit {
     timelineTime?: CSSNumberish | null;
 }
 
+interface AriaNotificationOptions {
+    priority?: AriaNotifyPriority;
+}
+
 interface AssignedNodesOptions {
     flatten?: boolean;
 }
@@ -3660,6 +3664,11 @@ interface ARIAMixin {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/role)
      */
     role: string | null;
+}
+
+interface ARIANotifyMixin {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/ariaNotify) */
+    ariaNotify(announcement: string, options?: AriaNotificationOptions): void;
 }
 
 /**
@@ -12315,7 +12324,7 @@ interface DOMPointReadOnly {
      */
     readonly x: number;
     /**
-     * The DOMPointReadOnl**`y`** interface's y property holds the vertical coordinate, y, for a read-only point in space.
+     * The DOMPointReadOnly interface's **`y`** property holds the vertical coordinate, y, for a read-only point in space.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMPointReadOnly/y)
      */
@@ -13016,7 +13025,7 @@ interface DocumentEventMap extends GlobalEventHandlersEventMap {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document)
  */
-interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEventHandlers, NonElementParentNode, ParentNode, XPathEvaluatorBase {
+interface Document extends Node, ARIANotifyMixin, DocumentOrShadowRoot, FontFaceSource, GlobalEventHandlers, NonElementParentNode, ParentNode, XPathEvaluatorBase {
     /**
      * The **`URL`** read-only property of the Document interface returns the document location as a string.
      *
@@ -13400,6 +13409,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/createElementNS)
      */
+    createElementNS<K extends keyof HTMLElementTagNameMap>(namespaceURI: "http://www.w3.org/1999/xhtml", qualifiedName: K): HTMLElementTagNameMap[K];
     createElementNS(namespaceURI: "http://www.w3.org/1999/xhtml", qualifiedName: string): HTMLElement;
     createElementNS<K extends keyof SVGElementTagNameMap>(namespaceURI: "http://www.w3.org/2000/svg", qualifiedName: K): SVGElementTagNameMap[K];
     createElementNS(namespaceURI: "http://www.w3.org/2000/svg", qualifiedName: string): SVGElement;
@@ -14050,7 +14060,7 @@ interface ElementEventMap {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element)
  */
-interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTypeChildNode, ParentNode, Slottable {
+interface Element extends Node, ARIAMixin, ARIANotifyMixin, Animatable, ChildNode, NonDocumentTypeChildNode, ParentNode, Slottable {
     /**
      * The **`Element.attributes`** property returns a live collection of all attribute nodes registered to the specified node. It is a NamedNodeMap, not an Array, so it has no Array methods and the Attr nodes' indexes may differ among browsers. To be more specific, attributes is a key/value pair of strings that represents any information regarding that attribute.
      *
@@ -17227,7 +17237,7 @@ interface GlobalEventHandlersEventMap {
     "change": Event;
     "click": PointerEvent;
     "close": Event;
-    "command": Event;
+    "command": CommandEvent;
     "compositionend": CompositionEvent;
     "compositionstart": CompositionEvent;
     "compositionupdate": CompositionEvent;
@@ -17353,7 +17363,7 @@ interface GlobalEventHandlers {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/close_event) */
     onclose: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/command_event) */
-    oncommand: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    oncommand: ((this: GlobalEventHandlers, ev: CommandEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement/contextlost_event) */
     oncontextlost: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/contextmenu_event) */
@@ -19182,7 +19192,7 @@ interface HTMLImageElement extends HTMLElement {
      */
     readonly x: number;
     /**
-     * The read-onl**`y`** y property of the HTMLImageElement interface indicates the y-coordinate of the <img> element's top border edge relative to the root element's origin.
+     * The read-only **`y`** property of the HTMLImageElement interface indicates the y-coordinate of the <img> element's top border edge relative to the root element's origin.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/y)
      */
@@ -25781,7 +25791,7 @@ interface MutationObserver {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MutationObserver/observe)
      */
-    observe(target: Node, options?: MutationObserverInit): void;
+    observe(target: Node, options: MutationObserverInit): void;
     /**
      * The MutationObserver method **`takeRecords()`** returns a list of all matching DOM changes that have been detected but not yet processed by the observer's callback function, leaving the mutation queue empty.
      *
@@ -31283,7 +31293,7 @@ interface Request extends Body {
 
 declare var Request: {
     prototype: Request;
-    new(input: RequestInfo | Location | URL, init?: RequestInit): Request;
+    new(input: RequestInfo | URL, init?: RequestInit): Request;
 };
 
 /**
@@ -33931,7 +33941,7 @@ interface SVGMaskElement extends SVGElement {
      */
     readonly x: SVGAnimatedLength;
     /**
-     * The read-onl**`y`** y property of the SVGMaskElement interface returns an SVGAnimatedLength object containing the value of the y attribute of the <mask>. It represents the y-axis coordinate of the top-left corner of the masking area.
+     * The read-only **`y`** property of the SVGMaskElement interface returns an SVGAnimatedLength object containing the value of the y attribute of the <mask>. It represents the y-axis coordinate of the top-left corner of the masking area.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGMaskElement/y)
      */
@@ -35339,7 +35349,7 @@ interface Scheduler {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Scheduler/postTask)
      */
-    postTask(callback: SchedulerPostTaskCallback, options?: SchedulerPostTaskOptions): Promise<any>;
+    postTask<T = any>(callback: SchedulerPostTaskCallback<T>, options?: SchedulerPostTaskOptions): Promise<T>;
     /**
      * The **`yield()`** method of the Scheduler interface is used for yielding to the main thread during a task and continuing execution later, with the continuation scheduled as a prioritized task (see the Prioritized Task Scheduling API for more information). This allows long-running work to be broken up so the browser stays responsive.
      *
@@ -37346,7 +37356,7 @@ interface TextEvent extends UIEvent {
      */
     readonly data: string;
     /**
-     * The **`initTextEvent`**Event() method of the TextEvent interface initializes the value of a TextEvent after it has been created.
+     * The initTextEventEvent() method of the TextEvent interface initializes the value of a TextEvent after it has been created.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEvent/initTextEvent)
@@ -38201,13 +38211,13 @@ interface URL {
 
 declare var URL: {
     prototype: URL;
-    new(url: string | Location | URL, base?: string | URL | Location): URL;
+    new(url: string | URL, base?: string | URL): URL;
     /**
      * The **`URL.canParse()`** static method of the URL interface returns a boolean indicating whether or not an absolute URL, or a relative URL combined with a base URL, are parsable and valid.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/canParse_static)
      */
-    canParse(url: string | Location | URL, base?: string | URL | Location): boolean;
+    canParse(url: string | URL, base?: string | URL): boolean;
     /**
      * The **`createObjectURL()`** static method of the URL interface creates a string containing a blob URL pointing to the object given in the parameter.
      *
@@ -38219,7 +38229,7 @@ declare var URL: {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/parse_static)
      */
-    parse(url: string | Location | URL, base?: string | URL | Location): URL | null;
+    parse(url: string | URL, base?: string | URL): URL | null;
     /**
      * The **`revokeObjectURL()`** static method of the URL interface releases an existing object URL which was previously created by calling URL.createObjectURL().
      *
@@ -42333,7 +42343,7 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
      */
     readonly toolbar: BarProp;
     /**
-     * Returns a reference to the **`top`**most window in the window hierarchy.
+     * Returns a reference to the topmost window in the window hierarchy.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/top)
      */
@@ -42625,7 +42635,7 @@ interface WindowOrWorkerGlobalScope {
     createImageBitmap(image: ImageBitmapSource, options?: ImageBitmapOptions): Promise<ImageBitmap>;
     createImageBitmap(image: ImageBitmapSource, sx: number, sy: number, sw: number, sh: number, options?: ImageBitmapOptions): Promise<ImageBitmap>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/fetch) */
-    fetch(input: RequestInfo | Location | URL, init?: RequestInit): Promise<Response>;
+    fetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/queueMicrotask) */
     queueMicrotask(callback: VoidFunction): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/reportError) */
@@ -42931,8 +42941,8 @@ interface XMLHttpRequest extends XMLHttpRequestEventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/open)
      */
-    open(method: string, url: string | Location | URL): void;
-    open(method: string, url: string | Location | URL, async: boolean, username?: string | null, password?: string | null): void;
+    open(method: string, url: string | URL): void;
+    open(method: string, url: string | URL, async: boolean, username?: string | null, password?: string | null): void;
     /**
      * The XMLHttpRequest method **`overrideMimeType()`** specifies a MIME type other than the one provided by the server to be used instead when interpreting the data being transferred in a request.
      *
@@ -43976,8 +43986,8 @@ interface ResizeObserverCallback {
     (entries: ResizeObserverEntry[], observer: ResizeObserver): void;
 }
 
-interface SchedulerPostTaskCallback {
-    (): any;
+interface SchedulerPostTaskCallback<T = any> {
+    (): T | PromiseLike<T>;
 }
 
 interface TransformerFlushCallback<O> {
@@ -44581,7 +44591,7 @@ declare var statusbar: BarProp;
  */
 declare var toolbar: BarProp;
 /**
- * Returns a reference to the **`top`**most window in the window hierarchy.
+ * Returns a reference to the topmost window in the window hierarchy.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/top)
  */
@@ -44793,7 +44803,7 @@ declare var onclick: ((this: Window, ev: PointerEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/close_event) */
 declare var onclose: ((this: Window, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/command_event) */
-declare var oncommand: ((this: Window, ev: Event) => any) | null;
+declare var oncommand: ((this: Window, ev: CommandEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement/contextlost_event) */
 declare var oncontextlost: ((this: Window, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/contextmenu_event) */
@@ -45064,7 +45074,7 @@ declare function clearTimeout(id: number | undefined): void;
 declare function createImageBitmap(image: ImageBitmapSource, options?: ImageBitmapOptions): Promise<ImageBitmap>;
 declare function createImageBitmap(image: ImageBitmapSource, sx: number, sy: number, sw: number, sh: number, options?: ImageBitmapOptions): Promise<ImageBitmap>;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/fetch) */
-declare function fetch(input: RequestInfo | Location | URL, init?: RequestInit): Promise<Response>;
+declare function fetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response>;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/queueMicrotask) */
 declare function queueMicrotask(callback: VoidFunction): void;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/reportError) */
@@ -45197,6 +45207,7 @@ type AlphaOption = "discard" | "keep";
 type AnimationPlayState = "finished" | "idle" | "paused" | "running";
 type AnimationReplaceState = "active" | "persisted" | "removed";
 type AppendMode = "segments" | "sequence";
+type AriaNotifyPriority = "high" | "normal";
 type AttestationConveyancePreference = "direct" | "enterprise" | "indirect" | "none";
 type AudioContextLatencyCategory = "balanced" | "interactive" | "playback";
 type AudioContextState = "closed" | "interrupted" | "running" | "suspended";

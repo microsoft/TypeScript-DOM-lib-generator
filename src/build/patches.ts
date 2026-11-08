@@ -361,6 +361,7 @@ function handleParam(node: Node) {
     name,
     ...handleTyped(typeNodes, node.properties?.type),
     ...optionalMember("overrideType", "string", node.properties?.overrideType),
+    ...optionalMember("optional", "boolean", node.properties?.optional),
     ...(additionalTypes ? { additionalTypes } : {}),
   };
 }

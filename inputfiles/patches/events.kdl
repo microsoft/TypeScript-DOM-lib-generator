@@ -17,6 +17,7 @@ interface-mixin GlobalEventHandlers {
   event beforetoggle type=ToggleEvent
   event blur type=FocusEvent
   event click type=PointerEvent
+  event command type=CommandEvent
   event compositionend type=CompositionEvent
   event compositionstart type=CompositionEvent
   event compositionupdate type=CompositionEvent
