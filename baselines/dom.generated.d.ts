@@ -128,7 +128,7 @@ interface AudioDataCopyToOptions {
 }
 
 interface AudioDataInit {
-    data: BufferSource;
+    data: AllowSharedBufferSource;
     format: AudioSampleFormat;
     numberOfChannels: number;
     numberOfFrames: number;
@@ -1093,8 +1093,10 @@ interface GPURenderPipelineDescriptor extends GPUPipelineDescriptorBase {
 }
 
 interface GPURequestAdapterOptions {
+    featureLevel?: string;
     forceFallbackAdapter?: boolean;
     powerPreference?: GPUPowerPreference;
+    xrCompatible?: boolean;
 }
 
 interface GPUSamplerBindingLayout {
@@ -1114,8 +1116,14 @@ interface GPUSamplerDescriptor extends GPUObjectDescriptorBase {
     mipmapFilter?: GPUMipmapFilterMode;
 }
 
+interface GPUShaderModuleCompilationHint {
+    entryPoint: string;
+    layout?: GPUPipelineLayout | GPUAutoLayoutMode;
+}
+
 interface GPUShaderModuleDescriptor extends GPUObjectDescriptorBase {
     code: string;
+    compilationHints?: GPUShaderModuleCompilationHint[];
 }
 
 interface GPUStencilFaceState {
@@ -1172,6 +1180,7 @@ interface GPUTextureViewDescriptor extends GPUObjectDescriptorBase {
     dimension?: GPUTextureViewDimension;
     format?: GPUTextureFormat;
     mipLevelCount?: GPUIntegerCoordinate;
+    swizzle?: string;
     usage?: GPUTextureUsageFlags;
 }
 
@@ -45274,7 +45283,7 @@ type FullscreenKeyboardLock = "browser" | "none";
 type FullscreenNavigationUI = "auto" | "hide" | "show";
 type GPUAddressMode = "clamp-to-edge" | "mirror-repeat" | "repeat";
 type GPUAutoLayoutMode = "auto";
-type GPUBlendFactor = "constant" | "dst" | "dst-alpha" | "one" | "one-minus-constant" | "one-minus-dst" | "one-minus-dst-alpha" | "one-minus-src" | "one-minus-src-alpha" | "src" | "src-alpha" | "src-alpha-saturated" | "zero";
+type GPUBlendFactor = "constant" | "dst" | "dst-alpha" | "one" | "one-minus-constant" | "one-minus-dst" | "one-minus-dst-alpha" | "one-minus-src" | "one-minus-src-alpha" | "one-minus-src1" | "one-minus-src1-alpha" | "src" | "src-alpha" | "src-alpha-saturated" | "src1" | "src1-alpha" | "zero";
 type GPUBlendOperation = "add" | "max" | "min" | "reverse-subtract" | "subtract";
 type GPUBufferBindingType = "read-only-storage" | "storage" | "uniform";
 type GPUBufferMapState = "mapped" | "pending" | "unmapped";
@@ -45285,7 +45294,7 @@ type GPUCompilationMessageType = "error" | "info" | "warning";
 type GPUCullMode = "back" | "front" | "none";
 type GPUDeviceLostReason = "destroyed" | "unknown";
 type GPUErrorFilter = "internal" | "out-of-memory" | "validation";
-type GPUFeatureName = "bgra8unorm-storage" | "clip-distances" | "core-features-and-limits" | "depth-clip-control" | "depth32float-stencil8" | "dual-source-blending" | "float32-blendable" | "float32-filterable" | "indirect-first-instance" | "primitive-index" | "rg11b10ufloat-renderable" | "shader-f16" | "subgroups" | "texture-compression-astc" | "texture-compression-astc-sliced-3d" | "texture-compression-bc" | "texture-compression-bc-sliced-3d" | "texture-compression-etc2" | "texture-formats-tier1" | "timestamp-query";
+type GPUFeatureName = "bgra8unorm-storage" | "clip-distances" | "core-features-and-limits" | "depth-clip-control" | "depth32float-stencil8" | "dual-source-blending" | "float32-blendable" | "float32-filterable" | "indirect-first-instance" | "primitive-index" | "rg11b10ufloat-renderable" | "shader-f16" | "subgroups" | "texture-component-swizzle" | "texture-compression-astc" | "texture-compression-astc-sliced-3d" | "texture-compression-bc" | "texture-compression-bc-sliced-3d" | "texture-compression-etc2" | "texture-formats-tier1" | "texture-formats-tier2" | "timestamp-query";
 type GPUFilterMode = "linear" | "nearest";
 type GPUFrontFace = "ccw" | "cw";
 type GPUIndexFormat = "uint16" | "uint32";
