@@ -890,7 +890,12 @@ interface PushSubscriptionChangeEventInit extends ExtendableEventInit {
 interface PushSubscriptionJSON {
     endpoint?: string;
     expirationTime?: EpochTimeStamp | null;
-    keys?: Record<string, string>;
+    keys?: PushSubscriptionKeys;
+}
+
+interface PushSubscriptionKeys {
+    auth?: string;
+    p256dh?: string;
 }
 
 interface PushSubscriptionOptionsInit {
