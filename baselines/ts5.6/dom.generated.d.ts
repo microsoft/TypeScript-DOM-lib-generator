@@ -13701,6 +13701,12 @@ declare var Document: {
     prototype: Document;
     new(): Document;
     /**
+     * The **`parseHTML()`** static method of the Document object provides an XSS-safe method to parse and sanitize a string of HTML in order to create a new Document instance.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/parseHTML_static)
+     */
+    parseHTML(html: string, options?: SetHTMLOptions): Document;
+    /**
      * The **`parseHTMLUnsafe()`** static method of the Document object is used to parse HTML input, optionally filtering unwanted HTML elements and attributes, in order to create a new Document instance.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/parseHTMLUnsafe_static)
@@ -29819,6 +29825,7 @@ interface RTCDtlsTransport extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDtlsTransport/state)
      */
     readonly state: RTCDtlsTransportState;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDtlsTransport/getRemoteCertificates) */
     getRemoteCertificates(): ArrayBuffer[];
     addEventListener<K extends keyof RTCDtlsTransportEventMap>(type: K, listener: (this: RTCDtlsTransport, ev: RTCDtlsTransportEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -36171,6 +36178,12 @@ interface ShadowRoot extends DocumentFragment, DocumentOrShadowRoot {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/getHTML)
      */
     getHTML(options?: GetHTMLOptions): string;
+    /**
+     * The **`setHTML()`** method of the ShadowRoot interface provides an XSS-safe method to parse and sanitize a string of HTML, which then replaces the existing tree in the Shadow DOM.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/setHTML)
+     */
+    setHTML(html: string, options?: SetHTMLOptions): void;
     /**
      * The **`setHTMLUnsafe()`** method of the ShadowRoot interface can be used to parse HTML input into a DocumentFragment, optionally filtering out unwanted elements and attributes, and then use it to replace the existing tree in the Shadow DOM.
      *
