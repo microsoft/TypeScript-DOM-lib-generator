@@ -12922,6 +12922,12 @@ interface DeviceMotionEvent extends Event {
 declare var DeviceMotionEvent: {
     prototype: DeviceMotionEvent;
     new(type: string, eventInitDict?: DeviceMotionEventInit): DeviceMotionEvent;
+    /**
+     * The **`requestPermission()`** static method of the DeviceMotionEvent interface requests the user's permission to access device motion data from the accelerometer and gyroscope sensors. This method requires transient activation, meaning that it must be triggered by a UI event such as a button click.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DeviceMotionEvent/requestPermission_static)
+     */
+    requestPermission(): Promise<PermissionState>;
 };
 
 /**
@@ -13014,6 +13020,12 @@ interface DeviceOrientationEvent extends Event {
 declare var DeviceOrientationEvent: {
     prototype: DeviceOrientationEvent;
     new(type: string, eventInitDict?: DeviceOrientationEventInit): DeviceOrientationEvent;
+    /**
+     * The **`requestPermission()`** static method of the DeviceOrientationEvent interface requests the user's permission to access device orientation data from the accelerometer and gyroscope sensors. It can also request permission to access magnetometer data when absolute orientation is needed. This method requires transient activation, meaning that it must be triggered by a UI event such as a button click.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DeviceOrientationEvent/requestPermission_static)
+     */
+    requestPermission(): Promise<PermissionState>;
 };
 
 /** Available only in secure contexts. */
@@ -30071,11 +30083,23 @@ declare var RTCIceCandidate: {
     new(candidateInitDict?: RTCLocalIceCandidateInit): RTCIceCandidate;
 };
 
-/** The **`RTCIceCandidatePair`** dictionary describes a pair of ICE candidates which together comprise a description of a viable connection between two WebRTC endpoints. It is used as the return value from RTCIceTransport.getSelectedCandidatePair() to identify the currently-selected candidate pair identified by the ICE agent. */
+/**
+ * The **`RTCIceCandidatePair`** dictionary describes a pair of ICE candidates which together comprise a description of a viable connection between two WebRTC endpoints. It is used as the return value from RTCIceTransport.getSelectedCandidatePair() to identify the currently-selected candidate pair identified by the ICE agent.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCIceCandidatePair)
+ */
 interface RTCIceCandidatePair {
-    /** The **`local`** property of the RTCIceCandidatePair dictionary specifies the RTCIceCandidate which describes the configuration of the local end of a viable WebRTC connection. */
+    /**
+     * The **`local`** property of the RTCIceCandidatePair dictionary specifies the RTCIceCandidate which describes the configuration of the local end of a viable WebRTC connection.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCIceCandidatePair/local)
+     */
     local: RTCIceCandidate;
-    /** The **`remote`** property of the RTCIceCandidatePair dictionary specifies the RTCIceCandidate describing the configuration of the remote end of a viable WebRTC connection. */
+    /**
+     * The **`remote`** property of the RTCIceCandidatePair dictionary specifies the RTCIceCandidate describing the configuration of the remote end of a viable WebRTC connection.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCIceCandidatePair/remote)
+     */
     remote: RTCIceCandidate;
 }
 
