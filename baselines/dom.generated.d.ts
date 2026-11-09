@@ -3277,6 +3277,7 @@ interface WebTransportReceiveStreamStats {
 }
 
 interface WebTransportSendOptions {
+    sendGroup?: WebTransportSendGroup | null;
     sendOrder?: number;
 }
 
@@ -5744,12 +5745,14 @@ interface CSSFontFaceDescriptors extends CSSStyleDeclarationBase {
     "font-stretch": string;
     "font-style": string;
     "font-weight": string;
+    "font-width": string;
     fontDisplay: string;
     fontFamily: string;
     fontFeatureSettings: string;
     fontStretch: string;
     fontStyle: string;
     fontWeight: string;
+    fontWidth: string;
     "size-adjust": string;
     sizeAdjust: string;
     src: string;
@@ -8187,6 +8190,12 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-weight)
      */
     fontWeight: string;
+    /**
+     * The font-width CSS property selects a normal, condensed, or expanded face from a font.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-width)
+     */
+    fontWidth: string;
     /**
      * The forced-color-adjust CSS property allows authors to opt certain elements out of forced colors mode. This then restores the control of those values to CSS.
      *
@@ -17832,6 +17841,7 @@ declare var HTMLBaseElement: {
 };
 
 interface HTMLBodyElementEventMap extends HTMLElementEventMap, WindowEventHandlersEventMap {
+    "orientationchange": Event;
 }
 
 /**
@@ -17848,6 +17858,8 @@ interface HTMLBodyElement extends HTMLElement, WindowEventHandlers {
     bgColor: string;
     /** @deprecated */
     link: string;
+    /** @deprecated */
+    onorientationchange: ((this: HTMLBodyElement, ev: Event) => any) | null;
     /** @deprecated */
     text: string;
     /** @deprecated */
@@ -27625,9 +27637,9 @@ declare var PageTransitionEvent: {
 };
 
 interface PaintTimingMixin {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/LargestContentfulPaint/paintTime) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/InteractionContentfulPaint/paintTime) */
     readonly paintTime: DOMHighResTimeStamp;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/LargestContentfulPaint/presentationTime) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/InteractionContentfulPaint/presentationTime) */
     readonly presentationTime: DOMHighResTimeStamp | null;
 }
 
@@ -41870,6 +41882,7 @@ interface WebTransport {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/datagrams)
      */
     readonly datagrams: WebTransportDatagramDuplexStream;
+    readonly draining: Promise<void>;
     /**
      * The **`incomingBidirectionalStreams`** read-only property of the WebTransport interface represents one or more bidirectional streams opened by the server. Returns a ReadableStream of WebTransportBidirectionalStream objects. Each one can be used to reliably read data from the server and write data back to it.
      *
@@ -41907,6 +41920,8 @@ interface WebTransport {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/createBidirectionalStream)
      */
     createBidirectionalStream(options?: WebTransportSendStreamOptions): Promise<WebTransportBidirectionalStream>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/createSendGroup) */
+    createSendGroup(): WebTransportSendGroup;
     /**
      * The **`createUnidirectionalStream()`** method of the WebTransport interface asynchronously opens a unidirectional stream.
      *
@@ -42001,11 +42016,30 @@ interface WebTransportDatagramDuplexStream {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/writable)
      */
     readonly writable: WritableStream;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/createWritable) */
+    createWritable(options?: WebTransportSendOptions): WebTransportDatagramsWritable;
 }
 
 declare var WebTransportDatagramDuplexStream: {
     prototype: WebTransportDatagramDuplexStream;
     new(): WebTransportDatagramDuplexStream;
+};
+
+/**
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramsWritable)
+ */
+interface WebTransportDatagramsWritable extends WritableStream {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramsWritable/sendGroup) */
+    sendGroup: WebTransportSendGroup | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramsWritable/sendOrder) */
+    sendOrder: number;
+}
+
+declare var WebTransportDatagramsWritable: {
+    prototype: WebTransportDatagramsWritable;
+    new(): WebTransportDatagramsWritable;
 };
 
 /**
@@ -42055,12 +42089,28 @@ declare var WebTransportReceiveStream: {
 };
 
 /**
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportSendGroup)
+ */
+interface WebTransportSendGroup {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportSendGroup/getStats) */
+    getStats(): Promise<WebTransportSendStreamStats>;
+}
+
+declare var WebTransportSendGroup: {
+    prototype: WebTransportSendGroup;
+    new(): WebTransportSendGroup;
+};
+
+/**
  * The **`WebTransportSendStream`** interface of the WebTransport API is a specialized WritableStream that is used to send outbound data in both unidirectional or bidirectional WebTransport streams.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportSendStream)
  */
 interface WebTransportSendStream extends WritableStream {
+    sendGroup: WebTransportSendGroup | null;
     /**
      * The **`sendOrder`** property of the WebTransportSendStream interface indicates the send priority of this stream relative to other streams for which the value has been set.
      *
@@ -43263,60 +43313,70 @@ declare var XPathResult: {
 
 /**
  * An **`XSLTProcessor`** applies an XSLT stylesheet transformation to an XML document to produce a new XML document as output. It has methods to load the XSLT stylesheet, to manipulate <xsl:param> parameter values, and to apply the transformation to documents.
+ * @deprecated
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XSLTProcessor)
  */
 interface XSLTProcessor {
     /**
      * The **`clearParameters()`** method of the XSLTProcessor interface removes all parameters (<xsl:param>) and their values from the stylesheet imported in the processor. The XSLTProcessor will then use the default values specified in the XSLT stylesheet.
+     * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XSLTProcessor/clearParameters)
      */
     clearParameters(): void;
     /**
      * The **`getParameter()`** method of the XSLTProcessor interface returns the value of a parameter (<xsl:param>) from the stylesheet imported in the processor.
+     * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XSLTProcessor/getParameter)
      */
     getParameter(namespaceURI: string | null, localName: string): any;
     /**
      * The **`importStylesheet()`** method of the XSLTProcessor interface imports an XSLT stylesheet for the processor.
+     * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XSLTProcessor/importStylesheet)
      */
     importStylesheet(style: Node): void;
     /**
      * The **`removeParameter()`** method of the XSLTProcessor interface removes the parameter (<xsl:param>) and its value from the stylesheet imported in the processor.
+     * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XSLTProcessor/removeParameter)
      */
     removeParameter(namespaceURI: string | null, localName: string): void;
     /**
      * The **`reset()`** method of the XSLTProcessor interface removes all parameters (<xsl:param>) and the XSLT stylesheet from the processor. The XSLTProcessor will then be in its original state when it was created.
+     * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XSLTProcessor/reset)
      */
     reset(): void;
     /**
      * The **`setParameter()`** method of the XSLTProcessor interface sets the value of a parameter (<xsl:param>) in the stylesheet imported in the processor.
+     * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XSLTProcessor/setParameter)
      */
     setParameter(namespaceURI: string | null, localName: string, value: any): void;
     /**
      * The **`transformToDocument()`** method of the XSLTProcessor interface transforms the provided Node source to a Document using the XSLT stylesheet associated with XSLTProcessor.
+     * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XSLTProcessor/transformToDocument)
      */
     transformToDocument(source: Node): Document;
     /**
      * The **`transformToFragment()`** method of the XSLTProcessor interface transforms a provided Node source to a DocumentFragment using the XSLT stylesheet associated with the XSLTProcessor.
+     * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XSLTProcessor/transformToFragment)
      */
     transformToFragment(source: Node, output: Document): DocumentFragment;
 }
 
+/** @deprecated */
 declare var XSLTProcessor: {
     prototype: XSLTProcessor;
     new(): XSLTProcessor;
@@ -45272,7 +45332,7 @@ type SanitizerPI = string | SanitizerProcessingInstruction;
 type SelectionDirection = "forward" | "backward" | "none";
 type TexImageSource = ImageBitmap | ImageData | HTMLImageElement | HTMLCanvasElement | HTMLVideoElement | OffscreenCanvas | VideoFrame;
 type TimerHandler = string | Function;
-type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | MediaSourceHandle | ReadableStream | WritableStream | TransformStream | AudioData | VideoFrame | RTCDataChannel | ArrayBuffer;
+type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | MediaSourceHandle | ReadableStream | WritableStream | TransformStream | AudioData | VideoFrame | RTCDataChannel | WebTransportDatagramsWritable | ArrayBuffer;
 type URLPatternInput = string | URLPatternInit;
 type Uint32List = Uint32Array<ArrayBufferLike> | GLuint[];
 type VibratePattern = number | number[];
