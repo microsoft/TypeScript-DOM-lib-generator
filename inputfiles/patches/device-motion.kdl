@@ -1,2 +1,10 @@
 interface DeviceMotionEventAcceleration noInterfaceObject=#true
 interface DeviceMotionEventRotationRate noInterfaceObject=#true
+
+removals {
+  interface DeviceOrientationEvent {
+    method requestPermission signatureIndex=0 {
+      param absolute // No implementation as of 2026-11
+    }
+  }
+}

@@ -22,3 +22,11 @@ interface RTCSctpTransport {
     type nullable=#false
   }
 }
+
+// Technically RTCIceCandidatePair is a dictionary in WebKit and Blink as of 2026-11,
+// But this has been an interface here since 2024 and I'm not sure it's worth
+// going back and forth here. For now let's just make it work.
+interface RTCIceCandidatePair {
+  property local exposed="Window Worker"
+  property remote exposed="Window Worker"
+}
