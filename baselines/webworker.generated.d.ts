@@ -13997,6 +13997,7 @@ interface WebTransport {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/incomingUnidirectionalStreams)
      */
     readonly incomingUnidirectionalStreams: ReadableStream;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/protocol) */
     readonly protocol: string;
     /**
      * The **`ready`** read-only property of the WebTransport interface returns a promise that resolves when the transport is ready to use.
@@ -14212,6 +14213,7 @@ declare var WebTransportSendGroup: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportSendStream)
  */
 interface WebTransportSendStream extends WritableStream {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportSendStream/sendGroup) */
     sendGroup: WebTransportSendGroup | null;
     /**
      * The **`sendOrder`** property of the WebTransportSendStream interface indicates the send priority of this stream relative to other streams for which the value has been set.

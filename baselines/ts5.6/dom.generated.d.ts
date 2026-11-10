@@ -17610,24 +17610,28 @@ interface GlobalEventHandlers {
 
 /**
  * The **`HTMLAllCollection`** interface represents a collection of all of the document's elements, accessible by index (like an array) and by the element's id. It is returned by the document.all property.
+ * @deprecated
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAllCollection)
  */
 interface HTMLAllCollection {
     /**
      * The **`HTMLAllCollection.length`** property returns the number of items in this HTMLAllCollection.
+     * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAllCollection/length)
      */
     readonly length: number;
     /**
      * The **`item()`** method of the HTMLAllCollection interface returns the element located at the specified offset into the collection, or the element with the specified value for its id or name attribute.
+     * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAllCollection/item)
      */
     item(nameOrIndex?: string): HTMLCollection | Element | null;
     /**
      * The **`namedItem()`** method of the HTMLAllCollection interface returns the first Element in the collection whose id or name attribute matches the specified name, or null if no element matches.
+     * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAllCollection/namedItem)
      */
@@ -17635,6 +17639,7 @@ interface HTMLAllCollection {
     [index: number]: Element;
 }
 
+/** @deprecated */
 declare var HTMLAllCollection: {
     prototype: HTMLAllCollection;
     new(): HTMLAllCollection;
@@ -41892,6 +41897,7 @@ interface WebTransport {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/incomingUnidirectionalStreams)
      */
     readonly incomingUnidirectionalStreams: ReadableStream;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/protocol) */
     readonly protocol: string;
     /**
      * The **`ready`** read-only property of the WebTransport interface returns a promise that resolves when the transport is ready to use.
@@ -42107,6 +42113,7 @@ declare var WebTransportSendGroup: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportSendStream)
  */
 interface WebTransportSendStream extends WritableStream {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportSendStream/sendGroup) */
     sendGroup: WebTransportSendGroup | null;
     /**
      * The **`sendOrder`** property of the WebTransportSendStream interface indicates the send priority of this stream relative to other streams for which the value has been set.

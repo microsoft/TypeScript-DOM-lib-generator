@@ -74,6 +74,13 @@ interface-mixin WindowEventHandlers {
   property onunload deprecated="The unload event is not reliable, consider visibilitychange or pagehide events."
 }
 
+interface-mixin GlobalEventHandlers {
+  // These two have multiple MDN documents and bcd-idl-mapper only choose based on alphabetical order.
+  // For now pin them so that it won't have unexpected changes.
+  property oncancel mdnUrl="https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/cancel_event"
+  property onerror mdnUrl="https://developer.mozilla.org/docs/Web/API/HTMLElement/error_event"
+}
+
 interface HTMLImageElement {
   property decoding overrideType=#""async" | "sync" | "auto""#
   property loading overrideType=#""eager" | "lazy""#
