@@ -7103,6 +7103,12 @@ interface Notification extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/lang)
      */
     readonly lang: string;
+    /**
+     * The **`navigate`** read-only property of the Notification interface contains the URL the user agent will navigate to when the user activates the notification.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/navigate)
+     */
+    readonly navigate: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/click_event) */
     onclick: ((this: Notification, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/close_event) */
@@ -12456,6 +12462,7 @@ interface WebTransport {
 declare var WebTransport: {
     prototype: WebTransport;
     new(url: string | URL, options?: WebTransportOptions): WebTransport;
+    readonly supportsReliableOnly: boolean;
 };
 
 /**
