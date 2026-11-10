@@ -12606,7 +12606,7 @@ declare var WebTransportDatagramDuplexStream: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramsWritable)
  */
-interface WebTransportDatagramsWritable extends WritableStream {
+interface WebTransportDatagramsWritable extends WritableStream<BufferSource> {
     /**
      * The **`sendGroup`** property of the WebTransportDatagramsWritable interface represents the WebTransportSendGroup that this WebTransportDatagramsWritable is grouped under for the purposes of sendOrder prioritization.
      *
@@ -12658,7 +12658,7 @@ declare var WebTransportError: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportReceiveStream)
  */
-interface WebTransportReceiveStream extends ReadableStream {
+interface WebTransportReceiveStream extends ReadableStream<Uint8Array<ArrayBuffer>> {
     /**
      * The **`getStats()`** method of the WebTransportReceiveStream interface asynchronously returns an object containing statistics for the current stream.
      *
@@ -12698,7 +12698,7 @@ declare var WebTransportSendGroup: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportSendStream)
  */
-interface WebTransportSendStream extends WritableStream {
+interface WebTransportSendStream extends WritableStream<BufferSource> {
     /**
      * The **`sendGroup`** property of the WebTransportSendStream interface represents the WebTransportSendGroup that this stream is grouped under for the purposes of sendOrder prioritization.
      *
