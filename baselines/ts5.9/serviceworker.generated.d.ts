@@ -3670,6 +3670,11 @@ interface EXT_float_blend {
 interface EXT_frag_depth {
 }
 
+interface EXT_polygon_offset_clamp {
+    polygonOffsetClampEXT(factor: GLfloat, units: GLfloat, clamp: GLfloat): void;
+    readonly POLYGON_OFFSET_CLAMP_EXT: 0x8E1B;
+}
+
 /**
  * The **`EXT_sRGB`** extension is part of the WebGL API and adds sRGB support to textures and framebuffer objects.
  *
@@ -12462,6 +12467,7 @@ interface WebTransport {
 declare var WebTransport: {
     prototype: WebTransport;
     new(url: string | URL, options?: WebTransportOptions): WebTransport;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/supportsReliableOnly_static) */
     readonly supportsReliableOnly: boolean;
 };
 
