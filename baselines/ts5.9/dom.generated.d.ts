@@ -8530,6 +8530,12 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     marginTop: string;
     /**
+     * The margin-trim property allows the container to trim the margins of its children where they adjoin the container's edges.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/margin-trim)
+     */
+    marginTrim: string;
+    /**
      * The **`marker`** CSS property points to a marker that will be drawn on the first, middle, and last vertices of the element's path; that is, at all of its vertices. The marker must have been defined using an SVG <marker> element, and can only be referenced with a <url> value. The value of the CSS property overrides any values of the marker-start, marker, and marker-end attributes in the SVG.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/marker)
@@ -31583,6 +31589,7 @@ interface SVGAElement extends SVGGraphicsElement, HyperlinkElementUtils, SVGURIR
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAElement/ping)
      */
     ping: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAElement/referrerPolicy) */
     referrerPolicy: string;
     /**
      * The **`rel`** property of the SVGAElement returns a string reflecting the value of the rel attribute of the SVG <a> element.
@@ -41884,6 +41891,7 @@ interface WebTransport {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/datagrams)
      */
     readonly datagrams: WebTransportDatagramDuplexStream;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/draining) */
     readonly draining: Promise<void>;
     /**
      * The **`incomingBidirectionalStreams`** read-only property of the WebTransport interface represents one or more bidirectional streams opened by the server. Returns a ReadableStream of WebTransportBidirectionalStream objects. Each one can be used to reliably read data from the server and write data back to it.
