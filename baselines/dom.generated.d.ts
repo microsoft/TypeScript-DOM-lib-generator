@@ -9472,6 +9472,12 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     textDecorationColor: string;
     /**
+     * The text-decoration-inset CSS property enables adjusting the start and end points of an element's text decoration so it can be shortened, lengthened, or have its position shifted with respect to the rendered text.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-decoration-inset)
+     */
+    textDecorationInset: string;
+    /**
      * The text-decoration-line CSS property sets the kind of decoration that is used on text in an element, such as an underline or overline.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-decoration-line)
