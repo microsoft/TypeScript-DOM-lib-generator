@@ -3396,6 +3396,16 @@ interface EXT_blend_minmax {
     readonly MAX_EXT: 0x8008;
 }
 
+interface EXT_clip_control {
+    clipControlEXT(origin: GLenum, depth: GLenum): void;
+    readonly LOWER_LEFT_EXT: 0x8CA1;
+    readonly UPPER_LEFT_EXT: 0x8CA2;
+    readonly NEGATIVE_ONE_TO_ONE_EXT: 0x935E;
+    readonly ZERO_TO_ONE_EXT: 0x935F;
+    readonly CLIP_ORIGIN_EXT: 0x935C;
+    readonly CLIP_DEPTH_MODE_EXT: 0x935D;
+}
+
 /**
  * The **`EXT_color_buffer_float`** extension is part of WebGL and adds the ability to render a variety of floating point formats.
  *
@@ -3489,6 +3499,10 @@ interface EXT_texture_compression_rgtc {
 interface EXT_texture_filter_anisotropic {
     readonly TEXTURE_MAX_ANISOTROPY_EXT: 0x84FE;
     readonly MAX_TEXTURE_MAX_ANISOTROPY_EXT: 0x84FF;
+}
+
+interface EXT_texture_mirror_clamp_to_edge {
+    readonly MIRROR_CLAMP_TO_EDGE_EXT: 0x8743;
 }
 
 /**
@@ -11895,6 +11909,8 @@ declare var WebSocket: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport)
  */
 interface WebTransport {
+    anticipatedConcurrentIncomingBidirectionalStreams: number | null;
+    anticipatedConcurrentIncomingUnidirectionalStreams: number | null;
     /**
      * The **`closed`** read-only property of the WebTransport interface returns a promise that resolves when the transport is closed.
      *
@@ -11941,6 +11957,7 @@ interface WebTransport {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/reliability)
      */
     readonly reliability: WebTransportReliabilityMode;
+    readonly responseHeaders: Headers | null;
     /**
      * The **`close()`** method of the WebTransport interface closes an ongoing WebTransport session.
      *
@@ -12021,6 +12038,7 @@ interface WebTransportDatagramDuplexStream {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/incomingMaxAge)
      */
     incomingMaxAge: number | null;
+    incomingMaxBufferedDatagrams: number;
     /**
      * The **`maxDatagramSize`** read-only property of the WebTransportDatagramDuplexStream interface returns the maximum allowable size of outgoing datagrams, in bytes, that can be written to writable.
      *
@@ -12039,6 +12057,7 @@ interface WebTransportDatagramDuplexStream {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/outgoingMaxAge)
      */
     outgoingMaxAge: number | null;
+    outgoingMaxBufferedDatagrams: number;
     /**
      * The **`readable`** read-only property of the WebTransportDatagramDuplexStream interface returns a ReadableStream instance that can be used to unreliably read incoming datagrams from the stream.
      *
