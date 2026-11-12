@@ -2828,6 +2828,12 @@ interface SpeechRecognitionEventInit extends EventInit {
     results: SpeechRecognitionResultList;
 }
 
+interface SpeechRecognitionOptions {
+    langs: string[];
+    processLocally?: boolean;
+    quality?: SpeechRecognitionQuality;
+}
+
 interface SpeechSynthesisErrorEventInit extends SpeechSynthesisEventInit {
     error: SpeechSynthesisErrorCode;
 }
@@ -14005,6 +14011,16 @@ interface EXT_blend_minmax {
     readonly MAX_EXT: 0x8008;
 }
 
+interface EXT_clip_control {
+    clipControlEXT(origin: GLenum, depth: GLenum): void;
+    readonly LOWER_LEFT_EXT: 0x8CA1;
+    readonly UPPER_LEFT_EXT: 0x8CA2;
+    readonly NEGATIVE_ONE_TO_ONE_EXT: 0x935E;
+    readonly ZERO_TO_ONE_EXT: 0x935F;
+    readonly CLIP_ORIGIN_EXT: 0x935C;
+    readonly CLIP_DEPTH_MODE_EXT: 0x935D;
+}
+
 /**
  * The **`EXT_color_buffer_float`** extension is part of WebGL and adds the ability to render a variety of floating point formats.
  *
@@ -14098,6 +14114,10 @@ interface EXT_texture_compression_rgtc {
 interface EXT_texture_filter_anisotropic {
     readonly TEXTURE_MAX_ANISOTROPY_EXT: 0x84FE;
     readonly MAX_TEXTURE_MAX_ANISOTROPY_EXT: 0x84FF;
+}
+
+interface EXT_texture_mirror_clamp_to_edge {
+    readonly MIRROR_CLAMP_TO_EDGE_EXT: 0x8743;
 }
 
 /**
@@ -35035,6 +35055,8 @@ interface SVGTextPathElement extends SVGTextContentElement, SVGURIReference {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextPathElement/method)
      */
     readonly method: SVGAnimatedEnumeration;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextPathElement/side) */
+    readonly side: SVGAnimatedEnumeration;
     /**
      * The **`spacing`** read-only property of the SVGTextPathElement interface reflects the spacing attribute of the given <textPath> element. It takes one of the TEXTPATH_SPACINGTYPE_* constants defined on this interface.
      *
@@ -36424,6 +36446,201 @@ declare var SourceBufferList: {
 };
 
 /**
+ * The **`SpeechGrammar`** interface of the Web Speech API represents a set of words or patterns of words for the recognition service to recognize.
+ * @deprecated
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechGrammar)
+ */
+interface SpeechGrammar {
+    /**
+     * The **`src`** property of the SpeechGrammar interface is used to get or set a string that contains the grammar within the SpeechGrammar object.
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechGrammar/src)
+     */
+    src: string;
+    /**
+     * The optional **`weight`** property of the SpeechGrammar interface sets and returns the weight of the SpeechGrammar object.
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechGrammar/weight)
+     */
+    weight: number;
+}
+
+/** @deprecated */
+declare var SpeechGrammar: {
+    prototype: SpeechGrammar;
+    new(): SpeechGrammar;
+};
+
+/**
+ * The **`SpeechGrammarList`** interface of the Web Speech API represents a list of SpeechGrammar objects containing words or patterns of words that we want the recognition service to recognize.
+ * @deprecated
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechGrammarList)
+ */
+interface SpeechGrammarList {
+    /**
+     * The **`length`** read-only property of the SpeechGrammarList interface returns the number of SpeechGrammar objects contained in the SpeechGrammarList.
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechGrammarList/length)
+     */
+    readonly length: number;
+    /**
+     * The **`addFromString()`** method of the SpeechGrammarList interface takes a grammar present in a specific string within the code base (e.g., stored in a variable) and adds it to the SpeechGrammarList as a new SpeechGrammar object.
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechGrammarList/addFromString)
+     */
+    addFromString(string: string, weight?: number): void;
+    /**
+     * The **`item`** getter of the SpeechGrammarList interface is a standard getter — it allows individual SpeechGrammar objects to be retrieved from the SpeechGrammarList using array syntax.
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechGrammarList/item)
+     */
+    item(index: number): SpeechGrammar | null;
+    [index: number]: SpeechGrammar;
+}
+
+/** @deprecated */
+declare var SpeechGrammarList: {
+    prototype: SpeechGrammarList;
+    new(): SpeechGrammarList;
+};
+
+interface SpeechRecognitionEventMap {
+    "audioend": Event;
+    "audiostart": Event;
+    "end": Event;
+    "error": SpeechRecognitionErrorEvent;
+    "nomatch": SpeechRecognitionEvent;
+    "result": SpeechRecognitionEvent;
+    "soundend": Event;
+    "soundstart": Event;
+    "speechend": Event;
+    "speechstart": Event;
+    "start": Event;
+}
+
+/**
+ * The **`SpeechRecognition`** interface of the Web Speech API is the controller interface for the recognition service; this also handles the SpeechRecognitionEvent sent from the recognition service.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition)
+ */
+interface SpeechRecognition extends EventTarget {
+    /**
+     * The **`continuous`** property of the SpeechRecognition interface controls whether continuous results are returned for each recognition, or only a single result.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/continuous)
+     */
+    continuous: boolean;
+    /**
+     * The **`grammars`** property of the SpeechRecognition interface returns and sets a collection of SpeechGrammar objects that represent the grammars that will be understood by the current SpeechRecognition.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/grammars)
+     */
+    grammars: SpeechGrammarList;
+    /**
+     * The **`interimResults`** property of the SpeechRecognition interface controls whether interim results should be returned (true) or not (false). Interim results are results that are not yet final (e.g., the SpeechRecognitionResult.isFinal property is false).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/interimResults)
+     */
+    interimResults: boolean;
+    /**
+     * The **`lang`** property of the SpeechRecognition interface returns and sets the language of the current SpeechRecognition. If not specified, this defaults to the HTML lang attribute value, or the user agent's language setting if that isn't set either.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/lang)
+     */
+    lang: string;
+    /**
+     * The **`maxAlternatives`** property of the SpeechRecognition interface sets the maximum number of SpeechRecognitionAlternatives provided per SpeechRecognitionResult.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/maxAlternatives)
+     */
+    maxAlternatives: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/audioend_event) */
+    onaudioend: ((this: SpeechRecognition, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/audiostart_event) */
+    onaudiostart: ((this: SpeechRecognition, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/end_event) */
+    onend: ((this: SpeechRecognition, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/error_event) */
+    onerror: ((this: SpeechRecognition, ev: SpeechRecognitionErrorEvent) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/nomatch_event) */
+    onnomatch: ((this: SpeechRecognition, ev: SpeechRecognitionEvent) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/result_event) */
+    onresult: ((this: SpeechRecognition, ev: SpeechRecognitionEvent) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/soundend_event) */
+    onsoundend: ((this: SpeechRecognition, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/soundstart_event) */
+    onsoundstart: ((this: SpeechRecognition, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/speechend_event) */
+    onspeechend: ((this: SpeechRecognition, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/speechstart_event) */
+    onspeechstart: ((this: SpeechRecognition, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/start_event) */
+    onstart: ((this: SpeechRecognition, ev: Event) => any) | null;
+    /**
+     * The **`phrases`** property of the SpeechRecognition interface sets an array of SpeechRecognitionPhrase objects to be used for contextual biasing.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/phrases)
+     */
+    phrases: SpeechRecognitionPhrase[];
+    /**
+     * The **`processLocally`** property of the SpeechRecognition interface specifies whether speech recognition must be performed locally on the user's device.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/processLocally)
+     */
+    processLocally: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/unspokenPunctuation) */
+    unspokenPunctuation: boolean;
+    /**
+     * The **`abort()`** method of the Web Speech API stops the speech recognition service from listening to incoming audio, and doesn't attempt to return a SpeechRecognitionResult.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/abort)
+     */
+    abort(): void;
+    /**
+     * The **`start()`** method of the Web Speech API starts the speech recognition service to listen for incoming audio (from a microphone or an audio track) and returns the results of that recognition.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/start)
+     */
+    start(): void;
+    start(audioTrack: MediaStreamTrack): void;
+    /**
+     * The **`stop()`** method of the Web Speech API stops the speech recognition service from listening for incoming audio and attempts to return a SpeechRecognitionResult based on the results captured so far.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/stop)
+     */
+    stop(): void;
+    addEventListener<K extends keyof SpeechRecognitionEventMap>(type: K, listener: (this: SpeechRecognition, ev: SpeechRecognitionEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof SpeechRecognitionEventMap>(type: K, listener: (this: SpeechRecognition, ev: SpeechRecognitionEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var SpeechRecognition: {
+    prototype: SpeechRecognition;
+    new(): SpeechRecognition;
+    /**
+     * The **`available()`** static method of the Web Speech API checks whether the specified languages are available for speech recognition.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/available_static)
+     */
+    available(options: SpeechRecognitionOptions): Promise<SpeechRecognitionAvailabilityStatus>;
+    /**
+     * The **`install()`** static method of the Web Speech API installs the required language packs for on-device speech recognition in the specified languages.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/install_static)
+     */
+    install(options: SpeechRecognitionOptions): Promise<boolean>;
+};
+
+/**
  * The **`SpeechRecognitionAlternative`** interface of the Web Speech API represents a single word that has been recognized by the speech recognition service.
  * Available only in secure contexts.
  *
@@ -36499,6 +36716,32 @@ interface SpeechRecognitionEvent extends Event {
 declare var SpeechRecognitionEvent: {
     prototype: SpeechRecognitionEvent;
     new(type: string, eventInitDict: SpeechRecognitionEventInit): SpeechRecognitionEvent;
+};
+
+/**
+ * The **`SpeechRecognitionPhrase`** interface of the Web Speech API represents a phrase that can be passed to the speech recognition engine for contextual biasing.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionPhrase)
+ */
+interface SpeechRecognitionPhrase {
+    /**
+     * The **`boost`** read-only property of the SpeechRecognitionPhrase interface returns a floating point number representing the weight you want to give the corresponding phrase.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionPhrase/boost)
+     */
+    readonly boost: number;
+    /**
+     * The **`phrase`** read-only property of the SpeechRecognitionPhrase interface returns a string containing the word or phrase you want boosted in the recognition engine's contextual bias.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionPhrase/phrase)
+     */
+    readonly phrase: string;
+}
+
+declare var SpeechRecognitionPhrase: {
+    prototype: SpeechRecognitionPhrase;
+    new(phrase: string, boost?: number): SpeechRecognitionPhrase;
 };
 
 /**
@@ -41893,6 +42136,8 @@ declare var WebSocket: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport)
  */
 interface WebTransport {
+    anticipatedConcurrentIncomingBidirectionalStreams: number | null;
+    anticipatedConcurrentIncomingUnidirectionalStreams: number | null;
     /**
      * The **`closed`** read-only property of the WebTransport interface returns a promise that resolves when the transport is closed.
      *
@@ -41939,6 +42184,7 @@ interface WebTransport {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/reliability)
      */
     readonly reliability: WebTransportReliabilityMode;
+    readonly responseHeaders: Headers | null;
     /**
      * The **`close()`** method of the WebTransport interface closes an ongoing WebTransport session.
      *
@@ -42019,6 +42265,7 @@ interface WebTransportDatagramDuplexStream {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/incomingMaxAge)
      */
     incomingMaxAge: number | null;
+    incomingMaxBufferedDatagrams: number;
     /**
      * The **`maxDatagramSize`** read-only property of the WebTransportDatagramDuplexStream interface returns the maximum allowable size of outgoing datagrams, in bytes, that can be written to writable.
      *
@@ -42037,6 +42284,7 @@ interface WebTransportDatagramDuplexStream {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/outgoingMaxAge)
      */
     outgoingMaxAge: number | null;
+    outgoingMaxBufferedDatagrams: number;
     /**
      * The **`readable`** read-only property of the WebTransportDatagramDuplexStream interface returns a ReadableStream instance that can be used to unreliably read incoming datagrams from the stream.
      *
@@ -45593,7 +45841,9 @@ type ServiceWorkerState = "activated" | "activating" | "installed" | "installing
 type ServiceWorkerUpdateViaCache = "all" | "imports" | "none";
 type ShadowRootMode = "closed" | "open";
 type SlotAssignmentMode = "manual" | "named";
+type SpeechRecognitionAvailabilityStatus = "available" | "downloadable" | "downloading" | "unavailable";
 type SpeechRecognitionErrorCode = "aborted" | "audio-capture" | "language-not-supported" | "network" | "no-speech" | "not-allowed" | "phrases-not-supported" | "service-not-allowed";
+type SpeechRecognitionQuality = "command" | "conversation" | "dictation";
 type SpeechSynthesisErrorCode = "audio-busy" | "audio-hardware" | "canceled" | "interrupted" | "invalid-argument" | "language-unavailable" | "network" | "not-allowed" | "synthesis-failed" | "synthesis-unavailable" | "text-too-long" | "voice-unavailable";
 type TaskPriority = "background" | "user-blocking" | "user-visible";
 type TextTrackKind = "captions" | "chapters" | "descriptions" | "metadata" | "subtitles";
@@ -46009,6 +46259,10 @@ interface SVGTransformList {
 
 interface SourceBufferList {
     [Symbol.iterator](): ArrayIterator<SourceBuffer>;
+}
+
+interface SpeechGrammarList {
+    [Symbol.iterator](): ArrayIterator<SpeechGrammar>;
 }
 
 interface SpeechRecognitionResult {
