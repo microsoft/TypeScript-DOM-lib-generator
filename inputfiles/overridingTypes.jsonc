@@ -2828,6 +2828,46 @@
                     }
                 }
             },
+            // Shared memories (threads proposal) return SharedArrayBuffer in Firefox and Chrome,
+            // expressed as ArrayBufferLike to stay pre-ES2017 friendly
+            // https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/2447
+            "Memory": {
+                "name": "Memory",
+                "typeParameters": [
+                    {
+                        "name": "TBuffer",
+                        "extends": "ArrayBufferLike",
+                        "default": "ArrayBufferLike"
+                    }
+                ],
+                "constructor": {
+                    "overrideSignatures": [
+                        "new(descriptor: MemoryDescriptor & { shared?: false }): Memory<ArrayBuffer>",
+                        "new(descriptor: MemoryDescriptor): Memory<ArrayBufferLike>"
+                    ]
+                },
+                "properties": {
+                    "property": {
+                        "buffer": {
+                            "overrideType": "TBuffer"
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "toFixedLengthBuffer": {
+                            "overrideSignatures": [
+                                "toFixedLengthBuffer(): TBuffer"
+                            ]
+                        },
+                        "toResizableBuffer": {
+                            "overrideSignatures": [
+                                "toResizableBuffer(): TBuffer"
+                            ]
+                        }
+                    }
+                }
+            },
 
             // https://github.com/w3c/media-source/pull/282, but not supported anywhere yet
             "MediaSource": {
