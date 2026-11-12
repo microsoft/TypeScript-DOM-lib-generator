@@ -50,9 +50,11 @@ interface WebTransportDatagramDuplexStream {
   property outgoingHighWaterMark type=long mdnUrl="https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/outgoingHighWaterMark"
 }
 
+interface WebTransportDatagramsWritable extends=WritableStream<BufferSource>
+
 // transferable only on WebKit as of 2026-03
-interface WebTransportReceiveStream transferable=#false
-interface WebTransportSendStream transferable=#false {
+interface WebTransportReceiveStream extends=ReadableStream<Uint8Array<ArrayBuffer>> transferable=#false
+interface WebTransportSendStream extends=WritableStream<BufferSource> transferable=#false {
   // No implementation as of 2026-03.
   // This one overrides the inherited getWriter and BCD doesn't have data about inheritance.
   // https://github.com/mdn/browser-compat-data/issues/29152
