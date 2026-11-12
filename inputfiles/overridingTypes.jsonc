@@ -572,6 +572,13 @@
             "Node": {
                 "methods": {
                     "method": {
+                        "cloneNode": {
+                            "signature": {
+                                "0": {
+                                    "overrideType": "this"
+                                }
+                            }
+                        },
                         "appendChild": {
                             "signature": {
                                 "0": {
