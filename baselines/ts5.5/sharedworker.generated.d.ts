@@ -207,6 +207,7 @@ interface FontFaceDescriptors {
     unicodeRange?: string;
     variationSettings?: string;
     weight?: string;
+    width?: string;
 }
 
 interface FontFaceSetLoadEventInit extends EventInit {
@@ -842,6 +843,11 @@ interface QueuingStrategyInit {
      * Note that the provided high water mark will not be validated ahead of time. Instead, if it is negative, NaN, or not a number, the resulting ByteLengthQueuingStrategy will cause the corresponding stream constructor to throw.
      */
     highWaterMark: number;
+}
+
+interface QuotaExceededErrorOptions {
+    quota?: number;
+    requested?: number;
 }
 
 interface ReadableStreamBYOBReaderReadOptions {
@@ -3442,9 +3448,17 @@ interface EXT_float_blend {
 interface EXT_frag_depth {
 }
 
-/** The **`EXT_polygon_offset_clamp`** extension is part of the WebGL API and adds a limit to the depth offset set with polygonOffset(). */
+/**
+ * The **`EXT_polygon_offset_clamp`** extension is part of the WebGL API and adds a limit to the depth offset set with polygonOffset().
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_polygon_offset_clamp)
+ */
 interface EXT_polygon_offset_clamp {
-    /** The **`polygonOffsetClampEXT()`** method of the EXT_polygon_offset_clamp extension of the WebGL API specifies the scale factor and units used to calculate depth offsets, like WebGLRenderingContext.polygonOffset(), and a limit for the resulting offset. */
+    /**
+     * The **`polygonOffsetClampEXT()`** method of the EXT_polygon_offset_clamp extension of the WebGL API specifies the scale factor and units used to calculate depth offsets, like WebGLRenderingContext.polygonOffset(), and a limit for the resulting offset.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_polygon_offset_clamp/polygonOffsetClampEXT)
+     */
     polygonOffsetClampEXT(factor: GLfloat, units: GLfloat, clamp: GLfloat): void;
     readonly POLYGON_OFFSET_CLAMP_EXT: 0x8E1B;
 }
@@ -4166,17 +4180,17 @@ interface FontFace {
      */
     readonly loaded: Promise<FontFace>;
     /**
+     * The **`sizeAdjust`** property of the FontFace interface represents a multiplier for the font's glyph outlines and metrics, such as glyph widths and line heights, used to lay out text.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/sizeAdjust)
+     */
+    sizeAdjust: string;
+    /**
      * The **`status`** read-only property of the FontFace interface returns an enumerated value indicating the status of the font, one of "unloaded", "loading", "loaded", or "error".
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/status)
      */
     readonly status: FontFaceLoadStatus;
-    /**
-     * The **`stretch`** property of the FontFace interface retrieves or sets how the font stretches.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/stretch)
-     */
-    stretch: string;
     /**
      * The **`style`** property of the FontFace interface retrieves or sets the font's style.
      *
@@ -4189,6 +4203,12 @@ interface FontFace {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/unicodeRange)
      */
     unicodeRange: string;
+    /**
+     * The **`variant`** property of the FontFace interface programmatically retrieves or sets font variant values.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/variant)
+     */
+    variant: string;
     /**
      * The **`variationSettings`** property of the FontFace interface retrieves or sets low-level OpenType or TrueType font variations.
      *
@@ -5489,6 +5509,7 @@ interface GPUTexture extends GPUObjectBase {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/sampleCount)
      */
     readonly sampleCount: GPUSize32Out;
+    readonly textureBindingViewDimension: GPUTextureViewDimension | undefined;
     /**
      * The **`usage`** read-only property of the GPUTexture interface is the bitwise flags representing the allowed usages of the GPUTexture.
      *
@@ -5575,8 +5596,13 @@ interface GenericTransformStream {
     readonly writable: WritableStream;
 }
 
+interface GlobalPrivacyControl {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/globalPrivacyControl) */
+    readonly globalPrivacyControl: boolean;
+}
+
 /**
- * The **`Headers`** interface of the Fetch API allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing headers from the list of the request's headers.
+ * The **`Headers`** interface of the Fetch API allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing headers from the object's header list.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Headers)
  */
@@ -7790,6 +7816,31 @@ declare var PushSubscriptionOptions: {
 };
 
 /**
+ * The **`QuotaExceededError`** interface represents an error when a requested operation would exceed a system-imposed storage quota.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/QuotaExceededError)
+ */
+interface QuotaExceededError extends DOMException {
+    /**
+     * The **`quota`** read-only property of the QuotaExceededError interface returns the system-defined storage quota (in bytes) that the operation attempted to exceed, or undefined if the information is not available.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/QuotaExceededError/quota)
+     */
+    readonly quota: number | null;
+    /**
+     * The **`requested`** read-only property of the QuotaExceededError interface returns the number of bytes that were requested when the error occurred, or undefined if the information is not available.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/QuotaExceededError/requested)
+     */
+    readonly requested: number | null;
+}
+
+declare var QuotaExceededError: {
+    prototype: QuotaExceededError;
+    new(message?: string, options?: QuotaExceededErrorOptions): QuotaExceededError;
+};
+
+/**
  * The **`ReadableByteStreamController`** interface of the Streams API represents a controller for a readable byte stream. It allows control of the state and internal queue of a ReadableStream with an underlying byte source, and enables efficient zero-copy transfer of data from the underlying source to a consumer when the stream's internal queue is empty.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController)
@@ -8071,6 +8122,12 @@ interface Request extends Body {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/destination)
      */
     readonly destination: RequestDestination;
+    /**
+     * The **`duplex`** read-only property of the Request interface returns the duplex mode of the request, which determines whether the browser must send the entire request before processing the response.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/duplex)
+     */
+    readonly duplex: RequestDuplex;
     /**
      * The **`headers`** read-only property of the Request interface contains the Headers object associated with the request.
      *
@@ -11915,7 +11972,9 @@ declare var WebSocket: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport)
  */
 interface WebTransport {
+    /** The **`anticipatedConcurrentIncomingBidirectionalStreams`** property of the WebTransport interface represents the number of incoming bidirectional streams that the application expects the server to have open at the same time. */
     anticipatedConcurrentIncomingBidirectionalStreams: number | null;
+    /** The **`anticipatedConcurrentIncomingUnidirectionalStreams`** property of the WebTransport interface represents the number of incoming unidirectional streams that the application expects the server to have open at the same time. */
     anticipatedConcurrentIncomingUnidirectionalStreams: number | null;
     /**
      * The **`closed`** read-only property of the WebTransport interface returns a promise that resolves when the transport is closed.
@@ -11971,6 +12030,7 @@ interface WebTransport {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/reliability)
      */
     readonly reliability: WebTransportReliabilityMode;
+    /** The **`responseHeaders`** read-only property of the WebTransport interface returns the HTTP headers from the server's response to the request that set up the session. */
     readonly responseHeaders: Headers | null;
     /**
      * The **`close()`** method of the WebTransport interface closes an ongoing WebTransport session.
@@ -11996,6 +12056,12 @@ interface WebTransport {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/createUnidirectionalStream)
      */
     createUnidirectionalStream(options?: WebTransportSendStreamOptions): Promise<WritableStream>;
+    /**
+     * The **`exportKeyingMaterial()`** method of the WebTransport interface returns a Promise that fulfills with keying material derived from the TLS session underlying the transport's connection. This can be used to bind application-level authentication to the specific connection, for example to detect manipulator-in-the-middle (MitM) attacks when connecting to a peer that uses a self-signed certificate.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/exportKeyingMaterial)
+     */
+    exportKeyingMaterial(label: BufferSource, context: BufferSource, outputLength: number): Promise<Uint8Array>;
     /**
      * The **`getStats()`** method of the WebTransport interface asynchronously returns an object containing HTTP/3 connection statistics.
      *
@@ -12049,7 +12115,7 @@ declare var WebTransportBidirectionalStream: {
  */
 interface WebTransportDatagramDuplexStream {
     /**
-     * The **`incomingHighWaterMark`** property of the WebTransportDatagramDuplexStream interface gets or sets the high water mark for incoming chunks of data — this is the maximum size, in chunks, that the incoming ReadableStream's internal queue can reach before it is considered full. See Internal queues and queuing strategies for more information.
+     * The **`incomingHighWaterMark`** property of the WebTransportDatagramDuplexStream interface represents the maximum number of incoming datagrams that can be queued while waiting to be read from the readable stream. If more datagrams arrive than the queue can hold, the oldest datagrams in the queue are dropped. The number of datagrams dropped this way is reported in the droppedIncoming property of the datagram statistics returned by WebTransport.getStats().
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/incomingHighWaterMark)
      */
@@ -12060,6 +12126,7 @@ interface WebTransportDatagramDuplexStream {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/incomingMaxAge)
      */
     incomingMaxAge: number | null;
+    /** The **`incomingMaxBufferedDatagrams`** property of the WebTransportDatagramDuplexStream interface represents the maximum number of incoming datagrams that can be queued while waiting to be read from the readable stream. */
     incomingMaxBufferedDatagrams: number;
     /**
      * The **`maxDatagramSize`** read-only property of the WebTransportDatagramDuplexStream interface returns the maximum allowable size of outgoing datagrams, in bytes, that can be written to writable.
@@ -12068,7 +12135,7 @@ interface WebTransportDatagramDuplexStream {
      */
     readonly maxDatagramSize: number;
     /**
-     * The **`outgoingHighWaterMark`** property of the WebTransportDatagramDuplexStream interface gets or sets the high water mark for outgoing chunks of data — this is the maximum size, in chunks, that the outgoing WritableStream's internal queue can reach before it is considered full. See Internal queues and queuing strategies for more information.
+     * The **`outgoingHighWaterMark`** property of the WebTransportDatagramDuplexStream interface represents the maximum number of outgoing datagrams that can be queued for sending before backpressure is applied. Queued datagrams are not dropped because the queue is full, though they can still expire if outgoingMaxAge is set.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/outgoingHighWaterMark)
      */
@@ -12078,7 +12145,8 @@ interface WebTransportDatagramDuplexStream {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/outgoingMaxAge)
      */
-    outgoingMaxAge: number | null;
+    outgoingMaxAge: number;
+    /** The **`outgoingMaxBufferedDatagrams`** property of the WebTransportDatagramDuplexStream interface represents the maximum number of outgoing datagrams that can be queued for sending on each WebTransportDatagramsWritable before backpressure is applied. */
     outgoingMaxBufferedDatagrams: number;
     /**
      * The **`readable`** read-only property of the WebTransportDatagramDuplexStream interface returns a ReadableStream instance that can be used to unreliably read incoming datagrams from the stream.
@@ -12443,7 +12511,7 @@ declare var WorkerLocation: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerNavigator)
  */
-interface WorkerNavigator extends NavigatorBadge, NavigatorConcurrentHardware, NavigatorGPU, NavigatorID, NavigatorLanguage, NavigatorLocks, NavigatorOnLine, NavigatorStorage {
+interface WorkerNavigator extends GlobalPrivacyControl, NavigatorBadge, NavigatorConcurrentHardware, NavigatorGPU, NavigatorID, NavigatorLanguage, NavigatorLocks, NavigatorOnLine, NavigatorStorage {
     /**
      * The read-only **`mediaCapabilities`** property of the WorkerNavigator interface references a MediaCapabilities object that can expose information about the decoding and encoding capabilities for a given format and output capabilities (as defined by the Media Capabilities API).
      *
@@ -13575,6 +13643,7 @@ type ReferrerPolicy = "" | "no-referrer" | "no-referrer-when-downgrade" | "origi
 type RequestCache = "default" | "force-cache" | "no-cache" | "no-store" | "only-if-cached" | "reload";
 type RequestCredentials = "include" | "omit" | "same-origin";
 type RequestDestination = "" | "audio" | "audioworklet" | "document" | "embed" | "font" | "frame" | "iframe" | "image" | "json" | "manifest" | "object" | "paintworklet" | "report" | "script" | "sharedworker" | "style" | "track" | "video" | "worker" | "xslt";
+type RequestDuplex = "half";
 type RequestMode = "cors" | "navigate" | "no-cors" | "same-origin";
 type RequestPriority = "auto" | "high" | "low";
 type RequestRedirect = "error" | "follow" | "manual";

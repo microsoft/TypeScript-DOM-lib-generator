@@ -373,7 +373,12 @@ interface CanvasRenderingContext2DSettings {
     alpha?: boolean;
     colorSpace?: PredefinedColorSpace;
     desynchronized?: boolean;
+    toneMapping?: CanvasToneMapping;
     willReadFrequently?: boolean;
+}
+
+interface CanvasToneMapping {
+    mode?: CanvasToneMappingMode;
 }
 
 interface CaretPositionFromPointOptions {
@@ -659,6 +664,7 @@ interface DragEventInit extends MouseEventInit {
 interface DynamicsCompressorOptions extends AudioNodeOptions {
     attack?: number;
     knee?: number;
+    makeupGain?: number | MakeupGainOptions;
     ratio?: number;
     release?: number;
     threshold?: number;
@@ -813,6 +819,7 @@ interface FontFaceDescriptors {
     unicodeRange?: string;
     variationSettings?: string;
     weight?: string;
+    width?: string;
 }
 
 interface FontFaceSetLoadEventInit extends EventInit {
@@ -826,6 +833,12 @@ interface FormDataEventInit extends EventInit {
 interface FullscreenOptions {
     keyboardLock?: FullscreenKeyboardLock;
     navigationUI?: FullscreenNavigationUI;
+}
+
+interface FunctionParameter {
+    defaultValue?: string;
+    name: string;
+    type: string;
 }
 
 interface GPUBindGroupDescriptor extends GPUObjectDescriptorBase {
@@ -2163,6 +2176,11 @@ interface QueuingStrategyInit {
     highWaterMark: number;
 }
 
+interface QuotaExceededErrorOptions {
+    quota?: number;
+    requested?: number;
+}
+
 interface RTCAnswerOptions extends RTCOfferAnswerOptions {
 }
 
@@ -2171,12 +2189,15 @@ interface RTCCertificateExpiration {
 }
 
 interface RTCConfiguration {
+    alwaysNegotiateDataChannels?: boolean;
     bundlePolicy?: RTCBundlePolicy;
     certificates?: RTCCertificate[];
     iceCandidatePoolSize?: number;
     iceServers?: RTCIceServer[];
     iceTransportPolicy?: RTCIceTransportPolicy;
     rtcpMuxPolicy?: RTCRtcpMuxPolicy;
+    rtpHeaderEncryptionPolicy?: RTCRtpHeaderEncryptionPolicy;
+    targetLatency?: RTCConfigurationTargetLatency;
 }
 
 interface RTCDTMFToneChangeEventInit extends EventInit {
@@ -2221,6 +2242,10 @@ interface RTCEncodedVideoFrameMetadata extends RTCEncodedFrameMetadata {
     temporalIndex?: number;
     timestamp?: number;
     width?: number;
+}
+
+interface RTCEncodingOptions {
+    keyFrame?: boolean;
 }
 
 interface RTCErrorEventInit extends EventInit {
@@ -2394,6 +2419,11 @@ interface RTCReceivedRtpStreamStats extends RTCRtpStreamStats {
     packetsReceived?: number;
 }
 
+interface RTCResolutionRestriction {
+    maxHeight?: number;
+    maxWidth?: number;
+}
+
 interface RTCRtcpParameters {
     cname?: string;
     reducedSize?: boolean;
@@ -2421,21 +2451,27 @@ interface RTCRtpCodingParameters {
 
 interface RTCRtpContributingSource {
     audioLevel?: number;
+    captureTimestamp?: DOMHighResTimeStamp;
     rtpTimestamp: number;
+    senderCaptureTimeOffset?: DOMHighResTimeStamp;
     source: number;
     timestamp: DOMHighResTimeStamp;
 }
 
 interface RTCRtpEncodingParameters extends RTCRtpCodingParameters {
     active?: boolean;
+    adaptivePtime?: boolean;
     maxBitrate?: number;
     maxFramerate?: number;
     networkPriority?: RTCPriorityType;
     priority?: RTCPriorityType;
+    ptime?: number;
     scaleResolutionDownBy?: number;
+    scaleResolutionDownTo?: RTCResolutionRestriction;
 }
 
 interface RTCRtpHeaderExtensionCapability {
+    direction: RTCRtpTransceiverDirection;
     uri: string;
 }
 
@@ -2487,6 +2523,7 @@ interface RTCSessionDescriptionInit {
 }
 
 interface RTCSetParameterOptions {
+    encodingOptions?: RTCEncodingOptions[];
 }
 
 interface RTCStats {
@@ -3788,23 +3825,11 @@ interface AbstractRange {
      */
     readonly collapsed: boolean;
     /**
-     * The read-only **`endContainer`** property of the AbstractRange interface returns the Node in which the end of the range is located.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbstractRange/endContainer)
-     */
-    readonly endContainer: Node;
-    /**
      * The **`endOffset`** property of the AbstractRange interface returns the offset into the end node of the range's end position.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbstractRange/endOffset)
      */
     readonly endOffset: number;
-    /**
-     * The read-only **`startContainer`** property of the AbstractRange interface returns the Node in which the start of the range is located.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbstractRange/startContainer)
-     */
-    readonly startContainer: Node;
     /**
      * The read-only **`startOffset`** property of the AbstractRange interface returns the offset into the start node of the range's start position.
      *
@@ -5750,6 +5775,10 @@ declare var CSSCounterStyleRule: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontFaceDescriptors)
  */
 interface CSSFontFaceDescriptors extends CSSStyleDeclarationBase {
+    "ascent-override": string;
+    ascentOverride: string;
+    "descent-override": string;
+    descentOverride: string;
     "font-display": string;
     "font-family": string;
     "font-feature-settings": string;
@@ -5764,6 +5793,8 @@ interface CSSFontFaceDescriptors extends CSSStyleDeclarationBase {
     fontStyle: string;
     fontWeight: string;
     fontWidth: string;
+    "line-gap-override": string;
+    lineGapOverride: string;
     "size-adjust": string;
     sizeAdjust: string;
     src: string;
@@ -5850,6 +5881,76 @@ interface CSSFontPaletteValuesRule extends CSSRule {
 declare var CSSFontPaletteValuesRule: {
     prototype: CSSFontPaletteValuesRule;
     new(): CSSFontPaletteValuesRule;
+};
+
+/**
+ * The **`CSSFunctionDeclarations`** interface of the CSS Object Model represents a consecutive run of CSS declarations included within a @function body.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFunctionDeclarations)
+ */
+interface CSSFunctionDeclarations extends CSSRule {
+    /**
+     * The read-only **`style`** property of the CSSFunctionDeclarations interface contains a CSSFunctionDescriptors object representing the descriptors available in the @function rule's body.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFunctionDeclarations/style)
+     */
+    get style(): CSSFunctionDescriptors;
+    set style(cssText: string);
+}
+
+declare var CSSFunctionDeclarations: {
+    prototype: CSSFunctionDeclarations;
+    new(): CSSFunctionDeclarations;
+};
+
+/**
+ * The **`CSSFunctionDescriptors`** interface of the CSS Object Model represents the descriptors contained within a set of CSS declarations represented by a CSSFunctionDeclarations object.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFunctionDescriptors)
+ */
+interface CSSFunctionDescriptors extends CSSStyleDeclarationBase {
+    /**
+     * The **`result`** property of the CSSFunctionDescriptors interface returns a string representing a result descriptor, if one exists in the associated set of declarations.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFunctionDescriptors/result)
+     */
+    result: string;
+}
+
+declare var CSSFunctionDescriptors: {
+    prototype: CSSFunctionDescriptors;
+    new(): CSSFunctionDescriptors;
+};
+
+/**
+ * The **`CSSFunctionRule`** interface of the CSS Object Model represents CSS @function (custom function) at-rules.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFunctionRule)
+ */
+interface CSSFunctionRule extends CSSGroupingRule {
+    /**
+     * The **`name`** property of the CSSFunctionRule interface returns a string representing the custom function's name.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFunctionRule/name)
+     */
+    readonly name: string;
+    /**
+     * The **`returnType`** property of the CSSFunctionRule interface returns a string representing the custom function's return type.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFunctionRule/returnType)
+     */
+    readonly returnType: string;
+    /**
+     * The **`getParameters()`** method of the CSSFunctionRule interface returns an array of objects representing the custom function's parameters.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFunctionRule/getParameters)
+     */
+    getParameters(): FunctionParameter[];
+}
+
+declare var CSSFunctionRule: {
+    prototype: CSSFunctionRule;
+    new(): CSSFunctionRule;
 };
 
 /**
@@ -7888,6 +7989,108 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     contentVisibility: string;
     /**
+     * The corner-block-end-shape CSS property specifies the shape of both the corners on a box's block-end edge, within their border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-block-end-shape)
+     */
+    cornerBlockEndShape: string;
+    /**
+     * The corner-block-start-shape CSS property specifies the shape of both the corners on a box's block-start edge, within their border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-block-start-shape)
+     */
+    cornerBlockStartShape: string;
+    /**
+     * The corner-bottom-left-shape CSS property specifies the shape of a box's bottom-left corner, within its border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-bottom-left-shape)
+     */
+    cornerBottomLeftShape: string;
+    /**
+     * The corner-bottom-right-shape CSS property specifies the shape of a box's bottom-right corner, within its border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-bottom-right-shape)
+     */
+    cornerBottomRightShape: string;
+    /**
+     * The corner-bottom-shape CSS property specifies the shape of both the corners on a box's bottom edge, within their border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-bottom-shape)
+     */
+    cornerBottomShape: string;
+    /**
+     * The corner-end-end-shape CSS property specifies the shape of a box's block-end and inline-end corner, within its border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-end-end-shape)
+     */
+    cornerEndEndShape: string;
+    /**
+     * The corner-end-start-shape CSS property specifies the shape of a box's block-end and inline-start corner, within its border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-end-start-shape)
+     */
+    cornerEndStartShape: string;
+    /**
+     * The corner-inline-end-shape CSS property specifies the shape of both the corners on a box's inline-end edge, within their border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-inline-end-shape)
+     */
+    cornerInlineEndShape: string;
+    /**
+     * The corner-inline-start-shape CSS property specifies the shape of both the corners on a box's inline-start edge, within their border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-inline-start-shape)
+     */
+    cornerInlineStartShape: string;
+    /**
+     * The corner-left-shape CSS property specifies the shape of both the corners on a box's left-hand edge, within their border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-left-shape)
+     */
+    cornerLeftShape: string;
+    /**
+     * The corner-right-shape CSS property specifies the shape of both the corners on a box's right-hand edge, within their border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-right-shape)
+     */
+    cornerRightShape: string;
+    /**
+     * The corner-shape CSS shorthand property specifies the shape of a box's corners, within the area specified by its border-radius property value.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-shape)
+     */
+    cornerShape: string;
+    /**
+     * The corner-start-end-shape CSS property specifies the shape of a box's block-start and inline-end corner, within its border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-start-end-shape)
+     */
+    cornerStartEndShape: string;
+    /**
+     * The corner-start-start-shape CSS property specifies the shape of a box's block-start and inline-start corner, within its border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-start-start-shape)
+     */
+    cornerStartStartShape: string;
+    /**
+     * The corner-top-left-shape CSS property specifies the shape of a box's top-left corner, within its border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-top-left-shape)
+     */
+    cornerTopLeftShape: string;
+    /**
+     * The corner-top-right-shape CSS property specifies the shape of a box's top-right corner, within its border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-top-right-shape)
+     */
+    cornerTopRightShape: string;
+    /**
+     * The corner-top-shape CSS property specifies the shape of both the corners on a box's top edge, within their border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-top-shape)
+     */
+    cornerTopShape: string;
+    /**
      * The counter-increment CSS property can be used to increase or decrease the value of the named CSS counters by the specified values, or to prevent all counters or an individual counter's value from being changed.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/counter-increment)
@@ -8717,6 +8920,12 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/object-position)
      */
     objectPosition: string;
+    /**
+     * The object-view-box CSS property defines a rectangle as a viewable area (viewbox) within a replaced element, enabling the content of the replaced element to be zoomed or panned. It works similarly to the SVG viewBox attribute.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/object-view-box)
+     */
+    objectViewBox: string;
     /**
      * The **`offset`** CSS shorthand property sets all the properties required for animating an element along a defined path. The offset properties together help to define an offset transform, a transform that aligns a point in an element (offset-anchor) to an offset position (offset-position) on a path (offset-path) at various points along the path (offset-distance) and optionally rotates the element (offset-rotate) to follow the direction of the path.
      *
@@ -14062,9 +14271,17 @@ interface EXT_float_blend {
 interface EXT_frag_depth {
 }
 
-/** The **`EXT_polygon_offset_clamp`** extension is part of the WebGL API and adds a limit to the depth offset set with polygonOffset(). */
+/**
+ * The **`EXT_polygon_offset_clamp`** extension is part of the WebGL API and adds a limit to the depth offset set with polygonOffset().
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_polygon_offset_clamp)
+ */
 interface EXT_polygon_offset_clamp {
-    /** The **`polygonOffsetClampEXT()`** method of the EXT_polygon_offset_clamp extension of the WebGL API specifies the scale factor and units used to calculate depth offsets, like WebGLRenderingContext.polygonOffset(), and a limit for the resulting offset. */
+    /**
+     * The **`polygonOffsetClampEXT()`** method of the EXT_polygon_offset_clamp extension of the WebGL API specifies the scale factor and units used to calculate depth offsets, like WebGLRenderingContext.polygonOffset(), and a limit for the resulting offset.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_polygon_offset_clamp/polygonOffsetClampEXT)
+     */
     polygonOffsetClampEXT(factor: GLfloat, units: GLfloat, clamp: GLfloat): void;
     readonly POLYGON_OFFSET_CLAMP_EXT: 0x8E1B;
 }
@@ -15561,17 +15778,17 @@ interface FontFace {
      */
     readonly loaded: Promise<FontFace>;
     /**
+     * The **`sizeAdjust`** property of the FontFace interface represents a multiplier for the font's glyph outlines and metrics, such as glyph widths and line heights, used to lay out text.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/sizeAdjust)
+     */
+    sizeAdjust: string;
+    /**
      * The **`status`** read-only property of the FontFace interface returns an enumerated value indicating the status of the font, one of "unloaded", "loading", "loaded", or "error".
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/status)
      */
     readonly status: FontFaceLoadStatus;
-    /**
-     * The **`stretch`** property of the FontFace interface retrieves or sets how the font stretches.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/stretch)
-     */
-    stretch: string;
     /**
      * The **`style`** property of the FontFace interface retrieves or sets the font's style.
      *
@@ -15584,6 +15801,12 @@ interface FontFace {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/unicodeRange)
      */
     unicodeRange: string;
+    /**
+     * The **`variant`** property of the FontFace interface programmatically retrieves or sets font variant values.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/variant)
+     */
+    variant: string;
     /**
      * The **`variationSettings`** property of the FontFace interface retrieves or sets low-level OpenType or TrueType font variations.
      *
@@ -16916,6 +17139,7 @@ interface GPUTexture extends GPUObjectBase {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/sampleCount)
      */
     readonly sampleCount: GPUSize32Out;
+    readonly textureBindingViewDimension: GPUTextureViewDimension | undefined;
     /**
      * The **`usage`** read-only property of the GPUTexture interface is the bitwise flags representing the allowed usages of the GPUTexture.
      *
@@ -17653,6 +17877,11 @@ interface GlobalEventHandlers {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof GlobalEventHandlersEventMap>(type: K, listener: (this: GlobalEventHandlers, ev: GlobalEventHandlersEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+interface GlobalPrivacyControl {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/globalPrivacyControl) */
+    readonly globalPrivacyControl: boolean;
 }
 
 /**
@@ -22446,7 +22675,7 @@ declare var HashChangeEvent: {
 };
 
 /**
- * The **`Headers`** interface of the Fetch API allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing headers from the list of the request's headers.
+ * The **`Headers`** interface of the Fetch API allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing headers from the object's header list.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Headers)
  */
@@ -26508,6 +26737,12 @@ interface NavigationTransition {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationTransition/navigationType)
      */
     readonly navigationType: NavigationType;
+    /**
+     * The **`to`** read-only property of the NavigationTransition interface returns the NavigationDestination that the transition is navigating to.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationTransition/to)
+     */
+    readonly to: NavigationDestination;
 }
 
 declare var NavigationTransition: {
@@ -26520,7 +26755,7 @@ declare var NavigationTransition: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator)
  */
-interface Navigator extends NavigatorAutomationInformation, NavigatorBadge, NavigatorConcurrentHardware, NavigatorContentUtils, NavigatorCookies, NavigatorGPU, NavigatorID, NavigatorLanguage, NavigatorLocks, NavigatorOnLine, NavigatorPlugins, NavigatorStorage {
+interface Navigator extends GlobalPrivacyControl, NavigatorAutomationInformation, NavigatorBadge, NavigatorConcurrentHardware, NavigatorContentUtils, NavigatorCookies, NavigatorGPU, NavigatorID, NavigatorLanguage, NavigatorLocks, NavigatorOnLine, NavigatorPlugins, NavigatorStorage {
     /**
      * The **`clipboard`** read-only property of the Navigator interface returns a Clipboard object used to read and write the clipboard's contents.
      * Available only in secure contexts.
@@ -29670,6 +29905,31 @@ declare var PushSubscriptionOptions: {
 };
 
 /**
+ * The **`QuotaExceededError`** interface represents an error when a requested operation would exceed a system-imposed storage quota.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/QuotaExceededError)
+ */
+interface QuotaExceededError extends DOMException {
+    /**
+     * The **`quota`** read-only property of the QuotaExceededError interface returns the system-defined storage quota (in bytes) that the operation attempted to exceed, or undefined if the information is not available.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/QuotaExceededError/quota)
+     */
+    readonly quota: number | null;
+    /**
+     * The **`requested`** read-only property of the QuotaExceededError interface returns the number of bytes that were requested when the error occurred, or undefined if the information is not available.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/QuotaExceededError/requested)
+     */
+    readonly requested: number | null;
+}
+
+declare var QuotaExceededError: {
+    prototype: QuotaExceededError;
+    new(message?: string, options?: QuotaExceededErrorOptions): QuotaExceededError;
+};
+
+/**
  * The **`RTCCertificate`** interface of the WebRTC API provides an object representing a certificate that an RTCPeerConnection uses to authenticate.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCCertificate)
@@ -30902,7 +31162,7 @@ declare var RadioNodeList: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Range)
  */
-interface Range extends AbstractRange {
+interface Range extends NodeRange {
     /**
      * The **`Range.commonAncestorContainer`** read-only property returns the deepest — or furthest down the document tree — Node that contains both boundary points of the Range. This means that if startContainer and endContainer both refer to the same node, this node is the common ancestor container.
      *
@@ -31399,6 +31659,12 @@ interface Request extends Body {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/destination)
      */
     readonly destination: RequestDestination;
+    /**
+     * The **`duplex`** read-only property of the Request interface returns the duplex mode of the request, which determines whether the browser must send the entire request before processing the response.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/duplex)
+     */
+    readonly duplex: RequestDuplex;
     /**
      * The **`headers`** read-only property of the Request interface contains the Headers object associated with the request.
      *
@@ -36543,6 +36809,12 @@ interface SpeechGrammarList {
      */
     addFromString(string: string, weight?: number): void;
     /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechGrammarList/addFromURI)
+     */
+    addFromUri(src: string, weight?: number): void;
+    /**
      * The **`item`** getter of the SpeechGrammarList interface is a standard getter — it allows individual SpeechGrammar objects to be retrieved from the SpeechGrammarList using array syntax.
      * @deprecated
      *
@@ -37113,7 +37385,7 @@ declare var SpeechSynthesisVoice: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/StaticRange)
  */
-interface StaticRange extends AbstractRange {
+interface StaticRange extends NodeRange {
 }
 
 declare var StaticRange: {
@@ -42223,7 +42495,9 @@ declare var WebSocket: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport)
  */
 interface WebTransport {
+    /** The **`anticipatedConcurrentIncomingBidirectionalStreams`** property of the WebTransport interface represents the number of incoming bidirectional streams that the application expects the server to have open at the same time. */
     anticipatedConcurrentIncomingBidirectionalStreams: number | null;
+    /** The **`anticipatedConcurrentIncomingUnidirectionalStreams`** property of the WebTransport interface represents the number of incoming unidirectional streams that the application expects the server to have open at the same time. */
     anticipatedConcurrentIncomingUnidirectionalStreams: number | null;
     /**
      * The **`closed`** read-only property of the WebTransport interface returns a promise that resolves when the transport is closed.
@@ -42279,6 +42553,7 @@ interface WebTransport {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/reliability)
      */
     readonly reliability: WebTransportReliabilityMode;
+    /** The **`responseHeaders`** read-only property of the WebTransport interface returns the HTTP headers from the server's response to the request that set up the session. */
     readonly responseHeaders: Headers | null;
     /**
      * The **`close()`** method of the WebTransport interface closes an ongoing WebTransport session.
@@ -42304,6 +42579,12 @@ interface WebTransport {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/createUnidirectionalStream)
      */
     createUnidirectionalStream(options?: WebTransportSendStreamOptions): Promise<WritableStream>;
+    /**
+     * The **`exportKeyingMaterial()`** method of the WebTransport interface returns a Promise that fulfills with keying material derived from the TLS session underlying the transport's connection. This can be used to bind application-level authentication to the specific connection, for example to detect manipulator-in-the-middle (MitM) attacks when connecting to a peer that uses a self-signed certificate.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/exportKeyingMaterial)
+     */
+    exportKeyingMaterial(label: BufferSource, context: BufferSource, outputLength: number): Promise<Uint8Array>;
     /**
      * The **`getStats()`** method of the WebTransport interface asynchronously returns an object containing HTTP/3 connection statistics.
      *
@@ -42357,7 +42638,7 @@ declare var WebTransportBidirectionalStream: {
  */
 interface WebTransportDatagramDuplexStream {
     /**
-     * The **`incomingHighWaterMark`** property of the WebTransportDatagramDuplexStream interface gets or sets the high water mark for incoming chunks of data — this is the maximum size, in chunks, that the incoming ReadableStream's internal queue can reach before it is considered full. See Internal queues and queuing strategies for more information.
+     * The **`incomingHighWaterMark`** property of the WebTransportDatagramDuplexStream interface represents the maximum number of incoming datagrams that can be queued while waiting to be read from the readable stream. If more datagrams arrive than the queue can hold, the oldest datagrams in the queue are dropped. The number of datagrams dropped this way is reported in the droppedIncoming property of the datagram statistics returned by WebTransport.getStats().
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/incomingHighWaterMark)
      */
@@ -42368,6 +42649,7 @@ interface WebTransportDatagramDuplexStream {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/incomingMaxAge)
      */
     incomingMaxAge: number | null;
+    /** The **`incomingMaxBufferedDatagrams`** property of the WebTransportDatagramDuplexStream interface represents the maximum number of incoming datagrams that can be queued while waiting to be read from the readable stream. */
     incomingMaxBufferedDatagrams: number;
     /**
      * The **`maxDatagramSize`** read-only property of the WebTransportDatagramDuplexStream interface returns the maximum allowable size of outgoing datagrams, in bytes, that can be written to writable.
@@ -42376,7 +42658,7 @@ interface WebTransportDatagramDuplexStream {
      */
     readonly maxDatagramSize: number;
     /**
-     * The **`outgoingHighWaterMark`** property of the WebTransportDatagramDuplexStream interface gets or sets the high water mark for outgoing chunks of data — this is the maximum size, in chunks, that the outgoing WritableStream's internal queue can reach before it is considered full. See Internal queues and queuing strategies for more information.
+     * The **`outgoingHighWaterMark`** property of the WebTransportDatagramDuplexStream interface represents the maximum number of outgoing datagrams that can be queued for sending before backpressure is applied. Queued datagrams are not dropped because the queue is full, though they can still expire if outgoingMaxAge is set.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/outgoingHighWaterMark)
      */
@@ -42386,7 +42668,8 @@ interface WebTransportDatagramDuplexStream {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/outgoingMaxAge)
      */
-    outgoingMaxAge: number | null;
+    outgoingMaxAge: number;
+    /** The **`outgoingMaxBufferedDatagrams`** property of the WebTransportDatagramDuplexStream interface represents the maximum number of outgoing datagrams that can be queued for sending on each WebTransportDatagramsWritable before backpressure is applied. */
     outgoingMaxBufferedDatagrams: number;
     /**
      * The **`readable`** read-only property of the WebTransportDatagramDuplexStream interface returns a ReadableStream instance that can be used to unreliably read incoming datagrams from the stream.
@@ -45785,6 +46068,7 @@ type CanvasLineJoin = "bevel" | "miter" | "round";
 type CanvasTextAlign = "center" | "end" | "left" | "right" | "start";
 type CanvasTextBaseline = "alphabetic" | "bottom" | "hanging" | "ideographic" | "middle" | "top";
 type CanvasTextRendering = "auto" | "geometricPrecision" | "optimizeLegibility" | "optimizeSpeed";
+type CanvasToneMappingMode = "extended" | "standard";
 type ChannelCountMode = "clamped-max" | "explicit" | "max";
 type ChannelInterpretation = "discrete" | "speakers";
 type ClientTypes = "all" | "sharedworker" | "window" | "worker";
@@ -45876,6 +46160,7 @@ type LoginStatus = "logged-in" | "logged-out";
 type MIDIPortConnectionState = "closed" | "open" | "pending";
 type MIDIPortDeviceState = "connected" | "disconnected";
 type MIDIPortType = "input" | "output";
+type MakeupGainOptions = "automatic";
 type MediaDecodingType = "file" | "media-source" | "webrtc";
 type MediaDeviceKind = "audioinput" | "audiooutput" | "videoinput";
 type MediaEncodingType = "record" | "webrtc";
@@ -45914,6 +46199,7 @@ type PresentationStyle = "attachment" | "inline" | "unspecified";
 type PublicKeyCredentialType = "public-key";
 type PushEncryptionKeyName = "auth" | "p256dh";
 type RTCBundlePolicy = "balanced" | "max-bundle" | "max-compat";
+type RTCConfigurationTargetLatency = "lowest" | "none";
 type RTCDataChannelState = "closed" | "closing" | "connecting" | "open";
 type RTCDegradationPreference = "balanced" | "maintain-framerate" | "maintain-resolution";
 type RTCDtlsRole = "client" | "server" | "unknown";
@@ -45933,6 +46219,7 @@ type RTCPeerConnectionState = "closed" | "connected" | "connecting" | "disconnec
 type RTCPriorityType = "high" | "low" | "medium" | "very-low";
 type RTCQualityLimitationReason = "bandwidth" | "cpu" | "none" | "other";
 type RTCRtcpMuxPolicy = "require";
+type RTCRtpHeaderEncryptionPolicy = "disable" | "negotiate" | "require";
 type RTCRtpTransceiverDirection = "inactive" | "recvonly" | "sendonly" | "sendrecv" | "stopped";
 type RTCSctpTransportState = "closed" | "connected" | "connecting";
 type RTCSdpType = "answer" | "offer" | "pranswer" | "rollback";
@@ -45949,6 +46236,7 @@ type RemotePlaybackState = "connected" | "connecting" | "disconnected";
 type RequestCache = "default" | "force-cache" | "no-cache" | "no-store" | "only-if-cached" | "reload";
 type RequestCredentials = "include" | "omit" | "same-origin";
 type RequestDestination = "" | "audio" | "audioworklet" | "document" | "embed" | "font" | "frame" | "iframe" | "image" | "json" | "manifest" | "object" | "paintworklet" | "report" | "script" | "sharedworker" | "style" | "track" | "video" | "worker" | "xslt";
+type RequestDuplex = "half";
 type RequestMode = "cors" | "navigate" | "no-cors" | "same-origin";
 type RequestPriority = "auto" | "high" | "low";
 type RequestRedirect = "error" | "follow" | "manual";
