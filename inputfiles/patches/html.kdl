@@ -214,9 +214,26 @@ interface SVGElement {
     includes HTMLOrSVGElement
 }
 
+// https://github.com/whatwg/dom/pull/1470 split these attributes to
+// AbstractRange into NodeRange, but only Blink supports it as of 2026-11
+interface AbstractRange {
+  property endContainer exposed=Window readonly=#true \
+    mdnUrl="https://developer.mozilla.org/docs/Web/API/AbstractRange/endContainer" {
+    type Node
+  }
+  property startContainer exposed=Window readonly=#true \
+    mdnUrl="https://developer.mozilla.org/docs/Web/API/AbstractRange/startContainer" {
+    type Node
+  }
+}
+
+interface Range extends=AbstractRange
+interface StaticRange extends=AbstractRange
+
 removals {
   dictionary CanvasRenderingContext2DSettings {
-    member colorType // Blink-only as of 2025-12, being tested in WebKit
+    member colorType // Blink-only as of 2026-11, being tested in WebKit
+    member toneMapping // Blink-only as of 2026-11, being tested in WebKit
   }
 
   dictionary SetHTMLUnsafeOptions {

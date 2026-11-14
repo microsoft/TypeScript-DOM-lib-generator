@@ -1,0 +1,21 @@
+removals {
+  dictionary RTCConfiguration {
+    member rtpHeaderEncryptionPolicy // Blink only as of 2026-11
+    member targetLatency // No implementation 2026-11
+  }
+
+  dictionary RTCRtpContributingSource {
+    member captureTimestamp // Blink only as of 2026-11
+    member senderCaptureTimeOffset // Blink only as of 2026-11
+  }
+
+  dictionary RTCRtpEncodingParameters {
+    member adaptivePtime // Blink only as of 2026-11
+    member ptime // Blink only as of 2026-11
+    member scaleResolutionDownTo // Blink only as of 2026-11
+  }
+
+  dictionary RTCRtpHeaderExtensionCapability {
+    member direction // Blink only as of 2026-11
+  }
+}

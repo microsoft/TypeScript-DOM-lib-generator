@@ -10,3 +10,12 @@ enum FontDisplay {
 dictionary FontFaceDescriptors {
     member display type=FontDisplay
 }
+
+// Accidental removal from the spec, see:
+// https://github.com/w3c/csswg-drafts/pull/14806
+interface FontFace {
+  property stretch exposed="Window Worker" \
+    mdnUrl="https://developer.mozilla.org/docs/Web/API/FontFace/stretch" {
+    type CSSOMString
+  }
+}
