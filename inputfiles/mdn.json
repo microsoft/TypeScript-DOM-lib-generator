@@ -12007,7 +12007,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Headers",
     "pageType": "web-api-interface",
-    "summary": "The Headers interface of the Fetch API allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing headers from the list of the request's headers."
+    "summary": "The Headers interface of the Fetch API allows you to perform various actions on HTTP request and response headers.\nThese actions include retrieving, setting, adding to, and removing headers from the object's header list."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Headers/append",
@@ -37250,6 +37250,16 @@
     "summary": "The WebTransport API provides a modern update to WebSockets, transmitting data between client and server using HTTP/3 Transport. WebTransport provides support for multiple streams, unidirectional streams, and out-of-order delivery. It enables reliable transport via streams and unreliable transport via UDP-like datagrams."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/WebTransport/anticipatedConcurrentIncomingBidirectionalStreams",
+    "pageType": "web-api-instance-property",
+    "summary": "The anticipatedConcurrentIncomingBidirectionalStreams property of the WebTransport interface represents the number of incoming bidirectional streams that the application expects the server to have open at the same time."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/WebTransport/anticipatedConcurrentIncomingUnidirectionalStreams",
+    "pageType": "web-api-instance-property",
+    "summary": "The anticipatedConcurrentIncomingUnidirectionalStreams property of the WebTransport interface represents the number of incoming unidirectional streams that the application expects the server to have open at the same time."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/WebTransport/close",
     "pageType": "web-api-instance-method",
     "summary": "The close() method of the WebTransport interface closes an ongoing WebTransport session."
@@ -37292,7 +37302,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/WebTransport/exportKeyingMaterial",
     "pageType": "web-api-instance-method",
-    "summary": "The exportKeyingMaterial() method of the WebTransport interface returns a Promise that fulfills with keying material derived from the TLS session underlying the transport's connection."
+    "summary": "The exportKeyingMaterial() method of the WebTransport interface returns a Promise that fulfills with keying material derived from the TLS session underlying the transport's connection.\nThis can be used to bind application-level authentication to the specific connection, for example to detect manipulator-in-the-middle (MitM) attacks when connecting to a peer that uses a self-signed certificate."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WebTransport/getStats",
@@ -37323,6 +37333,11 @@
     "mdn_url": "/en-US/docs/Web/API/WebTransport/reliability",
     "pageType": "web-api-instance-property",
     "summary": "The reliability read-only property of the WebTransport interface indicates whether the connection supports reliable transports only, or whether it also supports unreliable transports (such as UDP)."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/WebTransport/responseHeaders",
+    "pageType": "web-api-instance-property",
+    "summary": "The responseHeaders read-only property of the WebTransport interface returns the HTTP headers from the server's response to the request that set up the session."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WebTransport/supportsReliableOnly_static",
@@ -37362,12 +37377,17 @@
   {
     "mdn_url": "/en-US/docs/Web/API/WebTransportDatagramDuplexStream/incomingHighWaterMark",
     "pageType": "web-api-instance-property",
-    "summary": "The incomingHighWaterMark property of the WebTransportDatagramDuplexStream interface gets or sets the high water mark for incoming chunks of data — this is the maximum size, in chunks, that the incoming ReadableStream's internal queue can reach before it is considered full. See Internal queues and queuing strategies for more information."
+    "summary": "The incomingHighWaterMark property of the WebTransportDatagramDuplexStream interface represents the maximum number of incoming datagrams that can be queued while waiting to be read from the readable stream.\nIf more datagrams arrive than the queue can hold, the oldest datagrams in the queue are dropped.\nThe number of datagrams dropped this way is reported in the droppedIncoming property of the datagram statistics returned by WebTransport.getStats()."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WebTransportDatagramDuplexStream/incomingMaxAge",
     "pageType": "web-api-instance-property",
     "summary": "The incomingMaxAge property of the WebTransportDatagramDuplexStream interface gets or sets the maximum age for incoming datagrams, in milliseconds."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/WebTransportDatagramDuplexStream/incomingMaxBufferedDatagrams",
+    "pageType": "web-api-instance-property",
+    "summary": "The incomingMaxBufferedDatagrams property of the WebTransportDatagramDuplexStream interface represents the maximum number of incoming datagrams that can be queued while waiting to be read from the readable stream."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WebTransportDatagramDuplexStream/maxDatagramSize",
@@ -37377,12 +37397,17 @@
   {
     "mdn_url": "/en-US/docs/Web/API/WebTransportDatagramDuplexStream/outgoingHighWaterMark",
     "pageType": "web-api-instance-property",
-    "summary": "The outgoingHighWaterMark property of the WebTransportDatagramDuplexStream interface gets or sets the high water mark for outgoing chunks of data — this is the maximum size, in chunks, that the outgoing WritableStream's internal queue can reach before it is considered full. See Internal queues and queuing strategies for more information."
+    "summary": "The outgoingHighWaterMark property of the WebTransportDatagramDuplexStream interface represents the maximum number of outgoing datagrams that can be queued for sending before backpressure is applied.\nQueued datagrams are not dropped because the queue is full, though they can still expire if outgoingMaxAge is set."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WebTransportDatagramDuplexStream/outgoingMaxAge",
     "pageType": "web-api-instance-property",
     "summary": "The outgoingMaxAge property of the WebTransportDatagramDuplexStream interface gets or sets the maximum age for outgoing datagrams, in milliseconds."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/WebTransportDatagramDuplexStream/outgoingMaxBufferedDatagrams",
+    "pageType": "web-api-instance-property",
+    "summary": "The outgoingMaxBufferedDatagrams property of the WebTransportDatagramDuplexStream interface represents the maximum number of outgoing datagrams that can be queued for sending on each WebTransportDatagramsWritable before backpressure is applied."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WebTransportDatagramDuplexStream/readable",
