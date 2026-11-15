@@ -813,6 +813,7 @@ interface FontFaceDescriptors {
     unicodeRange?: string;
     variationSettings?: string;
     weight?: string;
+    width?: string;
 }
 
 interface FontFaceSetLoadEventInit extends EventInit {
@@ -2171,6 +2172,7 @@ interface RTCCertificateExpiration {
 }
 
 interface RTCConfiguration {
+    alwaysNegotiateDataChannels?: boolean;
     bundlePolicy?: RTCBundlePolicy;
     certificates?: RTCCertificate[];
     iceCandidatePoolSize?: number;
@@ -2221,6 +2223,10 @@ interface RTCEncodedVideoFrameMetadata extends RTCEncodedFrameMetadata {
     temporalIndex?: number;
     timestamp?: number;
     width?: number;
+}
+
+interface RTCEncodingOptions {
+    keyFrame?: boolean;
 }
 
 interface RTCErrorEventInit extends EventInit {
@@ -2487,6 +2493,7 @@ interface RTCSessionDescriptionInit {
 }
 
 interface RTCSetParameterOptions {
+    encodingOptions?: RTCEncodingOptions[];
 }
 
 interface RTCStats {
@@ -15584,6 +15591,12 @@ interface FontFace {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/unicodeRange)
      */
     unicodeRange: string;
+    /**
+     * The **`variant`** property of the FontFace interface programmatically retrieves or sets font variant values.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/variant)
+     */
+    variant: string;
     /**
      * The **`variationSettings`** property of the FontFace interface retrieves or sets low-level OpenType or TrueType font variations.
      *

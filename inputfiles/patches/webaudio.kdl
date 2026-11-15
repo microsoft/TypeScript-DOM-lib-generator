@@ -16,6 +16,10 @@ removals {
     member sinkId         // Blink only and WebKit test only as of 2026-11
   }
 
+  dictionary DynamicsCompressorOptions {
+    member makeupGain // No implementation as of 2026-11
+  }
+
   interface OfflineAudioContext {
     method startRendering signatureIndex=0 {
       param chunkSize
