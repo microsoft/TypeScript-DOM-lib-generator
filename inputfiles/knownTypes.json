@@ -30,6 +30,7 @@
         "HmacImportParams",
         "HmacKeyAlgorithm",
         "HmacKeyGenParams",
+        "HTTPMethod",
         "ImageBitmapRenderingContextSettings",
         "Keyframe",
         "NamedCurve",
@@ -58,6 +59,7 @@
         "RTCStatsType",
         "RTCTransportStats",
         "ValueTypeMap",
+        "UppercaseHTTPMethod",
         "VideoFacingModeEnum"
     ],
     "Worker": [
@@ -77,6 +79,7 @@
         "HkdfParams",
         "HmacImportParams",
         "HmacKeyGenParams",
+        "HTTPMethod",
         "ImageBitmapRenderingContextSettings",
         "NamedCurve",
         "Pbkdf2Params",
@@ -85,6 +88,7 @@
         "RsaKeyGenParams",
         "RsaOaepParams",
         "RsaPssParams",
+        "UppercaseHTTPMethod",
         "ValueTypeMap"
     ],
     "Worklet": [
