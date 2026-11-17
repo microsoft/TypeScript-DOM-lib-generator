@@ -87,7 +87,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/AbstractRange/endOffset",
     "pageType": "web-api-instance-property",
-    "summary": "The endOffset property of the AbstractRange interface returns the offset into the end node of the range's end position."
+    "summary": "The endOffset read-only property of the AbstractRange interface returns the offset into the end node of the range's end position."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/AbstractRange/startContainer",
@@ -1177,12 +1177,12 @@
   {
     "mdn_url": "/en-US/docs/Web/API/AudioTrack/id",
     "pageType": "web-api-instance-property",
-    "summary": "The id property contains a\nstring which uniquely identifies the track represented by the\nAudioTrack."
+    "summary": "The id read-only property of the AudioTrack interface contains a string which uniquely identifies the track represented by the AudioTrack."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/AudioTrack/kind",
     "pageType": "web-api-instance-property",
-    "summary": "The kind property contains a\nstring indicating the category of audio contained in the\nAudioTrack."
+    "summary": "The kind read-only property of the AudioTrack interface contains a string indicating the category of audio contained in the AudioTrack."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/AudioTrack/label",
@@ -1307,7 +1307,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/AudioWorkletProcessor/parameterDescriptors_static",
     "pageType": "web-api-static-property",
-    "summary": "The read-only parameterDescriptors property of an AudioWorkletProcessor-derived class is a static getter,\nwhich returns an iterable of AudioParamDescriptor-based objects."
+    "summary": "The parameterDescriptors static property of an AudioWorkletProcessor-derived class is an iterable of AudioParamDescriptor-based objects."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/AudioWorkletProcessor/port",
@@ -4702,17 +4702,17 @@
   {
     "mdn_url": "/en-US/docs/Web/API/CSSNumericValue",
     "pageType": "web-api-interface",
-    "summary": "The CSSNumericValue interface of the CSS Typed Object Model API represents operations that all numeric values can perform."
+    "summary": "The CSSNumericValue interface of the CSS Typed Object Model API is the base interface for objects that represent CSS numeric values, such as 10px, 50%, or calc(1px + 2em).\nIt provides the common methods for basic arithmetic, comparing values, and converting between units."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/CSSNumericValue/add",
     "pageType": "web-api-instance-method",
-    "summary": "The add() method of the CSSNumericValue interface adds a supplied number to the CSSNumericValue."
+    "summary": "The add() method of the CSSNumericValue interface returns a new value that is the sum of the CSSNumericValue and the supplied values."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/CSSNumericValue/div",
     "pageType": "web-api-instance-method",
-    "summary": "The div() method of the CSSNumericValue interface divides the CSSNumericValue by the supplied value."
+    "summary": "The div() method of the CSSNumericValue interface returns a new value that is the CSSNumericValue divided by the supplied values."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/CSSNumericValue/equals",
@@ -4722,42 +4722,42 @@
   {
     "mdn_url": "/en-US/docs/Web/API/CSSNumericValue/max",
     "pageType": "web-api-instance-method",
-    "summary": "The max() method of the CSSNumericValue interface returns the highest value from among the values passed.\nThe passed values must be of the same type."
+    "summary": "The max() method of the CSSNumericValue interface returns the largest of the CSSNumericValue and the supplied values."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/CSSNumericValue/min",
     "pageType": "web-api-instance-method",
-    "summary": "The min() method of the CSSNumericValue interface returns the lowest value from among those values passed.\nThe passed values must be of the same type."
+    "summary": "The min() method of the CSSNumericValue interface returns the smallest of the CSSNumericValue and the supplied values."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/CSSNumericValue/mul",
     "pageType": "web-api-instance-method",
-    "summary": "The mul() method of the CSSNumericValue interface multiplies the CSSNumericValue by the supplied values."
+    "summary": "The mul() method of the CSSNumericValue interface returns a new value that is the CSSNumericValue multiplied by the supplied values."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/CSSNumericValue/parse_static",
     "pageType": "web-api-static-method",
-    "summary": "The parse() static method of the CSSNumericValue interface converts a value string into an object whose members are value and the units."
+    "summary": "The parse() static method of the CSSNumericValue interface creates a CSSNumericValue from a string of CSS, such as \"42px\" or \"calc(50% + 10px)\"."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/CSSNumericValue/sub",
     "pageType": "web-api-instance-method",
-    "summary": "The sub() method of the CSSNumericValue interface subtracts a supplied number from the CSSNumericValue."
+    "summary": "The sub() method of the CSSNumericValue interface returns a new value that is the CSSNumericValue minus the supplied values."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/CSSNumericValue/to",
     "pageType": "web-api-instance-method",
-    "summary": "The to() method of the CSSNumericValue interface converts a numeric value from one unit to another."
+    "summary": "The to() method of the CSSNumericValue interface converts the CSSNumericValue to a CSSUnitValue in the specified unit."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/CSSNumericValue/toSum",
     "pageType": "web-api-instance-method",
-    "summary": "The toSum() method of the CSSNumericValue interface converts the object's value to a CSSMathSum of CSSUnitValues using only the specified units, if possible.\nIf called with no units, it simplifies the value into a minimal sum of CSSUnitValues instead."
+    "summary": "The toSum() method of the CSSNumericValue interface converts the CSSNumericValue into a CSSMathSum whose terms are CSSUnitValue objects in the specified units."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/CSSNumericValue/type",
     "pageType": "web-api-instance-method",
-    "summary": "The type() method of the CSSNumericValue interface returns the type of CSSNumericValue, one of angle, flex, frequency, length, resolution, percent, percentHint, or time."
+    "summary": "The type() method of the CSSNumericValue interface returns a CSSNumericType dictionary that describes the type of the CSSNumericValue, such as whether it's a length, an angle, or a time."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/CSSOM_view_API",
@@ -6107,7 +6107,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Document/applets",
     "pageType": "web-api-instance-property",
-    "summary": "The applets property of the Document returns an empty HTMLCollection. This property is kept only for compatibility reasons; in older versions of browsers, it returned a list of the applets within a document."
+    "summary": "The applets read-only property of the Document interface returns an empty HTMLCollection. This property is kept only for compatibility reasons; in older versions of browsers, it returned a list of the applets within a document."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Document/ariaNotify",
@@ -6272,7 +6272,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Document/currentScript",
     "pageType": "web-api-instance-property",
-    "summary": "The Document.currentScript property returns the <script> element whose script is currently being processed and isn't a JavaScript module. (For modules use import.meta instead.)"
+    "summary": "The currentScript read-only property of the Document interface returns the <script> element whose script is currently being processed and isn't a JavaScript module. (For modules use import.meta instead.)"
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Document/customElementRegistry",
@@ -6387,7 +6387,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Document/fonts",
     "pageType": "web-api-instance-property",
-    "summary": "The fonts property of the Document interface returns the FontFaceSet interface of the document."
+    "summary": "The fonts read-only property of the Document interface returns the FontFaceSet interface of the document."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Document/forms",
@@ -6502,7 +6502,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Document/implementation",
     "pageType": "web-api-instance-property",
-    "summary": "The Document.implementation property returns a\nDOMImplementation object associated with the current document."
+    "summary": "The implementation read-only property of the Document interface returns a DOMImplementation object associated with the current document."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Document/importNode",
@@ -6517,12 +6517,12 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Document/lastModified",
     "pageType": "web-api-instance-property",
-    "summary": "The lastModified property of the Document\ninterface returns a string containing the date and local time on which the current document\nwas last modified."
+    "summary": "The lastModified read-only property of the Document interface returns a string containing the date and local time on which the current document was last modified."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Document/lastStyleSheetSet",
     "pageType": "web-api-instance-property",
-    "summary": "The Document.lastStyleSheetSet property returns the last enabled style sheet set. This property's\nvalue changes whenever the document.selectedStyleSheetSet property is\nchanged."
+    "summary": "The lastStyleSheetSet read-only property of the Document interface returns the last enabled style sheet set. This property's value changes whenever the document.selectedStyleSheetSet property is changed."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Document/linkColor",
@@ -6597,7 +6597,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Document/preferredStyleSheetSet",
     "pageType": "web-api-instance-property",
-    "summary": "The preferredStyleSheetSet property returns the preferred style sheet set as set by the page\nauthor."
+    "summary": "The preferredStyleSheetSet read-only property of the Document interface returns the preferred style sheet set as set by the page author."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Document/prepend",
@@ -6642,7 +6642,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Document/readyState",
     "pageType": "web-api-instance-property",
-    "summary": "The Document.readyState property describes the loading state of the document.\nWhen the value of this property changes, a readystatechange event fires on the document object."
+    "summary": "The readyState read-only property of the Document interface describes the loading state of the document.\nWhen the value of this property changes, a readystatechange event fires on the document object."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Document/readystatechange_event",
@@ -6652,7 +6652,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Document/referrer",
     "pageType": "web-api-instance-property",
-    "summary": "The Document.referrer property returns the URI of the page that linked to\nthis page."
+    "summary": "The referrer read-only property of the Document interface returns the URI of the page that linked to this page."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Document/releaseCapture",
@@ -6677,12 +6677,12 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Document/rootElement",
     "pageType": "web-api-instance-property",
-    "summary": "Document.rootElement returns the Element\nthat is the root element of the document if it is an\n<svg> element, otherwise null. It is deprecated in favor of\nDocument.documentElement, which returns the root element for all\ndocuments."
+    "summary": "The rootElement read-only property of the Document interface returns the Element that is the root element of the document if it is an <svg> element, otherwise null. It is deprecated in favor of Document.documentElement, which returns the root element for all documents."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Document/scripts",
     "pageType": "web-api-instance-property",
-    "summary": "The scripts property of the Document\ninterface returns a list of the <script>\nelements in the document. The returned object is an\nHTMLCollection."
+    "summary": "The scripts read-only property of the Document interface returns a list of the <script> elements in the document. The returned object is an HTMLCollection."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Document/scroll_event",
@@ -6782,7 +6782,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Document/xmlEncoding",
     "pageType": "web-api-instance-property",
-    "summary": "Returns the encoding as determined by the XML declaration. Should be null if unspecified or unknown."
+    "summary": "The xmlEncoding read-only property of the Document interface returns the encoding as determined by the XML declaration. Should be null if unspecified or unknown."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Document/xmlVersion",
@@ -8057,7 +8057,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Element/attributes",
     "pageType": "web-api-instance-property",
-    "summary": "The Element.attributes property returns a live collection\nof all attribute nodes registered to the specified node. It is a\nNamedNodeMap, not an Array, so it has no Array\nmethods and the Attr nodes' indexes may differ among browsers. To be more\nspecific, attributes is a key/value pair of strings that represents any\ninformation regarding that attribute."
+    "summary": "The attributes read-only property of the Element interface returns a live collection of all attribute nodes registered to the specified node. It is a NamedNodeMap, not an Array, so it has no Array methods and the Attr nodes' indexes may differ among browsers. To be more specific, attributes is a key/value pair of strings that represents any information regarding that attribute."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Element/auxclick_event",
@@ -9347,7 +9347,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Event/srcElement",
     "pageType": "web-api-instance-property",
-    "summary": "The deprecated Event.srcElement is an alias for the Event.target property. Use Event.target instead."
+    "summary": "The srcElement read-only property of the Event interface is a deprecated alias for the Event.target property. Use Event.target instead."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Event/stopImmediatePropagation",
@@ -12007,7 +12007,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Headers",
     "pageType": "web-api-interface",
-    "summary": "The Headers interface of the Fetch API allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing headers from the list of the request's headers."
+    "summary": "The Headers interface of the Fetch API allows you to perform various actions on HTTP request and response headers.\nThese actions include retrieving, setting, adding to, and removing headers from the object's header list."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Headers/append",
@@ -13532,7 +13532,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLFormElement/elements",
     "pageType": "web-api-instance-property",
-    "summary": "The elements property of the HTMLFormElement interface returns an HTMLFormControlsCollection listing all the listed form controls associated with the <form> element."
+    "summary": "The elements read-only property of the HTMLFormElement interface returns an HTMLFormControlsCollection listing all the listed form controls associated with the <form> element."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLFormElement/encoding",
@@ -13742,7 +13742,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLIFrameElement/contentDocument",
     "pageType": "web-api-instance-property",
-    "summary": "If the iframe and the iframe's parent document are Same Origin, returns a Document (that is, the active document in the inline frame's nested browsing context), else returns null."
+    "summary": "The contentDocument read-only property of the HTMLIFrameElement interface returns a Document (that is, the active document in the inline frame's nested browsing context) if the iframe and the iframe's parent document are Same Origin, else returns null."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLIFrameElement/contentWindow",
@@ -14497,7 +14497,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLMediaElement/controlsList",
     "pageType": "web-api-instance-property",
-    "summary": "The controlsList property of the\nHTMLMediaElement interface returns a DOMTokenList that helps the user\nagent select what controls to show on the media element whenever the user agent shows\nits own set of controls. The DOMTokenList takes one or more of three possible values:\nnodownload, nofullscreen, and noremoteplayback."
+    "summary": "The controlsList read-only property of the HTMLMediaElement interface returns a DOMTokenList that helps the user agent select what controls to show on the media element whenever the user agent shows its own set of controls. The DOMTokenList takes one or more of three possible values: nodownload, nofullscreen, and noremoteplayback."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLMediaElement/crossOrigin",
@@ -14507,7 +14507,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLMediaElement/currentSrc",
     "pageType": "web-api-instance-property",
-    "summary": "The HTMLMediaElement.currentSrc property contains the\nabsolute URL of the chosen media resource. This could happen, for example, if the web\nserver selects a media file based on the resolution of the user's display. The value\nis an empty string if the networkState property is EMPTY."
+    "summary": "The currentSrc read-only property of the HTMLMediaElement interface contains the absolute URL of the chosen media resource. This could happen, for example, if the web server selects a media file based on the resolution of the user's display. The value is an empty string if the networkState property is EMPTY."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLMediaElement/currentTime",
@@ -14552,7 +14552,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLMediaElement/ended",
     "pageType": "web-api-instance-property",
-    "summary": "The HTMLMediaElement.ended property indicates whether the media\nelement has ended playback."
+    "summary": "The ended read-only property of the HTMLMediaElement interface indicates whether the media element has ended playback."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLMediaElement/ended_event",
@@ -14562,7 +14562,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLMediaElement/error",
     "pageType": "web-api-instance-property",
-    "summary": "The HTMLMediaElement.error property is the\nMediaError object for the most recent error, or null if\nthere has not been an error. When an error event is received by the\nelement, you can determine details about what happened by examining this object."
+    "summary": "The error read-only property of the HTMLMediaElement interface is the MediaError object for the most recent error, or null if there has not been an error. When an error event is received by the element, you can determine details about what happened by examining this object."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLMediaElement/error_event",
@@ -14627,7 +14627,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLMediaElement/networkState",
     "pageType": "web-api-instance-property",
-    "summary": "The\nHTMLMediaElement.networkState property indicates the\ncurrent state of the fetching of media over the network."
+    "summary": "The networkState read-only property of the HTMLMediaElement interface indicates the current state of the fetching of media over the network."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLMediaElement/pause",
@@ -14692,7 +14692,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLMediaElement/readyState",
     "pageType": "web-api-instance-property",
-    "summary": "The HTMLMediaElement.readyState property indicates the\nreadiness state of the media."
+    "summary": "The readyState read-only property of the HTMLMediaElement interface indicates the readiness state of the media."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLMediaElement/remote",
@@ -17422,7 +17422,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/KeyboardEvent/code",
     "pageType": "web-api-instance-property",
-    "summary": "The KeyboardEvent.code property represents a physical key on the keyboard (as opposed to the character generated by pressing the key). In other words, this property returns a value that isn't altered by keyboard layout or the state of the modifier keys."
+    "summary": "The code read-only property of the KeyboardEvent interface represents a physical key on the keyboard (as opposed to the character generated by pressing the key). In other words, this property returns a value that isn't altered by keyboard layout or the state of the modifier keys."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/KeyboardEvent/ctrlKey",
@@ -19622,17 +19622,17 @@
   {
     "mdn_url": "/en-US/docs/Web/API/MouseEvent/webkitForce",
     "pageType": "web-api-instance-property",
-    "summary": "MouseEvent.webkitForce is a proprietary, WebKit-specific numeric property whose value represents the amount of pressure that is being applied on the touchpad or touchscreen."
+    "summary": "The webkitForce read-only property of the MouseEvent interface is a proprietary, WebKit-specific numeric property whose value represents the amount of pressure that is being applied on the touchpad or touchscreen."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/MouseEvent/x",
     "pageType": "web-api-instance-property",
-    "summary": "The MouseEvent.x property is an alias for the MouseEvent.clientX property."
+    "summary": "The x read-only property of the MouseEvent interface is an alias for the MouseEvent.clientX property."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/MouseEvent/y",
     "pageType": "web-api-instance-property",
-    "summary": "The MouseEvent.y property is an alias for the MouseEvent.clientY property."
+    "summary": "The y read-only property of the MouseEvent interface is an alias for the MouseEvent.clientY property."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/MouseScrollEvent",
@@ -20157,12 +20157,12 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Navigator/appCodeName",
     "pageType": "web-api-instance-property",
-    "summary": "The value of the Navigator.appCodeName property is\nalways \"Mozilla\", in any browser. This property is kept only for\ncompatibility purposes."
+    "summary": "The appCodeName read-only property of the Navigator interface is always \"Mozilla\", in any browser. This property is kept only for compatibility purposes."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Navigator/appName",
     "pageType": "web-api-instance-property",
-    "summary": "The value of the Navigator.appName property is always\n\"Netscape\", in any browser. This property is kept only for compatibility\npurposes."
+    "summary": "The appName read-only property of the Navigator interface is always \"Netscape\", in any browser. This property is kept only for compatibility purposes."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Navigator/appVersion",
@@ -20182,7 +20182,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Navigator/buildID",
     "pageType": "web-api-instance-property",
-    "summary": "Returns the build identifier of the browser. In modern browsers this property now returns a fixed timestamp as a privacy measure, e.g., 20181001000000 in Firefox 64 onwards."
+    "summary": "The buildID read-only property of the Navigator interface returns the build identifier of the browser. In modern browsers this property now returns a fixed timestamp as a privacy measure, e.g., 20181001000000 in Firefox 64 onwards."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Navigator/canShare",
@@ -20237,7 +20237,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Navigator/doNotTrack",
     "pageType": "web-api-instance-property",
-    "summary": "The Navigator.doNotTrack property returns the user's Do Not Track setting, which indicates whether the user is requesting websites and advertisers to not track them."
+    "summary": "The doNotTrack read-only property of the Navigator interface returns the user's Do Not Track setting, which indicates whether the user is requesting websites and advertisers to not track them."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Navigator/geolocation",
@@ -20352,17 +20352,17 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Navigator/mimeTypes",
     "pageType": "web-api-instance-property",
-    "summary": "Returns a MimeTypeArray object, which contains a list of MimeType objects representing the MIME types recognized and supported by the browser.\nThe array can be queried for information about the enabled plugin that is used to handle a file of the specified type.\nNamed properties of the returned object are not enumerable (except in very old browser versions)."
+    "summary": "The mimeTypes read-only property of the Navigator interface returns a MimeTypeArray object, which contains a list of MimeType objects representing the MIME types recognized and supported by the browser.\nThe array can be queried for information about the enabled plugin that is used to handle a file of the specified type.\nNamed properties of the returned object are not enumerable (except in very old browser versions)."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Navigator/onLine",
     "pageType": "web-api-instance-property",
-    "summary": "The onLine property of the Navigator interface returns whether the device is connected to the network, with true meaning online and false meaning offline. The property's value changes after the browser checks its network connection, usually when the user follows links or when a script requests a remote page. For example, the property should return false when users click links soon after they lose internet connection. When its value changes, an online or offline event is fired on the window."
+    "summary": "The onLine read-only property of the Navigator interface returns whether the device is connected to the network, with true meaning online and false meaning offline. The property's value changes after the browser checks its network connection, usually when the user follows links or when a script requests a remote page. For example, the property should return false when users click links soon after they lose internet connection. When its value changes, an online or offline event is fired on the window."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Navigator/oscpu",
     "pageType": "web-api-instance-property",
-    "summary": "The Navigator.oscpu property returns a string that identifies the current operating system."
+    "summary": "The oscpu read-only property of the Navigator interface returns a string that identifies the current operating system."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Navigator/pdfViewerEnabled",
@@ -20382,7 +20382,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Navigator/plugins",
     "pageType": "web-api-instance-property",
-    "summary": "Returns a PluginArray object, listing the Plugin objects describing the plugins installed in the application.\nNamed properties of the returned object are not enumerable (except in very old browser versions)."
+    "summary": "The plugins read-only property of the Navigator interface returns a PluginArray object, listing the Plugin objects describing the plugins installed in the application.\nNamed properties of the returned object are not enumerable (except in very old browser versions)."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Navigator/preferences",
@@ -20397,7 +20397,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Navigator/product",
     "pageType": "web-api-instance-property",
-    "summary": "The value of the Navigator.product property is always\n\"Gecko\", in any browser. This property is kept only for compatibility\npurposes."
+    "summary": "The product read-only property of the Navigator interface is always \"Gecko\", in any browser. This property is kept only for compatibility purposes."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Navigator/productSub",
@@ -20487,12 +20487,12 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Navigator/vendor",
     "pageType": "web-api-instance-property",
-    "summary": "The value of the Navigator vendor property is always either \"Google Inc.\", \"Apple Computer, Inc.\", or (in Firefox) the empty string."
+    "summary": "The vendor read-only property of the Navigator interface is always either \"Google Inc.\", \"Apple Computer, Inc.\", or (in Firefox) the empty string."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Navigator/vendorSub",
     "pageType": "web-api-instance-property",
-    "summary": "The value of the Navigator.vendorSub property is always\nthe empty string, in any browser."
+    "summary": "The vendorSub read-only property of the Navigator interface is always the empty string, in any browser."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Navigator/vibrate",
@@ -27312,7 +27312,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Screen/availWidth",
     "pageType": "web-api-instance-property",
-    "summary": "The Screen.availWidth property returns the amount of\nhorizontal space (in CSS pixels) available to the window."
+    "summary": "The availWidth read-only property of the Screen interface returns the amount of horizontal space (in CSS pixels) available to the window."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Screen/change_event",
@@ -27362,7 +27362,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Screen/pixelDepth",
     "pageType": "web-api-instance-property",
-    "summary": "Returns the bit depth of the screen. Per the CSSOM, some implementations\nreturn 24 for compatibility reasons. See the browser compatibility section for those that don't."
+    "summary": "The pixelDepth read-only property of the Screen interface returns the bit depth of the screen. Per the CSSOM, some implementations return 24 for compatibility reasons. See the browser compatibility section for those that don't."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Screen/unlockOrientation",
@@ -28570,9 +28570,9 @@
     "summary": "The addFromString() method of the\nSpeechGrammarList interface takes a grammar present in a specific\nstring within the code base (e.g., stored in a variable) and adds it to\nthe SpeechGrammarList as a new SpeechGrammar object."
   },
   {
-    "mdn_url": "/en-US/docs/Web/API/SpeechGrammarList/addFromURI",
+    "mdn_url": "/en-US/docs/Web/API/SpeechGrammarList/addFromUri",
     "pageType": "web-api-instance-method",
-    "summary": "The addFromURI() method of the\nSpeechGrammarList interface takes a grammar present at a specific URI and\nadds it to the SpeechGrammarList as a new SpeechGrammar\nobject."
+    "summary": "The addFromUri() method of the SpeechGrammarList interface takes a grammar present at a specific URI and adds it to the SpeechGrammarList as a new SpeechGrammar object."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SpeechGrammarList/item",
@@ -28612,12 +28612,12 @@
   {
     "mdn_url": "/en-US/docs/Web/API/SpeechRecognition/available_static",
     "pageType": "web-api-static-method",
-    "summary": "The available() static method of the Web Speech API checks whether the specified languages are available for speech recognition at the given quality level."
+    "summary": "The available() static method of the SpeechRecognition interface checks whether the specified languages are available for speech recognition at the given quality level."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SpeechRecognition/continuous",
     "pageType": "web-api-instance-property",
-    "summary": "The continuous property of the\nSpeechRecognition interface controls whether continuous results are\nreturned for each recognition, or only a single result."
+    "summary": "The continuous property of the SpeechRecognition interface represents whether recognition returns a single final result, or multiple final results from consecutive recognitions."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SpeechRecognition/end_event",
@@ -28632,12 +28632,12 @@
   {
     "mdn_url": "/en-US/docs/Web/API/SpeechRecognition/grammars",
     "pageType": "web-api-instance-property",
-    "summary": "The grammars property of the\nSpeechRecognition interface returns and sets a collection of\nSpeechGrammar objects that represent the grammars that will be understood\nby the current SpeechRecognition."
+    "summary": "The grammars property of the SpeechRecognition interface represents a collection of SpeechGrammar objects."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SpeechRecognition/install_static",
     "pageType": "web-api-static-method",
-    "summary": "The install() static method of the Web Speech API installs the required language packs for on-device speech recognition in the specified languages and quality level."
+    "summary": "The install() static method of the SpeechRecognition interface installs the language packs needed for on-device speech recognition of the specified languages, at the specified quality level.\nA language pack is the data a browser needs to recognize speech in a particular language.\nOnce it is installed, recognition in that language can run on the user's device, so audio doesn't have to be sent to a remote service."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SpeechRecognition/interimResults",
@@ -28672,7 +28672,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/SpeechRecognition/result_event",
     "pageType": "web-api-event",
-    "summary": "The result event of the Web Speech API is fired when the speech recognition service returns a result — a word or phrase has been positively recognized and this has been communicated back to the app"
+    "summary": "The result event of the SpeechRecognition interface is fired when the speech recognition service returns a result.\nThis can be a final result, or an interim result that may still change (if interimResults is true)."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SpeechRecognition/soundend_event",
@@ -28702,17 +28702,17 @@
   {
     "mdn_url": "/en-US/docs/Web/API/SpeechRecognition/start",
     "pageType": "web-api-instance-method",
-    "summary": "The start() method of the Web Speech API starts the speech recognition service to listen for incoming audio (from a microphone or an audio track) and returns the results of that recognition."
+    "summary": "The start() method of the SpeechRecognition interface starts the speech recognition service listening for incoming audio (from a microphone or an audio track).\nResults are delivered through the result event."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SpeechRecognition/start_event",
     "pageType": "web-api-event",
-    "summary": "The start event of the Web Speech API SpeechRecognition object is fired when the speech recognition service has begun listening to incoming audio with intent to recognize grammars associated with the current SpeechRecognition."
+    "summary": "The start event of the SpeechRecognition interface is fired when the speech recognition service has begun listening to incoming audio with the intention of recognizing speech."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SpeechRecognition/stop",
     "pageType": "web-api-instance-method",
-    "summary": "The stop() method of the Web Speech API stops the speech recognition service from listening for incoming audio and attempts to return a SpeechRecognitionResult based on the results captured so far."
+    "summary": "The stop() method of the SpeechRecognition interface stops the speech recognition service from listening for incoming audio.\nThe service then attempts to return a result based on the audio captured so far, through a result event, or a nomatch event if nothing was recognized."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SpeechRecognition/unspokenPunctuation",
@@ -28722,17 +28722,17 @@
   {
     "mdn_url": "/en-US/docs/Web/API/SpeechRecognitionAlternative",
     "pageType": "web-api-interface",
-    "summary": "The SpeechRecognitionAlternative interface of the Web Speech API represents a single word that has been recognized by the speech recognition service."
+    "summary": "The SpeechRecognitionAlternative interface of the Web Speech API represents one possible match for what the user said, as recognized by the speech recognition service.\nA SpeechRecognitionResult contains one or more alternatives, ordered from most to least confident."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SpeechRecognitionAlternative/confidence",
     "pageType": "web-api-instance-property",
-    "summary": "The confidence read-only property of the\nSpeechRecognitionResult interface returns a numeric estimate of how\nconfident the speech recognition system is that the recognition is correct."
+    "summary": "The confidence read-only property of the SpeechRecognitionAlternative interface returns a numeric estimate of how confident the speech recognition system is that the recognition is correct."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SpeechRecognitionAlternative/transcript",
     "pageType": "web-api-instance-property",
-    "summary": "The transcript read-only property of the\nSpeechRecognitionResult interface returns a string containing the\ntranscript of the recognized word(s)."
+    "summary": "The transcript read-only property of the SpeechRecognitionAlternative interface returns a string containing the transcript of the recognized speech."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SpeechRecognitionErrorEvent",
@@ -28817,7 +28817,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/SpeechRecognitionResultList",
     "pageType": "web-api-interface",
-    "summary": "The SpeechRecognitionResultList interface of the Web Speech API represents a list of SpeechRecognitionResult objects, or a single one if results are being captured in non-continuous mode."
+    "summary": "The SpeechRecognitionResultList interface of the Web Speech API represents a collection of SpeechRecognitionResult objects.\nIf recognition isn't in continuous mode, it contains only one result."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SpeechRecognitionResultList/item",
@@ -31612,7 +31612,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/SVGNumber/value",
     "pageType": "web-api-instance-property",
-    "summary": "The value read-only property of the SVGNumber interface represents the number."
+    "summary": "The value property of the SVGNumber interface represents the number."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SVGNumberList",
@@ -31847,12 +31847,12 @@
   {
     "mdn_url": "/en-US/docs/Web/API/SVGPreserveAspectRatio/align",
     "pageType": "web-api-instance-property",
-    "summary": "The align read-only property of the SVGPreserveAspectRatio interface reflects the type of the alignment value as specified by one of the SVG_PRESERVEASPECTRATIO_* constants defined on this interface."
+    "summary": "The align property of the SVGPreserveAspectRatio interface reflects the type of the alignment value as specified by one of the SVG_PRESERVEASPECTRATIO_* constants defined on this interface."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SVGPreserveAspectRatio/meetOrSlice",
     "pageType": "web-api-instance-property",
-    "summary": "The meetOrSlice read-only property of the SVGPreserveAspectRatio interface reflects the type of the meet-or-slice value as specified by one of the SVG_MEETORSLICE_* constants defined on this interface."
+    "summary": "The meetOrSlice property of the SVGPreserveAspectRatio interface reflects the type of the meet-or-slice value as specified by one of the SVG_MEETORSLICE_* constants defined on this interface."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SVGRadialGradientElement",
@@ -31977,7 +31977,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/SVGScriptElement/type",
     "pageType": "web-api-instance-property",
-    "summary": "The type read-only property of the SVGScriptElement interface reflects the type attribute of the given <script> element."
+    "summary": "The type property of the SVGScriptElement interface reflects the type attribute of the given <script> element."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SVGSetElement",
@@ -33197,7 +33197,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Touch/identifier",
     "pageType": "web-api-instance-property",
-    "summary": "The Touch.identifier returns a value uniquely identifying\nthis point of contact with the touch surface. This value remains consistent for every\nevent involving this finger's (or stylus's) movement on the surface until it is lifted\noff the surface."
+    "summary": "The identifier read-only property of the Touch interface returns a value uniquely identifying this point of contact with the touch surface. This value remains consistent for every event involving this finger's (or stylus's) movement on the surface until it is lifted off the surface."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Touch/pageX",
@@ -33227,12 +33227,12 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Touch/screenX",
     "pageType": "web-api-instance-property",
-    "summary": "Returns the X coordinate of the touch point relative to the screen, not including any scroll offset."
+    "summary": "The screenX read-only property of the Touch interface returns the X coordinate of the touch point relative to the screen, not including any scroll offset."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Touch/screenY",
     "pageType": "web-api-instance-property",
-    "summary": "Returns the Y coordinate of the touch point relative to the screen, not including any scroll offset."
+    "summary": "The screenY read-only property of the Touch interface returns the Y coordinate of the touch point relative to the screen, not including any scroll offset."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Touch/target",
@@ -34597,12 +34597,12 @@
   {
     "mdn_url": "/en-US/docs/Web/API/VideoTrack/id",
     "pageType": "web-api-instance-property",
-    "summary": "The id property contains a\nstring which uniquely identifies the track represented by the\nVideoTrack."
+    "summary": "The id read-only property of the VideoTrack interface contains a string which uniquely identifies the track represented by the VideoTrack."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/VideoTrack/kind",
     "pageType": "web-api-instance-property",
-    "summary": "The kind property contains a\nstring indicating the category of video contained in the\nVideoTrack."
+    "summary": "The kind read-only property of the VideoTrack interface contains a string indicating the category of video contained in the VideoTrack."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/VideoTrack/label",
@@ -37250,6 +37250,16 @@
     "summary": "The WebTransport API provides a modern update to WebSockets, transmitting data between client and server using HTTP/3 Transport. WebTransport provides support for multiple streams, unidirectional streams, and out-of-order delivery. It enables reliable transport via streams and unreliable transport via UDP-like datagrams."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/WebTransport/anticipatedConcurrentIncomingBidirectionalStreams",
+    "pageType": "web-api-instance-property",
+    "summary": "The anticipatedConcurrentIncomingBidirectionalStreams property of the WebTransport interface represents the number of incoming bidirectional streams that the application expects the server to have open at the same time."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/WebTransport/anticipatedConcurrentIncomingUnidirectionalStreams",
+    "pageType": "web-api-instance-property",
+    "summary": "The anticipatedConcurrentIncomingUnidirectionalStreams property of the WebTransport interface represents the number of incoming unidirectional streams that the application expects the server to have open at the same time."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/WebTransport/close",
     "pageType": "web-api-instance-method",
     "summary": "The close() method of the WebTransport interface closes an ongoing WebTransport session."
@@ -37292,12 +37302,12 @@
   {
     "mdn_url": "/en-US/docs/Web/API/WebTransport/exportKeyingMaterial",
     "pageType": "web-api-instance-method",
-    "summary": "The exportKeyingMaterial() method of the WebTransport interface returns a Promise that fulfills with keying material derived from the TLS session underlying the transport's connection."
+    "summary": "The exportKeyingMaterial() method of the WebTransport interface returns a Promise that fulfills with keying material derived from the TLS session underlying the transport's connection.\nThis can be used to bind application-level authentication to the specific connection, for example to detect manipulator-in-the-middle (MitM) attacks when connecting to a peer that uses a self-signed certificate."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WebTransport/getStats",
     "pageType": "web-api-instance-method",
-    "summary": "The getStats() method of the WebTransport interface asynchronously returns an object containing HTTP/3 connection statistics."
+    "summary": "The getStats() method of the WebTransport interface returns a Promise that fulfills with an object containing statistics for the transport's underlying connection."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WebTransport/incomingBidirectionalStreams",
@@ -37323,6 +37333,11 @@
     "mdn_url": "/en-US/docs/Web/API/WebTransport/reliability",
     "pageType": "web-api-instance-property",
     "summary": "The reliability read-only property of the WebTransport interface indicates whether the connection supports reliable transports only, or whether it also supports unreliable transports (such as UDP)."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/WebTransport/responseHeaders",
+    "pageType": "web-api-instance-property",
+    "summary": "The responseHeaders read-only property of the WebTransport interface returns the HTTP headers from the server's response to the request that set up the session."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WebTransport/supportsReliableOnly_static",
@@ -37362,12 +37377,17 @@
   {
     "mdn_url": "/en-US/docs/Web/API/WebTransportDatagramDuplexStream/incomingHighWaterMark",
     "pageType": "web-api-instance-property",
-    "summary": "The incomingHighWaterMark property of the WebTransportDatagramDuplexStream interface gets or sets the high water mark for incoming chunks of data — this is the maximum size, in chunks, that the incoming ReadableStream's internal queue can reach before it is considered full. See Internal queues and queuing strategies for more information."
+    "summary": "The incomingHighWaterMark property of the WebTransportDatagramDuplexStream interface represents the maximum number of incoming datagrams that can be queued while waiting to be read from the readable stream.\nIf more datagrams arrive than the queue can hold, the oldest datagrams in the queue are dropped.\nThe number of datagrams dropped this way is reported in the droppedIncoming property of the datagram statistics returned by WebTransport.getStats()."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WebTransportDatagramDuplexStream/incomingMaxAge",
     "pageType": "web-api-instance-property",
     "summary": "The incomingMaxAge property of the WebTransportDatagramDuplexStream interface gets or sets the maximum age for incoming datagrams, in milliseconds."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/WebTransportDatagramDuplexStream/incomingMaxBufferedDatagrams",
+    "pageType": "web-api-instance-property",
+    "summary": "The incomingMaxBufferedDatagrams property of the WebTransportDatagramDuplexStream interface represents the maximum number of incoming datagrams that can be queued while waiting to be read from the readable stream."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WebTransportDatagramDuplexStream/maxDatagramSize",
@@ -37377,12 +37397,17 @@
   {
     "mdn_url": "/en-US/docs/Web/API/WebTransportDatagramDuplexStream/outgoingHighWaterMark",
     "pageType": "web-api-instance-property",
-    "summary": "The outgoingHighWaterMark property of the WebTransportDatagramDuplexStream interface gets or sets the high water mark for outgoing chunks of data — this is the maximum size, in chunks, that the outgoing WritableStream's internal queue can reach before it is considered full. See Internal queues and queuing strategies for more information."
+    "summary": "The outgoingHighWaterMark property of the WebTransportDatagramDuplexStream interface represents the maximum number of outgoing datagrams that can be queued for sending before backpressure is applied.\nQueued datagrams are not dropped because the queue is full, though they can still expire if outgoingMaxAge is set."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WebTransportDatagramDuplexStream/outgoingMaxAge",
     "pageType": "web-api-instance-property",
     "summary": "The outgoingMaxAge property of the WebTransportDatagramDuplexStream interface gets or sets the maximum age for outgoing datagrams, in milliseconds."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/WebTransportDatagramDuplexStream/outgoingMaxBufferedDatagrams",
+    "pageType": "web-api-instance-property",
+    "summary": "The outgoingMaxBufferedDatagrams property of the WebTransportDatagramDuplexStream interface represents the maximum number of outgoing datagrams that can be queued for sending on each WebTransportDatagramsWritable before backpressure is applied."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WebTransportDatagramDuplexStream/readable",
@@ -37802,12 +37827,12 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Window/devicePixelRatio",
     "pageType": "web-api-instance-property",
-    "summary": "The devicePixelRatio of Window interface returns the ratio of the resolution in physical pixels to the resolution in CSS pixels for the current display device."
+    "summary": "The devicePixelRatio read-only property of the Window interface returns the ratio of the resolution in physical pixels to the resolution in CSS pixels for the current display device."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Window/document",
     "pageType": "web-api-instance-property",
-    "summary": "window.document returns a reference to the document contained in the window."
+    "summary": "The document read-only property of the Window interface returns a reference to the document contained in the window."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Window/documentPictureInPicture",
@@ -37832,7 +37857,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Window/external",
     "pageType": "web-api-instance-property",
-    "summary": "The external property of the Window API returns an instance of the External interface, which was intended to contain functions related to adding external search providers to the browser. However, this is now deprecated, and the contained methods are now dummy functions that do nothing as per spec."
+    "summary": "The external read-only property of the Window interface returns an instance of the External interface, which was intended to contain functions related to adding external search providers to the browser. However, this is now deprecated, and the contained methods are now dummy functions that do nothing as per spec."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Window/fence",
@@ -37867,12 +37892,12 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Window/frameElement",
     "pageType": "web-api-instance-property",
-    "summary": "The Window.frameElement property\nreturns the element (such as <iframe> or <object>)\nin which the window is embedded."
+    "summary": "The frameElement read-only property of the Window interface returns the element (such as <iframe> or <object>) in which the window is embedded."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Window/frames",
     "pageType": "web-api-instance-property",
-    "summary": "Returns the window itself, which is an array-like object, listing the direct sub-frames\nof the current window."
+    "summary": "The frames read-only property of the Window interface returns the window itself, which is an array-like object, listing the direct sub-frames of the current window."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Window/fullScreen",
@@ -37952,7 +37977,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Window/length",
     "pageType": "web-api-instance-property",
-    "summary": "Returns the number of frames (either <frame> or\n<iframe> elements) in the window."
+    "summary": "The length read-only property of the Window interface returns the number of frames (either <frame> or <iframe> elements) in the window."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Window/load_event",
@@ -37972,7 +37997,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Window/locationbar",
     "pageType": "web-api-instance-property",
-    "summary": "Returns the locationbar object."
+    "summary": "The locationbar read-only property of the Window interface returns the locationbar object."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Window/matchMedia",
@@ -37982,7 +38007,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Window/menubar",
     "pageType": "web-api-instance-property",
-    "summary": "Returns the menubar object."
+    "summary": "The menubar read-only property of the Window interface returns the menubar object."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Window/message_event",
@@ -38052,7 +38077,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Window/orientation",
     "pageType": "web-api-instance-property",
-    "summary": "Returns the orientation in degrees (in 90-degree increments) of the viewport relative to the device's natural orientation."
+    "summary": "The orientation read-only property of the Window interface returns the orientation in degrees (in 90-degree increments) of the viewport relative to the device's natural orientation."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Window/orientationchange_event",
@@ -38102,17 +38127,17 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Window/parent",
     "pageType": "web-api-instance-property",
-    "summary": "The Window.parent property is a reference to the parent\nof the current window or subframe."
+    "summary": "The parent read-only property of the Window interface is a reference to the parent of the current window or subframe."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Window/performance",
     "pageType": "web-api-instance-property",
-    "summary": "The performance property of the Window interface returns a Performance object, which can be used to gather performance information about code running in the window's scope."
+    "summary": "The performance read-only property of the Window interface returns a Performance object, which can be used to gather performance information about code running in the window's scope."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Window/personalbar",
     "pageType": "web-api-instance-property",
-    "summary": "Returns the personalbar object."
+    "summary": "The personalbar read-only property of the Window interface returns the personalbar object."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Window/popstate_event",
@@ -38202,7 +38227,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Window/screen",
     "pageType": "web-api-instance-property",
-    "summary": "The Window property screen returns a\nreference to the screen object associated with the window. The screen\nobject, implementing the Screen interface, is a special object for\ninspecting properties of the screen on which the current window is being rendered."
+    "summary": "The screen read-only property of the Window interface returns a reference to the screen object associated with the window. The screen object, implementing the Screen interface, is a special object for inspecting properties of the screen on which the current window is being rendered."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Window/screenLeft",
@@ -38232,7 +38257,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Window/scrollbars",
     "pageType": "web-api-instance-property",
-    "summary": "Returns the scrollbars object."
+    "summary": "The scrollbars read-only property of the Window interface returns the scrollbars object."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Window/scrollBy",
@@ -38352,7 +38377,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Window/statusbar",
     "pageType": "web-api-instance-property",
-    "summary": "Returns the statusbar object."
+    "summary": "The statusbar read-only property of the Window interface returns the statusbar object."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Window/stop",
@@ -38372,12 +38397,12 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Window/toolbar",
     "pageType": "web-api-instance-property",
-    "summary": "Returns the toolbar object."
+    "summary": "The toolbar read-only property of the Window interface returns the toolbar object."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Window/top",
     "pageType": "web-api-instance-property",
-    "summary": "Returns a reference to the topmost window in the window hierarchy."
+    "summary": "The top read-only property of the Window interface returns a reference to the topmost window in the window hierarchy."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Window/trustedTypes",
@@ -38442,7 +38467,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Window/window",
     "pageType": "web-api-instance-property",
-    "summary": "The window property of a Window object points to the window object itself."
+    "summary": "The window read-only property of the Window interface points to the window object itself."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WindowClient",
@@ -38632,7 +38657,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/WorkerGlobalScope/fonts",
     "pageType": "web-api-instance-property",
-    "summary": "The fonts property of the WorkerGlobalScope interface returns the FontFaceSet interface of the worker."
+    "summary": "The fonts read-only property of the WorkerGlobalScope interface returns the FontFaceSet interface of the worker."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WorkerGlobalScope/importScripts",
@@ -38682,7 +38707,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/WorkerGlobalScope/performance",
     "pageType": "web-api-instance-property",
-    "summary": "The performance property of the WorkerGlobalScope interface returns a Performance object, which can be used to gather performance information about code running in the worker's scope."
+    "summary": "The performance read-only property of the WorkerGlobalScope interface returns a Performance object, which can be used to gather performance information about code running in the worker's scope."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WorkerGlobalScope/queueMicrotask",
@@ -38802,17 +38827,17 @@
   {
     "mdn_url": "/en-US/docs/Web/API/WorkerNavigator/appCodeName",
     "pageType": "web-api-instance-property",
-    "summary": "The value of the WorkerNavigator.appCodeName property is\nalways \"Mozilla\", in any browser. This property is kept only for\ncompatibility purposes."
+    "summary": "The appCodeName read-only property of the WorkerNavigator interface is always \"Mozilla\", in any browser. This property is kept only for compatibility purposes."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WorkerNavigator/appName",
     "pageType": "web-api-instance-property",
-    "summary": "The value of the WorkerNavigator.appName property is always\n\"Netscape\", in any browser. This property is kept only for compatibility\npurposes."
+    "summary": "The appName read-only property of the WorkerNavigator interface is always \"Netscape\", in any browser. This property is kept only for compatibility purposes."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WorkerNavigator/appVersion",
     "pageType": "web-api-instance-property",
-    "summary": "Returns either \"4.0\" or a string representing version information about\nthe browser."
+    "summary": "The appVersion read-only property of the WorkerNavigator interface returns either \"4.0\" or a string representing version information about the browser."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WorkerNavigator/clearAppBadge",
@@ -38872,7 +38897,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/WorkerNavigator/onLine",
     "pageType": "web-api-instance-property",
-    "summary": "Returns the online status of the browser. The property returns a boolean value, with true meaning online and false meaning offline. The property sends updates whenever the browser's ability to connect to the network changes. The update occurs when the user follows links or when a script requests a remote page."
+    "summary": "The onLine read-only property of the WorkerNavigator interface returns the online status of the browser. The property returns a boolean value, with true meaning online and false meaning offline. The property sends updates whenever the browser's ability to connect to the network changes. The update occurs when the user follows links or when a script requests a remote page."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WorkerNavigator/permissions",
@@ -38882,12 +38907,12 @@
   {
     "mdn_url": "/en-US/docs/Web/API/WorkerNavigator/platform",
     "pageType": "web-api-instance-property",
-    "summary": "Returns a string representing the platform of the browser. The specification allows\nbrowsers to always return the empty string, so don't rely on this property to get a\nreliable answer."
+    "summary": "The platform read-only property of the WorkerNavigator interface returns a string representing the platform of the browser. The specification allows browsers to always return the empty string, so don't rely on this property to get a reliable answer."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WorkerNavigator/product",
     "pageType": "web-api-instance-property",
-    "summary": "The value of the WorkerNavigator.product property is always\n\"Gecko\", in any browser. This property is kept only for compatibility\npurposes."
+    "summary": "The product read-only property of the WorkerNavigator interface is always \"Gecko\", in any browser. This property is kept only for compatibility purposes."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WorkerNavigator/serial",
@@ -39697,7 +39722,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/XRInputSourceArray/entries",
     "pageType": "web-api-instance-method",
-    "summary": "The XRInputSourceArray interface's\nentries() method returns a JavaScript\niterator\nwhich can then be used to iterate over the key/value pairs in the input source\narray. Each item in the array is an XRInputSource object."
+    "summary": "The XRInputSourceArray interface's\nentries() method returns a JavaScript\niterator\nwhich can then be used to iterate over the key/value pairs in the input source\narray. Each key is the index of an input source in the array, and each value is\nthe corresponding XRInputSource object."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/XRInputSourceArray/forEach",

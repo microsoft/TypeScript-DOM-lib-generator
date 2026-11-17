@@ -57,6 +57,11 @@ interface QueuingStrategyInit {
     highWaterMark: number;
 }
 
+interface QuotaExceededErrorOptions {
+    quota?: number;
+    requested?: number;
+}
+
 interface ReadableStreamBYOBReaderReadOptions {
     min?: number;
 }
@@ -610,7 +615,7 @@ interface Event {
      */
     returnValue: boolean;
     /**
-     * The deprecated **`Event.srcElement`** is an alias for the Event.target property. Use Event.target instead.
+     * The **`srcElement`** read-only property of the Event interface is a deprecated alias for the Event.target property. Use Event.target instead.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/srcElement)
@@ -863,6 +868,31 @@ interface PromiseRejectionEvent extends Event {
 declare var PromiseRejectionEvent: {
     prototype: PromiseRejectionEvent;
     new(type: string, eventInitDict: PromiseRejectionEventInit): PromiseRejectionEvent;
+};
+
+/**
+ * The **`QuotaExceededError`** interface represents an error when a requested operation would exceed a system-imposed storage quota.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/QuotaExceededError)
+ */
+interface QuotaExceededError extends DOMException {
+    /**
+     * The **`quota`** read-only property of the QuotaExceededError interface returns the system-defined storage quota (in bytes) that the operation attempted to exceed, or undefined if the information is not available.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/QuotaExceededError/quota)
+     */
+    readonly quota: number | null;
+    /**
+     * The **`requested`** read-only property of the QuotaExceededError interface returns the number of bytes that were requested when the error occurred, or undefined if the information is not available.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/QuotaExceededError/requested)
+     */
+    readonly requested: number | null;
+}
+
+declare var QuotaExceededError: {
+    prototype: QuotaExceededError;
+    new(message?: string, options?: QuotaExceededErrorOptions): QuotaExceededError;
 };
 
 /**
