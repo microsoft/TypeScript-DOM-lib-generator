@@ -829,6 +829,12 @@ interface FullscreenOptions {
     navigationUI?: FullscreenNavigationUI;
 }
 
+interface FunctionParameter {
+    defaultValue?: string;
+    name: string;
+    type: string;
+}
+
 interface GPUBindGroupDescriptor extends GPUObjectDescriptorBase {
     entries: GPUBindGroupEntry[];
     layout: GPUBindGroupLayout;
@@ -2162,6 +2168,11 @@ interface QueuingStrategyInit {
      * Note that the provided high water mark will not be validated ahead of time. Instead, if it is negative, NaN, or not a number, the resulting ByteLengthQueuingStrategy will cause the corresponding stream constructor to throw.
      */
     highWaterMark: number;
+}
+
+interface QuotaExceededErrorOptions {
+    quota?: number;
+    requested?: number;
 }
 
 interface RTCAnswerOptions extends RTCOfferAnswerOptions {
@@ -3801,7 +3812,7 @@ interface AbstractRange {
      */
     readonly endContainer: Node;
     /**
-     * The **`endOffset`** property of the AbstractRange interface returns the offset into the end node of the range's end position.
+     * The **`endOffset`** read-only property of the AbstractRange interface returns the offset into the end node of the range's end position.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbstractRange/endOffset)
      */
@@ -5757,6 +5768,10 @@ declare var CSSCounterStyleRule: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontFaceDescriptors)
  */
 interface CSSFontFaceDescriptors extends CSSStyleDeclarationBase {
+    "ascent-override": string;
+    ascentOverride: string;
+    "descent-override": string;
+    descentOverride: string;
     "font-display": string;
     "font-family": string;
     "font-feature-settings": string;
@@ -5771,6 +5786,8 @@ interface CSSFontFaceDescriptors extends CSSStyleDeclarationBase {
     fontStyle: string;
     fontWeight: string;
     fontWidth: string;
+    "line-gap-override": string;
+    lineGapOverride: string;
     "size-adjust": string;
     sizeAdjust: string;
     src: string;
@@ -5856,6 +5873,75 @@ interface CSSFontPaletteValuesRule extends CSSRule {
 declare var CSSFontPaletteValuesRule: {
     prototype: CSSFontPaletteValuesRule;
     new(): CSSFontPaletteValuesRule;
+};
+
+/**
+ * The **`CSSFunctionDeclarations`** interface of the CSS Object Model represents a consecutive run of CSS declarations included within a @function body.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFunctionDeclarations)
+ */
+interface CSSFunctionDeclarations extends CSSRule {
+    /**
+     * The read-only **`style`** property of the CSSFunctionDeclarations interface contains a CSSFunctionDescriptors object representing the descriptors available in the @function rule's body.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFunctionDeclarations/style)
+     */
+    readonly style: CSSFunctionDescriptors;
+}
+
+declare var CSSFunctionDeclarations: {
+    prototype: CSSFunctionDeclarations;
+    new(): CSSFunctionDeclarations;
+};
+
+/**
+ * The **`CSSFunctionDescriptors`** interface of the CSS Object Model represents the descriptors contained within a set of CSS declarations represented by a CSSFunctionDeclarations object.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFunctionDescriptors)
+ */
+interface CSSFunctionDescriptors extends CSSStyleDeclarationBase {
+    /**
+     * The **`result`** property of the CSSFunctionDescriptors interface returns a string representing a result descriptor, if one exists in the associated set of declarations.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFunctionDescriptors/result)
+     */
+    result: string;
+}
+
+declare var CSSFunctionDescriptors: {
+    prototype: CSSFunctionDescriptors;
+    new(): CSSFunctionDescriptors;
+};
+
+/**
+ * The **`CSSFunctionRule`** interface of the CSS Object Model represents CSS @function (custom function) at-rules.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFunctionRule)
+ */
+interface CSSFunctionRule extends CSSGroupingRule {
+    /**
+     * The **`name`** property of the CSSFunctionRule interface returns a string representing the custom function's name.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFunctionRule/name)
+     */
+    readonly name: string;
+    /**
+     * The **`returnType`** property of the CSSFunctionRule interface returns a string representing the custom function's return type.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFunctionRule/returnType)
+     */
+    readonly returnType: string;
+    /**
+     * The **`getParameters()`** method of the CSSFunctionRule interface returns an array of objects representing the custom function's parameters.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFunctionRule/getParameters)
+     */
+    getParameters(): FunctionParameter[];
+}
+
+declare var CSSFunctionRule: {
+    prototype: CSSFunctionRule;
+    new(): CSSFunctionRule;
 };
 
 /**
@@ -6345,19 +6431,19 @@ declare var CSSNumericArray: {
 };
 
 /**
- * The **`CSSNumericValue`** interface of the CSS Typed Object Model API represents operations that all numeric values can perform.
+ * The **`CSSNumericValue`** interface of the CSS Typed Object Model API is the base interface for objects that represent CSS numeric values, such as 10px, 50%, or calc(1px + 2em). It provides the common methods for basic arithmetic, comparing values, and converting between units.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericValue)
  */
 interface CSSNumericValue extends CSSStyleValue {
     /**
-     * The **`add()`** method of the CSSNumericValue interface adds a supplied number to the CSSNumericValue.
+     * The **`add()`** method of the CSSNumericValue interface returns a new value that is the sum of the CSSNumericValue and the supplied values.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericValue/add)
      */
     add(...values: CSSNumberish[]): CSSNumericValue;
     /**
-     * The **`div()`** method of the CSSNumericValue interface divides the CSSNumericValue by the supplied value.
+     * The **`div()`** method of the CSSNumericValue interface returns a new value that is the CSSNumericValue divided by the supplied values.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericValue/div)
      */
@@ -6369,43 +6455,43 @@ interface CSSNumericValue extends CSSStyleValue {
      */
     equals(...value: CSSNumberish[]): boolean;
     /**
-     * The **`max()`** method of the CSSNumericValue interface returns the highest value from among the values passed. The passed values must be of the same type.
+     * The **`max()`** method of the CSSNumericValue interface returns the largest of the CSSNumericValue and the supplied values.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericValue/max)
      */
     max(...values: CSSNumberish[]): CSSNumericValue;
     /**
-     * The **`min()`** method of the CSSNumericValue interface returns the lowest value from among those values passed. The passed values must be of the same type.
+     * The **`min()`** method of the CSSNumericValue interface returns the smallest of the CSSNumericValue and the supplied values.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericValue/min)
      */
     min(...values: CSSNumberish[]): CSSNumericValue;
     /**
-     * The **`mul()`** method of the CSSNumericValue interface multiplies the CSSNumericValue by the supplied values.
+     * The **`mul()`** method of the CSSNumericValue interface returns a new value that is the CSSNumericValue multiplied by the supplied values.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericValue/mul)
      */
     mul(...values: CSSNumberish[]): CSSNumericValue;
     /**
-     * The **`sub()`** method of the CSSNumericValue interface subtracts a supplied number from the CSSNumericValue.
+     * The **`sub()`** method of the CSSNumericValue interface returns a new value that is the CSSNumericValue minus the supplied values.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericValue/sub)
      */
     sub(...values: CSSNumberish[]): CSSNumericValue;
     /**
-     * The **`to()`** method of the CSSNumericValue interface converts a numeric value from one unit to another.
+     * The **`to()`** method of the CSSNumericValue interface converts the CSSNumericValue to a CSSUnitValue in the specified unit.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericValue/to)
      */
     to(unit: string): CSSUnitValue;
     /**
-     * The **`toSum()`** method of the CSSNumericValue interface converts the object's value to a CSSMathSum of CSSUnitValues using only the specified units, if possible. If called with no units, it simplifies the value into a minimal sum of CSSUnitValues instead.
+     * The **`toSum()`** method of the CSSNumericValue interface converts the CSSNumericValue into a CSSMathSum whose terms are CSSUnitValue objects in the specified units.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericValue/toSum)
      */
     toSum(...units: string[]): CSSMathSum;
     /**
-     * The **`type()`** method of the CSSNumericValue interface returns the type of CSSNumericValue, one of angle, flex, frequency, length, resolution, percent, percentHint, or time.
+     * The **`type()`** method of the CSSNumericValue interface returns a CSSNumericType dictionary that describes the type of the CSSNumericValue, such as whether it's a length, an angle, or a time.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericValue/type)
      */
@@ -6416,7 +6502,7 @@ declare var CSSNumericValue: {
     prototype: CSSNumericValue;
     new(): CSSNumericValue;
     /**
-     * The **`parse()`** static method of the CSSNumericValue interface converts a value string into an object whose members are value and the units.
+     * The **`parse()`** static method of the CSSNumericValue interface creates a CSSNumericValue from a string of CSS, such as "42px" or "calc(50% + 10px)".
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericValue/parse_static)
      */
@@ -7888,6 +7974,108 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     contentVisibility: string;
     /**
+     * The corner-block-end-shape CSS property specifies the shape of both the corners on a box's block-end edge, within their border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-block-end-shape)
+     */
+    cornerBlockEndShape: string;
+    /**
+     * The corner-block-start-shape CSS property specifies the shape of both the corners on a box's block-start edge, within their border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-block-start-shape)
+     */
+    cornerBlockStartShape: string;
+    /**
+     * The corner-bottom-left-shape CSS property specifies the shape of a box's bottom-left corner, within its border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-bottom-left-shape)
+     */
+    cornerBottomLeftShape: string;
+    /**
+     * The corner-bottom-right-shape CSS property specifies the shape of a box's bottom-right corner, within its border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-bottom-right-shape)
+     */
+    cornerBottomRightShape: string;
+    /**
+     * The corner-bottom-shape CSS property specifies the shape of both the corners on a box's bottom edge, within their border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-bottom-shape)
+     */
+    cornerBottomShape: string;
+    /**
+     * The corner-end-end-shape CSS property specifies the shape of a box's block-end and inline-end corner, within its border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-end-end-shape)
+     */
+    cornerEndEndShape: string;
+    /**
+     * The corner-end-start-shape CSS property specifies the shape of a box's block-end and inline-start corner, within its border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-end-start-shape)
+     */
+    cornerEndStartShape: string;
+    /**
+     * The corner-inline-end-shape CSS property specifies the shape of both the corners on a box's inline-end edge, within their border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-inline-end-shape)
+     */
+    cornerInlineEndShape: string;
+    /**
+     * The corner-inline-start-shape CSS property specifies the shape of both the corners on a box's inline-start edge, within their border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-inline-start-shape)
+     */
+    cornerInlineStartShape: string;
+    /**
+     * The corner-left-shape CSS property specifies the shape of both the corners on a box's left-hand edge, within their border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-left-shape)
+     */
+    cornerLeftShape: string;
+    /**
+     * The corner-right-shape CSS property specifies the shape of both the corners on a box's right-hand edge, within their border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-right-shape)
+     */
+    cornerRightShape: string;
+    /**
+     * The corner-shape CSS shorthand property specifies the shape of a box's corners, within the area specified by its border-radius property value.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-shape)
+     */
+    cornerShape: string;
+    /**
+     * The corner-start-end-shape CSS property specifies the shape of a box's block-start and inline-end corner, within its border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-start-end-shape)
+     */
+    cornerStartEndShape: string;
+    /**
+     * The corner-start-start-shape CSS property specifies the shape of a box's block-start and inline-start corner, within its border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-start-start-shape)
+     */
+    cornerStartStartShape: string;
+    /**
+     * The corner-top-left-shape CSS property specifies the shape of a box's top-left corner, within its border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-top-left-shape)
+     */
+    cornerTopLeftShape: string;
+    /**
+     * The corner-top-right-shape CSS property specifies the shape of a box's top-right corner, within its border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-top-right-shape)
+     */
+    cornerTopRightShape: string;
+    /**
+     * The corner-top-shape CSS property specifies the shape of both the corners on a box's top edge, within their border-radius area.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/corner-top-shape)
+     */
+    cornerTopShape: string;
+    /**
      * The counter-increment CSS property can be used to increase or decrease the value of the named CSS counters by the specified values, or to prevent all counters or an individual counter's value from being changed.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/counter-increment)
@@ -8717,6 +8905,12 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/object-position)
      */
     objectPosition: string;
+    /**
+     * The object-view-box CSS property defines a rectangle as a viewable area (viewbox) within a replaced element, enabling the content of the replaced element to be zoomed or panned. It works similarly to the SVG viewBox attribute.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/object-view-box)
+     */
+    objectViewBox: string;
     /**
      * The **`offset`** CSS shorthand property sets all the properties required for animating an element along a defined path. The offset properties together help to define an offset transform, a transform that aligns a point in an element (offset-anchor) to an offset position (offset-position) on a path (offset-path) at various points along the path (offset-distance) and optionally rotates the element (offset-rotate) to follow the direction of the path.
      *
@@ -13125,7 +13319,7 @@ interface Document extends Node, ARIANotifyMixin, DocumentOrShadowRoot, FontFace
      */
     readonly anchors: HTMLCollectionOf<HTMLAnchorElement>;
     /**
-     * The **`applets`** property of the Document returns an empty HTMLCollection. This property is kept only for compatibility reasons; in older versions of browsers, it returned a list of the applets within a document.
+     * The **`applets`** read-only property of the Document interface returns an empty HTMLCollection. This property is kept only for compatibility reasons; in older versions of browsers, it returned a list of the applets within a document.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/applets)
@@ -13175,7 +13369,7 @@ interface Document extends Node, ARIANotifyMixin, DocumentOrShadowRoot, FontFace
      */
     cookie: string;
     /**
-     * The **`Document.currentScript`** property returns the <script> element whose script is currently being processed and isn't a JavaScript module. (For modules use import.meta instead.)
+     * The **`currentScript`** read-only property of the Document interface returns the <script> element whose script is currently being processed and isn't a JavaScript module. (For modules use import.meta instead.)
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/currentScript)
      */
@@ -13280,7 +13474,7 @@ interface Document extends Node, ARIANotifyMixin, DocumentOrShadowRoot, FontFace
      */
     readonly images: HTMLCollectionOf<HTMLImageElement>;
     /**
-     * The **`Document.implementation`** property returns a DOMImplementation object associated with the current document.
+     * The **`implementation`** read-only property of the Document interface returns a DOMImplementation object associated with the current document.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/implementation)
      */
@@ -13292,7 +13486,7 @@ interface Document extends Node, ARIANotifyMixin, DocumentOrShadowRoot, FontFace
      */
     readonly inputEncoding: string;
     /**
-     * The **`lastModified`** property of the Document interface returns a string containing the date and local time on which the current document was last modified.
+     * The **`lastModified`** read-only property of the Document interface returns a string containing the date and local time on which the current document was last modified.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/lastModified)
      */
@@ -13343,26 +13537,26 @@ interface Document extends Node, ARIANotifyMixin, DocumentOrShadowRoot, FontFace
      */
     readonly plugins: HTMLCollectionOf<HTMLEmbedElement>;
     /**
-     * The **`Document.readyState`** property describes the loading state of the document. When the value of this property changes, a readystatechange event fires on the document object.
+     * The **`readyState`** read-only property of the Document interface describes the loading state of the document. When the value of this property changes, a readystatechange event fires on the document object.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/readyState)
      */
     readonly readyState: DocumentReadyState;
     /**
-     * The **`Document.referrer`** property returns the URI of the page that linked to this page.
+     * The **`referrer`** read-only property of the Document interface returns the URI of the page that linked to this page.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/referrer)
      */
     readonly referrer: string;
     /**
-     * **`Document.rootElement`** returns the Element that is the root element of the document if it is an <svg> element, otherwise null. It is deprecated in favor of Document.documentElement, which returns the root element for all documents.
+     * The **`rootElement`** read-only property of the Document interface returns the Element that is the root element of the document if it is an <svg> element, otherwise null. It is deprecated in favor of Document.documentElement, which returns the root element for all documents.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/rootElement)
      */
     readonly rootElement: SVGSVGElement | null;
     /**
-     * The **`scripts`** property of the Document interface returns a list of the <script> elements in the document. The returned object is an HTMLCollection.
+     * The **`scripts`** read-only property of the Document interface returns a list of the <script> elements in the document. The returned object is an HTMLCollection.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/scripts)
      */
@@ -14061,9 +14255,17 @@ interface EXT_float_blend {
 interface EXT_frag_depth {
 }
 
-/** The **`EXT_polygon_offset_clamp`** extension is part of the WebGL API and adds a limit to the depth offset set with polygonOffset(). */
+/**
+ * The **`EXT_polygon_offset_clamp`** extension is part of the WebGL API and adds a limit to the depth offset set with polygonOffset().
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_polygon_offset_clamp)
+ */
 interface EXT_polygon_offset_clamp {
-    /** The **`polygonOffsetClampEXT()`** method of the EXT_polygon_offset_clamp extension of the WebGL API specifies the scale factor and units used to calculate depth offsets, like WebGLRenderingContext.polygonOffset(), and a limit for the resulting offset. */
+    /**
+     * The **`polygonOffsetClampEXT()`** method of the EXT_polygon_offset_clamp extension of the WebGL API specifies the scale factor and units used to calculate depth offsets, like WebGLRenderingContext.polygonOffset(), and a limit for the resulting offset.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_polygon_offset_clamp/polygonOffsetClampEXT)
+     */
     polygonOffsetClampEXT(factor: GLfloat, units: GLfloat, clamp: GLfloat): void;
     readonly POLYGON_OFFSET_CLAMP_EXT: 0x8E1B;
 }
@@ -14154,7 +14356,7 @@ interface ElementEventMap {
  */
 interface Element extends Node, ARIAMixin, ARIANotifyMixin, Animatable, ChildNode, NonDocumentTypeChildNode, ParentNode, Slottable {
     /**
-     * The **`Element.attributes`** property returns a live collection of all attribute nodes registered to the specified node. It is a NamedNodeMap, not an Array, so it has no Array methods and the Attr nodes' indexes may differ among browsers. To be more specific, attributes is a key/value pair of strings that represents any information regarding that attribute.
+     * The **`attributes`** read-only property of the Element interface returns a live collection of all attribute nodes registered to the specified node. It is a NamedNodeMap, not an Array, so it has no Array methods and the Attr nodes' indexes may differ among browsers. To be more specific, attributes is a key/value pair of strings that represents any information regarding that attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/attributes)
      */
@@ -14868,7 +15070,7 @@ interface Event {
      */
     returnValue: boolean;
     /**
-     * The deprecated **`Event.srcElement`** is an alias for the Event.target property. Use Event.target instead.
+     * The **`srcElement`** read-only property of the Event interface is a deprecated alias for the Event.target property. Use Event.target instead.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/srcElement)
@@ -15556,6 +15758,12 @@ interface FontFace {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/loaded)
      */
     readonly loaded: Promise<FontFace>;
+    /**
+     * The **`sizeAdjust`** property of the FontFace interface represents a multiplier for the font's glyph outlines and metrics, such as glyph widths and line heights, used to lay out text.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/sizeAdjust)
+     */
+    sizeAdjust: string;
     /**
      * The **`status`** read-only property of the FontFace interface returns an enumerated value indicating the status of the font, one of "unloaded", "loading", "loaded", or "error".
      *
@@ -16918,6 +17126,7 @@ interface GPUTexture extends GPUObjectBase {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/sampleCount)
      */
     readonly sampleCount: GPUSize32Out;
+    readonly textureBindingViewDimension: GPUTextureViewDimension | undefined;
     /**
      * The **`usage`** read-only property of the GPUTexture interface is the bitwise flags representing the allowed usages of the GPUTexture.
      *
@@ -17655,6 +17864,11 @@ interface GlobalEventHandlers {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof GlobalEventHandlersEventMap>(type: K, listener: (this: GlobalEventHandlers, ev: GlobalEventHandlersEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+interface GlobalPrivacyControl {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/globalPrivacyControl) */
+    readonly globalPrivacyControl: boolean;
 }
 
 /**
@@ -18760,7 +18974,7 @@ interface HTMLFormElement extends HTMLElement {
      */
     autocomplete: AutoFillBase;
     /**
-     * The **`elements`** property of the HTMLFormElement interface returns an HTMLFormControlsCollection listing all the listed form controls associated with the <form> element.
+     * The **`elements`** read-only property of the HTMLFormElement interface returns an HTMLFormControlsCollection listing all the listed form controls associated with the <form> element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/elements)
      */
@@ -19046,7 +19260,7 @@ interface HTMLIFrameElement extends HTMLElement {
      */
     allowFullscreen: boolean;
     /**
-     * If the iframe and the iframe's parent document are Same Origin, returns a Document (that is, the active document in the inline frame's nested browsing context), else returns null.
+     * The **`contentDocument`** read-only property of the HTMLIFrameElement interface returns a Document (that is, the active document in the inline frame's nested browsing context) if the iframe and the iframe's parent document are Same Origin, else returns null.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/contentDocument)
      */
@@ -19985,7 +20199,7 @@ interface HTMLMediaElement extends HTMLElement {
      */
     crossOrigin: string | null;
     /**
-     * The **`HTMLMediaElement.currentSrc`** property contains the absolute URL of the chosen media resource. This could happen, for example, if the web server selects a media file based on the resolution of the user's display. The value is an empty string if the networkState property is EMPTY.
+     * The **`currentSrc`** read-only property of the HTMLMediaElement interface contains the absolute URL of the chosen media resource. This could happen, for example, if the web server selects a media file based on the resolution of the user's display. The value is an empty string if the networkState property is EMPTY.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/currentSrc)
      */
@@ -20021,13 +20235,13 @@ interface HTMLMediaElement extends HTMLElement {
      */
     readonly duration: number;
     /**
-     * The **`HTMLMediaElement.ended`** property indicates whether the media element has ended playback.
+     * The **`ended`** read-only property of the HTMLMediaElement interface indicates whether the media element has ended playback.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/ended)
      */
     readonly ended: boolean;
     /**
-     * The **`HTMLMediaElement.error`** property is the MediaError object for the most recent error, or null if there has not been an error. When an error event is received by the element, you can determine details about what happened by examining this object.
+     * The **`error`** read-only property of the HTMLMediaElement interface is the MediaError object for the most recent error, or null if there has not been an error. When an error event is received by the element, you can determine details about what happened by examining this object.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/error)
      */
@@ -20052,7 +20266,7 @@ interface HTMLMediaElement extends HTMLElement {
      */
     muted: boolean;
     /**
-     * The **`HTMLMediaElement.networkState`** property indicates the current state of the fetching of media over the network.
+     * The **`networkState`** read-only property of the HTMLMediaElement interface indicates the current state of the fetching of media over the network.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/networkState)
      */
@@ -20092,7 +20306,7 @@ interface HTMLMediaElement extends HTMLElement {
      */
     preservesPitch: boolean;
     /**
-     * The **`HTMLMediaElement.readyState`** property indicates the readiness state of the media.
+     * The **`readyState`** read-only property of the HTMLMediaElement interface indicates the readiness state of the media.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/readyState)
      */
@@ -22438,7 +22652,7 @@ declare var HashChangeEvent: {
 };
 
 /**
- * The **`Headers`** interface of the Fetch API allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing headers from the list of the request's headers.
+ * The **`Headers`** interface of the Fetch API allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing headers from the object's header list.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Headers)
  */
@@ -23896,7 +24110,7 @@ interface KeyboardEvent extends UIEvent {
      */
     readonly charCode: number;
     /**
-     * The **`KeyboardEvent.code`** property represents a physical key on the keyboard (as opposed to the character generated by pressing the key). In other words, this property returns a value that isn't altered by keyboard layout or the state of the modifier keys.
+     * The **`code`** read-only property of the KeyboardEvent interface represents a physical key on the keyboard (as opposed to the character generated by pressing the key). In other words, this property returns a value that isn't altered by keyboard layout or the state of the modifier keys.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/code)
      */
@@ -25857,13 +26071,13 @@ interface MouseEvent extends UIEvent {
      */
     readonly shiftKey: boolean;
     /**
-     * The **`MouseEvent.x`** property is an alias for the MouseEvent.clientX property.
+     * The **`x`** read-only property of the MouseEvent interface is an alias for the MouseEvent.clientX property.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/x)
      */
     readonly x: number;
     /**
-     * The **`MouseEvent.y`** property is an alias for the MouseEvent.clientY property.
+     * The **`y`** read-only property of the MouseEvent interface is an alias for the MouseEvent.clientY property.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/y)
      */
@@ -26500,6 +26714,12 @@ interface NavigationTransition {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationTransition/navigationType)
      */
     readonly navigationType: NavigationType;
+    /**
+     * The **`to`** read-only property of the NavigationTransition interface returns the NavigationDestination that the transition is navigating to.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationTransition/to)
+     */
+    readonly to: NavigationDestination;
 }
 
 declare var NavigationTransition: {
@@ -26512,7 +26732,7 @@ declare var NavigationTransition: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator)
  */
-interface Navigator extends NavigatorAutomationInformation, NavigatorBadge, NavigatorConcurrentHardware, NavigatorContentUtils, NavigatorCookies, NavigatorGPU, NavigatorID, NavigatorLanguage, NavigatorLocks, NavigatorOnLine, NavigatorPlugins, NavigatorStorage {
+interface Navigator extends GlobalPrivacyControl, NavigatorAutomationInformation, NavigatorBadge, NavigatorConcurrentHardware, NavigatorContentUtils, NavigatorCookies, NavigatorGPU, NavigatorID, NavigatorLanguage, NavigatorLocks, NavigatorOnLine, NavigatorPlugins, NavigatorStorage {
     /**
      * The **`clipboard`** read-only property of the Navigator interface returns a Clipboard object used to read and write the clipboard's contents.
      * Available only in secure contexts.
@@ -26527,7 +26747,7 @@ interface Navigator extends NavigatorAutomationInformation, NavigatorBadge, Navi
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/credentials)
      */
     readonly credentials: CredentialsContainer;
-    /** The **`Navigator.doNotTrack`** property returns the user's Do Not Track setting, which indicates whether the user is requesting websites and advertisers to not track them. */
+    /** The **`doNotTrack`** read-only property of the Navigator interface returns the user's Do Not Track setting, which indicates whether the user is requesting websites and advertisers to not track them. */
     readonly doNotTrack: string | null;
     /**
      * The **`Navigator.geolocation`** read-only property returns a Geolocation object that gives Web content access to the location of the device. This allows a website or app to offer customized results based on the user's location.
@@ -29662,6 +29882,31 @@ declare var PushSubscriptionOptions: {
 };
 
 /**
+ * The **`QuotaExceededError`** interface represents an error when a requested operation would exceed a system-imposed storage quota.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/QuotaExceededError)
+ */
+interface QuotaExceededError extends DOMException {
+    /**
+     * The **`quota`** read-only property of the QuotaExceededError interface returns the system-defined storage quota (in bytes) that the operation attempted to exceed, or undefined if the information is not available.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/QuotaExceededError/quota)
+     */
+    readonly quota: number | null;
+    /**
+     * The **`requested`** read-only property of the QuotaExceededError interface returns the number of bytes that were requested when the error occurred, or undefined if the information is not available.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/QuotaExceededError/requested)
+     */
+    readonly requested: number | null;
+}
+
+declare var QuotaExceededError: {
+    prototype: QuotaExceededError;
+    new(message?: string, options?: QuotaExceededErrorOptions): QuotaExceededError;
+};
+
+/**
  * The **`RTCCertificate`** interface of the WebRTC API provides an object representing a certificate that an RTCPeerConnection uses to authenticate.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCCertificate)
@@ -31391,6 +31636,12 @@ interface Request extends Body {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/destination)
      */
     readonly destination: RequestDestination;
+    /**
+     * The **`duplex`** read-only property of the Request interface returns the duplex mode of the request, which determines whether the browser must send the entire request before processing the response.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/duplex)
+     */
+    readonly duplex: RequestDuplex;
     /**
      * The **`headers`** read-only property of the Request interface contains the Headers object associated with the request.
      *
@@ -34141,7 +34392,7 @@ declare var SVGMetadataElement: {
  */
 interface SVGNumber {
     /**
-     * The **`value`** read-only property of the SVGNumber interface represents the number.
+     * The **`value`** property of the SVGNumber interface represents the number.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGNumber/value)
      */
@@ -34424,13 +34675,13 @@ declare var SVGPolylineElement: {
  */
 interface SVGPreserveAspectRatio {
     /**
-     * The **`align`** read-only property of the SVGPreserveAspectRatio interface reflects the type of the alignment value as specified by one of the SVG_PRESERVEASPECTRATIO_* constants defined on this interface.
+     * The **`align`** property of the SVGPreserveAspectRatio interface reflects the type of the alignment value as specified by one of the SVG_PRESERVEASPECTRATIO_* constants defined on this interface.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPreserveAspectRatio/align)
      */
     align: number;
     /**
-     * The **`meetOrSlice`** read-only property of the SVGPreserveAspectRatio interface reflects the type of the meet-or-slice value as specified by one of the SVG_MEETORSLICE_* constants defined on this interface.
+     * The **`meetOrSlice`** property of the SVGPreserveAspectRatio interface reflects the type of the meet-or-slice value as specified by one of the SVG_MEETORSLICE_* constants defined on this interface.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPreserveAspectRatio/meetOrSlice)
      */
@@ -34751,7 +35002,7 @@ declare var SVGSVGElement: {
  */
 interface SVGScriptElement extends SVGElement, SVGURIReference {
     /**
-     * The **`type`** read-only property of the SVGScriptElement interface reflects the type attribute of the given <script> element.
+     * The **`type`** property of the SVGScriptElement interface reflects the type attribute of the given <script> element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGScriptElement/type)
      */
@@ -35548,7 +35799,7 @@ interface Screen {
      */
     readonly availHeight: number;
     /**
-     * The **`Screen.availWidth`** property returns the amount of horizontal space (in CSS pixels) available to the window.
+     * The **`availWidth`** read-only property of the Screen interface returns the amount of horizontal space (in CSS pixels) available to the window.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Screen/availWidth)
      */
@@ -35572,7 +35823,7 @@ interface Screen {
      */
     readonly orientation: ScreenOrientation;
     /**
-     * Returns the bit depth of the screen. Per the CSSOM, some implementations return 24 for compatibility reasons. See the browser compatibility section for those that don't.
+     * The **`pixelDepth`** read-only property of the Screen interface returns the bit depth of the screen. Per the CSSOM, some implementations return 24 for compatibility reasons. See the browser compatibility section for those that don't.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Screen/pixelDepth)
      */
@@ -36534,6 +36785,13 @@ interface SpeechGrammarList {
      */
     addFromString(string: string, weight?: number): void;
     /**
+     * The **`addFromUri()`** method of the SpeechGrammarList interface takes a grammar present at a specific URI and adds it to the SpeechGrammarList as a new SpeechGrammar object.
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechGrammarList/addFromURI)
+     */
+    addFromUri(src: string, weight?: number): void;
+    /**
      * The **`item`** getter of the SpeechGrammarList interface is a standard getter — it allows individual SpeechGrammar objects to be retrieved from the SpeechGrammarList using array syntax.
      * @deprecated
      *
@@ -36571,13 +36829,13 @@ interface SpeechRecognitionEventMap {
  */
 interface SpeechRecognition extends EventTarget {
     /**
-     * The **`continuous`** property of the SpeechRecognition interface controls whether continuous results are returned for each recognition, or only a single result.
+     * The **`continuous`** property of the SpeechRecognition interface represents whether recognition returns a single final result, or multiple final results from consecutive recognitions.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/continuous)
      */
     continuous: boolean;
     /**
-     * The **`grammars`** property of the SpeechRecognition interface returns and sets a collection of SpeechGrammar objects that represent the grammars that will be understood by the current SpeechRecognition.
+     * The **`grammars`** property of the SpeechRecognition interface represents a collection of SpeechGrammar objects.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/grammars)
      */
@@ -36647,14 +36905,14 @@ interface SpeechRecognition extends EventTarget {
      */
     abort(): void;
     /**
-     * The **`start()`** method of the Web Speech API starts the speech recognition service to listen for incoming audio (from a microphone or an audio track) and returns the results of that recognition.
+     * The **`start()`** method of the SpeechRecognition interface starts the speech recognition service listening for incoming audio (from a microphone or an audio track). Results are delivered through the result event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/start)
      */
     start(): void;
     start(audioTrack: MediaStreamTrack): void;
     /**
-     * The **`stop()`** method of the Web Speech API stops the speech recognition service from listening for incoming audio and attempts to return a SpeechRecognitionResult based on the results captured so far.
+     * The **`stop()`** method of the SpeechRecognition interface stops the speech recognition service from listening for incoming audio. The service then attempts to return a result based on the audio captured so far, through a result event, or a nomatch event if nothing was recognized.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/stop)
      */
@@ -36669,13 +36927,13 @@ declare var SpeechRecognition: {
     prototype: SpeechRecognition;
     new(): SpeechRecognition;
     /**
-     * The **`available()`** static method of the Web Speech API checks whether the specified languages are available for speech recognition at the given quality level.
+     * The **`available()`** static method of the SpeechRecognition interface checks whether the specified languages are available for speech recognition at the given quality level.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/available_static)
      */
     available(options: SpeechRecognitionOptions): Promise<SpeechRecognitionAvailabilityStatus>;
     /**
-     * The **`install()`** static method of the Web Speech API installs the required language packs for on-device speech recognition in the specified languages and quality level.
+     * The **`install()`** static method of the SpeechRecognition interface installs the language packs needed for on-device speech recognition of the specified languages, at the specified quality level. A language pack is the data a browser needs to recognize speech in a particular language. Once it is installed, recognition in that language can run on the user's device, so audio doesn't have to be sent to a remote service.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognition/install_static)
      */
@@ -36683,20 +36941,20 @@ declare var SpeechRecognition: {
 };
 
 /**
- * The **`SpeechRecognitionAlternative`** interface of the Web Speech API represents a single word that has been recognized by the speech recognition service.
+ * The **`SpeechRecognitionAlternative`** interface of the Web Speech API represents one possible match for what the user said, as recognized by the speech recognition service. A SpeechRecognitionResult contains one or more alternatives, ordered from most to least confident.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionAlternative)
  */
 interface SpeechRecognitionAlternative {
     /**
-     * The **`confidence`** read-only property of the SpeechRecognitionResult interface returns a numeric estimate of how confident the speech recognition system is that the recognition is correct.
+     * The **`confidence`** read-only property of the SpeechRecognitionAlternative interface returns a numeric estimate of how confident the speech recognition system is that the recognition is correct.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionAlternative/confidence)
      */
     readonly confidence: number;
     /**
-     * The **`transcript`** read-only property of the SpeechRecognitionResult interface returns a string containing the transcript of the recognized word(s).
+     * The **`transcript`** read-only property of the SpeechRecognitionAlternative interface returns a string containing the transcript of the recognized speech.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionAlternative/transcript)
      */
@@ -36820,7 +37078,7 @@ declare var SpeechRecognitionResult: {
 };
 
 /**
- * The **`SpeechRecognitionResultList`** interface of the Web Speech API represents a list of SpeechRecognitionResult objects, or a single one if results are being captured in non-continuous mode.
+ * The **`SpeechRecognitionResultList`** interface of the Web Speech API represents a collection of SpeechRecognitionResult objects. If recognition isn't in continuous mode, it contains only one result.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionResultList)
@@ -38151,7 +38409,7 @@ interface Touch {
      */
     readonly force: number;
     /**
-     * The **`Touch.identifier`** returns a value uniquely identifying this point of contact with the touch surface. This value remains consistent for every event involving this finger's (or stylus's) movement on the surface until it is lifted off the surface.
+     * The **`identifier`** read-only property of the Touch interface returns a value uniquely identifying this point of contact with the touch surface. This value remains consistent for every event involving this finger's (or stylus's) movement on the surface until it is lifted off the surface.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Touch/identifier)
      */
@@ -38187,13 +38445,13 @@ interface Touch {
      */
     readonly rotationAngle: number;
     /**
-     * Returns the X coordinate of the touch point relative to the screen, not including any scroll offset.
+     * The **`screenX`** read-only property of the Touch interface returns the X coordinate of the touch point relative to the screen, not including any scroll offset.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Touch/screenX)
      */
     readonly screenX: number;
     /**
-     * Returns the Y coordinate of the touch point relative to the screen, not including any scroll offset.
+     * The **`screenY`** read-only property of the Touch interface returns the Y coordinate of the touch point relative to the screen, not including any scroll offset.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Touch/screenY)
      */
@@ -42213,7 +42471,9 @@ declare var WebSocket: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport)
  */
 interface WebTransport {
+    /** The **`anticipatedConcurrentIncomingBidirectionalStreams`** property of the WebTransport interface represents the number of incoming bidirectional streams that the application expects the server to have open at the same time. */
     anticipatedConcurrentIncomingBidirectionalStreams: number | null;
+    /** The **`anticipatedConcurrentIncomingUnidirectionalStreams`** property of the WebTransport interface represents the number of incoming unidirectional streams that the application expects the server to have open at the same time. */
     anticipatedConcurrentIncomingUnidirectionalStreams: number | null;
     /**
      * The **`closed`** read-only property of the WebTransport interface returns a promise that resolves when the transport is closed.
@@ -42269,6 +42529,7 @@ interface WebTransport {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/reliability)
      */
     readonly reliability: WebTransportReliabilityMode;
+    /** The **`responseHeaders`** read-only property of the WebTransport interface returns the HTTP headers from the server's response to the request that set up the session. */
     readonly responseHeaders: Headers | null;
     /**
      * The **`close()`** method of the WebTransport interface closes an ongoing WebTransport session.
@@ -42295,7 +42556,13 @@ interface WebTransport {
      */
     createUnidirectionalStream(options?: WebTransportSendStreamOptions): Promise<WritableStream>;
     /**
-     * The **`getStats()`** method of the WebTransport interface asynchronously returns an object containing HTTP/3 connection statistics.
+     * The **`exportKeyingMaterial()`** method of the WebTransport interface returns a Promise that fulfills with keying material derived from the TLS session underlying the transport's connection. This can be used to bind application-level authentication to the specific connection, for example to detect manipulator-in-the-middle (MitM) attacks when connecting to a peer that uses a self-signed certificate.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/exportKeyingMaterial)
+     */
+    exportKeyingMaterial(label: BufferSource, context: BufferSource, outputLength: number): Promise<Uint8Array>;
+    /**
+     * The **`getStats()`** method of the WebTransport interface returns a Promise that fulfills with an object containing statistics for the transport's underlying connection.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/getStats)
      */
@@ -42347,7 +42614,7 @@ declare var WebTransportBidirectionalStream: {
  */
 interface WebTransportDatagramDuplexStream {
     /**
-     * The **`incomingHighWaterMark`** property of the WebTransportDatagramDuplexStream interface gets or sets the high water mark for incoming chunks of data — this is the maximum size, in chunks, that the incoming ReadableStream's internal queue can reach before it is considered full. See Internal queues and queuing strategies for more information.
+     * The **`incomingHighWaterMark`** property of the WebTransportDatagramDuplexStream interface represents the maximum number of incoming datagrams that can be queued while waiting to be read from the readable stream. If more datagrams arrive than the queue can hold, the oldest datagrams in the queue are dropped. The number of datagrams dropped this way is reported in the droppedIncoming property of the datagram statistics returned by WebTransport.getStats().
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/incomingHighWaterMark)
      */
@@ -42358,6 +42625,7 @@ interface WebTransportDatagramDuplexStream {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/incomingMaxAge)
      */
     incomingMaxAge: number | null;
+    /** The **`incomingMaxBufferedDatagrams`** property of the WebTransportDatagramDuplexStream interface represents the maximum number of incoming datagrams that can be queued while waiting to be read from the readable stream. */
     incomingMaxBufferedDatagrams: number;
     /**
      * The **`maxDatagramSize`** read-only property of the WebTransportDatagramDuplexStream interface returns the maximum allowable size of outgoing datagrams, in bytes, that can be written to writable.
@@ -42366,7 +42634,7 @@ interface WebTransportDatagramDuplexStream {
      */
     readonly maxDatagramSize: number;
     /**
-     * The **`outgoingHighWaterMark`** property of the WebTransportDatagramDuplexStream interface gets or sets the high water mark for outgoing chunks of data — this is the maximum size, in chunks, that the outgoing WritableStream's internal queue can reach before it is considered full. See Internal queues and queuing strategies for more information.
+     * The **`outgoingHighWaterMark`** property of the WebTransportDatagramDuplexStream interface represents the maximum number of outgoing datagrams that can be queued for sending before backpressure is applied. Queued datagrams are not dropped because the queue is full, though they can still expire if outgoingMaxAge is set.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/outgoingHighWaterMark)
      */
@@ -42377,6 +42645,7 @@ interface WebTransportDatagramDuplexStream {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/outgoingMaxAge)
      */
     outgoingMaxAge: number | null;
+    /** The **`outgoingMaxBufferedDatagrams`** property of the WebTransportDatagramDuplexStream interface represents the maximum number of outgoing datagrams that can be queued for sending on each WebTransportDatagramsWritable before backpressure is applied. */
     outgoingMaxBufferedDatagrams: number;
     /**
      * The **`readable`** read-only property of the WebTransportDatagramDuplexStream interface returns a ReadableStream instance that can be used to unreliably read incoming datagrams from the stream.
@@ -42611,13 +42880,13 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
      */
     readonly customElements: CustomElementRegistry;
     /**
-     * The **`devicePixelRatio`** of Window interface returns the ratio of the resolution in physical pixels to the resolution in CSS pixels for the current display device.
+     * The **`devicePixelRatio`** read-only property of the Window interface returns the ratio of the resolution in physical pixels to the resolution in CSS pixels for the current display device.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/devicePixelRatio)
      */
     readonly devicePixelRatio: number;
     /**
-     * **`window.document`** returns a reference to the document contained in the window.
+     * The **`document`** read-only property of the Window interface returns a reference to the document contained in the window.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/document)
      */
@@ -42637,20 +42906,20 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
      */
     readonly event: Event | undefined;
     /**
-     * The **`external`** property of the Window API returns an instance of the External interface, which was intended to contain functions related to adding external search providers to the browser. However, this is now deprecated, and the contained methods are now dummy functions that do nothing as per spec.
+     * The **`external`** read-only property of the Window interface returns an instance of the External interface, which was intended to contain functions related to adding external search providers to the browser. However, this is now deprecated, and the contained methods are now dummy functions that do nothing as per spec.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/external)
      */
     readonly external: External;
     /**
-     * The **`Window.frameElement`** property returns the element (such as <iframe> or <object>) in which the window is embedded.
+     * The **`frameElement`** read-only property of the Window interface returns the element (such as <iframe> or <object>) in which the window is embedded.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/frameElement)
      */
     readonly frameElement: Element | null;
     /**
-     * Returns the window itself, which is an array-like object, listing the direct sub-**`frames`** of the current window.
+     * The **`frames`** read-only property of the Window interface returns the window itself, which is an array-like object, listing the direct sub-frames of the current window.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/frames)
      */
@@ -42674,7 +42943,7 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
      */
     readonly innerWidth: number;
     /**
-     * Returns the number of frames (either <frame> or <iframe> elements) in the window.
+     * The **`length`** read-only property of the Window interface returns the number of frames (either <frame> or <iframe> elements) in the window.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/length)
      */
@@ -42687,13 +42956,13 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
     get location(): Location;
     set location(href: string | Location);
     /**
-     * Returns the **`locationbar`** object.
+     * The **`locationbar`** read-only property of the Window interface returns the locationbar object.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/locationbar)
      */
     readonly locationbar: BarProp;
     /**
-     * Returns the **`menubar`** object.
+     * The **`menubar`** read-only property of the Window interface returns the menubar object.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/menubar)
      */
@@ -42747,7 +43016,7 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
      */
     opener: any;
     /**
-     * Returns the **`orientation`** in degrees (in 90-degree increments) of the viewport relative to the device's natural orientation.
+     * The **`orientation`** read-only property of the Window interface returns the orientation in degrees (in 90-degree increments) of the viewport relative to the device's natural orientation.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/orientation)
@@ -42776,19 +43045,19 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollY) */
     readonly pageYOffset: number;
     /**
-     * The **`Window.parent`** property is a reference to the parent of the current window or subframe.
+     * The **`parent`** read-only property of the Window interface is a reference to the parent of the current window or subframe.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/parent)
      */
     readonly parent: WindowProxy;
     /**
-     * Returns the **`personalbar`** object.
+     * The **`personalbar`** read-only property of the Window interface returns the personalbar object.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/personalbar)
      */
     readonly personalbar: BarProp;
     /**
-     * The Window property **`screen`** returns a reference to the screen object associated with the window. The screen object, implementing the Screen interface, is a special object for inspecting properties of the screen on which the current window is being rendered.
+     * The **`screen`** read-only property of the Window interface returns a reference to the screen object associated with the window. The screen object, implementing the Screen interface, is a special object for inspecting properties of the screen on which the current window is being rendered.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/screen)
      */
@@ -42830,7 +43099,7 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
      */
     readonly scrollY: number;
     /**
-     * Returns the **`scrollbars`** object.
+     * The **`scrollbars`** read-only property of the Window interface returns the scrollbars object.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollbars)
      */
@@ -42855,19 +43124,19 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
      */
     status: string;
     /**
-     * Returns the **`statusbar`** object.
+     * The **`statusbar`** read-only property of the Window interface returns the statusbar object.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/statusbar)
      */
     readonly statusbar: BarProp;
     /**
-     * Returns the **`toolbar`** object.
+     * The **`toolbar`** read-only property of the Window interface returns the toolbar object.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/toolbar)
      */
     readonly toolbar: BarProp;
     /**
-     * Returns a reference to the topmost window in the window hierarchy.
+     * The **`top`** read-only property of the Window interface returns a reference to the topmost window in the window hierarchy.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/top)
      */
@@ -42879,7 +43148,7 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
      */
     readonly visualViewport: VisualViewport | null;
     /**
-     * The **`window`** property of a Window object points to the window object itself.
+     * The **`window`** read-only property of the Window interface points to the window object itself.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/window)
      */
@@ -44871,13 +45140,13 @@ declare var cookieStore: CookieStore;
  */
 declare var customElements: CustomElementRegistry;
 /**
- * The **`devicePixelRatio`** of Window interface returns the ratio of the resolution in physical pixels to the resolution in CSS pixels for the current display device.
+ * The **`devicePixelRatio`** read-only property of the Window interface returns the ratio of the resolution in physical pixels to the resolution in CSS pixels for the current display device.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/devicePixelRatio)
  */
 declare var devicePixelRatio: number;
 /**
- * **`window.document`** returns a reference to the document contained in the window.
+ * The **`document`** read-only property of the Window interface returns a reference to the document contained in the window.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/document)
  */
@@ -44897,20 +45166,20 @@ declare var documentPictureInPicture: DocumentPictureInPicture;
  */
 declare var event: Event | undefined;
 /**
- * The **`external`** property of the Window API returns an instance of the External interface, which was intended to contain functions related to adding external search providers to the browser. However, this is now deprecated, and the contained methods are now dummy functions that do nothing as per spec.
+ * The **`external`** read-only property of the Window interface returns an instance of the External interface, which was intended to contain functions related to adding external search providers to the browser. However, this is now deprecated, and the contained methods are now dummy functions that do nothing as per spec.
  * @deprecated
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/external)
  */
 declare var external: External;
 /**
- * The **`Window.frameElement`** property returns the element (such as <iframe> or <object>) in which the window is embedded.
+ * The **`frameElement`** read-only property of the Window interface returns the element (such as <iframe> or <object>) in which the window is embedded.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/frameElement)
  */
 declare var frameElement: Element | null;
 /**
- * Returns the window itself, which is an array-like object, listing the direct sub-**`frames`** of the current window.
+ * The **`frames`** read-only property of the Window interface returns the window itself, which is an array-like object, listing the direct sub-frames of the current window.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/frames)
  */
@@ -44934,7 +45203,7 @@ declare var innerHeight: number;
  */
 declare var innerWidth: number;
 /**
- * Returns the number of frames (either <frame> or <iframe> elements) in the window.
+ * The **`length`** read-only property of the Window interface returns the number of frames (either <frame> or <iframe> elements) in the window.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/length)
  */
@@ -44946,13 +45215,13 @@ declare var length: number;
  */
 declare var location: Location;
 /**
- * Returns the **`locationbar`** object.
+ * The **`locationbar`** read-only property of the Window interface returns the locationbar object.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/locationbar)
  */
 declare var locationbar: BarProp;
 /**
- * Returns the **`menubar`** object.
+ * The **`menubar`** read-only property of the Window interface returns the menubar object.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/menubar)
  */
@@ -45007,7 +45276,7 @@ declare var onorientationchange: ((this: Window, ev: Event) => any) | null;
  */
 declare var opener: any;
 /**
- * Returns the **`orientation`** in degrees (in 90-degree increments) of the viewport relative to the device's natural orientation.
+ * The **`orientation`** read-only property of the Window interface returns the orientation in degrees (in 90-degree increments) of the viewport relative to the device's natural orientation.
  * @deprecated
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/orientation)
@@ -45036,19 +45305,19 @@ declare var pageXOffset: number;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollY) */
 declare var pageYOffset: number;
 /**
- * The **`Window.parent`** property is a reference to the parent of the current window or subframe.
+ * The **`parent`** read-only property of the Window interface is a reference to the parent of the current window or subframe.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/parent)
  */
 declare var parent: WindowProxy;
 /**
- * Returns the **`personalbar`** object.
+ * The **`personalbar`** read-only property of the Window interface returns the personalbar object.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/personalbar)
  */
 declare var personalbar: BarProp;
 /**
- * The Window property **`screen`** returns a reference to the screen object associated with the window. The screen object, implementing the Screen interface, is a special object for inspecting properties of the screen on which the current window is being rendered.
+ * The **`screen`** read-only property of the Window interface returns a reference to the screen object associated with the window. The screen object, implementing the Screen interface, is a special object for inspecting properties of the screen on which the current window is being rendered.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/screen)
  */
@@ -45090,7 +45359,7 @@ declare var scrollX: number;
  */
 declare var scrollY: number;
 /**
- * Returns the **`scrollbars`** object.
+ * The **`scrollbars`** read-only property of the Window interface returns the scrollbars object.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollbars)
  */
@@ -45115,19 +45384,19 @@ declare var speechSynthesis: SpeechSynthesis;
  */
 declare var status: string;
 /**
- * Returns the **`statusbar`** object.
+ * The **`statusbar`** read-only property of the Window interface returns the statusbar object.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/statusbar)
  */
 declare var statusbar: BarProp;
 /**
- * Returns the **`toolbar`** object.
+ * The **`toolbar`** read-only property of the Window interface returns the toolbar object.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/toolbar)
  */
 declare var toolbar: BarProp;
 /**
- * Returns a reference to the topmost window in the window hierarchy.
+ * The **`top`** read-only property of the Window interface returns a reference to the topmost window in the window hierarchy.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/top)
  */
@@ -45139,7 +45408,7 @@ declare var top: WindowProxy | null;
  */
 declare var visualViewport: VisualViewport | null;
 /**
- * The **`window`** property of a Window object points to the window object itself.
+ * The **`window`** read-only property of the Window interface points to the window object itself.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/window)
  */
@@ -45939,6 +46208,7 @@ type RemotePlaybackState = "connected" | "connecting" | "disconnected";
 type RequestCache = "default" | "force-cache" | "no-cache" | "no-store" | "only-if-cached" | "reload";
 type RequestCredentials = "include" | "omit" | "same-origin";
 type RequestDestination = "" | "audio" | "audioworklet" | "document" | "embed" | "font" | "frame" | "iframe" | "image" | "json" | "manifest" | "object" | "paintworklet" | "report" | "script" | "sharedworker" | "style" | "track" | "video" | "worker" | "xslt";
+type RequestDuplex = "half";
 type RequestMode = "cors" | "navigate" | "no-cors" | "same-origin";
 type RequestPriority = "auto" | "high" | "low";
 type RequestRedirect = "error" | "follow" | "manual";
