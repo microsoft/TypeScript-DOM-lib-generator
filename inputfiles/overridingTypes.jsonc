@@ -2835,7 +2835,7 @@
                 "name": "Memory",
                 "typeParameters": [
                     {
-                        "name": "TBuffer",
+                        "name": "TArrayBuffer",
                         "extends": "ArrayBufferLike",
                         "default": "ArrayBufferLike"
                     }
@@ -2849,7 +2849,7 @@
                 "properties": {
                     "property": {
                         "buffer": {
-                            "overrideType": "TBuffer"
+                            "overrideType": "TArrayBuffer"
                         }
                     }
                 },
@@ -2857,12 +2857,12 @@
                     "method": {
                         "toFixedLengthBuffer": {
                             "overrideSignatures": [
-                                "toFixedLengthBuffer(): TBuffer"
+                                "toFixedLengthBuffer(): TArrayBuffer"
                             ]
                         },
                         "toResizableBuffer": {
                             "overrideSignatures": [
-                                "toResizableBuffer(): TBuffer"
+                                "toResizableBuffer(): TArrayBuffer"
                             ]
                         }
                     }
