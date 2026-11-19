@@ -380,6 +380,10 @@ interface SourceBufferList {
     [Symbol.iterator](): IterableIterator<SourceBuffer>;
 }
 
+interface SpeechGrammarList {
+    [Symbol.iterator](): IterableIterator<SpeechGrammar>;
+}
+
 interface SpeechRecognitionResult {
     [Symbol.iterator](): IterableIterator<SpeechRecognitionAlternative>;
 }

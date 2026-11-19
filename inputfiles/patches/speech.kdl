@@ -1,0 +1,2 @@
+// Blink has it in a different name webkitSpeechGrammar as of 2026-11
+interface SpeechGrammar exposed=Window

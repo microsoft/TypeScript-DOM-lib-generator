@@ -48,6 +48,11 @@ interface WebTransportDatagramDuplexStream {
   // https://github.com/w3c/webtransport/pull/735 removed these but browsers still have them
   property incomingHighWaterMark type=long mdnUrl="https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/incomingHighWaterMark"
   property outgoingHighWaterMark type=long mdnUrl="https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/outgoingHighWaterMark"
+
+  // https://github.com/w3c/webtransport/pull/813 made it non-nullable but browsers still return null by default
+  property outgoingMaxAge {
+    type nullable=#true
+  }
 }
 
 // transferable only on WebKit as of 2026-03
