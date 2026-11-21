@@ -2830,7 +2830,7 @@
             },
             // Shared memories (threads proposal) return SharedArrayBuffer in Firefox and Chrome,
             // expressed as ArrayBufferLike to stay pre-ES2017 friendly
-            // https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/2447
+            // https://webassembly.github.io/threads/js-api/index.html#dom-memory-memory
             "Memory": {
                 "name": "Memory",
                 "typeParameters": [
