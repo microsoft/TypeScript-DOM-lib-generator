@@ -2828,6 +2828,46 @@
                     }
                 }
             },
+            // Shared memories (threads proposal) return SharedArrayBuffer in Firefox and Chrome,
+            // expressed as ArrayBufferLike to stay pre-ES2017 friendly
+            // https://webassembly.github.io/threads/js-api/index.html#dom-memory-memory
+            "Memory": {
+                "name": "Memory",
+                "typeParameters": [
+                    {
+                        "name": "TArrayBuffer",
+                        "extends": "ArrayBufferLike",
+                        "default": "ArrayBufferLike"
+                    }
+                ],
+                "constructor": {
+                    "overrideSignatures": [
+                        "new(descriptor: MemoryDescriptor & { shared?: false }): Memory<ArrayBuffer>",
+                        "new(descriptor: MemoryDescriptor): Memory<ArrayBufferLike>"
+                    ]
+                },
+                "properties": {
+                    "property": {
+                        "buffer": {
+                            "overrideType": "TArrayBuffer"
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "toFixedLengthBuffer": {
+                            "overrideSignatures": [
+                                "toFixedLengthBuffer(): TArrayBuffer"
+                            ]
+                        },
+                        "toResizableBuffer": {
+                            "overrideSignatures": [
+                                "toResizableBuffer(): TArrayBuffer"
+                            ]
+                        }
+                    }
+                }
+            },
 
             // https://github.com/w3c/media-source/pull/282, but not supported anywhere yet
             "MediaSource": {
